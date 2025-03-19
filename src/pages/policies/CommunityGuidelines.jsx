@@ -3,6 +3,7 @@ import React from 'react';
 // Import React MUI Components
 import Typography from '@mui/material/Typography';
 import Grid from '@mui/material/Grid';
+import Container from '@mui/material/Container';
 // import { useTranslation } from 'react-i18next';
 // Import Variables
 // import { APP_NAME } from '../../middleware/config';
@@ -16,6 +17,16 @@ function CommunityGuidelines() {
 
   return (
     <React.Fragment>
+      <Container
+                                                    component="main"
+                                                    sx={{
+                                                      flexGrow: 1,
+                                                      py: '2rem',
+                                                      // pb: '2rem',
+                                                      width: '100%',
+                                                      overflowX: 'hidden',
+                                                    }}
+                                         >
       <Grid container spacing={3}>
         <Grid item xs={12} sm={12} md={12} lg={12}>
           <Typography
@@ -93,6 +104,7 @@ function CommunityGuidelines() {
           <Typography paragraph>Piedaloties šajā kopienā, jūs piekrītat ievērot šos noteikumus un veicināt drošas, iekļaujošas un atbalstošas vides veidošanu visiem dalībniekiem. Paldies par jūsu sadarbību un apņemšanos veicināt kopienas attīstību!</Typography>
         </Grid>
       </Grid>
+      </Container>
     </React.Fragment>
   );
 }

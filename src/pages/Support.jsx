@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 
 import Grid from '@mui/material/Grid';
 import Box from '@mui/material/Box';
-import { Button, IconButton, TextField } from '@mui/material';
+import { Button, IconButton, TextField, Container } from '@mui/material';
 import CardMedia from '@mui/material/CardMedia';
 import { Link as MuiLink } from '@mui/material';
 import useMediaQuery from '@mui/material/useMediaQuery';
@@ -42,21 +42,27 @@ function Support() {
 
   return (
     <React.Fragment>
+             <Container
+                                                    component="main"
+                                                    sx={{
+                                                      flexGrow: 1,
+                                                      py: '2rem',
+                                                      // pb: '2rem',
+                                                      width: '100%',
+                                                      overflowX: 'hidden',
+                                                    }}
+                                         >
       <ToastContainer />
 
       <Grid container spacing={3}>
         <Grid item xs={12} sm={12} md={12} lg={12}>
           <Typography
-            variant="h1"
-            textAlign="center"
-            sx={{ mb: 3 }}
-            gutterBottom
-            style={{
-              fontSize: getTypography('h1').fontSize,
-              fontWeight: getTypography('h1').fontWeight,
-            }}
+           variant="h3"
+      textAlign="center"
+      sx={{ mb: 3, fontWeight: "500" }}
+      gutterBottom
           >
-           Atbalstiet mūsu projektu
+           ATBALSTĪT PROJEKTU
           </Typography>
         </Grid>
       </Grid>
@@ -163,6 +169,7 @@ function Support() {
           </Box>
         </Grid>
       </Grid>
+      </Container>
     </React.Fragment>
   );
 }

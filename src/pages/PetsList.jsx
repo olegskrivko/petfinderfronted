@@ -324,7 +324,7 @@
 // export default PetsList;
 import React, { useState, useEffect } from 'react';
 import { useSearchParams } from 'react-router-dom';
-import { Grid, CircularProgress,Box, Alert, Chip, List, ListItem,TextField, InputLabel, Pagination } from '@mui/material';
+import { Grid, CircularProgress,Box, Alert, Chip, List, ListItem,TextField, InputLabel, Pagination, Container } from '@mui/material';
 import PetCard from '../components/PetCard';
 import LeafletClusterMap from '../components/LeafletClusterMap';
 import Typography from '@mui/material/Typography';
@@ -695,7 +695,18 @@ const PetsList = () => {
   // }
 
   return (
+    <Container
+                                  component="main"
+                                  sx={{
+                                    flexGrow: 1,
+                                    py: '2rem',
+                                    // pb: '2rem',
+                                    width: '100%',
+                                    overflowX: 'hidden',
+                                  }}
+                       >
     <Grid container spacing={3}>
+       
 
 
      
@@ -753,7 +764,9 @@ const PetsList = () => {
           color="primary"
         />
       </Grid>
+      
     </Grid>
+    </Container>
   );
 };
 

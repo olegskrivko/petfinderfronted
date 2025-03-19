@@ -180,6 +180,8 @@ function DrawerAppBar(props) {
         component="nav"
         sx={{
           background: '#5B9BD5',
+                  // backgroundColor: '#03a9f4',
+          // backgroundColor: '#4B5AED', cool violet
           
         }}
       >

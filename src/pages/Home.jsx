@@ -6,6 +6,8 @@ import Typography from '@mui/material/Typography';
 import Grid from '@mui/material/Grid';
 import Button from '@mui/material/Button';
 import Box from '@mui/material/Box';
+import Container from '@mui/material/Container';
+
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
@@ -20,6 +22,7 @@ import PetCounter from '../components/PetCounter'
 // Images
 import petlisting from './images/petlisting.png';
 import lostdogposter from './images/lostdogposter.png';
+import Banner from '../components/Banner';
 import BannerImg from './images/catdog.jpg'
 import studies from './images/studies.png';
 import search from './images/search.png';
@@ -37,7 +40,17 @@ function Home() {
  
   return (
     <React.Fragment>
-      <Grid container spacing={3}>
+      <Container
+          component="main"
+          sx={{
+            flexGrow: 1,
+            // pt: '2rem',
+            // pb: '2rem',
+            width: '100%',
+            overflowX: 'hidden',
+          }}
+        >
+      {/* <Grid container spacing={3}>
         <Grid item xs={12}>
           <Typography
             variant="h1"
@@ -68,59 +81,9 @@ function Home() {
             />
           </Box>
         </Grid>
-        {/* <Grid
-          item
-          xs={12}
-          sm={12}
-          md={12}
-          lg={12}
-          sx={{ paddingTop: '0 !important', marginBottom: '2rem' }}
-        >
-          
-          <Box style={{ display: 'flex', justifyContent: 'center' }}>
-            <Link to="/pets" style={{ textDecoration: 'none' }}>
-                <Button
-                  variant="contained"
-                  size={isSmallScreen ? 'small' : 'large'}
-                  style={{
-                    marginTop: '2rem',
-                    marginLeft: 'auto',
-                    marginRight: '1rem',
-                    display: 'flex',
-                    backgroundColor: '#ffcb56',
-                    color: "#5B5B5B",
-                  }}
-                >
-                 Meklēt mājdzīvnieku
-                </Button>
-            </Link>
-
-            <Link to="/add-pet" style={{ textDecoration: 'none' }}>
-                <Button
-                  variant="outlined"
-                  color="warning"
-                    size={isSmallScreen ? 'small' : 'large'}
-                  style={{
-                    marginTop: '2rem',
-                    marginLeft: 'auto',
-                    marginRight: 'auto',
-                    display: 'flex',
-                    color: '#ffcb56',
-                    borderColor: '#ffcb56',
-                    '&:hover': {
-                      color: '#ffcb56',
-                      borderColor: '#ffcb56',
-                      backgroundColor: 'rgba(255, 193, 7, 0.08)',
-                    },
-                  }}
-                >
-                 Ziņot par mājdzīvnieku
-                </Button>
-            </Link>
-          </Box>
-        </Grid> */}
-      </Grid>
-      <Grid container spacing={3} justifyContent="center" style={{ marginTop: '2rem' }}>
+  
+      </Grid> */}
+      {/* <Grid container spacing={3} justifyContent="center" style={{ marginTop: '2rem' }}>
       <Grid item xs={12} sm={6} md={4}>
         <Link to="/pets" style={{ textDecoration: 'none' }}>
           <Card sx={{ backgroundColor: '#ffcb56', color: '#5B5B5B', textAlign: 'center' }}>
@@ -150,9 +113,21 @@ function Home() {
           </Card>
         </Link>
       </Grid>
-    </Grid>
+    </Grid> */}
       {/* <PetCounter dailyCount={20} yearlyCount={7300} /> */}
-
+      </Container>
+  
+<Banner />
+<Container
+          component="main"
+          sx={{
+            flexGrow: 1,
+            pt: '2rem',
+            pb: '2rem',
+            width: '100%',
+            overflowX: 'hidden',
+          }}
+        >
       <Grid container spacing={3} style={{ marginTop: '1rem' }}>
         <Grid item xs={12} textAlign="center">
           <Typography
@@ -271,7 +246,7 @@ function Home() {
           </Card>
         </Grid>
       </Grid>
-
+      </Container>
     </React.Fragment>
   );
 }

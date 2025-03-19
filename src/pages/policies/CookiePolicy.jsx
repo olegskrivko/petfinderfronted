@@ -3,6 +3,8 @@ import React from 'react';
 // Import React MUI Components
 import Typography from '@mui/material/Typography';
 import Grid from '@mui/material/Grid';
+import Container from '@mui/material/Container';
+
 // import { useTranslation } from 'react-i18next';
 // Import Variables
 // import { APP_NAME, EMAIL } from '../../middleware/config';
@@ -15,6 +17,16 @@ function CookiePolicy() {
   const { getTypography } = useFontSizes();
   return (
     <React.Fragment>
+      <Container
+                                                    component="main"
+                                                    sx={{
+                                                      flexGrow: 1,
+                                                      py: '2rem',
+                                                      // pb: '2rem',
+                                                      width: '100%',
+                                                      overflowX: 'hidden',
+                                                    }}
+                                         >
       <Grid container spacing={3}>
         <Grid item xs={12} sm={12} md={12} lg={12}>
           <Typography
@@ -126,6 +138,7 @@ function CookiePolicy() {
           <Typography paragraph>Ja jums ir kādi jautājumi vai bažas par mūsu sīkdatņu izmantošanu, lūdzu, sazinieties ar mums, izmantojot informāciju, kas sniegta mūsu kontaktu lapā.</Typography>
         </Grid>
       </Grid>
+      </Container>
     </React.Fragment>
   );
 }

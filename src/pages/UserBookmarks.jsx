@@ -142,7 +142,16 @@ function UserBookmarks() {
   }
 
   return (
-    <Container>
+              <Container
+                      component="main"
+                      sx={{
+                        flexGrow: 1,
+                        py: '2rem',
+                        // pb: '2rem',
+                        width: '100%',
+                        overflowX: 'hidden',
+                      }}
+           >
     <Typography
       variant="h3"
       textAlign="center"

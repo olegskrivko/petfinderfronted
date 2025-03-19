@@ -21,6 +21,7 @@ import {
   Typography,
   Button,
   IconButton,
+  Container,
   TextField,
 } from '@mui/material';
 import { useAuth } from '../contexts/AuthContext';
@@ -437,7 +438,17 @@ const [ageChoices, setAgeChoices] = useState(AGE_CHOICES_BY_SPECIES[3]); // Defa
     return imageUrl ? `url(${imageUrl}) center/cover` : "#f5f5f5";
   };
   return (
-    <Grid container spacing={3}>
+    // <Grid container spacing={3}>
+             <Container
+                                                          component="main"
+                                                          sx={{
+                                                            flexGrow: 1,
+                                                            py: '2rem',
+                                                            // pb: '2rem',
+                                                            width: '100%',
+                                                            overflowX: 'hidden',
+                                                          }}
+                                               >
       <Grid item xs={12}>
         <Typography variant="h4" gutterBottom textAlign="center">
           Ziņot par mājdzīvnieku
@@ -1184,7 +1195,8 @@ const [ageChoices, setAgeChoices] = useState(AGE_CHOICES_BY_SPECIES[3]); // Defa
       
         </form>
       </Grid>
-    </Grid>
+      </Container>
+    // </Grid>
   );
 }
 

@@ -2,6 +2,7 @@ import React, { useContext, useState, useEffect } from 'react';
 import { Grid, Box, Typography, Avatar, TextField, Paper, Button,   Dialog,
   DialogTitle,
   DialogContent,
+  Container,
   DialogActions, } from '@mui/material';
 import { Link, useNavigate } from 'react-router-dom';
 import SettingsIcon from '@mui/icons-material/Settings';
@@ -134,6 +135,16 @@ const handleLogout = () => {
   if (!user) return <Typography>Loading...</Typography>;
 
   return (
+      <Container
+              component="main"
+              sx={{
+                flexGrow: 1,
+                pt: '2rem',
+                pb: '2rem',
+                width: '100%',
+                overflowX: 'hidden',
+              }}
+            >
     <Grid item xs={12} md={12}>
       <Box sx={{ textAlign: 'center', position: 'relative' }}>
         <Box sx={{ position: 'relative' }}>
@@ -311,6 +322,7 @@ const handleLogout = () => {
       </Box> */}
       </Box>
     </Grid>
+    </Container>
   );
 };
 

@@ -22,6 +22,7 @@ import {
   Grid,
   Paper,
   CardMedia,
+  Container,
   Link as MuiLink,
 } from '@mui/material';
 
@@ -56,6 +57,16 @@ const Collaborate = () => {
 
   return (
     <React.Fragment>
+      <Container
+                                                                      component="main"
+                                                                      sx={{
+                                                                        flexGrow: 1,
+                                                                        py: '2rem',
+                                                                        // pb: '2rem',
+                                                                        width: '100%',
+                                                                        overflowX: 'hidden',
+                                                                      }}
+                                                           >
       <Grid container spacing={3}>
         <Grid item xs={12} sm={12} md={12} lg={12}>
           <Typography
@@ -490,6 +501,7 @@ const Collaborate = () => {
           </Grid>
         </Grid>
       </Grid>
+      </Container>
     </React.Fragment>
   );
 };

@@ -4,7 +4,7 @@ import Grid from '@mui/material/Grid';
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
-
+import Container from '@mui/material/Container';
 import Box from '@mui/material/Box';
 import { Link } from 'react-router-dom';
 
@@ -170,6 +170,16 @@ function About() {
 
   return (
     <React.Fragment>
+       <Container
+                                              component="main"
+                                              sx={{
+                                                flexGrow: 1,
+                                                py: '2rem',
+                                                // pb: '2rem',
+                                                width: '100%',
+                                                overflowX: 'hidden',
+                                              }}
+                                   >
       <Grid container spacing={3}>
         <Grid item xs={12} sm={12} md={12} lg={12}>
           <Typography
@@ -800,6 +810,7 @@ function About() {
           </Typography>
         </Grid>
       </Grid> */}
+      </Container>
     </React.Fragment>
   );
 }

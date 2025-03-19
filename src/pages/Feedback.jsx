@@ -3,7 +3,7 @@ import axios from 'axios';
 import Typography from '@mui/material/Typography';
 import Grid from '@mui/material/Grid';
 import Box from '@mui/material/Box';
-import { Button, TextField, MenuItem, CardMedia, Link as MuiLink } from '@mui/material';
+import { Button, TextField, MenuItem, CardMedia,Container, Link as MuiLink } from '@mui/material';
 import { useTheme } from '@mui/material/styles';
 import useMediaQuery from '@mui/material/useMediaQuery';
 import { ToastContainer, toast } from 'react-toastify';
@@ -76,6 +76,16 @@ function Feedback() {
 
   return (
     <React.Fragment>
+      <Container
+                                                    component="main"
+                                                    sx={{
+                                                      flexGrow: 1,
+                                                      py: '2rem',
+                                                      // pb: '2rem',
+                                                      width: '100%',
+                                                      overflowX: 'hidden',
+                                                    }}
+                                         >
       <Grid container spacing={3}>
         <Grid item xs={12} sm={12} md={12} lg={12}>
           <Typography
@@ -198,6 +208,7 @@ function Feedback() {
         </Grid>
       </Grid>
       <ToastContainer position="top-right" autoClose={3000} />
+      </Container>
     </React.Fragment>
   );
 }

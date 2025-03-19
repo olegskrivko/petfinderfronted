@@ -14,7 +14,7 @@ const Layout = () => {
         <DrawerAppBar />
       </header>
       <main style={{ flex: '1 0 auto', width: '100%' }}>
-        <Container
+        {/* <Container
           component="main"
           sx={{
             flexGrow: 1,
@@ -23,11 +23,11 @@ const Layout = () => {
             width: '100%',
             overflowX: 'hidden',
           }}
-        >
+        > */}
           {/* <Suspense fallback={<CircularProgress />}> */}
             <Outlet />
           {/* </Suspense> */}
-        </Container>
+        {/* </Container> */}
       </main>
       <footer>
 

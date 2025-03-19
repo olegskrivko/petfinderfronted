@@ -5,7 +5,7 @@ import { useNavigate, Link } from 'react-router-dom';
 import { Container, Typography, TextField, Button, Box } from '@mui/material';
 
 const Register = () => {
-  const [username, setUsername] = useState("");
+  // const [username, setUsername] = useState("");
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
@@ -15,13 +15,16 @@ const Register = () => {
 
   const handleRegister = async (e) => {
     e.preventDefault();
+    console.log("🔍 handleRegister called! Sending request...");
     try {
+      
       const response = await fetch('http://127.0.0.1:8000/api/auth/register/', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify({ username, email, password }),
+        // body: JSON.stringify({ username, email, password }),
+        body: JSON.stringify({ email, password }),
       });
 
       const data = await response.json();
@@ -79,7 +82,7 @@ const Register = () => {
           </Typography>
         )}
         <Box component="form" onSubmit={handleRegister} noValidate sx={{ mt: 1 }}>
-          <TextField
+          {/* <TextField
             margin="normal"
             required
             fullWidth
@@ -90,7 +93,7 @@ const Register = () => {
             autoFocus
             value={username}
             onChange={(e) => setUsername(e.target.value)}
-          />
+          /> */}
           <TextField
             margin="normal"
             required

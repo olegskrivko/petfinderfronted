@@ -44,6 +44,16 @@ import { AuthProvider } from './contexts/AuthContext'; // Path to AuthContext
 import { SnackbarProvider } from 'notistack';
 import { HelmetProvider } from 'react-helmet-async';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
+import ForgotPassword from './pages/ForgotPassword';
+import ResetPassword from "./pages/ResetPassword";
+import Logout from './pages/Logout';
+import AccountDeleted from './pages/AccountDeleted';
+import CheckoutPage from './pages/CheckoutPage';
+import SuccessPage from "./pages/SuccessPage";
+import CancelPage from "./pages/CancelPage";
+import { Elements } from "@stripe/react-stripe-js";
+import { loadStripe } from "@stripe/stripe-js";
+import CheckoutButton from "./pages/CheckoutButton";
 // import InstallPWAButton from './InstallPWAButton';
 
 // if ("serviceWorker" in navigator) {
@@ -113,11 +123,15 @@ const theme = createTheme({
     },
   },})
 
+
+  const stripePromise = loadStripe("pk_test_51MsAnbFtt77ZbwT7jUTgepakOdkTikP2RJ3kzrwX5Gb87hbTQidZ6ZGzUFkPxdsEuZ8pBrQUihsEcV2JefMUXRWE00it4TPUPI");
+
 function App() {
   return (
     <HelmetProvider>
        <ThemeProvider theme={theme}>
     <SnackbarProvider maxSnack={3} autoHideDuration={3000}>
+    <Elements stripe={stripePromise}>
     <Router>
     <AuthProvider>
       <DrawerProvider>
@@ -132,8 +146,14 @@ function App() {
             <Route path="/collaborate" element={<Collaborate />} />
             <Route path="/login" element={<Login />} />
             <Route path="/register" element={<Register />} />
+            <Route path="/Logout" element={<Logout />} />
+            <Route path="/account-deleted" element={<AccountDeleted />} />
+            <Route path="/checkout" element={<CheckoutPage />} />
+            <Route path="/success" element={<SuccessPage />} />
+            <Route path="/cancel" element={<CancelPage />} />
             <Route path="/fun" element={<Fun />} />
-            
+            <Route path="/forgot-password" element={<ForgotPassword />} />
+            <Route path="/reset-password/:token" element={<ResetPassword />} />
             <Route path="/privacy-policy" element={<PrivacyPolicy />} />
             <Route path="/terms-of-service" element={<TermsOfService />} />
             <Route path="/cookie-policy" element={<CookiePolicy />} />
@@ -161,6 +181,7 @@ function App() {
       </DrawerProvider>
     </AuthProvider>
   </Router>
+  </Elements>
   </SnackbarProvider>
   </ThemeProvider>
   </HelmetProvider>

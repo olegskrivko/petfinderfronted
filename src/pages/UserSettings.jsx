@@ -12,6 +12,7 @@ import {
   IconButton,
   Tooltip,
   CardContent,
+  Container,
   Typography,
 } from "@mui/material";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
@@ -48,7 +49,7 @@ function UserSettings() {
 
   const handleLogout = () => {
     logout();
-    navigate("/");
+    navigate("/logout");
   };
 
   const handleDeleteAccount = async () => {
@@ -66,7 +67,7 @@ function UserSettings() {
   
       // Logout the user after account deletion
       logout();
-      navigate("/"); // Redirect to signup or homepage
+      navigate("/account-deleted"); // Redirect to signup or homepage
     } catch (err) {
       console.error("Error deleting account:", err);
     }
@@ -79,6 +80,16 @@ function UserSettings() {
 
   return (
     <>
+          <Container
+                  component="main"
+                  sx={{
+                    flexGrow: 1,
+                    py: '2rem',
+                    // pb: '2rem',
+                    width: '100%',
+                    overflowX: 'hidden',
+                  }}
+       >
       <Grid item xs={12}>
         <Box sx={{ textAlign: "center" }}>
           <Typography variant="h3" sx={{ mb: 3, fontWeight: "500" }}>
@@ -197,6 +208,7 @@ function UserSettings() {
           </Box>
         </Grid>
       </Grid>
+      </Container>
     </>
   );
 }
