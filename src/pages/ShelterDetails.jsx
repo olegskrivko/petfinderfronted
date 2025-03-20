@@ -26,6 +26,7 @@ import PublicIcon from '@mui/icons-material/Public';
 import LocationOnIcon from '@mui/icons-material/LocationOn';
 // Import Custom hook
 import useFontSizes from './utils/getFontSize';
+const API_BASE_URL = import.meta.env.VITE_API_BASE_URL; 
 // import { useTranslation } from 'react-i18next';
 function ShelterDetails() {
   // const { t } = useTranslation(); // Initialize translation hook
@@ -51,7 +52,7 @@ function ShelterDetails() {
         return;
       }
       try {
-        const response = await axios.get(`https://petfinderbackend-production.up.railway.app/api/shelters/${id}/?format=json`, {
+        const response = await axios.get(`${API_BASE_URL}/shelters/${id}/?format=json`, {
           headers: {
             Authorization: `Bearer ${accessToken}`,  // Add Authorization header with token
           },

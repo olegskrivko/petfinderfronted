@@ -21,6 +21,7 @@ import DeleteIcon from "@mui/icons-material/Delete";
 import { Link, useNavigate } from "react-router-dom";
 import { useAuth } from "../contexts/AuthContext";
 import axios from 'axios';
+const API_BASE_URL = import.meta.env.VITE_API_BASE_URL; 
 function UserSettings() {
   const { user, logout } = useAuth();
   const navigate = useNavigate();
@@ -61,7 +62,7 @@ function UserSettings() {
         return;
       }
   
-      await axios.delete("https://petfinderbackend-production.up.railway.app/api/auth/user/delete/", {
+      await axios.delete(`${API_BASE_URL}/auth/user/delete/`, {
         headers: { Authorization: `Bearer ${accessToken}` },
       });
   

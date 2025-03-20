@@ -108,7 +108,7 @@ return (
     <Box position="relative">
     <CardMedia
             component="img"
-            src={pet.image}
+            src={pet.pet_image}
             alt=""
             sx={{ width: '100%', height: 'auto' }}
           />

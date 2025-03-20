@@ -23,6 +23,7 @@ import BookmarkIcon from '@mui/icons-material/Bookmark';
 
 import ArrowDownwardIcon from '@mui/icons-material/ArrowDownward';
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
+const API_BASE_URL = import.meta.env.VITE_API_BASE_URL; 
 
 function UserBookmarks() {
   const { user } = useAuth(); // Assuming you are managing user state in context
@@ -41,7 +42,7 @@ function UserBookmarks() {
       }
 
       try {
-        const response = await axios.get('https://petfinderbackend-production.up.railway.app/api/user-profile/favorite-pets/', {
+        const response = await axios.get(`${API_BASE_URL}/user-profile/favorite-pets/`, {
           headers: {
             Authorization: `Bearer ${accessToken}`,  // Add Authorization header with token
           },
@@ -95,7 +96,7 @@ function UserBookmarks() {
     }
 
     try {
-        const response = await fetch(`https://petfinderbackend-production.up.railway.app/api/user-profile/favorite-pets/${petId}/remove/`, {
+        const response = await fetch(`${API_BASE_URL}/user-profile/favorite-pets/${petId}/remove/`, {
             method: 'DELETE',
             headers: {
                 Authorization: `Bearer ${accessToken}`,
@@ -183,7 +184,7 @@ function UserBookmarks() {
               <CardContent>
                 <Box display="flex" alignItems="center">
                   <Avatar
-                    src={`http://127.0.0.1:8000${pet.image}`}
+                    src={pet.pet_image}
                     alt={pet.species_display}
                     sx={{ width: 64, height: 64, marginRight: 2 }}
                   />

@@ -20,14 +20,14 @@
 // export default CheckoutButton;
 import { useState } from "react";
 import { Button, CircularProgress } from "@mui/material";
-
+const API_BASE_URL = import.meta.env.VITE_API_BASE_URL; 
 const CheckoutButton = () => {
   const [loading, setLoading] = useState(false);
 
   const handleCheckout = async () => {
     setLoading(true);
     try {
-      const response = await fetch("https://petfinderbackend-production.up.railway.app/api/payments/create-checkout-session/", {
+      const response = await fetch(`${API_BASE_URL}/payments/create-checkout-session/`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
       });

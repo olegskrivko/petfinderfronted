@@ -21,7 +21,7 @@ import AlertTitle from '@mui/material/AlertTitle';
 // Import Custom hook
 import useFontSizes from './utils/getFontSize';
 import LeafletSheltersMap from '../components/LeafletSheltersMap';
-
+const API_BASE_URL = import.meta.env.VITE_API_BASE_URL; 
 const SheltersList = () => {
    // Retrieve the access token from localStorage
   
@@ -66,7 +66,7 @@ const SheltersList = () => {
       }
 
       try {
-        const response = await axios.get(`https://petfinderbackend-production.up.railway.app/api/shelters`, {
+        const response = await axios.get(`${API_BASE_URL}/shelters`, {
           headers: {
             Authorization: `Bearer ${accessToken}`,  // Add Authorization header with token
           },

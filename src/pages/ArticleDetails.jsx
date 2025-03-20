@@ -154,7 +154,7 @@ import TipsAndUpdatesIcon from '@mui/icons-material/TipsAndUpdates';
 import useFontSizes from './utils/getFontSize';
 import { format, parseISO } from 'date-fns';
 import { lv } from 'date-fns/locale';
-
+const API_BASE_URL = import.meta.env.VITE_API_BASE_URL; 
 const ArticleDetails = () => {
   const { getTypography } = useFontSizes();
   const { slug } = useParams();  
@@ -172,7 +172,7 @@ const ArticleDetails = () => {
         return;
       }
       try {
-        const response = await axios.get(`https://petfinderbackend-production.up.railway.app/api/articles/articles/${slug}/`, {
+        const response = await axios.get(`${API_BASE_URL}/articles/articles/${slug}/`, {
           headers: { Authorization: `Bearer ${accessToken}` },
         });
         setArticle(response.data); 

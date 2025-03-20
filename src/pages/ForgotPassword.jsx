@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Container, Typography, TextField, Button, Box } from "@mui/material";
-
+const API_BASE_URL = import.meta.env.VITE_API_BASE_URL; 
 const ForgotPassword = () => {
   const [email, setEmail] = useState("");
   const [message, setMessage] = useState("");
@@ -12,7 +12,7 @@ const ForgotPassword = () => {
     setError("");
 
     try {
-      const response = await fetch("https://petfinderbackend-production.up.railway.app/api/auth/forgot-password/", {
+      const response = await fetch(`${API_BASE_URL}/auth/forgot-password/`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ email }),

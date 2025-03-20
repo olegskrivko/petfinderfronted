@@ -10,7 +10,7 @@ const Register = () => {
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
   const [success, setSuccess] = useState('');
-
+  const API_BASE_URL = import.meta.env.VITE_API_BASE_URL; 
   const navigate = useNavigate();
 
   const handleRegister = async (e) => {
@@ -18,7 +18,7 @@ const Register = () => {
     console.log("🔍 handleRegister called! Sending request...");
     try {
       
-      const response = await fetch('https://petfinderbackend-production.up.railway.app/api/auth/register/', {
+      const response = await fetch(`${API_BASE_URL}/auth/register/`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

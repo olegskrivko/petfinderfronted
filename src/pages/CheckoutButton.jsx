@@ -2,7 +2,7 @@ import { useState } from "react";
 import { Button, CircularProgress, Snackbar, Alert } from "@mui/material";
 import { useAuth } from "../contexts/AuthContext";
 import { useNavigate } from "react-router-dom";
-
+const API_BASE_URL = import.meta.env.VITE_API_BASE_URL; 
 const CheckoutButton = () => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
@@ -21,7 +21,7 @@ const CheckoutButton = () => {
     try {
       const accessToken = localStorage.getItem("access_token");
       const response = await fetch(
-        "https://petfinderbackend-production.up.railway.app/api/payments/create-checkout-session/",
+        `${API_BASE_URL}/payments/create-checkout-session/`,
         {
           method: "POST",
           headers: {

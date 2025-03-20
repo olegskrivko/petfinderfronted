@@ -31,7 +31,7 @@ import MaleIcon from '@mui/icons-material/Male';
 import DescriptionIcon from '@mui/icons-material/Description';
 import MergeTypeIcon from '@mui/icons-material/MergeType';
 import { CheckBox } from '@mui/icons-material';
-
+const API_BASE_URL = import.meta.env.VITE_API_BASE_URL; 
 const Poster = () => {
   const { id } = useParams();
   const [pet, setPet] = useState(null);
@@ -66,7 +66,7 @@ const Poster = () => {
       try {
         setLoading(true);
         setError(null);
-        const response = await fetch(`https://petfinderbackend-production.up.railway.app/api/pets/${id}/?format=json`, {
+        const response = await fetch(`${API_BASE_URL}/pets/${id}/?format=json`, {
           headers: {
             Authorization: `Bearer ${accessToken}`,
           },

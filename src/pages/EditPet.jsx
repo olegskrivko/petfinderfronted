@@ -43,7 +43,7 @@ import LocationOnIcon from '@mui/icons-material/LocationOn';
 import AddPhotoAlternateIcon from '@mui/icons-material/AddPhotoAlternate';
 import ArrowDownwardIcon from '@mui/icons-material/ArrowDownward';
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
-
+const API_BASE_URL = import.meta.env.VITE_API_BASE_URL; 
 function EditPet() {
    const { user } = useAuth(); 
    const { id } = useParams(); // Get pet ID from URL
@@ -253,7 +253,7 @@ console.log("pet id", id)
      
 
             // ✅ Fetch data from the backend
-            const response = await axios.get(`https://petfinderbackend-production.up.railway.app/api/pets/${id}/`, {
+            const response = await axios.get(`${API_BASE_URL}/pets/${id}/`, {
               headers: {
                 Authorization: `Bearer ${accessToken}`,
                 'Content-Type': 'application/json',
@@ -295,7 +295,7 @@ console.log("pet id", id)
     try {
       const accessToken = localStorage.getItem('access_token');
 
-      await axios.put(`https://petfinderbackend-production.up.railway.app/api/pets/${id}/`, formState, {
+      await axios.put(`${API_BASE_URL}/pets/${id}/`, formState, {
         headers: {
           Authorization: `Bearer ${accessToken}`,
         },

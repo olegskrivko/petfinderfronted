@@ -76,7 +76,7 @@
 import React, { useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { Container, Typography, TextField, Button, Box } from "@mui/material";
-
+const API_BASE_URL = import.meta.env.VITE_API_BASE_URL; 
 const ResetPassword = () => {
   const { token } = useParams(); // ✅ Get token from URL params
   const [password, setPassword] = useState("");
@@ -101,7 +101,7 @@ const ResetPassword = () => {
     }
 
     try {
-      const response = await fetch(`https://petfinderbackend-production.up.railway.app/api/auth/reset-password/${token}/`, {
+      const response = await fetch(`${API_BASE_URL}/auth/reset-password/${token}/`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ password }),

@@ -21,6 +21,7 @@ import BookmarkIcon from '@mui/icons-material/Bookmark';  // ✅ Import missing 
 import axios from 'axios';
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import PetsIcon from '@mui/icons-material/Pets';
+const API_BASE_URL = import.meta.env.VITE_API_BASE_URL; 
 function UserPets() {
   const { user } = useAuth();
   const navigate = useNavigate();
@@ -41,7 +42,7 @@ function UserPets() {
       }
 
       try {
-        const response = await axios.get('https://petfinderbackend-production.up.railway.app/api/user-profile/user-pets/', {
+        const response = await axios.get(`${API_BASE_URL}/user-profile/user-pets/`, {
           headers: {
             Authorization: `Bearer ${accessToken}`,
           },
@@ -67,7 +68,7 @@ function UserPets() {
     }
 
     try {
-      const response = await fetch(`https://petfinderbackend-production.up.railway.app/api/user-profile/user-pets/${petId}/delete/`, {
+      const response = await fetch(`${API_BASE_URL}/user-profile/user-pets/${petId}/delete/`, {
         method: 'DELETE',
         headers: {
           Authorization: `Bearer ${accessToken}`,
@@ -157,7 +158,7 @@ function UserPets() {
                 <CardContent>
                   <Box display="flex" alignItems="center">
                     <Avatar
-                      src={`http://127.0.0.1:8000${pet.image}`}
+                      src={pet.pet_image}
                       alt={pet.species_display}
                       sx={{ width: 64, height: 64, marginRight: 2 }}
                     />

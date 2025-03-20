@@ -39,8 +39,8 @@ console.log("pet", pet)
     // Find the correct age label based on species
   const ageLabel = AGE_LABELS_BY_SPECIES[pet.species]?.[pet.age] || "-";
   const breedLabel = pet.breed ? pet.breed : "-";
-  const latestStatus = pet.sightings_history.length > 0 ? pet.sightings_history[pet.sightings_history.length - 1] : null;
-  const eventDate = latestStatus?.event_occurred_at || null;
+  // const latestStatus = pet.sightings_history.length > 0 ? pet.sightings_history[pet.sightings_history.length - 1] : null;
+  // const eventDate = latestStatus?.event_occurred_at || null;
 
   return (
     <Box>
@@ -219,7 +219,7 @@ console.log("pet", pet)
           <b>Datums un laiks:</b> 
         
  
-          <EventDate date={eventDate} />
+          {/* <EventDate date={eventDate} /> */}
 
         </Box>
       </Grid>

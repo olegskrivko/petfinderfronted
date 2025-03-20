@@ -23,6 +23,7 @@ import useMediaQuery from '@mui/material/useMediaQuery';
 import { useTheme } from '@mui/material/styles';
 import { useAuth } from '../contexts/AuthContext';
 import ImageNotSupportedIcon from '@mui/icons-material/ImageNotSupported';
+const API_BASE_URL = import.meta.env.VITE_API_BASE_URL; 
 const TabMessages = ({ pet, onZoomMap  }) => {
   const { user, logout } = useAuth();
   console.log("useruser", user)
@@ -78,7 +79,7 @@ const TabMessages = ({ pet, onZoomMap  }) => {
       return;
     }
     try {
-      const response = await fetch(`https://petfinderbackend-production.up.railway.app/api/pets/pet-sightings/${messageId}/`, {
+      const response = await fetch(`${API_BASE_URL}/pets/pet-sightings/${messageId}/`, {
         method: 'DELETE',
         // headers: {
         //   'Authorization': `Token ${authToken}`,
@@ -318,13 +319,13 @@ const TabMessages = ({ pet, onZoomMap  }) => {
     )}
 
     {/* Load More Button */}
-    {pet.sightings_history.length > visibleMessages && (
+    {/* {pet.sightings_history.length > visibleMessages && (
       <Grid item xs={12} style={{ display: "flex", justifyContent: "center" }}>
         <Button variant="outlined" onClick={loadMoreMessages}>
           Load More
         </Button>
       </Grid>
-    )}
+    )} */}
   </Grid>
   </Grid>
   //   <Grid container spacing={2}>

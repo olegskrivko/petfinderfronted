@@ -34,7 +34,7 @@ import LocationOnIcon from '@mui/icons-material/LocationOn';
 import AddPhotoAlternateIcon from '@mui/icons-material/AddPhotoAlternate';
 import ArrowDownwardIcon from '@mui/icons-material/ArrowDownward';
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
-
+const API_BASE_URL = import.meta.env.VITE_API_BASE_URL; 
 
 
 function PetsAdd() {
@@ -420,7 +420,7 @@ const [ageChoices, setAgeChoices] = useState(AGE_CHOICES_BY_SPECIES[3]); // Defa
       console.log('🚀 FormData ready to send:', Object.fromEntries(formData.entries()));
 
       // Send request to backend
-      const response = await axios.post('https://petfinderbackend-production.up.railway.app/api/pets/', formData, {
+        const response = await axios.post(`${API_BASE_URL}/pets/`, formData, {
         headers: {
           'Content-Type': 'multipart/form-data',
           Authorization: `Bearer ${accessToken}`,

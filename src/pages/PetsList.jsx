@@ -328,7 +328,7 @@ import { Grid, CircularProgress,Box, Alert, Chip, List, ListItem,TextField, Inpu
 import PetCard from '../components/PetCard';
 import LeafletClusterMap from '../components/LeafletClusterMap';
 import Typography from '@mui/material/Typography';
-
+const API_BASE_URL = import.meta.env.VITE_API_BASE_URL; 
 const Sidebar = ({ filters, handleChipClick, handleDateChange, handleSearchChange}) => {
   const GENDER_CHOICES = [
     { label: 'Tēviņš', value: '1' },
@@ -542,7 +542,7 @@ const PetsList = () => {
       const queryParams = new URLSearchParams(filters);
       queryParams.set('page', page);
 
-      const response = await fetch(`https://petfinderbackend-production.up.railway.app/api/pets/?${queryParams}`, {
+        const response = await fetch(`${API_BASE_URL}/pets/?${queryParams}`, {
         headers: { Authorization: `Bearer ${accessToken}` },
       });
 

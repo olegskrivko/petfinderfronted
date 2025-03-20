@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useParams, Link } from 'react-router-dom'; // to extract the pet ID from the URL
-import { CircularProgress, Alert,Grid,Grid2, Typography, Card,CardMedia,Box,Tooltip,  IconButton   } from '@mui/material';
+import { CircularProgress, Alert,Grid,Grid2,Container, Typography, Card,CardMedia,Box,Tooltip,  IconButton   } from '@mui/material';
 import Chip from '@mui/material/Chip';
 import ShareIcon from '@mui/icons-material/Share';
 import DownloadIcon from '@mui/icons-material/Download';
@@ -18,7 +18,7 @@ import { ContactSupportOutlined } from '@mui/icons-material';
 import { useAuth } from '../contexts/AuthContext';
 import PetAttributes from "./PetAttributes";
 import PetPhoto from "./PetPhoto";
-
+const API_BASE_URL = import.meta.env.VITE_API_BASE_URL; 
 
 const PetDetailsPage = () => {
   const { user } = useAuth();
@@ -64,7 +64,7 @@ const PetDetailsPage = () => {
   //const [coords, setCoords] = useState({ lat: 56.9496, lng: 24.1052 });
   const imageList = pet
   ? [
-      pet.image,
+      pet.pet_image,
       pet.extra_image_1,
       pet.extra_image_2,
       pet.extra_image_3,
@@ -205,7 +205,8 @@ if (markerPosition && markerPosition.length === 2) {
     }
   
   try {
-      const response = await fetch(`https://petfinderbackend-production.up.railway.app/api/pets/${id}/pet-sightings/?format=json`, {
+      const response = await fetch(`${API_BASE_URL}/pets/${id}/pet-sightings/?format=json`, {
+        // const response = await fetch(`http://127.0.0.1:8000/api/pets/${id}/pet-sightings/?format=json`, {
         method: 'POST',
         body: formData,
         headers: {
@@ -246,10 +247,12 @@ if (markerPosition && markerPosition.length === 2) {
         setLoading(true);
         setError(null);
         
-        //const response = await fetch(`https://petfinderbackend-production.up.railway.app/api/pets/${id}/?format=json`);
+        
 
         
-        const response = await fetch(`https://petfinderbackend-production.up.railway.app/api/pets/${id}/?format=json`, {
+
+          const response = await fetch(`${API_BASE_URL}/pets/${id}/?format=json`, {
+          
           headers: {
             Authorization: `Bearer ${accessToken}`, // Add the token to the request header
           },
@@ -275,7 +278,7 @@ if (markerPosition && markerPosition.length === 2) {
       if (!accessToken) return;
   
       try {
-          const response = await fetch(`https://petfinderbackend-production.up.railway.app/api/user-profile/favorite-pets/${id}/`, {
+          const response = await fetch(`${API_BASE_URL}/user-profile/favorite-pets/${id}/`, {
               method: 'GET',
               headers: { Authorization: `Bearer ${accessToken}` },
           });
@@ -301,7 +304,7 @@ if (markerPosition && markerPosition.length === 2) {
       return;
     }
 
-    const url = `https://petfinderbackend-production.up.railway.app/api/user-profile/favorite-pets/${id}/`;
+    const url = `${API_BASE_URL}/user-profile/favorite-pets/${id}/`;
     try {
       const response = await fetch(url, {
         method: isFavorite ? 'DELETE' : 'POST',
@@ -357,15 +360,25 @@ if (markerPosition && markerPosition.length === 2) {
       </div>
     );
   }
-  const latestStatus = pet.sightings_history.length > 0 ? pet.sightings_history[pet.sightings_history.length - 1] : null;
+  // const latestStatus = pet.sightings_history.length > 0 ? pet.sightings_history[pet.sightings_history.length - 1] : null;
 
   return (
     <React.Fragment>
+                <Container
+                                                                component="main"
+                                                                sx={{
+                                                                  flexGrow: 1,
+                                                                  py: '2rem',
+                                                                  // pb: '2rem',
+                                                                  width: '100%',
+                                                                  overflowX: 'hidden',
+                                                                }}
+                                                     >
     <Grid container spacing={3}>
        <Grid item xs={12}>
        <Typography variant="h3" textAlign="center" sx={{ mb: 3, fontWeight: "500" }} gutterBottom>
           {/* Display the latest status if available */}
-          {latestStatus ? (
+          {/* {latestStatus ? (
              <span>
             <span style={{ textTransform: 'uppercase' }}>
               {latestStatus.status_display} 
@@ -373,7 +386,7 @@ if (markerPosition && markerPosition.length === 2) {
             </span>
           ) : (
             'No status available'
-          )}
+          )} */}
         </Typography>
           </Grid>
           <Grid item xs={12} sm={12} md={6} lg={6}>
@@ -524,6 +537,7 @@ if (markerPosition && markerPosition.length === 2) {
       <Grid item xs={12} sm={12} md={12} lg={12}>
         <IconLabelTabs pet={pet} onZoomMap={handleZoomMap} />
       </Grid>
+      </Container>
     </React.Fragment>
   );
 };

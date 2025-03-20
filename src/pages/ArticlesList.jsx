@@ -16,7 +16,7 @@ import { Link } from 'react-router-dom';
 import { BASE_URL } from './config/config';
 import Alert from '@mui/material/Alert';
 import AlertTitle from '@mui/material/AlertTitle';
-
+const API_BASE_URL = import.meta.env.VITE_API_BASE_URL; 
 const ArticlesList = () => {
   const theme = useTheme();
   const isLargeScreen = useMediaQuery(theme.breakpoints.up('lg'));
@@ -42,8 +42,8 @@ const ArticlesList = () => {
         return;
       }
       try {
-        // const response = await axios.get(`https://petfinderbackend-production.up.railway.app/api/articles/articles/`);
-        const response = await axios.get(`https://petfinderbackend-production.up.railway.app/api/articles/articles/`, {
+        
+        const response = await axios.get(`${API_BASE_URL}/articles/articles/`, {
           headers: {
             Authorization: `Bearer ${accessToken}`,  // Add Authorization header with token
           },
