@@ -41,7 +41,7 @@ function UserBookmarks() {
       }
 
       try {
-        const response = await axios.get('http://127.0.0.1:8000/api/user-profile/favorite-pets/', {
+        const response = await axios.get('https://petfinderbackend-production.up.railway.app/api/user-profile/favorite-pets/', {
           headers: {
             Authorization: `Bearer ${accessToken}`,  // Add Authorization header with token
           },
@@ -67,7 +67,7 @@ function UserBookmarks() {
   //   }
 
   //   try {
-  //     const response = await fetch(`http://127.0.0.1:8000/api/user-profile/favorite-pets/${petId}/remove/`, {
+  //     const response = await fetch(`https://petfinderbackend-production.up.railway.app/api/user-profile/favorite-pets/${petId}/remove/`, {
   //       method: 'DELETE',
   //       headers: {
   //         Authorization: `Bearer ${accessToken}`,
@@ -95,7 +95,7 @@ function UserBookmarks() {
     }
 
     try {
-        const response = await fetch(`http://127.0.0.1:8000/api/user-profile/favorite-pets/${petId}/remove/`, {
+        const response = await fetch(`https://petfinderbackend-production.up.railway.app/api/user-profile/favorite-pets/${petId}/remove/`, {
             method: 'DELETE',
             headers: {
                 Authorization: `Bearer ${accessToken}`,

@@ -5,7 +5,7 @@
 //   const stripe = useStripe();
 
 //   const handleCheckout = async () => {
-//     const response = await fetch("http://localhost:8000/api/payments/create-checkout-session/", {
+//     const response = await fetch("https://petfinderbackend-production.up.railway.app/api/payments/create-checkout-session/", {
 //       method: "POST",
 //       headers: { "Content-Type": "application/json" },
 //     });
@@ -27,7 +27,7 @@ const CheckoutButton = () => {
   const handleCheckout = async () => {
     setLoading(true);
     try {
-      const response = await fetch("http://127.0.0.1:8000/api/payments/create-checkout-session/", {
+      const response = await fetch("https://petfinderbackend-production.up.railway.app/api/payments/create-checkout-session/", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
       });

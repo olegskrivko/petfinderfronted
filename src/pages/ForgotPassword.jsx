@@ -12,7 +12,7 @@ const ForgotPassword = () => {
     setError("");
 
     try {
-      const response = await fetch("http://127.0.0.1:8000/api/auth/forgot-password/", {
+      const response = await fetch("https://petfinderbackend-production.up.railway.app/api/auth/forgot-password/", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ email }),

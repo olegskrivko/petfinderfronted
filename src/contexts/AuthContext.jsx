@@ -14,7 +14,7 @@
 
 //   const login = async (username, password) => {
 //     try {
-//       const response = await axios.post('http://127.0.0.1:8000/api/auth/login/', {
+//       const response = await axios.post('https://petfinderbackend-production.up.railway.app/api/auth/login/', {
 //         username,
 //         password,
 //       });
@@ -69,7 +69,7 @@
 //       const accessToken = localStorage.getItem("access_token");
 //       if (!accessToken) return;
   
-//       const response = await axios.get("http://127.0.0.1:8000/api/auth/user/", {
+//       const response = await axios.get("https://petfinderbackend-production.up.railway.app/api/auth/user/", {
 //         headers: { Authorization: `Bearer ${accessToken}` },
 //       });
   
@@ -130,7 +130,7 @@
 // export const AuthProvider = ({ children }) => {
 //   const [user, setUser] = useState(null);
 //   const navigate = useNavigate();
-//   const API_URL = "http://127.0.0.1:8000/api/auth/";
+//   const API_URL = "https://petfinderbackend-production.up.railway.app/api/auth/";
 
 //   // ✅ Login function (Stores tokens & fetches user details)
 //   const login = async (username, password) => {
@@ -222,7 +222,7 @@ export const useAuth = () => useContext(AuthContext);
 export const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);
   const navigate = useNavigate();
-  const API_URL = "http://127.0.0.1:8000/api/auth/";
+  const API_URL = "https://petfinderbackend-production.up.railway.app/api/auth/";
 
   // ✅ Login function (Stores tokens & fetches user details)
   const login = async (email, password) => {

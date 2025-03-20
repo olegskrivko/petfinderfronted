@@ -78,7 +78,7 @@ const TabMessages = ({ pet, onZoomMap  }) => {
       return;
     }
     try {
-      const response = await fetch(`http://127.0.0.1:8000/api/pets/pet-sightings/${messageId}/`, {
+      const response = await fetch(`https://petfinderbackend-production.up.railway.app/api/pets/pet-sightings/${messageId}/`, {
         method: 'DELETE',
         // headers: {
         //   'Authorization': `Token ${authToken}`,

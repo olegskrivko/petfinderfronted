@@ -66,7 +66,7 @@ const Poster = () => {
       try {
         setLoading(true);
         setError(null);
-        const response = await fetch(`http://127.0.0.1:8000/api/pets/${id}/?format=json`, {
+        const response = await fetch(`https://petfinderbackend-production.up.railway.app/api/pets/${id}/?format=json`, {
           headers: {
             Authorization: `Bearer ${accessToken}`,
           },

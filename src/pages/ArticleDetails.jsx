@@ -24,7 +24,7 @@
 //         return;
 //       }
 //       try {
-//         const response = await axios.get(`http://localhost:8000/api/articles/articles/${slug}/`, {
+//         const response = await axios.get(`https://petfinderbackend-production.up.railway.app/api/articles/articles/${slug}/`, {
 //           headers: { Authorization: `Bearer ${accessToken}` },
 //         });
 //         setArticle(response.data); 
@@ -172,7 +172,7 @@ const ArticleDetails = () => {
         return;
       }
       try {
-        const response = await axios.get(`http://localhost:8000/api/articles/articles/${slug}/`, {
+        const response = await axios.get(`https://petfinderbackend-production.up.railway.app/api/articles/articles/${slug}/`, {
           headers: { Authorization: `Bearer ${accessToken}` },
         });
         setArticle(response.data); 

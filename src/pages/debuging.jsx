@@ -61,7 +61,7 @@ function PetsAdd() {
       console.log('🚀 FormData ready to send:', Object.fromEntries(formData.entries()));
 
       // Send request to backend
-      const response = await axios.post('http://127.0.0.1:8000/api/pets/', formData, {
+      const response = await axios.post('https://petfinderbackend-production.up.railway.app/api/pets/', formData, {
         headers: {
           'Content-Type': 'multipart/form-data',
           Authorization: `Bearer ${accessToken}`,

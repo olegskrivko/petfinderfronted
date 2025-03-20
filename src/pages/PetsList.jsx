@@ -164,7 +164,7 @@
 //   try {
 //     setLoading(true);
 //     setError(null);
-//     const response = await fetch(`http://127.0.0.1:8000/api/pets/?${queryParams}`, {
+//     const response = await fetch(`https://petfinderbackend-production.up.railway.app/api/pets/?${queryParams}`, {
 //       headers: { Authorization: `Bearer ${accessToken}` },
 //     });
 //     const data = await response.json();
@@ -542,7 +542,7 @@ const PetsList = () => {
       const queryParams = new URLSearchParams(filters);
       queryParams.set('page', page);
 
-      const response = await fetch(`http://127.0.0.1:8000/api/pets/?${queryParams}`, {
+      const response = await fetch(`https://petfinderbackend-production.up.railway.app/api/pets/?${queryParams}`, {
         headers: { Authorization: `Bearer ${accessToken}` },
       });
 

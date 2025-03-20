@@ -21,7 +21,7 @@ const CheckoutButton = () => {
     try {
       const accessToken = localStorage.getItem("access_token");
       const response = await fetch(
-        "http://127.0.0.1:8000/api/payments/create-checkout-session/",
+        "https://petfinderbackend-production.up.railway.app/api/payments/create-checkout-session/",
         {
           method: "POST",
           headers: {

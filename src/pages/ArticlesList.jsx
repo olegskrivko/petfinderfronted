@@ -42,8 +42,8 @@ const ArticlesList = () => {
         return;
       }
       try {
-        // const response = await axios.get(`http://127.0.0.1:8000/api/articles/articles/`);
-        const response = await axios.get(`http://127.0.0.1:8000/api/articles/articles/`, {
+        // const response = await axios.get(`https://petfinderbackend-production.up.railway.app/api/articles/articles/`);
+        const response = await axios.get(`https://petfinderbackend-production.up.railway.app/api/articles/articles/`, {
           headers: {
             Authorization: `Bearer ${accessToken}`,  // Add Authorization header with token
           },

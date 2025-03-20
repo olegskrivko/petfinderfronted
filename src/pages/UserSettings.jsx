@@ -61,7 +61,7 @@ function UserSettings() {
         return;
       }
   
-      await axios.delete("http://127.0.0.1:8000/api/auth/user/delete/", {
+      await axios.delete("https://petfinderbackend-production.up.railway.app/api/auth/user/delete/", {
         headers: { Authorization: `Bearer ${accessToken}` },
       });
   

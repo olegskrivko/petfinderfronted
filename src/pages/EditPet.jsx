@@ -253,7 +253,7 @@ console.log("pet id", id)
      
 
             // ✅ Fetch data from the backend
-            const response = await axios.get(`http://127.0.0.1:8000/api/pets/${id}/`, {
+            const response = await axios.get(`https://petfinderbackend-production.up.railway.app/api/pets/${id}/`, {
               headers: {
                 Authorization: `Bearer ${accessToken}`,
                 'Content-Type': 'application/json',
@@ -295,7 +295,7 @@ console.log("pet id", id)
     try {
       const accessToken = localStorage.getItem('access_token');
 
-      await axios.put(`http://127.0.0.1:8000/api/pets/${id}/`, formState, {
+      await axios.put(`https://petfinderbackend-production.up.railway.app/api/pets/${id}/`, formState, {
         headers: {
           Authorization: `Bearer ${accessToken}`,
         },

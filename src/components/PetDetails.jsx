@@ -205,7 +205,7 @@ if (markerPosition && markerPosition.length === 2) {
     }
   
   try {
-      const response = await fetch(`http://127.0.0.1:8000/api/pets/${id}/pet-sightings/?format=json`, {
+      const response = await fetch(`https://petfinderbackend-production.up.railway.app/api/pets/${id}/pet-sightings/?format=json`, {
         method: 'POST',
         body: formData,
         headers: {
@@ -246,10 +246,10 @@ if (markerPosition && markerPosition.length === 2) {
         setLoading(true);
         setError(null);
         
-        //const response = await fetch(`http://127.0.0.1:8000/api/pets/${id}/?format=json`);
+        //const response = await fetch(`https://petfinderbackend-production.up.railway.app/api/pets/${id}/?format=json`);
 
         
-        const response = await fetch(`http://127.0.0.1:8000/api/pets/${id}/?format=json`, {
+        const response = await fetch(`https://petfinderbackend-production.up.railway.app/api/pets/${id}/?format=json`, {
           headers: {
             Authorization: `Bearer ${accessToken}`, // Add the token to the request header
           },
@@ -275,7 +275,7 @@ if (markerPosition && markerPosition.length === 2) {
       if (!accessToken) return;
   
       try {
-          const response = await fetch(`http://127.0.0.1:8000/api/user-profile/favorite-pets/${id}/`, {
+          const response = await fetch(`https://petfinderbackend-production.up.railway.app/api/user-profile/favorite-pets/${id}/`, {
               method: 'GET',
               headers: { Authorization: `Bearer ${accessToken}` },
           });
@@ -301,7 +301,7 @@ if (markerPosition && markerPosition.length === 2) {
       return;
     }
 
-    const url = `http://127.0.0.1:8000/api/user-profile/favorite-pets/${id}/`;
+    const url = `https://petfinderbackend-production.up.railway.app/api/user-profile/favorite-pets/${id}/`;
     try {
       const response = await fetch(url, {
         method: isFavorite ? 'DELETE' : 'POST',

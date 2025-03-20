@@ -51,7 +51,7 @@ function ShelterDetails() {
         return;
       }
       try {
-        const response = await axios.get(`http://127.0.0.1:8000/api/shelters/${id}/?format=json`, {
+        const response = await axios.get(`https://petfinderbackend-production.up.railway.app/api/shelters/${id}/?format=json`, {
           headers: {
             Authorization: `Bearer ${accessToken}`,  // Add Authorization header with token
           },

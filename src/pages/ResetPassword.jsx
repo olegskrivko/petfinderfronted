@@ -18,7 +18,7 @@
 //     }
 
 //     try {
-//       const response = await fetch(`http://127.0.0.1:8000/api/auth/reset-password/${token}/`, {
+//       const response = await fetch(`https://petfinderbackend-production.up.railway.app/api/auth/reset-password/${token}/`, {
 //         method: "POST",
 //         headers: { "Content-Type": "application/json" },
 //         body: JSON.stringify({ password }),
@@ -101,7 +101,7 @@ const ResetPassword = () => {
     }
 
     try {
-      const response = await fetch(`http://127.0.0.1:8000/api/auth/reset-password/${token}/`, {
+      const response = await fetch(`https://petfinderbackend-production.up.railway.app/api/auth/reset-password/${token}/`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ password }),

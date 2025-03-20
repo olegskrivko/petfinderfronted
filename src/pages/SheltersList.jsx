@@ -44,7 +44,7 @@ const SheltersList = () => {
   //   const fetchShelters = async () => {
   //     const accessToken = localStorage.getItem('access_token');  // Retrieve the access token from localStorage
   //     try {
-  //       const response = await axios.get(`http://127.0.0.1:8000/api/shelters`);
+  //       const response = await axios.get(`https://petfinderbackend-production.up.railway.app/api/shelters`);
   //       setShelters(response.data);
   //       setLoading(false);
   //     } catch (error) {
@@ -66,7 +66,7 @@ const SheltersList = () => {
       }
 
       try {
-        const response = await axios.get(`http://127.0.0.1:8000/api/shelters`, {
+        const response = await axios.get(`https://petfinderbackend-production.up.railway.app/api/shelters`, {
           headers: {
             Authorization: `Bearer ${accessToken}`,  // Add Authorization header with token
           },

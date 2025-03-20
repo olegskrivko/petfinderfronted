@@ -41,7 +41,7 @@ function UserPets() {
       }
 
       try {
-        const response = await axios.get('http://127.0.0.1:8000/api/user-profile/user-pets/', {
+        const response = await axios.get('https://petfinderbackend-production.up.railway.app/api/user-profile/user-pets/', {
           headers: {
             Authorization: `Bearer ${accessToken}`,
           },
@@ -67,7 +67,7 @@ function UserPets() {
     }
 
     try {
-      const response = await fetch(`http://127.0.0.1:8000/api/user-profile/user-pets/${petId}/delete/`, {
+      const response = await fetch(`https://petfinderbackend-production.up.railway.app/api/user-profile/user-pets/${petId}/delete/`, {
         method: 'DELETE',
         headers: {
           Authorization: `Bearer ${accessToken}`,
