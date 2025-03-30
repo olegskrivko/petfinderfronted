@@ -262,7 +262,7 @@ const Banner = () => {
             sx={{
               fontSize: { xs: "2rem", sm: "2.2rem", md: "2.6rem" }, // Responsive font sizes
               fontWeight: "700",
-              color: "#3498db", fontSize: "4rem"
+              color: "#3498db", 
             }}
           >
          <span style={{ color: "#3498db"}}>Paw</span><span  style={{ color: "#f1c40f"}}>Clix</span>
