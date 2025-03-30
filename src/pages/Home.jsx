@@ -28,8 +28,8 @@ import studies from './images/studies.png';
 import search from './images/search.png';
 import share from './images/share.png';
 import pathlocations from './images/pathlocations.png';
-
-
+import RecentPets from '../components/RecentPets';
+import Jumbotron from './Jumbotron';
 
 
 function Home() {
@@ -118,6 +118,7 @@ function Home() {
       </Container>
   
 <Banner />
+
 <Container
           component="main"
           sx={{
@@ -128,6 +129,38 @@ function Home() {
             overflowX: 'hidden',
           }}
         >
+           
+                <Grid container spacing={3} style={{ marginTop: '1rem' }}>
+        <Grid item xs={12} textAlign="center">
+          <Typography
+            variant="h2"
+            style={{
+              fontSize: '1.6rem',
+              fontWeight: '500',
+              marginTop: '1rem',
+            }}
+          >
+           Pēdējie pievienotie mājdzīvnieki
+          </Typography>
+        </Grid>
+      </Grid>
+
+      <RecentPets />
+      <Grid container spacing={3} style={{ marginTop: '1rem' }}>
+        <Grid item xs={12} textAlign="center">
+          <Typography
+            variant="h2"
+            style={{
+              fontSize: '1.6rem',
+              fontWeight: '500',
+              marginTop: '1rem',
+            }}
+          >
+           Palīdzi mājdzīvniekiem atgriezties mājās
+          </Typography>
+        </Grid>
+      </Grid>
+      <Jumbotron />
       <Grid container spacing={3} style={{ marginTop: '1rem' }}>
         <Grid item xs={12} textAlign="center">
           <Typography
@@ -144,7 +177,7 @@ function Home() {
       </Grid>
 
       <Grid container spacing={3} style={{ marginTop: '1rem' }}>
-        <Grid item xs={12} sm={6} md={6} lg={4} textAlign="center">
+        <Grid item xs={6} sm={6} md={6} lg={4} textAlign="center">
           <Card style={{ backgroundColor: '#f7f9fd' }}>
             <CardContent style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center' }}>
               <CardMedia
@@ -161,7 +194,7 @@ function Home() {
           </Card>
         </Grid>
 
-        <Grid item xs={12} sm={6} md={6} lg={4} textAlign="center">
+        <Grid item xs={6} sm={6} md={6} lg={4} textAlign="center">
           <Card style={{ backgroundColor: '#f7f9fd' }}>
             <CardContent style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center' }}>
               <CardMedia
@@ -178,7 +211,7 @@ function Home() {
           </Card>
         </Grid>
 
-        <Grid item xs={12} sm={6} md={6} lg={4} textAlign="center">
+        <Grid item xs={6} sm={6} md={6} lg={4} textAlign="center">
           <Card style={{ backgroundColor: '#f7f9fd' }}>
             <CardContent style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center' }}>
               <CardMedia
@@ -195,7 +228,7 @@ function Home() {
           </Card>
         </Grid>
 
-        <Grid item xs={12} sm={6} md={6} lg={4} textAlign="center">
+        <Grid item xs={6} sm={6} md={6} lg={4} textAlign="center">
           <Card style={{ backgroundColor: '#f7f9fd' }}>
             <CardContent style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center' }}>
               <CardMedia
@@ -212,7 +245,7 @@ function Home() {
           </Card>
         </Grid>
 
-        <Grid item xs={12} sm={6} md={6} lg={4} textAlign="center">
+        <Grid item xs={6} sm={6} md={6} lg={4} textAlign="center">
           <Card style={{ backgroundColor: '#f7f9fd' }}>
             <CardContent style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center' }}>
               <CardMedia
@@ -229,7 +262,7 @@ function Home() {
           </Card>
         </Grid>
 
-        <Grid item xs={12} sm={6} md={6} lg={4} textAlign="center">
+        <Grid item xs={6} sm={6} md={6} lg={4} textAlign="center">
           <Card style={{ backgroundColor: '#f7f9fd' }}>
             <CardContent style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center' }}>
               <CardMedia
@@ -246,6 +279,7 @@ function Home() {
           </Card>
         </Grid>
       </Grid>
+
       </Container>
     </React.Fragment>
   );

@@ -254,22 +254,33 @@ const Banner = () => {
               fontWeight: "700",
             }}
           >
-            Laipni lūdzam mūsu lietotnē PawClix
+            Laipni lūdzam mūsu lietotnē
+          </Typography>
+          <Typography
+            variant="h1"
+            fontWeight="bold"
+            sx={{
+              fontSize: { xs: "2rem", sm: "2.2rem", md: "2.6rem" }, // Responsive font sizes
+              fontWeight: "700",
+              color: "#3498db", fontSize: "4rem"
+            }}
+          >
+         <span style={{ color: "#3498db"}}>Paw</span><span  style={{ color: "#f1c40f"}}>Clix</span>
           </Typography>
 
-          <Typography
-            variant="h3"
+          {/* <Typography
+            variant="h5"
             sx={{
-              fontSize: { xs: "1.8rem", sm: "2rem", md: "2.6rem" }, // Adjust font size for small screens
+              fontSize: { xs: "1.8rem", sm: "1rem", md: "1.6rem" }, // Adjust font size for small screens
               fontWeight: "700",
             }}
           >
             Atrodi pazudušo mājdzīvnieku ar vienu klikšķi!
-          </Typography>
+          </Typography> */}
 
           <Grid container spacing={2} justifyContent="center" sx={{ marginTop: "2rem" }}>
             {/* Button 1: Search Pet */}
-            <Grid item xs={6} sm={6} md={4}>
+            {/* <Grid item xs={6} sm={6} md={4}>
               <Button
                 component={Link}
                 to="/pets"
@@ -286,13 +297,13 @@ const Banner = () => {
                   "&:hover": { backgroundColor: "#f1b847" },
                 }}
               >
-                {/* <SearchIcon fontSize={isSmallScreen ? "medium" : "large"} /> */}
+        
                 Meklēt mājdzīvnieku
               </Button>
-            </Grid>
+            </Grid> */}
 
             {/* Button 2: Report Pet */}
-            <Grid item xs={6} sm={6} md={4}>
+            {/* <Grid item xs={6} sm={6} md={4}>
               <Button
                 component={Link}
                 to="/add-pet"
@@ -309,10 +320,10 @@ const Banner = () => {
                   "&:hover": { backgroundColor: "#4a8cc7" },
                 }}
               >
-                {/* <NotificationsActiveIcon fontSize={isSmallScreen ? "medium" : "large"} /> */}
+       
                 Ziņot par mājdzīvnieku
               </Button>
-            </Grid>
+            </Grid> */}
           </Grid>
         </Container>
       </Box>

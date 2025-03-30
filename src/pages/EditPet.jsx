@@ -1,4 +1,4 @@
-import React, { useState, useContext, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useParams, useNavigate, Link } from 'react-router-dom';
 
 import axios from 'axios';
@@ -9,39 +9,25 @@ import InputLabel from '@mui/material/InputLabel';
 import Select from '@mui/material/Select';
 import MenuItem from '@mui/material/MenuItem';
 import Typography from '@mui/material/Typography';
-import FormGroup from '@mui/material/FormGroup';
 import Button from '@mui/material/Button';
 import Box from '@mui/material/Box';
-import CardContent from '@mui/material/CardContent';
-import Card from '@mui/material/Card';
 import CircularProgress from '@mui/material/CircularProgress';
 
 import Alert from '@mui/material/Alert';
-import AlertTitle from '@mui/material/AlertTitle';
-import Dialog from '@mui/material/Dialog';
-import DialogTitle from '@mui/material/DialogTitle';
-import DialogContent from '@mui/material/DialogContent';
-import DialogActions from '@mui/material/DialogActions';
 import IconButton from '@mui/material/IconButton';
-import RadioGroup from '@mui/material/RadioGroup';
-import Radio from '@mui/material/Radio';
 import CloseIcon from '@mui/icons-material/Close';
-import FormControlLabel from '@mui/material/FormControlLabel';
 // import ImageUploader from '../../components/pets/ImageUploader';
 // import PetHealth from '../../components/petcard/PetHealth';
-import FormLabel from '@mui/material/FormLabel';
-import Checkbox from '@mui/material/Checkbox';
+import Container from '@mui/material/Container';
 
 // import { BASE_URL } from '../../middleware/config';
 import LeafletEditPetMap from '../components/LeafletEditPetMap';
 // import { AuthContext } from '../../middleware/AuthContext';
 import { useAuth } from '../contexts/AuthContext';
-import { STATUS_CHOICES, SPECIES_CHOICES, AGE_CHOICES_BY_SPECIES, SIZE_CHOICES, GENDER_CHOICES, BEHAVIOR_CHOICES, AGE_CHOICES, PHONE_CODE_CHOICES, COLOR_CHOICES, PATTERN_CHOICES } from '../constants/petOptions';
-import LocationOnIcon from '@mui/icons-material/LocationOn';
+import { STATUS_CHOICES, SPECIES_CHOICES, AGE_CHOICES_BY_SPECIES, SIZE_CHOICES, GENDER_CHOICES, BEHAVIOR_CHOICES, PHONE_CODE_CHOICES, COLOR_CHOICES, PATTERN_CHOICES } from '../constants/petOptions';
 
 
 import AddPhotoAlternateIcon from '@mui/icons-material/AddPhotoAlternate';
-import ArrowDownwardIcon from '@mui/icons-material/ArrowDownward';
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 const API_BASE_URL = import.meta.env.VITE_API_BASE_URL; 
 function EditPet() {
@@ -333,6 +319,16 @@ console.log("pet id", id)
   if (error) return <Alert severity="error">{error}</Alert>;
   return (
     <React.Fragment>
+                   <Container
+                                                                component="main"
+                                                                sx={{
+                                                                  flexGrow: 1,
+                                                                  py: '2rem',
+                                                                  // pb: '2rem',
+                                                                  width: '100%',
+                                                                  overflowX: 'hidden',
+                                                                }}
+                                                     >
       <Grid container spacing={2} my={2}>
  
         
@@ -1151,6 +1147,7 @@ console.log("pet id", id)
           </form>
         </Grid>
       </Grid>
+      </Container>
     </React.Fragment>
   );
 }

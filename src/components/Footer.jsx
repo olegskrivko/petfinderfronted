@@ -9,45 +9,57 @@ import InstallPWAButton from '../InstallPWAButton';
 const Footer = () => {
 
   const appLinks = [
-    { path: '/about', label: 'Par mums' },
-    { path: '/pets', label: 'Meklēt mājdzīvniekus' },
-    // { path: '/services', label: 'Pakalpojumi' },
-    { path: '/virtual-pet-training-classes', label: 'Virtuālās dresūras nodarbības' },
+    { path: '/about', label: 'Par mums', active: true },
+    { path: '/pets', label: 'Meklēt mājdzīvniekus', active: true },
+    { path: '/services', label: 'Pakalpojumi', active: false },
+    { path: '/virtual-pet-training-classes', label: 'Virtuālās dresūras nodarbības', active: true },
+    { path: '/adopt-a-pet', label: 'Adoptējiet, nepērciet!', active: false },
   ];
-
+  
   const exploreLinks = [
-    { path: '/shelters', label: 'Adoptējiet, nepērciet!' },
-    { path: '/articles', label: 'Mājdzīvnieku aprūpes padomi' },
-    // { path: '/articles/66c908b1635093acc0b86190', label: 'links.howToFindALostCat' },
-    // { path: '/articles/66c90b03635093acc0b861cd', label: 'links.howToFindALostDog' },
+    { path: '/shelters', label: 'Dzīvnieku patversmes', active: true },
+    { path: '/articles', label: 'Mājdzīvnieku aprūpes padomi', active: true },
+    { path: '/articles/ko-darit-ja-pazudis-kakis', label: 'Ko darīt, ja pazudis kaķis?', active: true },
+    { path: '/articles/ka-rikoties-ja-pazudis-suns', label: 'Kā rīkoties, ja pazudis suns?', active: true },
   ];
-
+  
   const policyLinks = [
-    { path: '/privacy-policy', label: 'Privātuma politika' },
-    { path: '/terms-of-service', label: 'Pakalpojumu noteikumi' },
-    { path: '/cookie-policy', label: 'Sīkdatņu politika' },
-    { path: '/data-protection-policy', label: 'Datu aizsardzības politika' },
-    { path: '/disclaimer', label: 'Atruna' },
-    { path: '/community-guidelines', label: 'Kopienas vadlīnijas' },
+    { path: '/privacy-policy', label: 'Privātuma politika', active: true },
+    { path: '/terms-of-service', label: 'Pakalpojumu noteikumi', active: true },
+    { path: '/cookie-policy', label: 'Sīkdatņu politika', active: true },
+    { path: '/data-protection-policy', label: 'Datu aizsardzības politika', active: true },
+    { path: '/disclaimer', label: 'Atruna', active: true },
+    { path: '/community-guidelines', label: 'Kopienas vadlīnijas', active: true },
   ];
-
+  
   const infoLinks = [
-    { path: '/contact', label: 'Kontakti' },
-    { path: '/feedback', label: 'Atsauksmes' },
-    { path: '/support', label: 'Atbalsts' },
-    { path: '/socials', label: 'Sociālie tīkli' },
-    { path: '/collaborate', label: 'Sadarbība' },
-    
+    { path: '/contact', label: 'Kontakti', active: true },
+    { path: '/feedback', label: 'Atsauksmes', active: true },
+    { path: '/support', label: 'Atbalsts', active: true },
+    { path: '/collaborate', label: 'Sadarbība', active: true },
   ];
 
-  const renderLinks = (linksArray) =>
-    linksArray.map((link) => (
-      <Typography key={link.path} variant="body1" color="#fff" style={{ fontWeight: '400' }}>
-        <Link to={link.path} style={{ color: '#fff', textDecoration: 'none' }}>
+// Function to render links with the active/inactive state
+const renderLinks = (linksArray) =>
+  linksArray.map((link) => (
+    <Typography
+      key={link.path}
+      variant="body1"
+      style={{
+        fontWeight: '400',
+        color: link.active ? '#fff' : '#D3D3D3',
+        pointerEvents: link.active ? 'auto' : 'none',
+      }}
+    >
+      {link.active ? (
+        <Link to={link.path} style={{ color: 'inherit', textDecoration: 'none' }}>
           {link.label}
         </Link>
-      </Typography>
-    ));
+      ) : (
+        link.label
+      )}
+    </Typography>
+  ));
 
   return (
     <Box
@@ -102,9 +114,8 @@ const Footer = () => {
         </Grid>
       </Container>
    {/* Install PWA Button Section */}
-   {/* <Box sx={{ width: '100%', padding: '10px 0', background: '#4682B4', textAlign: 'center' }}> */}
+
         <InstallPWAButton />
-      {/* </Box> */}
       <Container>
         
         <Grid container>
@@ -115,8 +126,7 @@ const Footer = () => {
               variant="body2"
               style={{ fontSize: '0.8rem', color: '#fff', fontWeight: '300' }}
             >
-              Mēs esam pateicīgi par jebkādu atbalstu vai sponsora palīdzību, kas var palīdzēt atklāt lietotnes pilno potenciālu - 
-              <Link
+              Mēs esam pateicīgi par jebkādu atbalstu vai sponsora palīdzību, kas var palīdzēt atklāt lietotnes pilno potenciālu - <Link
                 to="/support"
                 style={{
                   color: '#fff',
@@ -132,7 +142,7 @@ const Footer = () => {
           
           <Grid item xs={12} textAlign="center">
             <Typography variant="body2" color="#fff">
-              &copy; 2024 Pawclix. Visas tiesības aizsargātas.
+              &copy; 2025 PawClix. Visas tiesības aizsargātas.
             </Typography>
 
           </Grid>
@@ -146,9 +156,3 @@ const Footer = () => {
 };
 
 export default Footer;
-// ✅ Scientifically Calming Blues:
-// #5B9BD5 (Soft Sky Blue) – Used in healthcare & corporate design for its soothing effect.
-// #6FA3EF (Periwinkle Blue) – Gentle and peaceful, often used in wellness branding.
-// #87CEEB (Sky Blue) – A natural, widely recognized calming blue.
-// #A7C7E7 (Baby Blue) – Light, airy, and psychologically linked to relaxation.
-// #4682B4 (Steel Blue) – Slightly deeper but still very calming and professional.

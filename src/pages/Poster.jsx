@@ -10,6 +10,7 @@ import {
   CircularProgress,
   TextField,
   Input,
+  Container,
   IconButton
 } from '@mui/material';
 import FormGroup from '@mui/material/FormGroup';
@@ -138,6 +139,16 @@ const Poster = () => {
   }
 
   return (
+    <Container
+    component="main"
+    sx={{
+      flexGrow: 1,
+      pt: '2rem',
+      pb: '2rem',
+      width: '100%',
+      overflowX: 'hidden',
+    }}
+  >
         <Box
     sx={{
       display: 'flex',
@@ -187,10 +198,10 @@ const Poster = () => {
         </Box>
         <Grid container spacing={3}>
         <Grid item xs={12} md={12}>
-  {pet.image && (
+  {pet.pet_image && (
     <Box display="flex" justifyContent="center" alignItems="center">
       <img
-        src={pet.image}
+        src={pet.pet_image}
         alt={pet.name}
         style={{ maxWidth: '100%', height: 'auto', borderRadius: 1 }}
       />
@@ -405,6 +416,7 @@ const Poster = () => {
       </Grid>
       </Grid>
       </Box>
+      </Container>
   );
 };
 

@@ -1,178 +1,352 @@
-import React, { useState } from 'react';
-import axios from 'axios';
-import Typography from '@mui/material/Typography';
-import Grid from '@mui/material/Grid';
-import Box from '@mui/material/Box';
-import { Button, TextField, MenuItem, CardMedia,Container, Link as MuiLink } from '@mui/material';
-import { useTheme } from '@mui/material/styles';
-import useMediaQuery from '@mui/material/useMediaQuery';
-import { ToastContainer, toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
+// import React, { useState } from 'react';
+// import axios from 'axios';
+// import Typography from '@mui/material/Typography';
+// import Grid from '@mui/material/Grid';
+// import Box from '@mui/material/Box';
+// import { Button, TextField, MenuItem, CardMedia,Container, Link as MuiLink } from '@mui/material';
+// import { useTheme } from '@mui/material/styles';
+// import useMediaQuery from '@mui/material/useMediaQuery';
+// import { ToastContainer, toast } from 'react-toastify';
+// import 'react-toastify/dist/ReactToastify.css';
 
-import FeedbackImg from './images/customer_feedback_amico.svg';
-import { BASE_URL } from './config/config';
-import useFontSizes from './utils/getFontSize';
-// import { useTranslation } from 'react-i18next';
+// import FeedbackImg from './images/customer_feedback_amico.svg';
+// import { BASE_URL } from './config/config';
+// import useFontSizes from './utils/getFontSize';
+// // import { useTranslation } from 'react-i18next';
 
+// function Feedback() {
+//   // const { t } = useTranslation(['selectOptions', 'feedbackPage']); // Initialize translation hook
+
+//   // const { t: tSelectOptions } = useTranslation('selectOptions');
+//   // const { t: tFeedbackPage } = useTranslation('feedbackPage');
+
+//   const { getTypography } = useFontSizes();
+//   const creditLink = 'https://storyset.com/people';
+//   const credit = 'People illustrations by Storyset';
+//   const theme = useTheme();
+//   const isLargeScreen = useMediaQuery(theme.breakpoints.up('lg'));
+//   const isSmallScreen = useMediaQuery(theme.breakpoints.down('sm'));
+
+//   const [subject, setSubject] = useState('1');
+//   const [email, setEmail] = useState('');
+//   const [message, setMessage] = useState('');
+//   const [loading, setLoading] = useState(false);
+//   const [errors, setErrors] = useState({});
+
+//   subjects = ["Vispārējā atsauksme", "Funkciju pieprasījums", "Kļūdu ziņojums", "Tehniskais atbalsts", "Reklāma un sponsori", "Partnerības iespējas", "cits"]
+
+//   const validate = () => {
+//     let tempErrors = {};
+//     tempErrors.email = email ? '' : 'Email is required.';
+//     tempErrors.message = message ? '' : 'Message is required.';
+//     setErrors(tempErrors);
+//     return Object.values(tempErrors).every((x) => x === '');
+//   };
+
+//   const handleSubmit = async (e) => {
+//     e.preventDefault();
+//     if (!validate()) {
+//       toast.error('Please fill in all required fields.');
+//       return;
+//     }
+//     setLoading(true);
+//     try {
+//       const response = await axios.post(`${BASE_URL}/utilities/send-feedback`, {
+//         subject,
+//         email,
+//         message,
+//       });
+//       setLoading(false);
+//       toast.success('Feedback submitted successfully!');
+//       setEmail('');
+//       setMessage('');
+//     } catch (error) {
+//       setLoading(false);
+//       if (error.response) {
+//         // Server responded with a status other than 200 range
+//         toast.error(`Error: ${error.response.data.message}`);
+//       } else if (error.request) {
+//         // Request was made but no response received
+//         toast.error('Network error, please try again later.');
+//       } else {
+//         // Something else caused the error
+//         toast.error('Error sending feedback, please try again later.');
+//       }
+//       console.error('Error sending feedback:', error);
+//     }
+//   };
+
+//   return (
+//     <React.Fragment>
+//       <Container
+//                                                     component="main"
+//                                                     sx={{
+//                                                       flexGrow: 1,
+//                                                       py: '2rem',
+//                                                       // pb: '2rem',
+//                                                       width: '100%',
+//                                                       overflowX: 'hidden',
+//                                                     }}
+//                                          >
+//       <Grid container spacing={3}>
+//         <Grid item xs={12} sm={12} md={12} lg={12}>
+//           <Typography
+//            variant="h3"
+//            textAlign="center"
+//            sx={{ mb: 3, fontWeight: "500" }}
+//            gutterBottom
+//           >
+//           ATSTĀJIET SAVU ATSAUKSMI
+//           </Typography>
+//         </Grid>
+//       </Grid>
+
+//       <Grid container spacing={3}>
+//         <Grid item xs={12} sm={12} md={6} lg={6}>
+//           <Box
+//             position="relative"
+//             display="flex"
+//             flexDirection="column"
+//             justifyContent="center"
+//             alignItems="center"
+//           >
+//             <CardMedia
+//               component="img"
+//               src={FeedbackImg}
+//               alt="A visual representation of user reactions with thumbs-up images"
+//               style={{
+//                 width: isLargeScreen ? '400px' : '100%',
+//                 maxHeight: isLargeScreen ? '100%' : '60vh', // Adjust height for large screens
+//                 objectFit: 'cover',
+//               }}
+//             />
+//             <Box
+//               style={{
+//                 marginTop: '0.5rem',
+//                 display: 'flex',
+//                 alignItems: 'center',
+//               }}
+//             >
+//               <MuiLink
+//                 href={creditLink}
+//                 target="_blank"
+//                 rel="noopener noreferrer"
+//                 style={{
+//                   fontSize: '0.6rem',
+//                   fontStyle: 'italic',
+//                   color: '#999',
+//                   fontWeight: '300',
+//                 }}
+//               >
+//                 {credit}
+//               </MuiLink>
+//             </Box>
+//           </Box>
+//         </Grid>
+//         <Grid item xs={12} sm={12} md={6} lg={6} textAlign="left">
+//           <form onSubmit={handleSubmit}>
+//             <Box mb={2}>
+//               <TextField
+//                 select
+//                 label='Temats'
+//                 fullWidth
+//                 value={subject}
+//                 onChange={(e) => setSubject(e.target.value)}
+//               >
+//                 {/* {subjects.map((option) => (
+//                   <MenuItem key={option} value={option}>
+//                     {option}
+//                   </MenuItem>
+//                 ))} */}
+
+//                 {/* {tSelectOptions('selectOptions.subjectsOptions', { returnObjects: true }).map(
+//                   (option) => (
+//                     <MenuItem key={option.value} value={option.value}>
+//                       {option.label}
+//                     </MenuItem>
+//                   ),
+//                 )} */}
+//               </TextField>
+//             </Box>
+//             <Box mb={2}>
+//               <TextField
+//                 label='E-pasts'
+//                 type="email"
+//                 fullWidth
+//                 value={email}
+//                 onChange={(e) => setEmail(e.target.value)}
+//                 error={!!errors.email}
+//                 helperText={errors.email}
+//               />
+//             </Box>
+//             <Box mb={2}>
+//               <TextField
+//                 label='Ziņa'
+//                 multiline
+//                 fullWidth
+//                 rows={4}
+//                 value={message}
+//                 onChange={(e) => setMessage(e.target.value)}
+//                 error={!!errors.message}
+//                 helperText={errors.message}
+//               />
+//             </Box>
+//             <Grid item xs={12} sm={12} md={12} lg={12} textAlign="center">
+//               <Button
+//                 type="submit"
+//                 size="small"
+//                 variant="contained"
+//                 style={{ backgroundColor: '#ffcb56', color: '#000' }}
+//                 disabled={loading}
+//               >
+//                 {loading ? 'Submitting...' : 'Iesniegt'}
+//               </Button>
+//             </Grid>
+//           </form>
+//         </Grid>
+//       </Grid>
+//       <ToastContainer position="top-right" autoClose={3000} />
+//       </Container>
+//     </React.Fragment>
+//   );
+// }
+
+
+// export default Feedback;
+
+import React, { useState } from "react";
+import axios from "axios";
+import {
+  Typography,
+  Grid,
+  Box,
+  Button,
+  TextField,
+  MenuItem,
+  CardMedia,
+  Container,
+  Link as MuiLink,
+} from "@mui/material";
+import { useTheme } from "@mui/material/styles";
+import useMediaQuery from "@mui/material/useMediaQuery";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+
+import FeedbackImg from "./images/customer_feedback_amico.svg";
+
+import useFontSizes from "./utils/getFontSize";
+const API_BASE_URL = import.meta.env.VITE_API_BASE_URL; 
 function Feedback() {
-  // const { t } = useTranslation(['selectOptions', 'feedbackPage']); // Initialize translation hook
-
-  // const { t: tSelectOptions } = useTranslation('selectOptions');
-  // const { t: tFeedbackPage } = useTranslation('feedbackPage');
-
   const { getTypography } = useFontSizes();
-  const creditLink = 'https://storyset.com/people';
-  const credit = 'People illustrations by Storyset';
+  const creditLink = "https://storyset.com/people";
+  const credit = "People illustrations by Storyset";
   const theme = useTheme();
-  const isLargeScreen = useMediaQuery(theme.breakpoints.up('lg'));
-  const isSmallScreen = useMediaQuery(theme.breakpoints.down('sm'));
+  const isLargeScreen = useMediaQuery(theme.breakpoints.up("lg"));
 
-  const [subject, setSubject] = useState('1');
-  const [email, setEmail] = useState('');
-  const [message, setMessage] = useState('');
+  const [subject, setSubject] = useState(1);
+  const [email, setEmail] = useState("");
+  const [message, setMessage] = useState("");
   const [loading, setLoading] = useState(false);
   const [errors, setErrors] = useState({});
 
+  const subjects = [
+    { value: 1, label: "Vispārējā atsauksme" },
+    { value: 2, label: "Funkciju pieprasījums" },
+    { value: 3, label: "Kļūdu ziņojums" },
+    { value: 4, label: "Tehniskais atbalsts" },
+    { value: 5, label: "Reklāma un sponsori" },
+    { value: 6, label: "Partnerības iespējas" },
+    { value: 7, label: "Cits" },
+  ];
+
   const validate = () => {
     let tempErrors = {};
-    tempErrors.email = email ? '' : 'Email is required.';
-    tempErrors.message = message ? '' : 'Message is required.';
+    tempErrors.email = email ? "" : "Email is required.";
+    tempErrors.message = message ? "" : "Message is required.";
     setErrors(tempErrors);
-    return Object.values(tempErrors).every((x) => x === '');
+    return Object.values(tempErrors).every((x) => x === "");
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (!validate()) {
-      toast.error('Please fill in all required fields.');
+      toast.error("Please fill in all required fields.");
       return;
     }
     setLoading(true);
     try {
-      const response = await axios.post(`${BASE_URL}/utilities/send-feedback`, {
+      await axios.post(`${API_BASE_URL}/utilities/send-feedback`, {
         subject,
         email,
         message,
       });
       setLoading(false);
-      toast.success('Feedback submitted successfully!');
-      setEmail('');
-      setMessage('');
+      toast.success("Feedback submitted successfully!");
+      setEmail("");
+      setMessage("");
     } catch (error) {
       setLoading(false);
-      if (error.response) {
-        // Server responded with a status other than 200 range
-        toast.error(`Error: ${error.response.data.message}`);
-      } else if (error.request) {
-        // Request was made but no response received
-        toast.error('Network error, please try again later.');
-      } else {
-        // Something else caused the error
-        toast.error('Error sending feedback, please try again later.');
-      }
-      console.error('Error sending feedback:', error);
+      toast.error("Error sending feedback, please try again later.");
+      console.error("Error sending feedback:", error);
     }
   };
 
   return (
-    <React.Fragment>
-      <Container
-                                                    component="main"
-                                                    sx={{
-                                                      flexGrow: 1,
-                                                      py: '2rem',
-                                                      // pb: '2rem',
-                                                      width: '100%',
-                                                      overflowX: 'hidden',
-                                                    }}
-                                         >
+    <Container component="main" sx={{ py: 4, width: "100%" }}>
       <Grid container spacing={3}>
-        <Grid item xs={12} sm={12} md={12} lg={12}>
-          <Typography
-            variant="h1"
-            textAlign="center"
-            sx={{ mb: 3 }}
-            gutterBottom
-            style={{
-              fontSize: getTypography('h1').fontSize,
-              fontWeight: getTypography('h1').fontWeight,
-            }}
-          >
-          Atstājiet savu atsauksmi
+        <Grid item xs={12}>
+          <Typography variant="h3" textAlign="center" sx={{ mb: 3, fontWeight: "500" }}>
+            ATSTĀJIET SAVU ATSAUKSMI
           </Typography>
         </Grid>
       </Grid>
 
       <Grid container spacing={3}>
-        <Grid item xs={12} sm={12} md={6} lg={6}>
-          <Box
-            position="relative"
-            display="flex"
-            flexDirection="column"
-            justifyContent="center"
-            alignItems="center"
-          >
+        <Grid item xs={12} md={6}>
+          <Box display="flex" flexDirection="column" alignItems="center">
             <CardMedia
               component="img"
               src={FeedbackImg}
-              alt="A visual representation of user reactions with thumbs-up images"
-              style={{
-                width: isLargeScreen ? '400px' : '100%',
-                maxHeight: isLargeScreen ? '100%' : '60vh', // Adjust height for large screens
-                objectFit: 'cover',
+              alt="User feedback illustration"
+              sx={{
+                width: isLargeScreen ? "400px" : "100%",
+                maxHeight: isLargeScreen ? "100%" : "60vh",
+                objectFit: "cover",
               }}
             />
-            <Box
-              style={{
-                marginTop: '0.5rem',
-                display: 'flex',
-                alignItems: 'center',
-              }}
+            <MuiLink
+              href={creditLink}
+              target="_blank"
+              rel="noopener noreferrer"
+              sx={{ fontSize: "0.6rem", fontStyle: "italic", color: "#999", fontWeight: "300", mt: 1 }}
             >
-              <MuiLink
-                href={creditLink}
-                target="_blank"
-                rel="noopener noreferrer"
-                style={{
-                  fontSize: '0.6rem',
-                  fontStyle: 'italic',
-                  color: '#999',
-                  fontWeight: '300',
-                }}
-              >
-                {credit}
-              </MuiLink>
-            </Box>
+              {credit}
+            </MuiLink>
           </Box>
         </Grid>
-        <Grid item xs={12} sm={12} md={6} lg={6} textAlign="left">
+
+        {/* Feedback Form */}
+        <Grid item xs={12} md={6}>
           <form onSubmit={handleSubmit}>
             <Box mb={2}>
               <TextField
                 select
-                label='Temats'
+                label="Temats"
                 fullWidth
                 value={subject}
-                onChange={(e) => setSubject(e.target.value)}
+                onChange={(e) => setSubject(Number(e.target.value))}
               >
-                {/* {subjects.map((option) => (
-                  <MenuItem key={option} value={option}>
-                    {option}
+                {subjects.map((option) => (
+                  <MenuItem key={option.value} value={option.value}>
+                    {option.label}
                   </MenuItem>
-                ))} */}
-
-                {/* {tSelectOptions('selectOptions.subjectsOptions', { returnObjects: true }).map(
-                  (option) => (
-                    <MenuItem key={option.value} value={option.value}>
-                      {option.label}
-                    </MenuItem>
-                  ),
-                )} */}
+                ))}
               </TextField>
             </Box>
+
             <Box mb={2}>
               <TextField
-                label='E-pasts'
+                label="E-pasts"
                 type="email"
                 fullWidth
                 value={email}
@@ -181,9 +355,10 @@ function Feedback() {
                 helperText={errors.email}
               />
             </Box>
+
             <Box mb={2}>
               <TextField
-                label='Ziņa'
+                label="Ziņa"
                 multiline
                 fullWidth
                 rows={4}
@@ -193,25 +368,25 @@ function Feedback() {
                 helperText={errors.message}
               />
             </Box>
-            <Grid item xs={12} sm={12} md={12} lg={12} textAlign="center">
+
+            <Grid item xs={12} textAlign="center">
               <Button
                 type="submit"
                 size="small"
                 variant="contained"
-                style={{ backgroundColor: '#ffcb56', color: '#000' }}
+                sx={{ backgroundColor: "#ffcb56", color: "#000" }}
                 disabled={loading}
               >
-                {loading ? 'Submitting...' : 'Iesniegt'}
+                {loading ? "Submitting..." : "Iesniegt"}
               </Button>
             </Grid>
           </form>
         </Grid>
       </Grid>
+
       <ToastContainer position="top-right" autoClose={3000} />
-      </Container>
-    </React.Fragment>
+    </Container>
   );
 }
-
 
 export default Feedback;

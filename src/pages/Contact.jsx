@@ -611,156 +611,301 @@
 // };
 
 // export default Contact;
-import React from 'react';
-import { Box, Typography, Container, Grid, Paper, Link as MuiLink, Button, TextField } from '@mui/material';
-import PhoneIcon from '@mui/icons-material/Phone';
-import MailIcon from '@mui/icons-material/Mail';
-import LocationOnIcon from '@mui/icons-material/LocationOn';
-import FacebookIcon from '@mui/icons-material/Facebook';
-import InstagramIcon from '@mui/icons-material/Instagram';
-import contactImage from './images/mobile_marketing_cuate.svg'; // Replace with your actual image
+// import React from 'react';
+// import { Box, Typography, Container, Grid, Paper, Link as MuiLink, Button, TextField } from '@mui/material';
+// import PhoneIcon from '@mui/icons-material/Phone';
+// import MailIcon from '@mui/icons-material/Mail';
+// import LocationOnIcon from '@mui/icons-material/LocationOn';
+// import FacebookIcon from '@mui/icons-material/Facebook';
+// import InstagramIcon from '@mui/icons-material/Instagram';
+// import contactImage from './images/mobile_marketing_cuate.svg'; // Replace with your actual image
 
-// Config Variables
+// // Config Variables
+// import { EMAIL, PHONE, COUNTRY, CITY, FACEBOOK, INSTAGRAM } from './config/config';
+
+// const Contact = () => {
+//   const handleLocationClick = () => {
+//     const locationQuery = `${COUNTRY}, ${CITY}`;
+//     const encodedLocationQuery = encodeURIComponent(locationQuery);
+//     const googleMapsUrl = `https://www.google.com/maps/search/?api=1&query=${encodedLocationQuery}`;
+//     window.open(googleMapsUrl, '_blank');
+//   };
+
+//   return (
+//     <Container component="main" sx={{ py: 4, width: '100%' }}>
+//            <Grid container spacing={3}>
+//               <Grid item xs={12}>
+//                 <Typography variant="h3" textAlign="center" sx={{ mb: 3, fontWeight: "500" }}>
+//                  SAZINIETIES AR MUMS
+//                 </Typography>
+//               </Grid>
+//             </Grid>
+//       <Grid container spacing={4} alignItems="center">
+//         {/* Left Side - Image */}
+//         <Grid item xs={12} md={6}>
+//           <Box
+//             component="img"
+//             src={contactImage}
+//             alt="Contact Us"
+//             sx={{
+//               width: '100%',
+//               height: '100%',
+//               objectFit: 'cover',
+//               borderRadius: '8px',
+//             }}
+//           />
+//         </Grid>
+
+//         {/* Right Side - Contact Form */}
+//         <Grid item xs={12} md={6}>
+//           {/* <Typography variant="h2" gutterBottom>
+//             Sazinieties ar mums
+//           </Typography> */}
+//           {/* <Typography variant="body1" sx={{ mb: 3 }}>
+//             Ja jums ir jautājumi, lūdzu, aizpildiet zemāk esošo veidlapu, un mēs ar jums sazināsimies pēc iespējas ātrāk!
+//           </Typography> */}
+
+//           {/* Contact Form */}
+//           <Box component="form" sx={{ display: 'flex', flexDirection: 'column', gap: 2 }}>
+//             <TextField label="Jūsu Vārds" variant="outlined" fullWidth />
+//             <TextField label="Jūsu E-pasts" variant="outlined" fullWidth />
+//             <TextField label="Jūsu Ziņa" variant="outlined" multiline rows={4} fullWidth />
+//             <Button variant="contained" color="primary">
+//               Nosūtīt ziņu
+//             </Button>
+//           </Box>
+//         </Grid>
+//       </Grid>
+
+//       <Typography variant="h3" sx={{ mt: 5, textAlign: 'center' }}>
+//         Kontaktinformācija
+//       </Typography>
+// {/* Contact Icons in Circles */}
+// <Grid container spacing={5} justifyContent="center" sx={{ mt: 5, textAlign: 'center' }}>
+//   {/* Email */}
+//   <Grid item xs={12} sm={4}>
+//     <Box display="flex" flexDirection="column" alignItems="center">
+//       <Paper
+//         sx={{
+//           width: 80,
+//           height: 80,
+//           display: 'flex',
+//           justifyContent: 'center',
+//           alignItems: 'center',
+//           borderRadius: '50%',
+//           backgroundColor: '#ffcb56',
+//           cursor: 'pointer',
+//         }}
+//       >
+//         <MailIcon fontSize="large" sx={{ color: '#F0F4F9' }} />
+//       </Paper>
+//       <MuiLink href={`mailto:${EMAIL}`} sx={{ textDecoration: 'none', color: 'black', mt: 1 }}>
+//         E-pasts
+//       </MuiLink>
+//       <Typography variant="body2" sx={{ mt: 1, maxWidth: '200px' }}>
+//         Jautājumi, atsauksmes vai sadarbība? Rakstiet mums!
+//       </Typography>
+//     </Box>
+//   </Grid>
+
+//   {/* Phone */}
+//   <Grid item xs={12} sm={4}>
+//     <Box display="flex" flexDirection="column" alignItems="center">
+//       <Paper
+//         sx={{
+//           width: 80,
+//           height: 80,
+//           display: 'flex',
+//           justifyContent: 'center',
+//           alignItems: 'center',
+//           borderRadius: '50%',
+//           backgroundColor: '#ffcb56',
+//           cursor: 'pointer',
+//         }}
+//       >
+//         <PhoneIcon fontSize="large" sx={{ color: '#F0F4F9' }} />
+//       </Paper>
+//       <MuiLink href={`tel:${PHONE}`} sx={{ textDecoration: 'none', color: 'black', mt: 1 }}>
+//         Tālrunis
+//       </MuiLink>
+//       <Typography variant="body2" sx={{ mt: 1, maxWidth: '200px' }}>
+//         Zvaniet mums jebkurā laikā darba dienās!
+//       </Typography>
+//     </Box>
+//   </Grid>
+
+//   {/* Location */}
+//   <Grid item xs={12} sm={4}>
+//     <Box display="flex" flexDirection="column" alignItems="center">
+//       <Paper
+//         sx={{
+//           width: 80,
+//           height: 80,
+//           display: 'flex',
+//           justifyContent: 'center',
+//           alignItems: 'center',
+//           borderRadius: '50%',
+//           backgroundColor: '#ffcb56',
+//           cursor: 'pointer',
+//         }}
+//         onClick={handleLocationClick}
+//       >
+//         <LocationOnIcon fontSize="large" sx={{ color: '#F0F4F9' }} />
+//       </Paper>
+//       <Typography variant="body2" sx={{ mt: 1, fontWeight: 'bold' }}>
+//         {CITY}
+//       </Typography>
+//       <Typography variant="body2" sx={{ mt: 1, maxWidth: '200px' }}>
+//         Mūsu birojs atrodas Rīgā. Atnāciet ciemos!
+//       </Typography>
+//     </Box>
+//   </Grid>
+// </Grid>
+
+//       {/* Social Media Buttons */}
+//       <Typography variant="h3" sx={{ mt: 5, textAlign: 'center' }}>
+//         Sekojiet mums
+//       </Typography>
+//       <Grid container spacing={2} justifyContent="center" sx={{ mt: 2 }}>
+//         <Grid item>
+//           <MuiLink href={FACEBOOK} target="_blank" rel="noopener">
+//             <Button variant="contained" sx={{ backgroundColor: '#316FF6', color: 'white' }}>
+//               <FacebookIcon sx={{ mr: 1 }} />
+//               Facebook
+//             </Button>
+//           </MuiLink>
+//         </Grid>
+//         <Grid item>
+//           <MuiLink href={INSTAGRAM} target="_blank" rel="noopener">
+//             <Button variant="contained" sx={{ backgroundColor: '#DD2A7B', color: 'white' }}>
+//               <InstagramIcon sx={{ mr: 1 }} />
+//               Instagram
+//             </Button>
+//           </MuiLink>
+//         </Grid>
+//       </Grid>
+//     </Container>
+//   );
+// };
+
+// export default Contact;
+import React from 'react';
+import {
+  Box,
+  Typography,
+  Container,
+  Grid,
+  Paper,
+  Link as MuiLink,
+  Button,
+  TextField,
+} from '@mui/material';
+import {
+  Phone as PhoneIcon,
+  Mail as MailIcon,
+  LocationOn as LocationOnIcon,
+  Facebook as FacebookIcon,
+  Instagram as InstagramIcon,
+} from '@mui/icons-material';
+import contactImage from './images/mobile_marketing_cuate.svg';
 import { EMAIL, PHONE, COUNTRY, CITY, FACEBOOK, INSTAGRAM } from './config/config';
 
 const Contact = () => {
   const handleLocationClick = () => {
-    const locationQuery = `${COUNTRY}, ${CITY}`;
-    const encodedLocationQuery = encodeURIComponent(locationQuery);
-    const googleMapsUrl = `https://www.google.com/maps/search/?api=1&query=${encodedLocationQuery}`;
+    const googleMapsUrl = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(`${COUNTRY}, ${CITY}`)}`;
     window.open(googleMapsUrl, '_blank');
   };
 
+  const contactDetails = [
+    {
+      icon: <MailIcon fontSize="large" sx={{ color: '#F0F4F9' }} />, 
+      label: 'E-pasts', 
+      value: EMAIL, 
+      href: `mailto:${EMAIL}`, 
+      description: 'Jautājumi, atsauksmes vai sadarbība? Rakstiet mums!'
+    },
+    {
+      icon: <PhoneIcon fontSize="large" sx={{ color: '#F0F4F9' }} />, 
+      label: 'Tālrunis', 
+      value: PHONE, 
+      href: `tel:${PHONE}`, 
+      description: 'Zvaniet mums jebkurā laikā darba dienās!'
+    },
+    {
+      icon: <LocationOnIcon fontSize="large" sx={{ color: '#F0F4F9' }} />, 
+      label: 'Atrašanās vieta', 
+      value: CITY, 
+      href: '',
+      onClick: handleLocationClick,
+      description: 'Mēs atrodamies Rīgā!'
+    }
+  ];
+
   return (
     <Container component="main" sx={{ py: 4, width: '100%' }}>
+      <Typography variant="h3" textAlign="center" sx={{ mb: 3, fontWeight: 500 }}>
+        SAZINIETIES AR MUMS
+      </Typography>
+
       <Grid container spacing={4} alignItems="center">
-        {/* Left Side - Image */}
         <Grid item xs={12} md={6}>
-          <Box
-            component="img"
-            src={contactImage}
-            alt="Contact Us"
-            sx={{
-              width: '100%',
-              height: '100%',
-              objectFit: 'cover',
-              borderRadius: '8px',
-            }}
-          />
+          <Box component="img" src={contactImage} alt="Contact Us" sx={{ width: '100%', borderRadius: '8px' }} />
         </Grid>
-
-        {/* Right Side - Contact Form */}
         <Grid item xs={12} md={6}>
-          <Typography variant="h2" gutterBottom>
-            Sazinieties ar mums
-          </Typography>
-          <Typography variant="body1" sx={{ mb: 3 }}>
-            Ja jums ir jautājumi, lūdzu, aizpildiet zemāk esošo veidlapu, un mēs ar jums sazināsimies pēc iespējas ātrāk!
-          </Typography>
-
-          {/* Contact Form */}
           <Box component="form" sx={{ display: 'flex', flexDirection: 'column', gap: 2 }}>
             <TextField label="Jūsu Vārds" variant="outlined" fullWidth />
             <TextField label="Jūsu E-pasts" variant="outlined" fullWidth />
             <TextField label="Jūsu Ziņa" variant="outlined" multiline rows={4} fullWidth />
-            <Button variant="contained" sx={{ backgroundColor: '#ffcb56', color: 'black', mt: 2 }}>
-              Nosūtīt ziņu
-            </Button>
+            <Button variant="contained" color="primary">Nosūtīt ziņu</Button>
           </Box>
         </Grid>
       </Grid>
 
-      {/* Contact Icons in Circles */}
-      <Grid container spacing={5} justifyContent="center" sx={{ mt: 5 }}>
-        {/* Email */}
-        <Grid item>
-          <Paper
-            sx={{
-              width: 120,
-              height: 120,
-              display: 'flex',
-              flexDirection: 'column',
-              justifyContent: 'center',
-              alignItems: 'center',
-              borderRadius: '50%',
-              backgroundColor: '#ffcb56',
-              cursor: 'pointer',
-            }}
-          >
-            <MailIcon fontSize="large" sx={{ color: '#F0F4F9' }} />
-            <MuiLink href={`mailto:${EMAIL}`} sx={{ textDecoration: 'none', color: 'black', mt: 1 }}>
-              E-pasts
-            </MuiLink>
-          </Paper>
-        </Grid>
-
-        {/* Phone */}
-        <Grid item>
-          <Paper
-            sx={{
-              width: 120,
-              height: 120,
-              display: 'flex',
-              flexDirection: 'column',
-              justifyContent: 'center',
-              alignItems: 'center',
-              borderRadius: '50%',
-              backgroundColor: '#ffcb56',
-              cursor: 'pointer',
-            }}
-          >
-            <PhoneIcon fontSize="large" sx={{ color: '#F0F4F9' }} />
-            <MuiLink href={`tel:${PHONE}`} sx={{ textDecoration: 'none', color: 'black', mt: 1 }}>
-              Tālrunis
-            </MuiLink>
-          </Paper>
-        </Grid>
-
-        {/* Location */}
-        <Grid item>
-          <Paper
-            sx={{
-              width: 120,
-              height: 120,
-              display: 'flex',
-              flexDirection: 'column',
-              justifyContent: 'center',
-              alignItems: 'center',
-              borderRadius: '50%',
-              backgroundColor: '#ffcb56',
-              cursor: 'pointer',
-            }}
-            onClick={handleLocationClick}
-          >
-            <LocationOnIcon fontSize="large" sx={{ color: '#F0F4F9' }} />
-            <Typography variant="body2" sx={{ textAlign: 'center', mt: 1 }}>
-              {CITY}
-            </Typography>
-          </Paper>
-        </Grid>
+      <Typography variant="h3" sx={{ mt: 5, textAlign: 'center' }}>Kontaktinformācija</Typography>
+      <Grid container spacing={5} justifyContent="center" sx={{ mt: 5, textAlign: 'center' }}>
+        {contactDetails.map(({ icon, label, href, description, onClick }, index) => (
+          <Grid item xs={12} sm={4} key={index}>
+            <Box display="flex" flexDirection="column" alignItems="center">
+              <Paper
+                sx={{
+                  width: 80,
+                  height: 80,
+                  display: 'flex',
+                  justifyContent: 'center',
+                  alignItems: 'center',
+                  borderRadius: '50%',
+                  backgroundColor: '#5B9BD5',
+                  cursor: onClick ? 'pointer' : 'default',
+                }}
+                onClick={onClick}
+              >
+                {icon}
+              </Paper>
+              {href ? (
+                <MuiLink variant="body1" href={href} sx={{ textDecoration: 'none', color: 'black', mt: 1,  fontWeight: 'bold'  }}>
+                  {label}
+                </MuiLink>
+              ) : (
+                <Typography variant="body1" sx={{ mt: 1, fontWeight: 'bold' }}>{label}</Typography>
+              )}
+              <Typography variant="body2" sx={{ mt: 1, maxWidth: '200px' }}>{description}</Typography>
+            </Box>
+          </Grid>
+        ))}
       </Grid>
 
-      {/* Social Media Buttons */}
-      <Typography variant="h3" sx={{ mt: 5, textAlign: 'center' }}>
-        Sekojiet mums
-      </Typography>
+      <Typography variant="h3" sx={{ mt: 5, textAlign: 'center' }}>Sekojiet mums</Typography>
       <Grid container spacing={2} justifyContent="center" sx={{ mt: 2 }}>
-        <Grid item>
-          <MuiLink href={FACEBOOK} target="_blank" rel="noopener">
-            <Button variant="contained" sx={{ backgroundColor: '#316FF6', color: 'white' }}>
-              <FacebookIcon sx={{ mr: 1 }} />
-              Facebook
-            </Button>
-          </MuiLink>
-        </Grid>
-        <Grid item>
-          <MuiLink href={INSTAGRAM} target="_blank" rel="noopener">
-            <Button variant="contained" sx={{ backgroundColor: '#DD2A7B', color: 'white' }}>
-              <InstagramIcon sx={{ mr: 1 }} />
-              Instagram
-            </Button>
-          </MuiLink>
-        </Grid>
+        {[{ href: FACEBOOK, icon: <FacebookIcon />, label: 'Facebook', color: '#316FF6' }, { href: INSTAGRAM, icon: <InstagramIcon />, label: 'Instagram', color: '#DD2A7B' }].map(({ href, icon, label, color }, index) => (
+          <Grid item key={index}>
+            <MuiLink href={href} target="_blank" rel="noopener">
+              <Button variant="contained" sx={{ backgroundColor: color, color: 'white' }}>
+                {icon}
+                {label}
+              </Button>
+            </MuiLink>
+          </Grid>
+        ))}
       </Grid>
     </Container>
   );
