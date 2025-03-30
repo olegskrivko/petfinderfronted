@@ -69,6 +69,16 @@ import CheckoutButton from "./pages/CheckoutButton";
 //   });
 // }
 
+// const theme = createTheme({
+//   typography: {
+//     h1: { fontSize: "2em" },   // 32px
+//     h2: { fontSize: "1.5em" }, // 24px
+//     h3: { fontSize: "1.17em" },// 18.72px
+//     h4: { fontSize: "1em" },   // 16px
+//     h5: { fontSize: "0.83em" },// 13.28px
+//     h6: { fontSize: "0.67em" },// 10.72px
+//   },
+// });
 
 const theme = createTheme({
   typography: {
