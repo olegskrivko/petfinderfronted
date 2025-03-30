@@ -250,7 +250,8 @@ export const AuthProvider = ({ children }) => {
     localStorage.removeItem("access_token");
     localStorage.removeItem("refresh_token");
     setUser(null);
-    window.location.href = "/login"; // ✅ Redirect user after logout
+    navigate("/lougout"); // Redirect to login page directly
+    //window.location.href = "/logout"; // ✅ Redirect user after logout
   };
 
   // ✅ Get current user from JWT (without API call)

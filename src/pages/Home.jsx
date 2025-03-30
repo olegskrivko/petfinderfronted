@@ -18,7 +18,7 @@ import SearchIcon from '@mui/icons-material/Search';
 import NotificationsActiveIcon from '@mui/icons-material/NotificationsActive';
 // Components
 import PetCounter from '../components/PetCounter'
-
+import { motion } from "framer-motion";
 // Images
 import petlisting from './images/petlisting.png';
 import lostdogposter from './images/lostdogposter.png';
@@ -31,6 +31,25 @@ import pathlocations from './images/pathlocations.png';
 import RecentPets from '../components/RecentPets';
 import Jumbotron from './Jumbotron';
 import mainIMG from './images/404_Error_with_a_cute_animal_pana_blue.svg';
+
+const LiquidBlob = () => (
+  <motion.div
+    style={{
+      width: 150,
+      height: 150,
+      backgroundColor: "#FF6B6B",
+      borderRadius: "50%",
+    }}
+    animate={{
+      borderRadius: ["50%", "40% 60% 60% 40%", "50%"],
+    }}
+    transition={{
+      duration: 3,
+      repeat: Infinity,
+      repeatType: "reverse",
+    }}
+  />
+);
 const BannerSection = ({
   title,
   imageSrc,
@@ -44,6 +63,35 @@ const BannerSection = ({
   return (
     <Grid container spacing={3}>
       <Grid item xs={12}>
+      {/* <Box
+  sx={{
+    position: "absolute",
+    top: "20%",
+    left: "-50px", // Move it out of the viewport a little
+    width: 200,
+    height: 200,
+    backgroundColor: "#FF6B6B",
+    borderRadius: "50%",
+    // filter: "blur(50px)",
+    zIndex: -1, // Behind everything
+  }}
+/> */}
+{/* <Box
+  sx={{
+    position: "absolute",
+    top: "80%",
+    right: "-20%", // Move it out of the viewport a little
+    width: "40%",
+    height: "60%",
+    backgroundColor: "#6B6BFF",
+    overflow: "hidden",
+    borderRadius: "50%",
+    // filter: "blur(50px)",
+    zIndex: -1,
+  }}
+/> */}
+
+
         {/* Banner Image with Title on Top */}
         <Box position="relative" display="flex" justifyContent="center">
           {/* Title */}
@@ -61,6 +109,7 @@ const BannerSection = ({
               fontWeight: "700",
               textAlign: "center",
               letterSpacing: "2px",
+              
               zIndex: 1, // Ensure the title is in front of the image
             }}
           >
@@ -88,8 +137,8 @@ const BannerSection = ({
               <Button
                 variant="contained"
                 size={isSmallScreen ? "small" : "large"}
-                color="primary"
-                sx={{ marginRight: "20px", marginTop: isSmallScreen ? "0" : "2rem" }}
+                // color="primary"
+                sx={{ marginRight: "20px", backgroundColor: "#5B9BD5", marginTop: isSmallScreen ? "0" : "2rem" }}
               >
                 {btnPrimaryText}
               </Button>
@@ -101,8 +150,8 @@ const BannerSection = ({
               <Button
                 variant="outlined"
                 size={isSmallScreen ? "small" : "large"}
-                color="primary"
-                sx={{ marginTop: isSmallScreen ? "0" : "2rem" }}
+                // color="primary"
+                sx={{ color: "#5B9BD5", marginTop: isSmallScreen ? "0" : "2rem" }}
               >
                 {btnSecondaryText}
               </Button>
@@ -338,6 +387,7 @@ function Home() {
             style={{
               fontSize: '1.6rem',
               fontWeight: '500',
+              color: "#5B5B5B",
               // marginTop: '1rem',
             }}
           >
@@ -356,13 +406,13 @@ function Home() {
           component="img"
           alt=""
           image={petlisting}
-          style={{ width: 'auto', height: '120px', marginRight: '1rem' }}
+          style={{ width: 'auto', height: '80px', marginRight: '1rem' }}
         />
         <div>
-          <Typography variant="h6" style={{ marginBottom: '0.5rem', color: '#22badf' }}>
+          <Typography variant="h6" style={{ marginBottom: '0.5rem', color: '#5B9BD5', textAlign: isSmallScreen ? "left" : "center" }}>
             Iekļaušana mūsu mājaslapā
           </Typography>
-          <Typography variant="body2">
+          <Typography variant="body2" style={{textAlign: isSmallScreen ? "left" : "center"}}>
             Jūsu mājdzīvnieks tiek pievienots mūsu lapai, padarot ziņošanu par novērojumiem īpaši ērtu.
           </Typography>
         </div>
@@ -378,13 +428,13 @@ function Home() {
           component="img"
           alt=""
           image={lostdogposter}
-          style={{ width: 'auto', height: '120px', marginRight: '1rem' }}
+          style={{ width: 'auto', height: '80px', marginRight: '1rem' }}
         />
         <div>
-          <Typography variant="h6" style={{ marginBottom: '0.5rem', color: '#22badf' }}>
+          <Typography variant="h6" style={{ marginBottom: '0.5rem', color: '#5B9BD5', textAlign: isSmallScreen ? "left" : "center" }}>
             Izdrukājams plakāts
           </Typography>
-          <Typography variant="body2">
+          <Typography variant="body2" style={{textAlign: isSmallScreen ? "left" : "center"}}>
             Saņemiet profesionāli izstrādātu pazudušā mājdzīvnieka plakātu ar QR kodu.
           </Typography>
         </div>
@@ -400,13 +450,13 @@ function Home() {
           component="img"
           alt=""
           image={studies}
-          style={{ width: 'auto', height: '120px', marginRight: '1rem' }}
+          style={{ width: 'auto', height: '80px', marginRight: '1rem' }}
         />
         <div>
-          <Typography variant="h6" style={{ marginBottom: '0.5rem', color: '#22badf' }}>
+          <Typography variant="h6" style={{ marginBottom: '0.5rem', color: '#5B9BD5', textAlign: isSmallScreen ? "left" : "center" }}>
             Personīga vadība un atbalsts
           </Typography>
-          <Typography variant="body2">
+          <Typography variant="body2" style={{textAlign: isSmallScreen ? "left" : "center"}}>
             Mēs sniedzam atbalstu katrā solī, piedāvājot ekspertu rakstus un padomus, lai palīdzētu jums.
           </Typography>
         </div>
@@ -422,13 +472,13 @@ function Home() {
           component="img"
           alt=""
           image={search}
-          style={{ width: 'auto', height: '120px', marginRight: '1rem' }}
+          style={{ width: 'auto', height: '80px', marginRight: '1rem' }}
         />
         <div>
-          <Typography variant="h6" style={{ marginBottom: '0.5rem', color: '#22badf' }}>
+          <Typography variant="h6" style={{ marginBottom: '0.5rem', color: '#5B9BD5', textAlign: isSmallScreen ? "left" : "center" }}>
             Sāciet PawClix meklēšanu
           </Typography>
-          <Typography variant="body2">
+          <Typography variant="body2" style={{textAlign: isSmallScreen ? "left" : "center"}}>
             Noskaidrojiet, vai kāds cits jau ir pamanījis vai ziņojis par jūsu mājdzīvnieku.
           </Typography>
         </div>
@@ -444,13 +494,13 @@ function Home() {
           component="img"
           alt=""
           image={share}
-          style={{ width: 'auto', height: '120px', marginRight: '1rem' }}
+          style={{ width: 'auto', height: '80px', marginRight: '1rem' }}
         />
         <div>
-          <Typography variant="h6" style={{ marginBottom: '0.5rem', color: '#22badf' }}>
+          <Typography variant="h6" style={{ marginBottom: '0.5rem', color: '#5B9BD5', textAlign: isSmallScreen ? "left" : "center" }}>
             Koplietošana sociālajos tīklos
           </Typography>
-          <Typography variant="body2">
+          <Typography variant="body2" style={{textAlign: isSmallScreen ? "left" : "center"}}>
             Dalieties ar sava mājdzīvnieka informāciju sociālajos tīklos, lai palielinātu redzamību.
           </Typography>
         </div>
@@ -466,13 +516,13 @@ function Home() {
           component="img"
           alt=""
           image={pathlocations}
-          style={{ width: 'auto', height: '120px', marginRight: '1rem' }}
+          style={{ width: 'auto', height: '80px', marginRight: '1rem' }}
         />
         <div>
-          <Typography variant="h6" style={{ marginBottom: '0.5rem', color: '#22badf' }}>
+          <Typography variant="h6" style={{ marginBottom: '0.5rem', color: '#5B9BD5', textAlign: isSmallScreen ? "left" : "center" }}>
             Saņemiet novērojumu ziņojumus
           </Typography>
-          <Typography variant="body2">
+          <Typography variant="body2" style={{textAlign: isSmallScreen ? "left" : "center"}}>
             Pārbaudiet jaunus novērojumus, ko ziņojusi kopiena, lai sekotu līdzi norādēm par savu mājdzīvnieku.
           </Typography>
         </div>
@@ -480,6 +530,16 @@ function Home() {
     </Card>
   </Grid>
 </Grid>
+{/* <Box
+  sx={{
+    width: 200,
+    height: 200,
+    backgroundColor: "#FF6B6B",
+    clipPath: "circle(50% at 50% 50%)",
+    animation: "morph 5s infinite alternate ease-in-out"
+  }}
+/> */}
+
 
 
 {/* </Grid> */}

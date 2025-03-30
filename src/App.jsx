@@ -15,6 +15,7 @@ import Collaborate from './pages/Collaborate'; // Your pets list page
 
 import LoadingScreen from './pages/LoadingScreen';
 import Layout from './pages/Layout';
+import AuthLayout from './pages/AuthLayout'; // Layout without Navigation and Footer (for login/register)
 import Home from './pages/Home';
 import About from './pages/About';
 import Feedback from './pages/Feedback';
@@ -154,9 +155,9 @@ function App() {
             <Route path="/virtual-pet-training-classes" element={<PetTraining />} />
             <Route path="/contact" element={<Contact />} />
             <Route path="/collaborate" element={<Collaborate />} />
-            <Route path="/login" element={<Login />} />
+            {/* <Route path="/login" element={<Login />} />
             <Route path="/register" element={<Register />} />
-            <Route path="/Logout" element={<Logout />} />
+            <Route path="/Logout" element={<Logout />} /> */}
             <Route path="/account-deleted" element={<AccountDeleted />} />
             <Route path="/checkout" element={<CheckoutPage />} />
             <Route path="/success" element={<SuccessPage />} />
@@ -187,6 +188,18 @@ function App() {
             {/* <Route path="/articles/:id" element={<ArticleDetailsPage />} /> */}
             <Route path="/articles/:slug" element={<ArticleDetailsPage />} />
           </Route>
+
+           {/* Routes for Login/Register pages with separate layout (without Navigation and Footer) */}
+            <Route path='/login' element={<AuthLayout />}>
+              <Route index element={<Login />} />
+            </Route>
+            <Route path='/register' element={<AuthLayout />}>
+              <Route index element={<Register />} />
+            </Route>
+            <Route path='/Logout' element={<AuthLayout />}>
+              <Route index element={<Logout />} />
+            </Route>
+
         </Routes>
       </DrawerProvider>
     </AuthProvider>

@@ -4,6 +4,8 @@ import { Link, useNavigate } from 'react-router-dom';
 // React MUI
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
+import Grid from '@mui/material/Grid';
+
 import CssBaseline from '@mui/material/CssBaseline';
 import Divider from '@mui/material/Divider';
 import Drawer from '@mui/material/Drawer';
@@ -72,40 +74,45 @@ function DrawerAppBar(props) {
 
   
   const drawer = (
-    <Box onClick={handleDrawerToggle} sx={{ textAlign: 'center' }}>
-      <Box
+    <Box onClick={handleDrawerToggle} sx={{ textAlign: 'center',  }}>
+      <Box 
         style={{
           width: '100%',
           height: '3.5rem',
           backgroundColor: '#5B9BD5',
+       
           // backgroundColor: '#03a9f4',
           // backgroundColor: '#4B5AED', cool violet
           
           display: 'flex',
           alignItems: 'center',
-          justifyContent: 'center',
+          justifyContent: 'left',
         }}
       >
-        <Typography variant="body1">
-          <Link
+       
+        <Typography variant="body1"  ml={2} >
+          <Link 
             to="/"
             style={{
               color: 'white',
               textDecoration: 'none',
               display: 'flex',
               alignItems: 'center',
+              
+        
             }}
           >
             <PetsIcon sx={{ marginRight: '0.4rem', color: '#ffcb56' }} /> PawClix
           </Link>
         </Typography>
+      
       </Box>
 
       <Divider />
       <List>
       {Object.entries(navItems).map(([path, itemName]) => (
-          <ListItem key={path} disablePadding>
-            <ListItemButton sx={{ textAlign: 'center' }}>
+          <ListItem  key={path} disablePadding>
+            <ListItemButton sx={{ textAlign: 'left' }}>
               <Link to={path} style={{ textDecoration: 'none', width: '100%' }}>
                 <ListItemText primary={itemName} />
               </Link>
@@ -162,7 +169,7 @@ function DrawerAppBar(props) {
           </Link>
         )} */}
         <ListItem disablePadding>
-          <ListItemButton sx={{ textAlign: 'center' }}>
+          <ListItemButton sx={{ textAlign: 'left' }}>
             <Link to={user ? "/user-profile" : "/login"} style={{ textDecoration: 'none', width: '100%' }}>
               <ListItemText primary={user ? "Profils" : "Login"} />
             </Link>
@@ -173,16 +180,10 @@ function DrawerAppBar(props) {
   );
 
   return (
-    <Box sx={{ display: 'flex', p: 3 }}>
-      <CssBaseline />
-
-      <AppBar
-        component="nav"
+    <Box  mb={5} sx={{ flexGrow: 1 }}>
+      <AppBar component="nav"
         sx={{
-          background: '#5B9BD5',
-                  // backgroundColor: '#03a9f4',
-          // backgroundColor: '#4B5AED', cool violet
-          
+          background: '#5B9BD5' ,   
         }}
       >
         <Container disableGutters>
@@ -275,10 +276,3 @@ function DrawerAppBar(props) {
 }
 
 export default DrawerAppBar;
-// Best Contrast Colors for #5B9BD5 (Sky Blue):
-// #FF9800 (Vibrant Orange) – High contrast, warm, and attention-grabbing.
-// #FFCB56 (Golden Yellow) – Friendly, energetic, and pairs well with blue.
-// #D81B60 (Deep Pink) – Bold, modern, and adds emotional warmth.
-// #00C853 (Bright Green) – Fresh, nature-inspired contrast without being too harsh.
-// #F44336 (Vivid Red) – Strong contrast, but use sparingly to avoid urgency.
-// 🚀 Best Pick? #FF9800 (Vibrant Orange) – It pops against blue, creates a warm contrast, and attracts

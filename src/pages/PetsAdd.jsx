@@ -1021,7 +1021,7 @@ const [ageChoices, setAgeChoices] = useState(AGE_CHOICES_BY_SPECIES[3]); // Defa
             </Grid>
 
             {/* Phone Code Field */}
-            <Grid item xs={4} sm={4} md={4} lg={4}>
+            <Grid item xs={6} sm={6} md={6} lg={6}>
             <FormControl fullWidth variant="outlined">
                   <InputLabel id="phoneCode-label" shrink>
                   Telefona kods
@@ -1068,7 +1068,7 @@ const [ageChoices, setAgeChoices] = useState(AGE_CHOICES_BY_SPECIES[3]); // Defa
             </Grid>
 
             {/* Phone Number Field */}
-            <Grid item xs={8} sm={8} md={8} lg={8}>
+            <Grid item xs={6} sm={6} md={6} lg={6}>
                 <TextField
                 
                   id="phone"

@@ -10,7 +10,9 @@ import TryIcon from '@mui/icons-material/Try';
 import { useAuth } from '../contexts/AuthContext';
 import FavoriteIcon from '@mui/icons-material/Favorite';
 import PetsIcon from '@mui/icons-material/Pets';
-import user_avatar from './images/cathead-01.png'
+// import user_avatar from './images/cathead-01.png'
+import user_avatar from './images/account_amico_blue.svg'
+
 import BookmarkIcon from '@mui/icons-material/Bookmark';
 // import AvatarImg from '../images/beaver.avif'; // Use a valid image
 // import OneSignal from 'react-onesignal';
@@ -133,7 +135,7 @@ const handleLogout = () => {
   };
 
   if (!user) return <Typography>Loading...</Typography>;
-
+{/* <a href="https://storyset.com/user">User illustrations by Storyset</a> */}
   return (
       <Container
               component="main"
