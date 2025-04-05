@@ -321,6 +321,109 @@
 // };
 
 // export default LeafletAddPetMap;
+// import React, { useState, useEffect } from 'react';
+// import { MapContainer, TileLayer, Marker, useMap, useMapEvents } from 'react-leaflet';
+// import L from 'leaflet';
+// import 'leaflet/dist/leaflet.css';
+// import LocationOnIcon from '@mui/icons-material/LocationOn';
+// import MyLocationIcon from '@mui/icons-material/MyLocation';
+// import { renderToStaticMarkup } from 'react-dom/server';
+// import { IconButton, Tooltip } from '@mui/material';
+
+// // Component to control the map center dynamically
+// const MapController = ({ position }) => {
+//   const map = useMap();
+
+//   useEffect(() => {
+//     if (position) {
+//       map.setView(position, 14, { animate: true }); // Center map with animation
+//     }
+//   }, [position, map]);
+
+//   return null;
+// };
+
+// const LocationMarker = ({ position, onLocationChange }) => {
+//   useMapEvents({
+//     click(e) {
+//       onLocationChange(e.latlng);
+//     },
+//   });
+
+//   const iconMarkup = renderToStaticMarkup(
+//     <LocationOnIcon style={{ color: '#D30A0A', fontSize: '2rem' }} />,
+//   );
+//   const customIcon = L.divIcon({ html: iconMarkup, className: 'custom-icon' });
+
+//   return (
+//     position && (
+//       <Marker
+//         position={position}
+//         icon={customIcon}
+//         draggable={true}
+//         eventHandlers={{
+//           dragend: (event) => {
+//             const newPos = event.target.getLatLng();
+//             onLocationChange(newPos);
+//           },
+//         }}
+//       />
+//     )
+//   );
+// };
+
+// const LeafletAddPetMap = ({ onLocationChange, location }) => {
+//   const [position, setPosition] = useState([location.lat, location.lng]);
+
+//   const handleUseMyLocation = () => {
+//     navigator.geolocation.getCurrentPosition(
+//       (pos) => {
+//         const { latitude, longitude } = pos.coords;
+//         setPosition([latitude, longitude]);
+//         onLocationChange({ lat: latitude, lng: longitude });
+//       },
+//       () => {
+//         alert("Couldn't get location. Please enable GPS.");
+//       },
+//     );
+//   };
+
+//   return (
+//     <div style={{ position: 'relative' }}>
+//       <MapContainer center={position} zoom={10} style={{ height: '500px', width: '100%' }}>
+//         <TileLayer
+//           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+//           attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+//         />
+
+//         {/* Component to center the map dynamically */}
+//         <MapController position={position} />
+
+//         <LocationMarker position={position} onLocationChange={setPosition} />
+
+//         {/* Floating GPS Button inside the map */}
+//         <Tooltip title="Izmantot esošo atrašanās vietu">
+//           <IconButton
+//             onClick={handleUseMyLocation}
+//             sx={{
+//               position: 'absolute',
+//               top: 10,
+//               right: 10,
+//               backgroundColor: 'white',
+//               zIndex: 1000,
+//               boxShadow: 3,
+//               '&:hover': { backgroundColor: '#f0f0f0' },
+//             }}
+//           >
+//             <MyLocationIcon sx={{ color: '#007bff' }} />
+//           </IconButton>
+//         </Tooltip>
+//       </MapContainer>
+//     </div>
+//   );
+// };
+
+// export default LeafletAddPetMap;
 import React, { useState, useEffect } from 'react';
 import { MapContainer, TileLayer, Marker, useMap, useMapEvents } from 'react-leaflet';
 import L from 'leaflet';
@@ -328,21 +431,22 @@ import 'leaflet/dist/leaflet.css';
 import LocationOnIcon from '@mui/icons-material/LocationOn';
 import MyLocationIcon from '@mui/icons-material/MyLocation';
 import { renderToStaticMarkup } from 'react-dom/server';
-import { IconButton, Tooltip } from '@mui/material';
+import { IconButton, Tooltip, useMediaQuery, Box } from '@mui/material';
 
-// Component to control the map center dynamically
+// MapController ensures the map updates only when necessary
 const MapController = ({ position }) => {
   const map = useMap();
 
   useEffect(() => {
     if (position) {
-      map.setView(position, 14, { animate: true }); // Center map with animation
+      map.setView(position, 14, { animate: true });
     }
   }, [position, map]);
 
   return null;
 };
 
+// Marker component that updates location on click & drag
 const LocationMarker = ({ position, onLocationChange }) => {
   useMapEvents({
     click(e) {
@@ -364,7 +468,7 @@ const LocationMarker = ({ position, onLocationChange }) => {
         eventHandlers={{
           dragend: (event) => {
             const newPos = event.target.getLatLng();
-            onLocationChange(newPos);
+            onLocationChange({ lat: newPos.lat, lng: newPos.lng });
           },
         }}
       />
@@ -372,15 +476,24 @@ const LocationMarker = ({ position, onLocationChange }) => {
   );
 };
 
+// Main Leaflet Map component
 const LeafletAddPetMap = ({ onLocationChange, location }) => {
   const [position, setPosition] = useState([location.lat, location.lng]);
+
+  // Sync location prop changes with position state
+  useEffect(() => {
+    if (location.lat && location.lng) {
+      setPosition([location.lat, location.lng]);
+    }
+  }, [location]);
 
   const handleUseMyLocation = () => {
     navigator.geolocation.getCurrentPosition(
       (pos) => {
         const { latitude, longitude } = pos.coords;
-        setPosition([latitude, longitude]);
-        onLocationChange({ lat: latitude, lng: longitude });
+        const newPos = [latitude, longitude];
+        setPosition(newPos); // Update marker position
+        onLocationChange({ lat: latitude, lng: longitude }); // Update form state
       },
       () => {
         alert("Couldn't get location. Please enable GPS.");
@@ -388,37 +501,85 @@ const LeafletAddPetMap = ({ onLocationChange, location }) => {
     );
   };
 
+    // Use MUI's useMediaQuery hook to detect small screen
+    const isSmallScreen = useMediaQuery('(max-width:600px)');
+
   return (
+    // <div style={{ position: 'relative' }}>
+    //   <MapContainer center={position} zoom={10} style={{ height: '500px', width: '100%' }}>
+    //     <TileLayer
+    //       url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+    //       attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+    //     />
+
+    //     <MapController position={position} />
+
+    //     <LocationMarker position={position} onLocationChange={(newPos) => {
+    //       setPosition([newPos.lat, newPos.lng]); 
+    //       onLocationChange(newPos);
+    //     }} />
+
+    //     {/* Floating GPS Button inside the map */}
+    //     <Tooltip title="Izmantot esošo atrašanās vietu">
+    //       <IconButton
+    //         onClick={handleUseMyLocation}
+    //         sx={{
+    //           position: 'absolute',
+    //           top: 10,
+    //           right: 10,
+    //           backgroundColor: 'white',
+    //           zIndex: 1000,
+    //           boxShadow: 3,
+    //           '&:hover': { backgroundColor: '#f0f0f0' },
+    //         }}
+    //       >
+    //         <MyLocationIcon sx={{ color: '#007bff' }} />
+    //       </IconButton>
+    //     </Tooltip>
+    //   </MapContainer>
+    // </div>
     <div style={{ position: 'relative' }}>
-      <MapContainer center={position} zoom={10} style={{ height: '500px', width: '100%' }}>
-        <TileLayer
-          url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-          attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-        />
+      <Box
+        sx={{
+          height: isSmallScreen ? '250px' : '500px', // Smaller height on small screens
+          width: '100%',
+        }}
+      >
+        <MapContainer center={position} zoom={10} style={{ height: '100%', width: '100%' }}>
+          <TileLayer
+            url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+            attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+          />
 
-        {/* Component to center the map dynamically */}
-        <MapController position={position} />
+          <MapController position={position} />
 
-        <LocationMarker position={position} onLocationChange={setPosition} />
-
-        {/* Floating GPS Button inside the map */}
-        <Tooltip title="Izmantot esošo atrašanās vietu">
-          <IconButton
-            onClick={handleUseMyLocation}
-            sx={{
-              position: 'absolute',
-              top: 10,
-              right: 10,
-              backgroundColor: 'white',
-              zIndex: 1000,
-              boxShadow: 3,
-              '&:hover': { backgroundColor: '#f0f0f0' },
+          <LocationMarker
+            position={position}
+            onLocationChange={(newPos) => {
+              setPosition([newPos.lat, newPos.lng]);
+              onLocationChange(newPos);
             }}
-          >
-            <MyLocationIcon sx={{ color: '#007bff' }} />
-          </IconButton>
-        </Tooltip>
-      </MapContainer>
+          />
+
+          {/* Floating GPS Button inside the map */}
+          <Tooltip title="Izmantot esošo atrašanās vietu">
+            <IconButton
+              onClick={handleUseMyLocation}
+              sx={{
+                position: 'absolute',
+                top: 10,
+                right: 10,
+                backgroundColor: 'white',
+                zIndex: 1000,
+                boxShadow: 3,
+                '&:hover': { backgroundColor: '#f0f0f0' },
+              }}
+            >
+              <MyLocationIcon sx={{ color: '#007bff' }} />
+            </IconButton>
+          </Tooltip>
+        </MapContainer>
+      </Box>
     </div>
   );
 };

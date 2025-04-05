@@ -121,8 +121,8 @@ const BannerSection = ({
             src={imageSrc}
             alt="Banner"
             style={{
-              width: isLargeScreen ? "90%" : "100%",
-              maxHeight: isLargeScreen ? "60vh" : "600px",
+              width: isLargeScreen ? "50%" : "100%",
+              maxHeight: isLargeScreen ? "70vh" : "600px",
               objectFit: "cover",
             }}
           />

@@ -50,7 +50,7 @@ TabPanel.propTypes = {
 //   </Box>
 // );
 
-function IconLabelTabs({pet, onZoomMap}) {
+function IconLabelTabs({pet,sightings, onZoomMap}) {
   const [value, setValue] = useState(0);
 
   const handleChange = (event, newValue) => {
@@ -114,10 +114,10 @@ function IconLabelTabs({pet, onZoomMap}) {
       </div>
 
       <TabPanel value={value} index={0}>
-        <TabMessages pet={pet} onZoomMap={handleZoomMap}   />
+        <TabMessages pet={pet} sightings={sightings} onZoomMap={handleZoomMap}   />
       </TabPanel>
       <TabPanel value={value} index={1}>
-        <TabLocationHistory pet={pet} />
+        <TabLocationHistory pet={pet} sightings={sightings} />
       </TabPanel>
       <TabPanel value={value} index={2}>
         <TabNotes pet={pet} />

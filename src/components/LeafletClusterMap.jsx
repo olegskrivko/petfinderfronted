@@ -67,12 +67,12 @@ function LeafletClusterMap({ pets, centerCoords }) {
         >
           {pets.map((pet) => (
             // Ensure the coordinates are numbers and the order is [latitude, longitude]
-            pet.sightings_history.length > 0 && pet.sightings_history[0].latitude && pet.sightings_history[0].longitude ? (
+            pet.latitude && pet.longitude ? (
               <Marker
                 key={pet.id}
                 position={[
-                  parseFloat(pet.sightings_history[0].latitude), // Ensure latitude is a float
-                  parseFloat(pet.sightings_history[0].longitude) // Ensure longitude is a float
+                  parseFloat(pet.latitude), // Ensure latitude is a float
+                  parseFloat(pet.longitude) // Ensure longitude is a float
                 ]}
                 // icon={customIcon}
               >
@@ -80,7 +80,7 @@ function LeafletClusterMap({ pets, centerCoords }) {
                   <div style={{ textAlign: 'center' }}>
                     <a href={`/pets/${pet.id}`}>
                       <img
-                        src={pet.image}
+                        src={pet.pet_image_1}
                         alt={pet.id}
                         style={{
                           width: '120px',

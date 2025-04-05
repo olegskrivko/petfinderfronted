@@ -37,6 +37,7 @@ const PetDetailsPage = () => {
   
   const { id } = useParams(); // Get the pet ID from the URL
   const [pet, setPet] = useState(null);
+  const [sightings, setSightings] = useState([]);  // State to store pet sightings
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const [isFavorite, setIsFavorite] = useState(false);
@@ -64,11 +65,10 @@ const PetDetailsPage = () => {
   //const [coords, setCoords] = useState({ lat: 56.9496, lng: 24.1052 });
   const imageList = pet
   ? [
-      pet.pet_image,
-      pet.extra_image_1,
-      pet.extra_image_2,
-      pet.extra_image_3,
-      pet.extra_image_4,
+      pet.pet_image_1,
+      pet.pet_image_2,
+      pet.pet_image_3,
+      pet.pet_image_4
     ].filter((img) => img) // Ensure only valid images are used
   : [];
 
@@ -189,9 +189,15 @@ if (markerPosition && markerPosition.length === 2) {
     formData.append('notes', message);
     console.log("xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx")
     formData.append('reporter', user.userId);  // Optional
-   
+   // ✅ Validate date & time before sending
+   if (!selectedDate || !selectedTime) {
+    alert('Please select a valid date and time.');
+    return;
+  }
+  formData.append('date', selectedDate);
+  formData.append('time', selectedTime);
     // formData.append('event_occurred_at', selectedDateTime);  // Event time
-    formData.append('event_occurred_at', selectedDate + " " + selectedTime); 
+    // formData.append('event_occurred_at', selectedDate + " " + selectedTime); 
     // formData.append('event_occurred_at', selectedDate); 
     // formData.append('event_occurred_at', selectedTime); 
     //formData.append('image', fileInput.files[0]);  // Optional image
@@ -229,6 +235,9 @@ if (markerPosition && markerPosition.length === 2) {
       // setSelectedDateTime('');
       setSelectedDate('');
       setSelectedTime('');
+      
+    // Fetch sightings again after sending message (optional)
+    fetchPetSightings();
     } catch (error) {
       console.error('Error sending message:', error);
     }
@@ -297,6 +306,44 @@ if (markerPosition && markerPosition.length === 2) {
     fetchPetDetails();
     fetchFavoriteStatus();
   }, [id]); // Run the effect when the pet ID changes
+
+  const fetchPetSightings = async () => {
+    const accessToken = localStorage.getItem('access_token');
+    if (!accessToken) {
+      setError('You must be logged in to view sightings.');
+      return;
+    }
+  
+    try {
+      setLoading(true);
+      setError(null);
+  
+      const response = await fetch(`${API_BASE_URL}/pets/${id}/pet-sightings/?format=json`, {
+        headers: {
+          Authorization: `Bearer ${accessToken}`,
+        },
+      });
+  
+      const data = await response.json();
+      if (data) {
+        setSightings(data);  // Store the fetched sightings
+        console.log("Sightings fetched:", data);
+      } else {
+        throw new Error('No sightings found');
+      }
+    } catch (err) {
+      setError('Failed to fetch pet sightings. Please try again later.');
+    } finally {
+      setLoading(false);
+    }
+  };
+  
+  useEffect(() => {
+    // fetchPetDetails();
+    // fetchFavoriteStatus();
+    fetchPetSightings();  // Automatically fetch sightings on initial load
+  }, [id]);  // Trigger when the pet ID or access token changes
+
   const handleFavorite = async () => {
     const accessToken = localStorage.getItem('access_token');
     if (!accessToken) {
@@ -378,15 +425,13 @@ if (markerPosition && markerPosition.length === 2) {
        <Grid item xs={12}>
        <Typography variant="h3" textAlign="center" sx={{ mb: 3, fontWeight: "500" }} gutterBottom>
           {/* Display the latest status if available */}
-          {/* {latestStatus ? (
+
              <span>
             <span style={{ textTransform: 'uppercase' }}>
-              {latestStatus.status_display} 
+              {pet.status_display} 
             </span> <span style={{ textTransform: 'uppercase' }}> {pet.species_display} </span> 
             </span>
-          ) : (
-            'No status available'
-          )} */}
+       
         </Typography>
           </Grid>
           <Grid item xs={12} sm={12} md={6} lg={6}>
@@ -503,7 +548,7 @@ if (markerPosition && markerPosition.length === 2) {
 
 
           <Grid item xs={12} sm={12} md={12} lg={12} style={{paddingTop: '2rem', paddingBottom: '2rem'}}>
-          <LeafletPetDetailsMapNew pet={pet} zoomPosition={zoomPosition} 
+          <LeafletPetDetailsMapNew pet={pet} sightings={sightings} zoomPosition={zoomPosition} 
           // addLocationTrigger={addLocationTrigger} 
           isLocationAdded={isLocationAdded} 
           setMarkerPosition={setMarkerPosition}
@@ -535,8 +580,9 @@ if (markerPosition && markerPosition.length === 2) {
               onSelectTime={handleTimeChange} />
       </Grid>
       <Grid item xs={12} sm={12} md={12} lg={12}>
-        <IconLabelTabs pet={pet} onZoomMap={handleZoomMap} />
+        <IconLabelTabs pet={pet} sightings={sightings} onZoomMap={handleZoomMap} />
       </Grid>
+  
       </Container>
     </React.Fragment>
   );

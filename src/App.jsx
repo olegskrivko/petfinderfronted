@@ -55,8 +55,10 @@ import CancelPage from "./pages/CancelPage";
 import { Elements } from "@stripe/react-stripe-js";
 import { loadStripe } from "@stripe/stripe-js";
 import CheckoutButton from "./pages/CheckoutButton";
-// import InstallPWAButton from './InstallPWAButton';
+import PetAddStepper from "./pages/PetAddStepper";
 
+// import InstallPWAButton from './InstallPWAButton';
+import { CssBaseline } from '@mui/material';
 // if ("serviceWorker" in navigator) {
 //   window.addEventListener("load", () => {
 //     navigator.serviceWorker.register("/service-worker.js").then(
@@ -80,7 +82,26 @@ import CheckoutButton from "./pages/CheckoutButton";
 //     h6: { fontSize: "0.67em" },// 10.72px
 //   },
 // });
-
+// const theme = createTheme({
+//   palette: {
+//     primary: {
+//       main: '#5B9BD5', 
+//     },
+//     secondary: {
+//       main: '#FF5733', // Custom secondary color (e.g., soft blue)
+//     },
+//   },
+//   typography: {
+//     h1: { fontSize: '3rem', fontWeight: '400' },
+//     h2: { fontSize: '2rem' },
+//     h3: { fontSize: '1.6rem' },
+//     h4: { fontSize: '1.4rem' },
+//     h5: { fontSize: '1.2rem' },
+//     h6: { fontSize: '1rem' },
+//     body1: { fontSize: '1rem' },
+//     body2: { fontSize: '0.875rem' },
+//   },
+// });
 const theme = createTheme({
   typography: {
     h1: {
@@ -141,6 +162,7 @@ function App() {
   return (
     <HelmetProvider>
        <ThemeProvider theme={theme}>
+       <CssBaseline /> {/* Ensures global styles */}
     <SnackbarProvider maxSnack={3} autoHideDuration={3000}>
     <Elements stripe={stripePromise}>
     <Router>
@@ -171,7 +193,9 @@ function App() {
             <Route path="/data-protection-policy" element={<DataProtectionPolicy />} />
             <Route path="/disclaimer" element={<Disclaimer />} />
             <Route path="/community-guidelines" element={<CommunityGuidelines />} />
-            <Route path="/add-pet" element={<PetsAdd />} />
+            {/* <Route path="/add-pet" element={<PetsAdd />} /> */}
+            <Route path="/add-pet" element={<PetAddStepper />} />
+            
             <Route path="/pets" element={<PetsListPage />} />
             <Route path="/pets/:id" element={<PetDetailsPage />} />
             <Route path="/pets/:id/poster" element={<Poster />} />

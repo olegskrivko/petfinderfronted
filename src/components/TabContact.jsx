@@ -43,9 +43,9 @@ const TabContact = ({ pet }) => {
       <Typography variant="body1" color="textSecondary">
       Telefona numurs nav norādīts
       </Typography>
-      <Typography variant="body2" color="textSecondary">
+      {/* <Typography variant="body2" color="textSecondary">
       Saziņai izmantojiet komentāru sadaļu
-      </Typography>
+      </Typography> */}
     </Box>
   )}
 </Box>

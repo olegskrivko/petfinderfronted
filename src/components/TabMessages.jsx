@@ -24,7 +24,7 @@ import { useTheme } from '@mui/material/styles';
 import { useAuth } from '../contexts/AuthContext';
 import ImageNotSupportedIcon from '@mui/icons-material/ImageNotSupported';
 const API_BASE_URL = import.meta.env.VITE_API_BASE_URL; 
-const TabMessages = ({ pet, onZoomMap  }) => {
+const TabMessages = ({ pet, sightings, onZoomMap  }) => {
   const { user, logout } = useAuth();
   console.log("useruser", user)
   const theme = useTheme();
@@ -79,7 +79,7 @@ const TabMessages = ({ pet, onZoomMap  }) => {
       return;
     }
     try {
-      const response = await fetch(`${API_BASE_URL}/pets/pet-sightings/${messageId}/`, {
+      const response = await fetch(`${API_BASE_URL}/pets/${pet.id}/pet-sightings/${messageId}/`, {
         method: 'DELETE',
         // headers: {
         //   'Authorization': `Token ${authToken}`,
@@ -109,8 +109,8 @@ const TabMessages = ({ pet, onZoomMap  }) => {
   return (
     <Grid container>
     <Grid container spacing={2}>
-    {pet && pet.sightings_history && pet.sightings_history.length > 0 ? (
-      pet.sightings_history.slice(0, visibleMessages).map((status, index) => {
+    {pet && sightings && sightings.length > 0 ? (
+      sightings.map((status, index) => {
         const canDelete = user?.username === status.reporter.username;
 
         return (
@@ -144,7 +144,8 @@ const TabMessages = ({ pet, onZoomMap  }) => {
                 {/* Right section (image and buttons) */}
                 <Grid item xs={12} md={4}>
                 <Box position="relative">
-  {status.image && ( // Only render if image exists
+      
+  {status.pet_image && ( // Only render if image exists
     <CardMedia
       component="img"
       style={{
@@ -153,8 +154,8 @@ const TabMessages = ({ pet, onZoomMap  }) => {
         maxWidth: '100%',
         height: 'auto',
       }}
-      image={status.image}
-      onClick={() => handleOpen(status.image)}
+      image={status.pet_image}
+      onClick={() => handleOpen(status.pet_image)}
     />
   )}
 

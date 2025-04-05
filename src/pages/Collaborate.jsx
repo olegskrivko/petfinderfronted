@@ -641,6 +641,7 @@ const Collaborate = () => {
             variant="contained" 
             color="primary" 
             href="/feedback"
+            fullWidth
           >
             Sazināties ar mums
           </Button>

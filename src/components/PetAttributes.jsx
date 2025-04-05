@@ -219,7 +219,7 @@ console.log("pet", pet)
           <b>Datums un laiks:</b> 
         
  
-          {/* <EventDate date={eventDate} /> */}
+          <EventDate date={pet.event_ocurred_at} />
 
         </Box>
       </Grid>

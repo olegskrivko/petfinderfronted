@@ -198,10 +198,10 @@ const Poster = () => {
         </Box>
         <Grid container spacing={3}>
         <Grid item xs={12} md={12}>
-  {pet.pet_image && (
+  {pet.pet_image_1 && (
     <Box display="flex" justifyContent="center" alignItems="center">
       <img
-        src={pet.pet_image}
+        src={pet.pet_image_1}
         alt={pet.name}
         style={{ maxWidth: '100%', height: 'auto', borderRadius: 1 }}
       />

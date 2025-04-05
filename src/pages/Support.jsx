@@ -46,7 +46,7 @@ function Support() {
                                                     component="main"
                                                     sx={{
                                                       flexGrow: 1,
-                                                      py: '2rem',
+                                                      // py: '2rem',
                                                       // pb: '2rem',
                                                       width: '100%',
                                                       overflowX: 'hidden',
@@ -154,7 +154,7 @@ function Support() {
           <Box display="flex" alignItems="center" sx={{ color: 'orange !important' }}>
             <TextField
               fullWidth
-              value={'pawclix.com'}
+              value={'https://pawclix.com'}
               variant="outlined"
               InputProps={{
                 readOnly: true,

@@ -184,7 +184,7 @@ function UserBookmarks() {
               <CardContent>
                 <Box display="flex" alignItems="center">
                   <Avatar
-                    src={pet.pet_image}
+                    src={pet.pet_image_1}
                     alt={pet.species_display}
                     sx={{ width: 64, height: 64, marginRight: 2 }}
                   />
@@ -200,7 +200,7 @@ function UserBookmarks() {
                       </MuiLink>
                     </Typography>
                     <Typography variant="body1" color="textSecondary">
-                      {pet.sightings_history?.[0]?.status_display || "Nav statusa"}
+                      {pet.status_display || "Nav statusa"}
                     </Typography>
                   </Box>
                   <Tooltip title="Izdzēst">

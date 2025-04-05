@@ -38,37 +38,55 @@ const PetCard = ({ pet, onPanToLocation }) => {
   const [distance, setDistance] = useState(null);
 
     // Extract the first sighting coordinates
-    const firstSighting = pet.sightings_history.length > 0 ? pet.sightings_history[0] : null;
-    const petLatitude = firstSighting ? parseFloat(firstSighting.latitude) : 0;
-    const petLongitude = firstSighting ? parseFloat(firstSighting.longitude) : 0;
+    // const firstSighting = pet.sightings_history.length > 0 ? pet.sightings_history[0] : null;
+    // const petLatitude = firstSighting ? parseFloat(firstSighting.latitude) : 0;
+    // const petLongitude = firstSighting ? parseFloat(firstSighting.longitude) : 0;
+
+      // Use pet's latitude and longitude directly
+  const petLatitude = pet.latitude;
+  const petLongitude = pet.longitude;
+
+  useEffect(() => {
+    // Get user's current location
+    navigator.geolocation.getCurrentPosition((position) => {
+      const { latitude, longitude } = position.coords;
+      setUserCoords({ latitude, longitude });
+
+      // Calculate distance if pet coordinates exist
+      if (petLatitude && petLongitude) {
+        const distance = calculateDistance(latitude, longitude, petLatitude, petLongitude);
+        setDistance(distance);
+      }
+    });
+  }, [petLatitude, petLongitude]);
 
 
 
   // Extract the latest status from the `status_history` array
-  const latestStatus =
-    pet.sightings_history.length > 0
-      ? pet.sightings_history[pet.sightings_history.length - 1].status_display
-      : 'Status Unknown';
+  // const latestStatus =
+  //   pet.sightings_history.length > 0
+  //     ? pet.sightings_history[pet.sightings_history.length - 1].status_display
+  //     : 'Status Unknown';
 
 
-      useEffect(() => {
-        // Get user's current location
-        navigator.geolocation.getCurrentPosition((position) => {
-          const { latitude, longitude } = position.coords;
-          setUserCoords({ latitude, longitude });
+  //     useEffect(() => {
+  //       // Get user's current location
+  //       navigator.geolocation.getCurrentPosition((position) => {
+  //         const { latitude, longitude } = position.coords;
+  //         setUserCoords({ latitude, longitude });
     
-          // Calculate distance using the Haversine formula if pet coordinates exist
-          if (petLatitude && petLongitude) {
-            const distance = calculateDistance(
-              latitude,
-              longitude,
-              petLatitude,
-              petLongitude
-            );
-            setDistance(distance);
-          }
-        });
-      }, [petLatitude, petLongitude]);
+  //         // Calculate distance using the Haversine formula if pet coordinates exist
+  //         if (petLatitude && petLongitude) {
+  //           const distance = calculateDistance(
+  //             latitude,
+  //             longitude,
+  //             petLatitude,
+  //             petLongitude
+  //           );
+  //           setDistance(distance);
+  //         }
+  //       });
+  //     }, [petLatitude, petLongitude]);
     
       const calculateDistance = (lat1, lon1, lat2, lon2) => {
         const toRadians = (degrees) => (degrees * Math.PI) / 180;
@@ -108,13 +126,13 @@ return (
     <Box position="relative">
     <CardMedia
             component="img"
-            src={pet.pet_image}
+            src={pet.pet_image_1}
             alt=""
             sx={{ width: '100%', height: 'auto' }}
           />
 
 <Chip 
-  label={latestStatus}
+  label={pet.status_display}
   size="small"
   variant="contained"
   sx={{
@@ -146,3 +164,97 @@ return (
 };
 
 export default PetCard;
+/////////////////////////////////////////////////////////////////////////////
+
+// import React, { useState, useEffect } from 'react';
+// import { Link } from 'react-router-dom';
+
+// import Typography from '@mui/material/Typography';
+// import CardMedia from '@mui/material/CardMedia';
+// import Box from '@mui/material/Box';
+// import Chip from '@mui/material/Chip';
+// import CardActions from '@mui/material/CardActions';
+// import Card from '@mui/material/Card';
+
+// import LocationOnIcon from '@mui/icons-material/LocationOn';
+
+// // Define a CSS class for blurring
+// const blurStyle = {
+//   position: 'absolute',
+//   top: 0,
+//   left: 0,
+//   width: '100%',
+//   height: '100%',
+//   background: 'rgba(255, 255, 255, 0.7)',
+//   backdropFilter: 'blur(10px)',
+//   zIndex: 1,
+// };
+
+// const PetCard = ({ pet, onPanToLocation }) => {
+//   const [userCoords, setUserCoords] = useState(null);
+//   const [distance, setDistance] = useState(null);
+
+//   // Use pet's latitude and longitude directly
+//   const petLatitude = pet.latitude;
+//   const petLongitude = pet.longitude;
+
+//   useEffect(() => {
+//     // Get user's current location
+//     navigator.geolocation.getCurrentPosition((position) => {
+//       const { latitude, longitude } = position.coords;
+//       setUserCoords({ latitude, longitude });
+
+//       // Calculate distance if pet coordinates exist
+//       if (petLatitude && petLongitude) {
+//         const distance = calculateDistance(latitude, longitude, petLatitude, petLongitude);
+//         setDistance(distance);
+//       }
+//     });
+//   }, [petLatitude, petLongitude]);
+
+//   const calculateDistance = (lat1, lon1, lat2, lon2) => {
+//     const toRadians = (degrees) => (degrees * Math.PI) / 180;
+
+//     const R = 6371; // Radius of the Earth in kilometers
+//     const dLat = toRadians(lat2 - lat1);
+//     const dLon = toRadians(lon2 - lon1);
+
+//     const a =
+//       Math.sin(dLat / 2) * Math.sin(dLat / 2) +
+//       Math.cos(toRadians(lat1)) * Math.cos(toRadians(lat2)) * Math.sin(dLon / 2) * Math.sin(dLon / 2);
+
+//     const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+//     return (R * c).toFixed(2); // Distance in kilometers, rounded to 2 decimal places
+//   };
+
+//   const handleLocationClick = () => {
+//     console.log('Pet coords from pet card:', petLatitude, petLongitude);
+//     onPanToLocation(petLatitude, petLongitude);
+//   };
+
+//   return (
+//     <Card>
+//       <Link to={`/pets/${pet.id}`} style={{ textDecoration: 'none', color: 'inherit' }}>
+//         <Box position="relative">
+//           <CardMedia component="img" src={pet.pet_image} alt="Pet" sx={{ width: '100%', height: 'auto' }} />
+//         </Box>
+//       </Link>
+
+//       <CardActions disableSpacing style={{ justifyContent: 'start', padding: '0.8rem' }}>
+//         <Box style={{ display: 'flex', alignItems: 'center', color: '#343a40' }}>
+//           <LocationOnIcon
+//             fontSize="small"
+//             onClick={handleLocationClick}
+//             color="primary"
+//             style={{ cursor: 'pointer' }}
+//           />
+//           <Typography variant="body2" style={{ marginLeft: '4px' }}>
+//             {distance !== null ? `${distance} km` : 'Calculating...'}
+//           </Typography>
+//         </Box>
+//       </CardActions>
+//     </Card>
+//   );
+// };
+
+// export default PetCard;

@@ -105,6 +105,7 @@ const createCustomIcon = (color) =>
 
 function LeafletPetDetailsMapNew({ 
   pet,
+  sightings,
   markerPosition,
   onMapLoad,
   setMarkerPosition,
@@ -151,10 +152,8 @@ useEffect(() => {
   const defaultZoom = 14;
   const radius = 5000; // Example: 5km radius
     // Determine the center based on the first sighting, or fallback to default
-    const firstSighting = pet?.sightings_history?.[0];
-    const center = firstSighting
-      ? [parseFloat(firstSighting.latitude), parseFloat(firstSighting.longitude)]
-      : defaultCenter;
+    // const firstSighting = pet?.sightings_history?.[0];
+    const center = pet.latitude && pet.longitude ? [parseFloat(pet.latitude), parseFloat(pet.longitude)] : defaultCenter;
   
 
       const onMapLoadHandler = (mapInstance) => {
@@ -239,38 +238,34 @@ useEffect(() => {
       )}
 
 
-      {/* {pet?.sightings_history?.map((sighting, index) => {
-        const petPosition = [
-          parseFloat(sighting.latitude),
-          parseFloat(sighting.longitude)
-        ];
+{ sightings && sightings.map((sighting, index) => {
+    const petPosition = [
+      parseFloat(sighting.latitude),
+      parseFloat(sighting.longitude)
+    ];
 
-        return (
-          <Marker key={index} 
-          position={petPosition} 
-          icon={index === 0 ? createCustomMainIcon()  : createCustomIcon() }
-          >
-         {index === 0 ? (
-
+    return (
+      <Marker
+        key={index}
+        position={petPosition}
+        icon={createCustomIcon()}  // Use the same icon for all markers
+      >
         <Popup offset={[0, 5]}>
           <div style={{ textAlign: 'center' }}>
-          
-            <img
-              src={sighting.image}
-              alt={sighting.id}
-              style={{
-                width: '120px',
-                height: '120px',
-                borderRadius: '50%',
-                border: '3px solid white',
-                objectFit: 'cover',
-              }}
-            />
+            {sighting.pet_image && (
+              <img
+                src={sighting.pet_image}
+                alt={sighting.id}
+                style={{
+                  width: '120px',
+                  height: '120px',
+                  borderRadius: '50%',
+                  border: '3px solid white',
+                  objectFit: 'cover',
+                }}
+              />
+            )}
           </div>
-        </Popup>
-      ) : (
-   
-        <Popup offset={[0, 5]}>
           <div
             style={{
               textAlign: 'center',
@@ -280,24 +275,22 @@ useEffect(() => {
               color: 'white',
               fontWeight: '500',
             }}
-          > 
-
+          >
             Pievienots {moment(sighting.event_occurred_at).fromNow()}
-           
           </div>
         </Popup>
-      )}
-          </Marker>
-        );
-      })} */}
-{pet?.sightings_history?.map((sighting, index) => {
+      </Marker>
+    );
+})}
+
+{/* {pet?.sightings_history?.map((sighting, index) => {
   const petPosition = [
     parseFloat(sighting.latitude),
     parseFloat(sighting.longitude)
   ];
 
   // The most recent sighting should get the paw icon
-  const isMostRecent = index === pet.sightings_history.length - 1;
+  // const isMostRecent = index === pet.sightings_history.length - 1;
 
   return (
     <Marker 
@@ -351,9 +344,58 @@ useEffect(() => {
       </Popup>
     </Marker>
   );
-})}
+})} */}
 
+<Marker 
  
+      position={[parseFloat(pet.latitude),parseFloat(pet.longitude)]} 
+      icon={createCustomMainIcon('#0077B6')}
+    >    
+      <Popup offset={[0, 5]}>
+        {true ? (
+          // Popup for the MOST RECENT sighting
+          <div style={{ textAlign: 'center' }}>
+          
+            <img
+               src={pet.pet_image_1}
+               alt={pet.id}
+               style={{
+                 width: '120px',
+                 height: '120px',
+                 borderRadius: '50%',
+                 border: '3px solid white',
+                 objectFit: 'cover',
+               }}
+            />
+   
+          </div>
+        ) : (
+          // Popup for all OTHER sightings
+          <div
+            style={{
+              textAlign: 'center',
+              backgroundColor: 'slategray',
+              padding: '0.4rem 0.6rem',
+              borderRadius: '1rem',
+              color: 'white',
+              fontWeight: '500',
+            }}
+          ><img
+          src={pet.image}
+          alt={pet.id}
+          style={{
+            width: '120px',
+            height: '120px',
+            borderRadius: '50%',
+            border: '3px solid white',
+            objectFit: 'cover',
+          }}
+       />
+            Pievienots {moment(pet.event_occurred_at).fromNow()}
+          </div>
+        )}
+      </Popup>
+    </Marker>
       <SearchCircles center={center} petType={pet.species_display} />
       <MapWrapper onMapLoad={onMapLoadHandler} />
     </MapContainer>

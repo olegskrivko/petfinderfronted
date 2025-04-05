@@ -71,6 +71,7 @@ const PHONE_CODE_CHOICES = [
 ]
 
 const COLOR_CHOICES = [
+  { value: "", hex: "", label: "" },
   { value: 1, hex: "#000000", label: "Melns" },
   { value: 2, hex: "#BEBEBE", label: "Pelēks" },
   { value: 3, hex: "#f7f7f7", label: "Balts" },
@@ -89,6 +90,7 @@ const COLOR_CHOICES = [
 ]
 
 const PATTERN_CHOICES = [
+  { value: '', label: "-" },
   { value: 1, label: "Vienkrāsains" },
   { value: 2, label: "Strīpains" },
   { value: 3, label: "Punktveida" },
