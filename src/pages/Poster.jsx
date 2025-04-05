@@ -29,6 +29,8 @@ import FemaleIcon from '@mui/icons-material/Female';
 import TagIcon from '@mui/icons-material/Tag';
 import MoodIcon from '@mui/icons-material/Mood';
 import MaleIcon from '@mui/icons-material/Male';
+import TextureIcon from '@mui/icons-material/Texture';
+import ColorLensIcon from '@mui/icons-material/ColorLens';
 import DescriptionIcon from '@mui/icons-material/Description';
 import MergeTypeIcon from '@mui/icons-material/MergeType';
 import { CheckBox } from '@mui/icons-material';
@@ -229,9 +231,18 @@ const Poster = () => {
 
               <Typography><strong>Dzimums:</strong> {pet.gender_display || '-'}</Typography>
           </Box>
+
+          <Box display="flex" alignItems="center" my={1} gap={1}>
+            <IconButton color="primary" style={{ backgroundColor: '#f7f9fd' }}>
+            <TextureIcon />
+            </IconButton>
+              
+
+              <Typography><strong>Kažoks:</strong> {pet.pattern_display || '-'}</Typography>
+          </Box>
       
           </Grid>
-          <Grid item xs={4} md={4}>
+          <Grid item xs={4} md={4} >
 
                         <Box display="flex" alignItems="center" my={1} gap={1}>
             <IconButton color="primary" style={{ backgroundColor: '#f7f9fd' }}>
@@ -245,26 +256,48 @@ const Poster = () => {
               <HeightIcon /> 
             </IconButton>
             <Typography><strong>Augums:</strong> {pet.size_display || '-'}</Typography>
-            </Box>         
+            </Box>  
+            <Box display="flex" alignItems="center" my={1} gap={1}>
+            <IconButton color="primary" style={{ backgroundColor: '#f7f9fd' }}>
+            <ColorLensIcon />
+            </IconButton>
+              
+
+              <Typography><strong>Pamatkrāsa:</strong> {pet.primary_color_display || '-'}</Typography>
+          </Box>       
           </Grid>
           <Grid item xs={4} md={4} >
          
-            <Box display="flex" alignItems="center" my={1} gap={1}>
+            {/* <Box display="flex" alignItems="center" my={1} gap={1}>
             <IconButton color="primary" style={{ backgroundColor: '#f7f9fd' }}>
             <MoodIcon />
             </IconButton>
             <Typography><strong>Uzvedība:</strong> {pet.behavior_display || '-'}</Typography>
-            </Box>
+            </Box> */}
             <Box display="flex" alignItems="center" my={1} gap={1}>
             <IconButton color="primary" style={{ backgroundColor: '#f7f9fd' }}>
             <AccessTimeIcon />
             </IconButton>
              <Typography><strong>Datums:</strong> {formatDate(pet.created_at)}</Typography>
             </Box>
+            <Box display="flex" alignItems="center" my={1} gap={1}>
+            <IconButton color="primary" style={{ backgroundColor: '#f7f9fd' }}>
+            <TagIcon />
+            </IconButton>
+             <Typography><strong>ID:</strong> {pet.identifier}</Typography>
+            </Box>
+            <Box display="flex" alignItems="center" my={1} gap={1}>
+            <IconButton color="primary" style={{ backgroundColor: '#f7f9fd' }}>
+            <ColorLensIcon />
+            </IconButton>
+              
+
+              <Typography><strong>Sekundārā krāsa:</strong> {pet.secondary_color_display || '-'}</Typography>
+          </Box>  
           </Grid>
 
         </Grid>
-        <Grid container spacing={3} >
+        {/* <Grid container spacing={3} >
           <Grid item xs={12} md={12} >
           
           <Box display="flex" style={{alignItems: "flex-start"}} mb={1} mt={0} gap={1}>
@@ -276,7 +309,7 @@ const Poster = () => {
 </Box>
 
 </Grid>
-</Grid>
+</Grid> */}
 
 <Grid container spacing={3}>
   <Grid item xs={12} md={12}>

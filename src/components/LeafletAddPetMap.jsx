@@ -541,7 +541,7 @@ const LeafletAddPetMap = ({ onLocationChange, location }) => {
     <div style={{ position: 'relative' }}>
       <Box
         sx={{
-          height: isSmallScreen ? '250px' : '500px', // Smaller height on small screens
+          height: isSmallScreen ? '250px' : '400px', // Smaller height on small screens
           width: '100%',
         }}
       >
@@ -550,6 +550,12 @@ const LeafletAddPetMap = ({ onLocationChange, location }) => {
             url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
             attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
           />
+            {/* Use grayscale tile layer (Stamen Toner) */}
+            {/* <TileLayer
+  url="https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}.png"
+  attribution='&copy; <a href="https://carto.com">CartoDB</a>, &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+/> */}
+
 
           <MapController position={position} />
 

@@ -12,23 +12,25 @@ import MergeTypeIcon from '@mui/icons-material/MergeType';
 import CakeIcon from '@mui/icons-material/Cake';
 import EventIcon from '@mui/icons-material/Event';
 import TextureIcon from '@mui/icons-material/Texture';
+import AccessTimeIcon from '@mui/icons-material/AccessTime';
 import moment from 'moment';
-
+import { format } from "date-fns";
 import 'moment/locale/lv'; // Import Latvian locale
 
-const EventDate = ({ date }) => {
-  moment.locale('lv'); // Set the Latvian locale globally
-  return (
-    <span style={{ textTransform: 'capitalize' }}>
-      {/* {date ? moment(date).fromNow() : 'Date not available'} */}
-      {moment(date).format('YYYY-MM-DD HH:mm')}
-    </span>
-  );
-};
+// const EventDate = ({ date }) => {
+//   moment.locale('lv'); // Set the Latvian locale globally
+//   return (
+//     <span style={{ textTransform: 'capitalize' }}>
+//       {/* {date ? moment(date).fromNow() : 'Date not available'} */}
+//       {moment(date).format('YYYY-MM-DD HH:mm')}
+//     </span>
+//   );
+// };
 
 
   
 const PetAttributes = ({ pet }) => {
+ 
   const AGE_LABELS_BY_SPECIES = {
     1: { 1: "Kucēns", 2: "Pieaugušais", 3: "Seniors" },  // Dogs
     2: { 1: "Kaķēns", 2: "Pieaugušais", 3: "Seniors" },  // Cats
@@ -39,6 +41,11 @@ console.log("pet", pet)
     // Find the correct age label based on species
   const ageLabel = AGE_LABELS_BY_SPECIES[pet.species]?.[pet.age] || "-";
   const breedLabel = pet.breed ? pet.breed : "-";
+  const eventDate = pet.event_occurred_at ? new Date(pet.event_occurred_at.replace(" ", "T")) : null;
+
+const formattedDate = eventDate ? format(eventDate, "MMMM d, yyyy") : "N/A";
+const formattedTime = eventDate ? format(eventDate, "h:mm a") : "N/A";
+
   // const latestStatus = pet.sightings_history.length > 0 ? pet.sightings_history[pet.sightings_history.length - 1] : null;
   // const eventDate = latestStatus?.event_occurred_at || null;
 
@@ -97,7 +104,7 @@ console.log("pet", pet)
           <Typography variant="body1" gutterBottom></Typography>
         </Box>
       </Grid>
-      <Grid item xs={12}>
+      {/* <Grid item xs={12}>
         <Box
           gap={1}
           style={{
@@ -113,7 +120,7 @@ console.log("pet", pet)
           <b>Uzvedība:</b> {pet.behavior_display}
           <Typography variant="body1" gutterBottom></Typography>
         </Box>
-      </Grid>
+      </Grid> */}
       <Grid item xs={12}>
         <Box
           gap={1}
@@ -216,10 +223,30 @@ console.log("pet", pet)
           <IconButton color="primary" style={{ backgroundColor: '#f7f9fd' }}>
             <EventIcon />{' '}
           </IconButton>{' '}
-          <b>Datums un laiks:</b> 
+          <b>Datums:</b> {formattedDate}
         
  
-          <EventDate date={pet.event_ocurred_at} />
+          {/* <EventDate date={pet.event_ocurred_at} /> */}
+
+        </Box>
+      </Grid>
+      <Grid item xs={12}>
+        <Box
+          gap={1}
+          style={{
+            display: 'flex',
+            justifyContent: 'start',
+            alignItems: 'center',
+            paddingBottom: '0.4rem',
+          }}
+        >
+          <IconButton color="primary" style={{ backgroundColor: '#f7f9fd' }}>
+            <AccessTimeIcon />{' '}
+          </IconButton>{' '}
+          <b>Laiks:</b> {formattedTime}
+        
+ 
+          {/* <EventDate date={pet.event_ocurred_at} /> */}
 
         </Box>
       </Grid>

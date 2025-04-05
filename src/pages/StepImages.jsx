@@ -21,10 +21,112 @@ const StepImages = ({ formState, handleChange }) => {
     pet_image_4: "",
   });
 
+  const validateImage = (file, field) => {
+    let errors = {};
+    let success = {};
+  
+    // ✅ Allowed file types
+    const allowedTypes = ["image/jpeg", "image/jpg"];
+    if (!allowedTypes.includes(file.type)) {
+      errors[field] = "❌ Atļauts tikai JPG formāts.";
+    }
+  
+    // ✅ Max file size (5MB)
+    if (file.size > 5 * 1024 * 1024) {
+      errors[field] = "❌ Maksimālais bildes izmērs ir 5MB.";
+    }
+  
+    // ✅ Check file name length
+    if (file.name.length > 50) {
+      errors[field] = "❌ Faila nosaukums ir pārāk garš.";
+    }
+  
+    // ✅ If no errors, show success message
+    if (Object.keys(errors).length === 0) {
+      success[field] = "✅ Faila formāts un izmērs ir pareizs!";
+    }
+  
+    return { errors, success };
+  };
+  const handleImageUpload = (file, field) => {
+    if (!file) return;
 
-    const getImageBackground = (field) => {
-        return extraImagesPreview[field] ? `url(${extraImagesPreview[field]}) center/cover` : '#f5f5f5';
+    const { errors } = validateImage(file, field);
+    if (Object.keys(errors).length > 0) {
+      setImageErrors((prev) => ({ ...prev, [field]: errors[field] }));
+      return;
+    }
+
+    setImageErrors((prev) => ({ ...prev, [field]: null }));
+
+    resizeAndCropImage(file, (resizedFile) => {
+      handleChange("images", field, resizedFile); // ✅ Correct update
+
+      const previewUrl = URL.createObjectURL(resizedFile);
+      setExtraImagesPreview((prev) => ({
+        ...prev,
+        [field]: previewUrl
+      }));
+    });
+  };
+
+  const resizeAndCropImage = (file, callback) => {
+    const reader = new FileReader();
+
+    reader.onload = function (event) {
+      const img = new Image();
+      img.onload = function () {
+        const canvas = document.createElement('canvas');
+        const ctx = canvas.getContext('2d');
+
+        const targetWidth = 800;
+        const targetAspectRatio = 4 / 3;
+        const targetHeight = targetWidth / targetAspectRatio;
+        const quality = 0.8;
+
+        let srcX = 0, srcY = 0, srcWidth = img.width, srcHeight = img.height;
+        if (img.width / img.height > targetAspectRatio) {
+          srcWidth = img.height * targetAspectRatio;
+          srcX = (img.width - srcWidth) / 2;
+        } else {
+          srcHeight = img.width / targetAspectRatio;
+          srcY = (img.height - srcHeight) / 2;
+        }
+
+        canvas.width = targetWidth;
+        canvas.height = targetHeight;
+        ctx.drawImage(img, srcX, srcY, srcWidth, srcHeight, 0, 0, targetWidth, targetHeight);
+
+        const fileExtension = file.name.split('.').pop().toLowerCase();
+        const mimeType = fileExtension === 'png' ? 'image/png' : 'image/jpeg';
+
+        canvas.toBlob((blob) => {
+          const resizedFile = new File([blob], `resized_pet.${fileExtension}`, { type: mimeType });
+          callback(resizedFile);
+        }, mimeType, quality);
       };
+      img.src = event.target.result;
+    };
+
+    reader.readAsDataURL(file);
+  };
+
+  const handleClearImage = (field) => {
+    handleChange("images", field, ""); // ✅ Clear via handler
+    setExtraImagesPreview((prev) => ({ ...prev, [field]: "" }));
+  };
+
+  useEffect(() => {
+    return () => {
+      Object.values(extraImagesPreview).forEach((preview) => {
+        if (preview) URL.revokeObjectURL(preview);
+      });
+    };
+  }, [extraImagesPreview]);
+
+  const getImageBackground = (field) => {
+    return extraImagesPreview[field] ? `url(${extraImagesPreview[field]}) center/cover` : '#f5f5f5';
+  };
   return (
     <Grid container spacing={2} my={2}>
                   <Grid item xs={12}>
