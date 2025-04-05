@@ -20,7 +20,7 @@ const StepAppearance = ({ formState,formErrors, handleChange }) => {
                                 value={formState.appearance.size}
                                 label="Izmērs"
                                 notched
-             
+                 size="small"
                                 onChange={(e) => handleChange("appearance", "size", e.target.value)}
                 
                                 error={Boolean(formErrors.size)}
@@ -65,6 +65,7 @@ const StepAppearance = ({ formState,formErrors, handleChange }) => {
                                                       <Select
                                                         labelId="pattern-label"
                                                         id="pattern"
+                                                            size="small"
                                                         value={formState.appearance.pattern}
                                                         onChange={(e) => handleChange("appearance", 'pattern', e.target.value)}
                                                         label="Kažoka raksts"
@@ -114,6 +115,7 @@ const StepAppearance = ({ formState,formErrors, handleChange }) => {
                                             handleChange("appearance", 'primary_color', selectedColor || { hex: "", label: "", value: "" });
                                           }}
                                           label="Pamatkrāsa"
+                                              size="small"
                                           renderValue={(selected) => {
                                             const color = COLOR_CHOICES.find(color => color.hex === selected);
                                             return color ? (
@@ -190,6 +192,7 @@ const StepAppearance = ({ formState,formErrors, handleChange }) => {
                         
                                           }}
                                           label="Sekundārā krāsa"
+                                              size="small"
                                           renderValue={(selected) => {
                                             const color = COLOR_CHOICES.find(color => color.hex === selected);
                                             return color ? (

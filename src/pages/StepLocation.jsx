@@ -67,6 +67,7 @@ import LeafletAddPetMap from '../components/LeafletAddPetMap';
                                                }
                                                type="date"
                                                fullWidth
+                                                size="small"
                                                InputLabelProps={{
                                                  shrink: true,
                                                }}
@@ -91,6 +92,7 @@ import LeafletAddPetMap from '../components/LeafletAddPetMap';
                                                }
                                                type="time"
                                                fullWidth
+                                                size="small"
                                                InputLabelProps={{
                                                  shrink: true,
                                                }}

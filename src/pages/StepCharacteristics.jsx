@@ -19,6 +19,7 @@ const StepCharacteristics = ({ formState,formErrors, handleChange }) => {
             value={formState.characteristics.status}
             onChange={(e) => handleChange("characteristics", "status", e.target.value)}
             notched
+            size="small"
             label="Statuss *">
             {STATUS_CHOICES.map((option) => (
               <MenuItem key={option.value} value={option.value}>
@@ -38,6 +39,7 @@ const StepCharacteristics = ({ formState,formErrors, handleChange }) => {
             value={formState.characteristics.species}
             onChange={(e) => handleChange("characteristics", "species", e.target.value)}
             notched
+            size="small"
             label="Suga *"
           >
             {SPECIES_CHOICES.map((option) => (
@@ -56,6 +58,7 @@ const StepCharacteristics = ({ formState,formErrors, handleChange }) => {
                         name="identifier"
                         label="Unikāls identifikators"
                         fullWidth
+                        size="small"
                         InputLabelProps={{
                           shrink: true,
                         }}
@@ -67,54 +70,6 @@ const StepCharacteristics = ({ formState,formErrors, handleChange }) => {
                       />
                     </Grid>
       
-                  {/* Size Field */}
-                  {/* <Grid item xs={12} sm={12} md={12} lg={12}>
-                      <FormControl fullWidth variant="outlined">
-                        <InputLabel id="size-label" shrink>
-                        Izmērs
-                        </InputLabel>
-      
-                        <Select
-                          labelId="size-label"
-                          id="size"
-                          value={formState.characteristics.size}
-                          label="Izmērs"
-                          notched
-       
-                          onChange={(e) => handleChange("characteristics", "size", e.target.value)}
-          
-                          error={Boolean(formErrors.size)}
-                          fullWidth
-                        >
-                          {SIZE_CHOICES.map((option) => (
-                            <MenuItem key={option.value} value={option.value}>
-                              {option.label}
-                            </MenuItem>
-                          ))}
-                        </Select>
-                        {formState.characteristics.size && (
-                          <IconButton
-                            size="small"
-                            onClick={() => handleClearSelect('size')} // Pass the field name here
-                            sx={{
-                              position: 'absolute',
-                              right: 8, // Adjust as needed
-                              top: '50%',
-                              transform: 'translateY(-50%)',
-                              zIndex: 1, // Ensure it is on top of the select
-                              backgroundColor: '#f5f5f5', // Light gray background
-                              '&:hover': {
-                                backgroundColor: '#e0e0e0', // Slightly darker on hover
-                              },
-                              borderRadius: '50%', // Round button
-                              boxShadow: '0px 2px 4px rgba(0, 0, 0, 0.2)', // Subtle shadow
-                            }}
-                          >
-                            <CloseIcon fontSize="small" sx={{ color: '#616161' }} />
-                          </IconButton>
-                        )}
-                      </FormControl>
-                  </Grid> */}
 
                               {/* Gender Field */}
                               <Grid item xs={12} sm={12} md={12} lg={12}>
@@ -129,6 +84,7 @@ const StepCharacteristics = ({ formState,formErrors, handleChange }) => {
                     
                                       label="Dzimums"
                                       notched
+                                      size="small"
                                
                                       onChange={(e) => handleChange("characteristics", "gender", e.target.value)}
                                     >
@@ -162,50 +118,6 @@ const StepCharacteristics = ({ formState,formErrors, handleChange }) => {
                                   </FormControl>
                               </Grid>
                   
-                              {/* Behavior Field */}
-                              {/* <Grid item xs={12} sm={12} md={12} lg={12}>
-                                  <FormControl fullWidth variant="outlined">
-                                    <InputLabel id="behavior-label" shrink>
-                                    Uzvedība
-                                    </InputLabel>
-                                    <Select
-                                      labelId="behavior-label"
-                                      id="behavior"
-                                      value={formState.characteristics.behavior}
-                                 
-                                      onChange={(e) => handleChange("characteristics", "behavior", e.target.value)}
-                                      label="Uzvedība"
-                                      notched
-                                    >
-                                      {BEHAVIOR_CHOICES.map((option) => (
-                                        <MenuItem key={option.value} value={option.value}>
-                                          {option.label}
-                                        </MenuItem>
-                                      ))}
-                                    </Select>
-                                    {formState.characteristics.behavior && (
-                                      <IconButton
-                                        size="small"
-                                        onClick={() => handleClearSelect('behavior')} // Pass the field name here
-                                        sx={{
-                                          position: 'absolute',
-                                          right: 8, // Adjust as needed
-                                          top: '50%',
-                                          transform: 'translateY(-50%)',
-                                          zIndex: 1, // Ensure it is on top of the select
-                                          backgroundColor: '#f5f5f5', // Light gray background
-                                          '&:hover': {
-                                            backgroundColor: '#e0e0e0', // Slightly darker on hover
-                                          },
-                                          borderRadius: '50%', // Round button
-                                          boxShadow: '0px 2px 4px rgba(0, 0, 0, 0.2)', // Subtle shadow
-                                        }}
-                                      >
-                                        <CloseIcon fontSize="small" sx={{ color: '#616161' }} />
-                                      </IconButton>
-                                    )}
-                                  </FormControl>
-                              </Grid> */}
                   
                               {/* Age Field */}
                               <Grid item xs={12} sm={12} md={12} lg={12}>
@@ -224,6 +136,7 @@ const StepCharacteristics = ({ formState,formErrors, handleChange }) => {
                                         }
                                         label="Vecums"
                                         notched
+                                        size="small"
                                         onChange={(e) => handleChange("characteristics", "age", e.target.value)}
                                
                                       >
@@ -264,6 +177,7 @@ const StepCharacteristics = ({ formState,formErrors, handleChange }) => {
                                     name="breed"
                                     label="Sķirne"
                                     fullWidth
+                                    size="small"
                                     InputLabelProps={{
                                       shrink: true,
                                     }}

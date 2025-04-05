@@ -18,6 +18,7 @@ const StepContact = ({ formState,formErrors, handleChange }) => {
                                           id="phoneCode"
                                           name="phone_code"
                                           readOnly
+                                              size="small"
                                           value={formState.contact.phone_code}
                                           onChange={(e) => handleChange('contact','phone_code', e.target.value)}
                                           label="Telefona kods"
@@ -62,6 +63,7 @@ const StepContact = ({ formState,formErrors, handleChange }) => {
                                         name="phone"
                                         label="Telefona numurs"
                                         type="text"
+                                            size="small"
                                         fullWidth
                                         placeholder="12345678"
                                         InputLabelProps={{
@@ -81,6 +83,7 @@ const StepContact = ({ formState,formErrors, handleChange }) => {
                                                                 label="Piezīmes"
                                                                 fullWidth
                                                                 multiline
+                                                                    size="small"
                                                                 rows={4}
                                                                 variant="outlined"
                                                                 value={formState.contact.notes}

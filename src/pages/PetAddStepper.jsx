@@ -498,18 +498,19 @@ const PetAddStepper = () => {
 
   return (
     <Container
+    maxWidth="sm"
       component="main"
       sx={{
         display: 'flex',
         flexDirection: 'column',
         minHeight: '100vh', // Ensure it takes the full height
-        py: '2rem',
+        py: '3rem',
         overflowX: 'hidden',
       }}
     >
-      <Container maxWidth="md" sx={{ py: 4, flexGrow: 1 }}>
+      {/* <Container  sx={{ py: 4, flexGrow: 1 }}> */}
         {/* Donut progress + step name */}
-        <Box sx={{ display: 'flex', alignItems: 'center', mb: 4 }}>
+        <Box sx={{ display: 'flex', alignItems: 'center' }}>
           <Box sx={{ width: 70, height: 70, mr: 2 }}>
             <CircularProgressbar
               value={progress}
@@ -529,15 +530,16 @@ const PetAddStepper = () => {
         <Box sx={{ mb: 4 }}>
           {getStepContent(activeStep)}
         </Box>
-      </Container>
+      {/* </Container> */}
 
       {/* Navigation Buttons (Inside Container) */}
-      <Container maxWidth="md" sx={{ display: 'flex', justifyContent: 'space-between', mb: 4, px: 2 }}>
+      <Container  maxWidth="lg" sx={{ display: 'flex', justifyContent: 'space-between', mb: 4, px: 2, padding: "0 !important" }}>
         <Button
           variant="outlined"
           disabled={activeStep === 0}
           onClick={handleBack}
-          sx={{ flex: 1, mr: 1 }}
+         
+          sx={{ flex: 1, mr: 1, }}
         >
           Back
         </Button>
