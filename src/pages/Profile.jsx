@@ -11,9 +11,10 @@ import { useAuth } from '../contexts/AuthContext';
 import FavoriteIcon from '@mui/icons-material/Favorite';
 import PetsIcon from '@mui/icons-material/Pets';
 // import user_avatar from './images/cathead-01.png'
-import user_avatar from './images/account_amico_blue.svg'
-
+// import user_avatar from './images/account_amico_blue.svg'
+// import user_avatar from './images/ava/Asset 9.svg'
 import BookmarkIcon from '@mui/icons-material/Bookmark';
+import AvatarWithAnimal from "../components/AvatarWithAnimal"
 // import AvatarImg from '../images/beaver.avif'; // Use a valid image
 // import OneSignal from 'react-onesignal';
 const Profile = () => {
@@ -160,23 +161,22 @@ const handleLogout = () => {
                     </Typography>
         </Box>
 
-        <Avatar
+        {/* <img
           alt={user.username}
           src={user_avatar}
-          sx={{
+          style={{
             width: '200px',
             height: '200px',
-            // padding: '1rem 1rem',
-            // backgroundColor: user.color,
-            margin: 'auto',
-            // border: '2px solid lightgray',
+            padding: '1rem 1rem',
+
           }}
-        />
+        /> */}
+        <AvatarWithAnimal user={user} />
 
         <Typography variant="body1" color="primary" mt={1} style={{ fontWeight: 'bold' }}>
-          {/* {user.username} */}
+          {user.username}
         </Typography>
-  
+     
         <Grid container spacing={2} sx={{ mt: 1, mb: 5 }} justifyContent="center">
           <Grid item xs={12} md={4}>
             <Link to="/user-profile/bookmarks" style={{ textDecoration: 'none' }}>

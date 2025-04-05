@@ -279,11 +279,12 @@ export const AuthProvider = ({ children }) => {
       });
 
       // ✅ Ensure response contains user info
-      if (response.data?.username && response.data?.email) {
+      if (response.data?.username && response.data?.email && response.data?.avatar_animal) {
         setUser({
           userId: response.data.id,
           username: response.data.username,
           email: response.data.email,
+          avatar_animal: response.data.avatar_animal, // Include avatar_animal in the user state
         });
       }
     } catch (err) {
