@@ -653,12 +653,12 @@ const PetAddStepper = () => {
     sx={{
       display: 'flex',
       flexDirection: 'column',
-      minHeight: '80vh',
+      minHeight: '90vh',
       py: '3rem',
     }}
   >
     {/* Top section: Progress and Step Title */}
-    <Box sx={{ display: 'flex', alignItems: 'center', mb: 2 }}>
+    <Box sx={{ display: 'flex', alignItems: 'center',  }}>
       <Box sx={{ width: 70, height: 70, mr: 2 }}>
         <CircularProgressbar
           value={progress}
@@ -684,7 +684,7 @@ const PetAddStepper = () => {
     </Box>
 
     {/* Middle section: Step Content (this should take available space) */}
-    <Box sx={{ flexGrow: 1, mb: 4 }}>
+    <Box sx={{ flexGrow: 1, mb: 3 }}>
       {getStepContent(activeStep)}
     </Box>
 

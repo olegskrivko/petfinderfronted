@@ -6,7 +6,7 @@ const StepAppearance = ({ formState,formErrors, handleChange }) => {
   return (
     <Box>
           
-    <Grid container spacing={2} my={2}>
+    <Grid container spacing={2} my={1}>
              {/* Size Field */}
                         <Grid item xs={12} sm={12} md={12} lg={12}>
                             <FormControl fullWidth variant="outlined">

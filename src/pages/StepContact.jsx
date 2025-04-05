@@ -6,7 +6,7 @@ const StepContact = ({ formState,formErrors, handleChange }) => {
   return (
     <Box>
           
-    <Grid container spacing={2} my={2}>
+    <Grid container spacing={2} my={1}>
                                 {/* Phone Code Field */}
                                   <Grid item xs={12} sm={12} md={6} lg={6}>
                                   <FormControl fullWidth variant="outlined">

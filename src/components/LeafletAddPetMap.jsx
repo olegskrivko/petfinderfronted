@@ -541,7 +541,7 @@ const LeafletAddPetMap = ({ onLocationChange, location }) => {
     <div style={{ position: 'relative' }}>
       <Box
         sx={{
-          height: isSmallScreen ? '250px' : '400px', // Smaller height on small screens
+          height: isSmallScreen ? '240px' : '360px', // Smaller height on small screens
           width: '100%',
         }}
       >

@@ -10,7 +10,7 @@ import LeafletAddPetMap from '../components/LeafletAddPetMap';
       };
 
   return (
-    <Grid container spacing={2} my={2}>
+    <Grid container spacing={2} my={1}>
          <Grid item xs={12}>
             {/* <LeafletAddPetMap onLocationChange={handleLocationChange} location={formState.location}  /> */}
             <LeafletAddPetMap   onLocationChange={handleMapChange} location={formState.location}  />
@@ -54,7 +54,7 @@ import LeafletAddPetMap from '../components/LeafletAddPetMap';
                           </Grid>
 
                                {/* Date Field */}
-                                         <Grid item xs={12} sm={12} md={12} lg={12}>
+                                         <Grid item xs={12} sm={12} md={6} lg={6}>
                                              <TextField
                                                error={!!formErrors.date}
                                                helperText={formErrors.date || ""}
@@ -80,7 +80,7 @@ import LeafletAddPetMap from '../components/LeafletAddPetMap';
                                          </Grid>
                                          
                                          {/* Time Field */}
-                                         <Grid item xs={12} sm={12} md={12} lg={12}>
+                                         <Grid item xs={12} sm={12} md={6} lg={6}>
                                              <TextField
                                           
                                                id="time"

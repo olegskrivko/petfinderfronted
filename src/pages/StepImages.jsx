@@ -128,7 +128,7 @@ const StepImages = ({ formState, handleChange }) => {
     return extraImagesPreview[field] ? `url(${extraImagesPreview[field]}) center/cover` : '#f5f5f5';
   };
   return (
-    <Grid container spacing={2} my={2}>
+    <Grid container spacing={2} my={1}>
                   <Grid item xs={12}>
           <Grid container spacing={2}>
 

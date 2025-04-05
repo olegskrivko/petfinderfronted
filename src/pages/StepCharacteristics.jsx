@@ -9,7 +9,7 @@ const StepCharacteristics = ({ formState,formErrors, handleChange }) => {
           setAgeChoices(AGE_CHOICES_BY_SPECIES[formState.characteristics.species] || AGE_CHOICES_BY_SPECIES[3]); 
         }, [formState.characteristics.species]);
   return (
-    <Grid container spacing={2} my={2}>
+    <Grid container spacing={2} my={1}>
           {/* Status Field */}
       <Grid item xs={12}>
         <FormControl fullWidth variant="outlined">
