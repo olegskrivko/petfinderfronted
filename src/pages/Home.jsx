@@ -31,7 +31,7 @@ import pathlocations from './images/pathlocations.png';
 import RecentPets from '../components/RecentPets';
 import Jumbotron from './Jumbotron';
 import mainIMG from './images/404_Error_with_a_cute_animal_pana_blue.svg';
-
+import Statistics from "../components/Statistics"
 const LiquidBlob = () => (
   <motion.div
     style={{
@@ -50,6 +50,9 @@ const LiquidBlob = () => (
     }}
   />
 );
+
+
+
 const BannerSection = ({
   title,
   imageSrc,
@@ -543,7 +546,7 @@ function Home() {
 
 
 {/* </Grid> */}
-
+{/* <Statistics /> */}
 
       </Container>
     </React.Fragment>

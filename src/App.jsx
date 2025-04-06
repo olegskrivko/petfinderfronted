@@ -1,6 +1,8 @@
 import './App.css';
 import React, { Suspense, lazy, useEffect, useState } from 'react';
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import Box from "@mui/material/Box";
+import CircularProgress from "@mui/material/CircularProgress";
+import { BrowserRouter as Router, Route, Routes, useNavigate  } from 'react-router-dom';
 import { DrawerProvider } from './pages/DrawerContext'
 //import { BrowserRouter, Routes, Route } from 'react-router-dom';
 //import PetList from './components/PetList';
@@ -41,7 +43,7 @@ import CookiePolicy from './pages/policies/CookiePolicy';
 import Disclaimer from './pages/policies/Disclaimer';
 import DataProtectionPolicy from './pages/policies/DataProtectionPolicy';
 import CommunityGuidelines from './pages/policies/CommunityGuidelines';
-import { AuthProvider } from './contexts/AuthContext'; // Path to AuthContext
+
 import { SnackbarProvider } from 'notistack';
 import { HelmetProvider } from 'react-helmet-async';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
@@ -56,9 +58,83 @@ import { Elements } from "@stripe/react-stripe-js";
 import { loadStripe } from "@stripe/stripe-js";
 import CheckoutButton from "./pages/CheckoutButton";
 import PetAddStepper from "./pages/PetAddStepper";
-
+import PageNotFound from './pages/PageNotFound'; // Add a PageNotFound component
 // import InstallPWAButton from './InstallPWAButton';
 import { CssBaseline } from '@mui/material';
+import { AuthProvider } from './contexts/AuthContext'; // Path to AuthContext
+import { useAuth } from './contexts/AuthContext'; // Adjust the path as needed
+
+
+const PrivateRoute = ({ element }) => {
+  const { user, isAuthLoading } = useAuth();
+  const navigate = useNavigate();
+
+  // 🚨 Redirect if user is not logged in (and if the auth state is not loading)
+  useEffect(() => {
+    if (!isAuthLoading && !user) {
+      navigate("/login");  // Redirect to login if not logged in
+    }
+  }, [user, isAuthLoading, navigate]);
+
+  if (!user) return null;  // If user is not logged in, return nothing
+
+  return element; // If user is authenticated, render the route element
+};
+// Private Route component
+// Private Route component
+// const PrivateRoute = ({ element, ...rest }) => {
+//   const { user } = useAuth(); // Get user from AuthContext
+//   const navigate = useNavigate();
+
+//   useEffect(() => {
+//     if (!user) {
+//       navigate('/login'); // Redirect to login if not logged in
+//     }
+//   }, [user, navigate]); // Only run effect if `user` changes
+
+//   if (!user) {
+//     return null; // Return nothing or a loading indicator while checking
+//   }
+
+//   return element; // If logged in, render the route
+// };
+// const PrivateRoute = ({ element }) => {
+//   const { user, isAuthLoading } = useAuth();
+//   const navigate = useNavigate();
+
+//   useEffect(() => {
+//     if (!isAuthLoading && !user) {
+//       navigate("/login");
+//     }
+//   }, [isAuthLoading, user, navigate]);
+
+//   if (isAuthLoading) {
+//     return (
+//       <Box display="flex" justifyContent="center" alignItems="center" height="100vh">
+//         <CircularProgress />
+//       </Box>
+//     );
+//   }
+
+//   if (!user) return null;
+
+//   return element;
+// };
+
+// import React, { useEffect } from "react";
+// import { useNavigate } from "react-router-dom";
+
+// const MyComponent = () => {
+//   const navigate = useNavigate();
+
+//   // Using useEffect to trigger navigation after component has mounted
+//   useEffect(() => {
+//     navigate("/some-path");  // Navigate to the new route after the component mounts
+//   }, [navigate]);  // Empty dependency array ensures it runs once on mount
+
+//   return <div>Content goes here</div>;
+// };
+
 // if ("serviceWorker" in navigator) {
 //   window.addEventListener("load", () => {
 //     navigator.serviceWorker.register("/service-worker.js").then(
@@ -173,19 +249,25 @@ function App() {
             <Route index element={<Home />} />
             <Route path="/about" element={<About />} />
             <Route path="/feedback" element={<Feedback />} />
-            <Route path="/support" element={<Support />} />
+            {/* <Route path="/support" element={<Support />} /> */}
+            <Route 
+            path="/support" 
+            element={<PrivateRoute element={<Support />} />} 
+          />
             <Route path="/virtual-pet-training-classes" element={<PetTraining />} />
             <Route path="/contact" element={<Contact />} />
             <Route path="/collaborate" element={<Collaborate />} />
-            {/* <Route path="/login" element={<Login />} />
+            <Route path="/login" element={<Login />} />
             <Route path="/register" element={<Register />} />
-            <Route path="/Logout" element={<Logout />} /> */}
+            <Route path="/Logout" element={<Logout />} />
+            <Route path="/forgot-password" element={<ForgotPassword />} />
+    
             <Route path="/account-deleted" element={<AccountDeleted />} />
             <Route path="/checkout" element={<CheckoutPage />} />
             <Route path="/success" element={<SuccessPage />} />
             <Route path="/cancel" element={<CancelPage />} />
             <Route path="/fun" element={<Fun />} />
-            <Route path="/forgot-password" element={<ForgotPassword />} />
+            
             <Route path="/reset-password/:token" element={<ResetPassword />} />
             <Route path="/privacy-policy" element={<PrivacyPolicy />} />
             <Route path="/terms-of-service" element={<TermsOfService />} />
@@ -194,10 +276,15 @@ function App() {
             <Route path="/disclaimer" element={<Disclaimer />} />
             <Route path="/community-guidelines" element={<CommunityGuidelines />} />
             {/* <Route path="/add-pet" element={<PetsAdd />} /> */}
-            <Route path="/add-pet" element={<PetAddStepper />} />
+            {/* <Route path="/add-pet" element={<PetAddStepper />} /> */}
+            <Route 
+            path="/add-pet" 
+            element={<PrivateRoute element={<PetAddStepper />} />} 
+          />
             
             <Route path="/pets" element={<PetsListPage />} />
             <Route path="/pets/:id" element={<PetDetailsPage />} />
+         
             <Route path="/pets/:id/poster" element={<Poster />} />
            
             
@@ -205,24 +292,45 @@ function App() {
             <Route path="/user-profile/settings" element={<UserSettings />} />
             <Route path="/user-profile/bookmarks" element={<UserBookmarks />} />
             <Route path="/user-profile/pets" element={<UserPets />} />
-            <Route path="/user-profile/edit-pet/:id" element={<EditPet />} />
+            {/* <Route path="/user-profile/edit-pet/:id" element={<EditPet />} /> */}
+            <Route 
+            path="/user-profile/edit-pet/:id" 
+            element={<PrivateRoute element={<EditPet />} />} 
+          />
+         
             <Route path="/shelters" element={<SheltersListPage />} />
             <Route path="/shelters/:id" element={<ShelterDetailsPage />} />
-            <Route path="/articles" element={<ArticlesListPage />} />
+            {/* <Route path="/articles" element={<ArticlesListPage />} /> */}
+
+            <Route 
+            path="/articles" 
+            element={<PrivateRoute element={<ArticlesListPage />} />} 
+          />
             {/* <Route path="/articles/:id" element={<ArticleDetailsPage />} /> */}
             <Route path="/articles/:slug" element={<ArticleDetailsPage />} />
+            <Route path="*" element={<PageNotFound />} />
           </Route>
 
            {/* Routes for Login/Register pages with separate layout (without Navigation and Footer) */}
-            <Route path='/login' element={<AuthLayout />}>
+            {/* <Route path='/login' element={<AuthLayout />}>
               <Route index element={<Login />} />
-            </Route>
+            </Route> */}
+{/*         
             <Route path='/register' element={<AuthLayout />}>
               <Route index element={<Register />} />
             </Route>
-            <Route path='/Logout' element={<AuthLayout />}>
+            <Route path='/logout' element={<AuthLayout />}>
               <Route index element={<Logout />} />
             </Route>
+
+            <Route path='/forgot-password' element={<AuthLayout />}>
+              <Route index element={<ForgotPassword />} />
+            </Route> */}
+
+    
+
+            {/* Catch-all Route for Page Not Found */}
+            {/* <Route path="*" element={<PageNotFound />} /> */}
 
         </Routes>
       </DrawerProvider>

@@ -174,8 +174,7 @@ function About() {
                                               component="main"
                                               sx={{
                                                 flexGrow: 1,
-                                                py: '2rem',
-                                                // pb: '2rem',
+                                                py: '3rem',
                                                 width: '100%',
                                                 overflowX: 'hidden',
                                               }}
