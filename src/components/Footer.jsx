@@ -11,8 +11,8 @@ const Footer = () => {
   const appLinks = [
     { path: '/about', label: 'Par mums', active: true },
     { path: '/pets', label: 'Meklēt mājdzīvniekus', active: true },
-    { path: '/services', label: 'Pakalpojumi', active: false },
     { path: '/virtual-pet-training-classes', label: 'Virtuālās dresūras nodarbības', active: true },
+    { path: '/services', label: 'Pakalpojumi', active: false },
     { path: '/adopt-a-pet', label: 'Adoptējiet, nepērciet!', active: false },
   ];
   
@@ -21,22 +21,22 @@ const Footer = () => {
     { path: '/articles', label: 'Mājdzīvnieku aprūpes padomi', active: true },
     { path: '/articles/ko-darit-ja-pazudis-kakis', label: 'Ko darīt, ja pazudis kaķis?', active: true },
     { path: '/articles/ka-rikoties-ja-pazudis-suns', label: 'Kā rīkoties, ja pazudis suns?', active: true },
+    { path: '/submit-your-story', label: 'Iesūtīt savu stāstu', active: false },
   ];
   
   const policyLinks = [
-    { path: '/privacy-policy', label: 'Privātuma politika', active: true },
-    { path: '/terms-of-service', label: 'Pakalpojumu noteikumi', active: true },
-    { path: '/cookie-policy', label: 'Sīkdatņu politika', active: true },
-    { path: '/data-protection-policy', label: 'Datu aizsardzības politika', active: true },
-    { path: '/disclaimer', label: 'Atruna', active: true },
-    { path: '/community-guidelines', label: 'Kopienas vadlīnijas', active: true },
-  ];
+    { path: '/policies', label: 'Politikas un vadlīnijas', active: true },
+    { path: '/how-to-use', label: 'Kā lietot lietotni', active: false },
+    { path: '/whats-new', label: 'Kas jauns?', active: false },
+    { path: '/pet-matching-quiz', label: 'Kādu mājdzīvnieku izvēlēties?', active: false },
+  ];  
   
   const infoLinks = [
     { path: '/contact', label: 'Kontakti', active: true },
     { path: '/feedback', label: 'Atsauksmes', active: true },
     { path: '/support', label: 'Atbalsts', active: true },
     { path: '/collaborate', label: 'Sadarbība', active: true },
+    { path: '/faq', label: 'Biežāk uzdotie jautājumi', active: false },
   ];
 
 // Function to render links with the active/inactive state
@@ -93,21 +93,21 @@ const renderLinks = (linksArray) =>
 
           <Grid item xs={12} sm={3} textAlign="left">
             <Typography variant="h6" color="#ffcb56" style={{ fontWeight: '500' }}>
-            Izpētīt
+            Izpēti iespējas
             </Typography>
             {renderLinks(exploreLinks)}
           </Grid>
 
           <Grid item xs={12} sm={3} textAlign="left">
             <Typography variant="h6" color="#ffcb56" style={{ fontWeight: '500' }}>
-            Politikas un vadlīnijas
+            Uzzini vairāk
             </Typography>
             {renderLinks(policyLinks)}
           </Grid>
 
           <Grid item xs={12} sm={3} textAlign="left">
             <Typography variant="h6" color="#ffcb56" style={{ fontWeight: '500' }}>
-            Informācija
+            Noderīga informācija
             </Typography>
             {renderLinks(infoLinks)}
           </Grid>

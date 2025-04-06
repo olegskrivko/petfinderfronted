@@ -20,13 +20,14 @@ const collaborationPoints = [
   'Veterinārajām klīnikām un speciālistiem – lai sniegtu vērtīgus padomus mājdzīvnieku īpašniekiem.',
   'Tehnoloģiju un datu partnerībām – lai uzlabotu mākslīgā intelekta un datu analīzes iespējas pazudušo mājdzīvnieku atrašanā.',
   'Sociālo tīklu un mediju sadarbībām – lai informācija par pazudušiem dzīvniekiem izplatītos pēc iespējas plašāk.',
+  'Izstrādātājiem un dizaineriem – ja jūs vēlaties pievienoties mūsu komandai, lai uzlabotu lietotnes funkcionalitāti vai dizainu, mēs būsim priecīgi sadarboties.',
 ];
 
 const Collaborate = () => {
   return (
     <Container component="main" maxWidth="lg" sx={{ py: 6, paddingLeft: "0", paddingRight: "0"}}> 
       <Typography variant="h3" align="center" sx={{ mb: 5, fontWeight: 500 }}>
-        SADARBĪBAS IESPĒJAS
+        Sadarbības iespējas
       </Typography>
 
       <Grid container spacing={6} alignItems="center">

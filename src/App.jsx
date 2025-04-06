@@ -37,13 +37,12 @@ import UserBookmarks from './pages/UserBookmarks'
 import PetTraining from './pages/PetTraining'
 import EditPet from './pages/EditPet'
 
-import PrivacyPolicy from './pages/policies/PrivacyPolicy';
 import TermsOfService from './pages/policies/TermsOfService';
-import CookiePolicy from './pages/policies/CookiePolicy';
 import Disclaimer from './pages/policies/Disclaimer';
 import DataProtectionPolicy from './pages/policies/DataProtectionPolicy';
 import CommunityGuidelines from './pages/policies/CommunityGuidelines';
-
+import PrivacyAndCookiePolicy from './pages/policies/PrivacyAndCookiePolicy';
+import PolicyPage from './pages/PolicyPage';
 import { SnackbarProvider } from 'notistack';
 import { HelmetProvider } from 'react-helmet-async';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
@@ -269,9 +268,10 @@ function App() {
             <Route path="/fun" element={<Fun />} />
             
             <Route path="/reset-password/:token" element={<ResetPassword />} />
-            <Route path="/privacy-policy" element={<PrivacyPolicy />} />
+            
+            <Route path="/policies" element={<PolicyPage />} />
+            <Route path="/privacy-and-cookie-policy" element={<PrivacyAndCookiePolicy />} />
             <Route path="/terms-of-service" element={<TermsOfService />} />
-            <Route path="/cookie-policy" element={<CookiePolicy />} />
             <Route path="/data-protection-policy" element={<DataProtectionPolicy />} />
             <Route path="/disclaimer" element={<Disclaimer />} />
             <Route path="/community-guidelines" element={<CommunityGuidelines />} />

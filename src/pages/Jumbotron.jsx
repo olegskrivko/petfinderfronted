@@ -68,29 +68,21 @@ const Jumbotron = () => {
     <Grid container spacing={3} mt={4}>
       {/* Left Side: Paragraph */}
       <Grid item xs={12} md={6}>
-        <Card sx={{ display: 'flex', flexDirection: 'column', height: '100%', backgroundColor: "#5B9BD5" }}>
+        <Card sx={{ display: 'flex', flexDirection: 'column', height: '100%', backgroundColor: "#f7f9fd" }}>
         <CardContent sx={{ flexGrow: 1, textAlign: 'center' }}>
-            <Typography variant="h5" gutterBottom sx={{color: "white"}}>
-            Ziņot par mājdzīvnieku
+            <Typography variant="h5"  gutterBottom >
+            Atbalstiet mūsu projektu
             </Typography>
-            <Typography variant="body2" color="textSecondary" paragraph sx={{color: "white"}}>
-            Ziņojiet par atrasto vai pazaudēto mājdzīvnieku, lai palīdzētu tam atgriezties mājās!
+            <Typography variant="body2" color="textSecondary" paragraph >
+            Jūsu atbalsts palīdzēs mums turpināt mūsu misiju apvienot pazudušos mājdzīvniekus ar viņu ģimenēm. Jūs varat arī atbalstīt mūs, daloties ar saiti sociālajos tīklos vai pastāstot draugiem par mūsu tīmekļa lietotni. Katrs ieguldījums, liels vai mazs, ir svarīgs, un mēs patiesi novērtējam jūsu atbalstu!
             </Typography>
             <Button
               component={Link}
-              to="/add-pet"
+              to="/support"
               variant="contained"
-             
-               size="large"
-               sx={{backgroundColor: "#f1c40f", color: "#5B5B5B"}}
-            //   sx={{
-            //     marginTop: '20px',
-            //     padding: '10px 20px',
-            //     fontSize: isSmallScreen ? '1rem' : '1.2rem',
-            //     width: isSmallScreen ? 'auto' : '200px',
-            //   }}
+               sx={{backgroundColor: "#5B9BD5", color: "#fff"}}
             >
-              Ziņot
+              Atbalstīt
             </Button>
           </CardContent>
         </Card>
@@ -101,25 +93,18 @@ const Jumbotron = () => {
         <Card sx={{ display: 'flex', flexDirection: 'column', height: '100%' }}>
           <CardContent sx={{ flexGrow: 1, textAlign: 'center' }}>
             <Typography variant="h5" gutterBottom>
-            Meklēt mājdzīvnieku
+            Dalieties ar savu viedokli
             </Typography>
             <Typography variant="body2" color="textSecondary" paragraph>
-            Meklējiet mūsu sarakstā, lai atrastu savu pazaudēto mājdzīvnieku!
+            Jūsu atsauksmes ir svarīgas, jo mēs cenšamies uzlabot mūsu lietotni un sniegt labāko pakalpojumu mājdzīvnieku īpašniekiem. Lūdzu, dalieties ar saviem komentāriem, ieteikumiem vai kritiku, lai palīdzētu mums padarīt lietotni vēl labāku.
             </Typography>
             <Button
               component={Link}
-              to="/pets"
-              variant="contained"
-              color="primary"
-              size="large"
-            //   sx={{
-            //     marginTop: '20px',
-            //     padding: '10px 20px',
-            //     fontSize: isSmallScreen ? '1rem' : '1.2rem',
-            //     width: isSmallScreen ? 'auto' : '200px',
-            //   }}
+              to="/feedback"
+              variant="outlined"
+              sx={{ color: "#5B9BD5" }}
             >
-              Meklēt
+              Atstāt atsauksmi
             </Button>
           </CardContent>
         </Card>

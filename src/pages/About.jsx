@@ -39,6 +39,7 @@ import walkingAroundImg from './images/walking_around_amico.svg';
 import socialIdeasImg from './images/social_ideas_cuate.svg';
 import navigationImg from './images/navigation_pana.svg';
 import programmingImg from './images/programming_pana.svg';
+import Jumbotron from './Jumbotron';
 
 function About() {
    const { getTypography } = useFontSizes();
@@ -169,33 +170,11 @@ function About() {
   ];
 
   return (
-    <React.Fragment>
-       <Container
-                                              component="main"
-                                              sx={{
-                                                flexGrow: 1,
-                                                py: '3rem',
-                                                width: '100%',
-                                                overflowX: 'hidden',
-                                              }}
-                                   >
-      <Grid container spacing={3}>
-        <Grid item xs={12} sm={12} md={12} lg={12}>
-          <Typography
-            variant="h1"
-            textAlign="center"
-            sx={{ mb: 3 }}
-            gutterBottom
-            style={{
-              fontSize: getTypography('h1').fontSize,
-              fontWeight: getTypography('h1').fontWeight,
-            }}
-          >
-            Par mums
-          </Typography>
-        </Grid>
-      </Grid>
-      <Grid container spacing={3}>
+<Container component="main" maxWidth="lg" sx={{ py: 6, paddingLeft: "0", paddingRight: "0" }}>
+<Typography variant="h3" align="center" sx={{ mb: 5, fontWeight: 500 }}>
+        Par mums
+      </Typography>
+      {/* <Grid container spacing={3}>
         <Grid item xs={12} sm={12} md={12} lg={12}>
           <Typography
             variant="h2"
@@ -209,11 +188,13 @@ function About() {
             Mūsu mērķis
           </Typography>
         </Grid>
-      </Grid>
+      </Grid> */}
       <Grid container spacing={3}>
         <Grid item xs={12} sm={12} md={12} lg={12}>
           <Typography variant="body1" paragraph>
-          Mūsu lietotne izmanto modernākās tehnoloģijas, lai atvieglotu pazudušu mājdzīvnieku atgriešanos pie īpašniekiem. Piedāvājam ērtu platformu, kurā var ievietot pazudušu mājdzīvnieku sludinājumus, un aktīvi strādājam, lai savienotu īpašniekus ar cilvēkiem, kuri ir atraduši mājdzīvniekus, palielinot veiksmīgas atgriešanās iespējas.
+
+          Mūsu komanda ir izstrādājusi inovatīvu risinājumu, kas apvieno sabiedrību kopīgā mērķī – atvieglot pazudušu mājdzīvnieku atgriešanos pie to īpašniekiem. Lietotne balstīta uz modernām tehnoloģijām, tai skaitā mākslīgo intelektu un reāllaika paziņojumiem, nodrošinot ērtu vidi sludinājumu publicēšanai un informācijas apmaiņai. Tā efektīvi savieno dzīvnieku īpašniekus ar tiem, kuri ir atraduši pazudušos mājdzīvniekus, ievērojami paaugstinot iespēju veiksmīgai atkalapvienošanai.
+
           </Typography>
         
         </Grid>
@@ -250,8 +231,10 @@ function About() {
            Problēma
           </Typography>
           <Typography variant="body1" style={{ textAlign: 'left' }}>
-          Es bieži pamanīju pazudušu mājdzīvnieku sludinājumus, kas piestiprināti pie laternu stabiem, lietū izmirkuši un gandrīz nesalasāma. Ierobežotā informācija un sliktā kvalitāte padarīja gandrīz neiespējamu palīdzēt. 
-          Tā rezultātā radās vajadzība pēc efektīvāka risinājuma, kas sniegtu mājdzīvnieku īpašniekiem uzticamu veidu, kā atgriezt mājdzīvniekus mājās un nodrošinātu skaidrību sarežģītajā brīdī.
+
+          Cik bieži esi redzējis pazuduša dzīvnieka plakātu uz laternas staba? Vai esi kādreiz aizdomājies – vai dzīvnieks jau ir atradies, vai joprojām tiek meklēts? Bez papildu informācijas šie jautājumi paliek neatbildēti, un, ja dzīvnieks ir atradies, plakāts joprojām karājas, radot maldinošu priekšstatu.
+
+Mēs piedāvājam risinājumu – profesionāli izstrādātus plakātus ar QR kodu, kuru var noskenēt, lai piekļūtu aplikācijai un redzētu aktuālāko informāciju par konkrēto dzīvnieku. Plakāti ārā neiztur ilgi – lietus, vējš un saule tos ātri sabojā. Mūsu risinājums ļauj sekot dzīvnieka meklēšanas gaitai aplikācijā, kur informācija vienmēr ir aktuāla, skaidra un pārskatāma.
           </Typography>
         </Grid>
         <Grid item xs={12} sm={12} md={4} lg={4}>
@@ -353,7 +336,7 @@ function About() {
             Ideja
           </Typography>
           <Typography variant="body1" style={{ textAlign: 'left' }}>
-          Vadoties pēc vēlmes radīt kaut ko nozīmīgu, es sāku domāt par to, kā mūsdienu tehnoloģijas, piemēram, sociālie tīkli, varētu palīdzēt atrisināt šo problēmu. Latvijā ir neskaitāmas sociālo mediju grupas, kas veltītas pazudušiem mājdzīvniekiem, taču informācija ir izkliedēta dažādās platformās un grupās. Tas apgrūtina centienu centralizāciju un efektīvas palīdzības sniegšanu, it īpaši vecākiem cilvēkiem, kuri var neizmantot sociālos tīklus, piemēram, Facebook.
+          Mēs saskatījām iespēju risināt šo problēmu, izmantojot mūsdienu tehnoloģijas, īpaši sociālos medijus. Lai gan Latvijā ir daudz sociālo mediju grupu, kas veltītas pazudušiem dzīvniekiem, informācija ir izkliedēta dažādās platformās, kas apgrūtina efektīvu palīdzības sniegšanu. Šī problēma ir īpaši izteiktāka vecākiem cilvēkiem, kuri, iespējams, nelieto tādas platformas kā Facebook.
           </Typography>
         </Grid>
       </Grid>
@@ -372,7 +355,10 @@ function About() {
         Izaicinājums
           </Typography>
           <Typography variant="body1" style={{ textAlign: 'left' }}>
-          Es vēlējos izveidot lietotni, kas apvienotu kopienas un vienkāršotu meklēšanas procesu. Bet man nebija nepieciešamo zināšanu, lai to izveidotu pašam, un nolīgt kādu, kas piepildītu manu vīziju, man bija pārāk dārgi. Tāpēc es pieņēmu lēmumu: es apgūšu programmēšanu.
+
+          Mūsu mērķis bija izveidot lietotni, kas spēj apvienot kopienas un vienkāršot pazudušo dzīvnieku meklēšanas procesu. Mēs vēlējāmies radīt risinājumu, kas būtu ne tikai efektīvs, bet arī tehnoloģiski moderns. Tāpēc lietotnē esam iekļāvuši jaunākās iespējas, tostarp paziņojumu sistēmu, kas ļauj cilvēkiem savlaicīgi saņemt informāciju par tuvumā pazudušiem vai atrastiem dzīvniekiem. Šāda pieeja palīdz daudz ātrāk reaģēt un palielina iespējas dzīvniekiem atgriezties mājās.
+
+
           </Typography>
         </Grid>
 
@@ -478,7 +464,7 @@ function About() {
             Ceļš
           </Typography>
           <Typography variant="body1" style={{ textAlign: 'left' }}>
-          Tas bija ilgtermiņa mērķis, kas prasīja pacietību, neatlaidību un neskaitāmas stundas mācību. Vairāk nekā gadu es veltīju laiku, lai apgūtu prasmes, kas nepieciešamas šīs lietotnes izstrādei. Es izgāju cauri daudzām iterācijām, nepārtraukti uzlabojot, pārdomājot un pilnveidojot savu pieeju. Ceļš bija izaicinošs, bet es biju apņēmies padarīt šo ideju par realitāti. Pa ceļam es ieguvu milzīgu pieredzi IT jomā, kas ir bijusi nenovērtējama.
+          Šī bija mūsu komandas iecere, kuras īstenošana prasīja pacietību, neatlaidību un vienotu apņēmību. Mēs mērķtiecīgi attīstījām nepieciešamās prasmes un strādājām pie lietotnes izstrādes, ejot cauri vairākiem izstrādes posmiem, nemitīgi uzlabojot un pilnveidojot mūsu risinājumu. Ceļš nebija viegls, taču bijām vienoti mērķī pārvērst ideju realitātē. Šī pieredze devusi mūsu komandai vērtīgas zināšanas un prasmes IT jomā, kas būs nozīmīgas arī nākotnē.
           </Typography>
         </Grid>
       </Grid>
@@ -497,7 +483,7 @@ function About() {
             Rezultāts
           </Typography>
           <Typography variant="body1" style={{ textAlign: 'left' }}>
-          Beidzot, pēc smaga darba un izmantojot mākslīgā intelekta tehnoloģijas, es pabeidzu lietotni. Šodien tas, kas sākās kā vienkārša ideja, ir izaugusi par kaut ko daudz vairāk. Mana lietotne ir gatava dzīvot, piedāvājot mājdzīvnieku īpašniekiem spēcīgu rīku, lai palīdzētu atrast pazudušos mīluļus. Tomēr man joprojām ir daudz ideju par uzlabojumiem un jaunām funkcijām, kuras vēlos īstenot. Tā kā šis ir blakusprojekts, pie kura strādāju pēc regulārā darba, laika ir maz, bet es esmu apņēmies turpināt to attīstīt un padarīt to par labāko.
+          Ideja, kas sākās kā vienkāršs iecerējums, ir kļuvusi par nozīmīgu un noderīgu rīku mājdzīvnieku īpašniekiem. Izmantojot mākslīgā intelekta tehnoloģijas, esam izstrādājuši lietotni, kas palīdz meklēt un atrast pazudušos dzīvniekus. Mēs vēl neapstājamies — prātā jau ir jaunas idejas un funkcijas, kuras plānojam pievienot, lai padarītu lietotni vēl efektīvāku. Lai gan šis projekts tiek īstenots līdzās mūsu ikdienas darbiem, esam apņēmības pilni to attīstīt tālāk un sniegt reālu palīdzību tiem, kam tā visvairāk nepieciešama.
           </Typography>
         </Grid>
 
@@ -543,274 +529,12 @@ function About() {
           </Box>
         </Grid>
       </Grid>
+      <Jumbotron />
 
-      {/* 
-      <Grid container spacing={3}>
-        <Grid item mt={3} xs={12} sm={12} md={8} lg={8}>
-          <Typography
-            variant="h3"
-            textAlign="left"
-            gutterBottom
-            style={{
-              fontSize: getTypography('h3').fontSize,
-              fontWeight: getTypography('h3').fontWeight,
-            }}
-          >
-            {t('ourJourney.title2')}
-          </Typography>
-          <Typography variant="body1" style={{ textAlign: 'left' }}>
-            {t('ourJourney.description2')}
-          </Typography>
-          <Typography
-            sx={{ mt: 2 }}
-            variant="h3"
-            textAlign="left"
-            gutterBottom
-            style={{
-              fontSize: getTypography('h3').fontSize,
-              fontWeight: getTypography('h3').fontWeight,
-            }}
-          >
-            {t('ourJourney.title3')}
-          </Typography>
-          <Typography variant="body1" sx={{ mt: 2 }} style={{ textAlign: 'left' }}>
-            {t('ourJourney.description3')}
-          </Typography>
-        </Grid>
 
-        <Grid item xs={12} sm={12} md={4} lg={4}>
-          <Box
-            position="relative"
-            display="flex"
-            flexDirection="column"
-            justifyContent="center"
-            alignItems="center"
-          >
-            <CardMedia
-              component="img"
-              src={programmerImg}
-              alt="Feedabck"
-              style={{
-                width: 'auto',
-                maxHeight: '380px',
-                objectFit: 'cover',
-              }}
-            />
-            <Box
-              style={{
-                marginTop: '0.5rem',
-                display: 'flex',
-                alignItems: 'center',
-              }}
-            >
-              <MuiLink
-                href="https://storyset.com/web"
-                target="_blank"
-                rel="noopener noreferrer"
-                style={{
-                  fontSize: '0.6rem',
-                  fontStyle: 'italic',
-                  color: '#999',
-                  fontWeight: '300',
-                }}
-              >
-                Web illustrations by Storyset
-              </MuiLink>
-            </Box>
-          </Box>
-        </Grid>
-      </Grid>
-      <Grid container spacing={3}>
-        <Grid item xs={12} sm={12} md={12} lg={12}>
-          <Typography
-            variant="h3"
-            textAlign="left"
-            gutterBottom
-            sx={{ mt: 2 }}
-            style={{
-              fontSize: getTypography('h3').fontSize,
-              fontWeight: getTypography('h3').fontWeight,
-            }}
-          >
-            {t('ourJourney.title4')}
-          </Typography>
-          <Typography variant="body1" sx={{ mt: 2 }} paragraph>
-            {t('ourJourney.description4')}
-          </Typography>
-          <Typography
-            variant="h3"
-            textAlign="left"
-            gutterBottom
-            style={{
-              fontSize: getTypography('h3').fontSize,
-              fontWeight: getTypography('h3').fontWeight,
-            }}
-          >
-            {t('ourJourney.title5')}
-          </Typography>
-          <Typography variant="body1" paragraph>
-            {t('ourJourney.description5')}
-          </Typography>
-        </Grid>
-      </Grid>
-      <Grid container spacing={3}>
-        <Grid item xs={12} sm={12} md={12} lg={12}>
-          <Typography
-            variant="h2"
-            textAlign="center"
-            sx={{ mb: 3 }}
-            gutterBottom
-            style={{
-              fontSize: getTypography('h2').fontSize,
-              fontWeight: getTypography('h2').fontWeight,
-            }}
-          >
-            {t('features.title')}
-          </Typography>
-        </Grid>
-      </Grid> */}
-      {/* <Grid container spacing={3}>
-        <Grid item xs={12} sm={12} md={12} lg={12} mt={5}>
-          <Typography
-            variant="h2"
-            textAlign="center"
-            sx={{ mb: 3 }}
-            gutterBottom
-            style={{
-              fontSize: getTypography('h2').fontSize,
-              fontWeight: getTypography('h2').fontWeight,
-            }}
-          >
-            Galvenās funkcijas
-          </Typography>
-        </Grid>
-      </Grid> */}
-      {/* features */}
-      {/* <Grid container spacing={3}>
-        {features.map((feature) => (
-          <Grid item xs={12} sm={6} md={4} lg={4} key={feature.id}>
-            <Card>
-              <CardContent>
-     
-                <Box style={{ display: 'flex', alignItems: 'center', marginBottom: '0.4rem' }}>
-                  {feature.icon}
-                  <Typography
-                    variant="h3"
-                    gutterBottom
-                    style={{
-                      fontSize: getTypography('h3').fontSize,
-                      fontWeight: getTypography('h3').fontWeight,
-                    }}
-                  >
-                    {feature.title}
-                  </Typography>
-                </Box>
-                <Box>
-                  <Typography variant="body1"> 
-                    {feature.description}
-                    </Typography>
-                </Box>
-              </CardContent>
-            </Card>
-           </Grid> 
-        ))} 
-      </Grid> */}
 
-      <Grid container spacing={3}>
-        <Grid item xs={12} sm={12} md={12} lg={12} mt={5}>
-          <Typography
-            variant="h2"
-            textAlign="center"
-            gutterBottom
-  
-          >
-       
-          </Typography>
-        </Grid>
-      </Grid>
-
-      <Grid container spacing={3} style={{ marginTop: '1rem' }}>
-        <Grid item xs={12} sm={12} md={6} lg={6} textAlign="center">
-          <Card style={{ backgroundColor: '#f7f9fd' }}>
-            <CardContent>
-              <Typography
-                variant="h2"
-                textAlign="center"
-                style={{
-                  marginBottom: '0.5rem',
-                  fontSize: getTypography('h2').fontSize,
-                  fontWeight: getTypography('h2').fontWeight,
-                }}
-              >
-             Atbalstiet mūsu projektu
-              </Typography>
-              <Typography variant="body1">
-              Jūsu atbalsts palīdzēs mums turpināt mūsu misiju apvienot pazudušos mājdzīvniekus ar viņu ģimenēm. Jūs varat arī atbalstīt mūs, daloties ar saiti sociālajos tīklos vai pastāstot draugiem par mūsu tīmekļa lietotni. Katrs ieguldījums, liels vai mazs, ir svarīgs, un mēs patiesi novērtējam jūsu atbalstu!
-                </Typography>
-              <Link to="/support" style={{ textDecoration: 'none' }}>
-                <Button
-                  variant="contained"
-                  color="primary"
-                  style={{
-                    marginTop: '1rem',
-                  }}
-                >
-                  ATBALSTĪT
-                </Button>
-              </Link>
-            </CardContent>
-          </Card>
-        </Grid>
-        {/* <a href="https://storyset.com/work">Work illustrations by Storyset</a> */}
-        {/* <a href="https://storyset.com/idea">Idea illustrations by Storyset</a> */}
-        <Grid item xs={12} sm={12} md={6} lg={6} textAlign="center">
-          <Card style={{ backgroundColor: '#f7f9fd' }}>
-            <CardContent>
-              <Typography
-                variant="h2"
-                textAlign="center"
-                style={{
-                  marginBottom: '0.5rem',
-                  fontSize: getTypography('h2').fontSize,
-                  fontWeight: getTypography('h2').fontWeight,
-                }}
-              >
-               Dalieties ar savu viedokli
-              </Typography>
-              <Typography variant="body1">
-              Jūsu atsauksmes ir svarīgas, jo mēs cenšamies uzlabot mūsu lietotni un sniegt labāko pakalpojumu mājdzīvnieku īpašniekiem. Lūdzu, dalieties ar saviem komentāriem, ieteikumiem vai kritiku, lai palīdzētu mums padarīt lietotni vēl labāku.
-                </Typography>
-              <Link to="/feedback" style={{ textDecoration: 'none' }}>
-                <Button
-                  variant="contained"
-                  color="primary"
-                  style={{
-                    marginTop: '1rem',
-                  }}
-                >
-                  ATSTĀT ATSAUKSMI
-                </Button>
-              </Link>
-            </CardContent>
-          </Card>
-        </Grid>
-      </Grid>
-
-      {/* <Grid container spacing={3} style={{ marginTop: "1rem" }}>
-        <Grid item xs={12} sm={12} md={12} lg={12} textAlign="center">
-          <Typography variant="h4" gutterBottom textAlign="center">
-            Our Technology Stack
-          </Typography>
-          <Typography variant="body1" paragraph>
-            We appreciate any help or collaboration from developers who share
-            our passion for building amazing web applications. If you're
-            interested in contributing, please don't hesitate to reach out.
-            Together, we can create something incredible!
-          </Typography>
-        </Grid>
-      </Grid> */}
       </Container>
-    </React.Fragment>
+
   );
 }
 

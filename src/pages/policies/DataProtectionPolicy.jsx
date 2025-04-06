@@ -4,16 +4,8 @@ import React from 'react';
 import Typography from '@mui/material/Typography';
 import Grid from '@mui/material/Grid';
 import Container from '@mui/material/Container';
-// import { useTranslation } from 'react-i18next';
-// Import Variables
-// import { APP_NAME, EMAIL } from '../../middleware/config';
-
-// Import Custom hook
-import useFontSizes from '../utils/getFontSize';
-
 function DataProtectionPolicy() {
-  // const { t } = useTranslation('dataProtectionPolicyPage');
-  const { getTypography } = useFontSizes();
+
   return (
     <React.Fragment>
       <Container
@@ -33,10 +25,7 @@ function DataProtectionPolicy() {
             textAlign="center"
             sx={{ mb: 3 }}
             gutterBottom
-            style={{
-              fontSize: getTypography('h1').fontSize,
-              fontWeight: getTypography('h1').fontWeight,
-            }}
+   
           >
            Datu aizsardzības politika
           </Typography>
@@ -49,10 +38,7 @@ function DataProtectionPolicy() {
           <Typography
             variant="h2"
             gutterBottom
-            style={{
-              fontSize: getTypography('h2').fontSize,
-              fontWeight: getTypography('h2').fontWeight,
-            }}
+      
           >
           Informācija, ko mēs vācam
           </Typography>
@@ -86,10 +72,7 @@ function DataProtectionPolicy() {
           <Typography
             variant="h2"
             gutterBottom
-            style={{
-              fontSize: getTypography('h2').fontSize,
-              fontWeight: getTypography('h2').fontWeight,
-            }}
+     
           >
            Kā mēs izmantojam jūsu informāciju
           </Typography>
@@ -105,10 +88,7 @@ function DataProtectionPolicy() {
           <Typography
             variant="h2"
             gutterBottom
-            style={{
-              fontSize: getTypography('h2').fontSize,
-              fontWeight: getTypography('h2').fontWeight,
-            }}
+     
           >
            Data Security
           </Typography>
@@ -117,10 +97,7 @@ function DataProtectionPolicy() {
           <Typography
             variant="h2"
             gutterBottom
-            style={{
-              fontSize: getTypography('h2').fontSize,
-              fontWeight: getTypography('h2').fontWeight,
-            }}
+    
           >
            Datu glabāšana un dzēšana
           </Typography>
@@ -129,10 +106,7 @@ function DataProtectionPolicy() {
           <Typography
             variant="h2"
             gutterBottom
-            style={{
-              fontSize: getTypography('h2').fontSize,
-              fontWeight: getTypography('h2').fontWeight,
-            }}
+ 
           >
             Trešo pušu atklāšana
           </Typography>
@@ -141,10 +115,7 @@ function DataProtectionPolicy() {
           <Typography
             variant="h2"
             gutterBottom
-            style={{
-              fontSize: getTypography('h2').fontSize,
-              fontWeight: getTypography('h2').fontWeight,
-            }}
+    
           >
            Atbilstība likumiem
           </Typography>
@@ -153,10 +124,7 @@ function DataProtectionPolicy() {
           <Typography
             variant="h2"
             gutterBottom
-            style={{
-              fontSize: getTypography('h2').fontSize,
-              fontWeight: getTypography('h2').fontWeight,
-            }}
+     
           >
            Sazinieties ar mums
           </Typography>

@@ -73,7 +73,7 @@ const Feedback = () => {
       <ToastContainer position="top-right" autoClose={3000} />
       <Container component="main" maxWidth="lg" sx={{ py: 6, paddingLeft: 0, paddingRight: 0 }}>
         <Typography variant="h3" align="center" sx={{ mb: 5, fontWeight: 500 }}>
-          ATSTĀJIET SAVU ATSAUKSMI
+          Atstājiet savu atsauksmi
         </Typography>
 
         <Grid container spacing={6} alignItems="center">
