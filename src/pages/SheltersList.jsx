@@ -93,52 +93,13 @@ const SheltersList = () => {
   }
 
   return (
-    <React.Fragment>
-        <Container
-                            component="main"
-                            sx={{
-                              flexGrow: 1,
-                              py: '2rem',
-                              // pb: '2rem',
-                              width: '100%',
-                              overflowX: 'hidden',
-                            }}
-                 >
-         <Typography
-            variant="h3"
-            textAlign="center"
-            sx={{ mb: 3, fontWeight: "500" }}
-            gutterBottom
-          >
-            PATVERSMES
-          </Typography>
+   <Container component="main" maxWidth="lg" sx={{ py: 6, paddingLeft: 0, paddingRight: 0 }}>
+      <Typography variant="h3" align="center" sx={{ mb: 5, fontWeight: 500 }}>
+        Dzīvnieku patversmes
+      </Typography>
+    
       <LeafletSheltersMap shelters={shelters}/>
-      <Grid container spacing={3}>
-        <Grid item xs={12} sm={12} md={12} lg={12}>
-          <Typography
-            variant="h1"
-            textAlign="center"
-            sx={{ mb: 3 }}
-            gutterBottom
-            style={{
-              fontSize: getTypography('h1').fontSize,
-              fontWeight: getTypography('h1').fontWeight,
-            }}
-          >
-            {/* {t('sheltersPage.title')} */}
-          </Typography>
-        </Grid>
-      </Grid>
-      <Grid container spacing={3}>
-        <Grid item xs={12} sm={12} md={12} lg={12}>
-          <Typography paragraph>
-            {/* {t('sheltersPage.description1')} */}
-            </Typography>
-          <Typography paragraph>
-            {/* {t('sheltersPage.description2')} */}
-            </Typography>
-        </Grid>
-      </Grid>
+
       <Grid container spacing={3}>
         {shelters.map((shelter) => (
           <Grid item key={shelter._id} xs={12} sm={6} md={3}>
@@ -173,7 +134,7 @@ const SheltersList = () => {
         </Grid>
       </Grid>
       </Container>
-    </React.Fragment>
+ 
   );
 };
 

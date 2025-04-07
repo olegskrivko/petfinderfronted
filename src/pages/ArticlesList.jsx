@@ -68,36 +68,10 @@ const ArticlesList = () => {
   }
 
   return (
-    <React.Fragment>
-      <Container
-                                        component="main"
-                                        sx={{
-                                          flexGrow: 1,
-                                          py: '2rem',
-                                          // pb: '2rem',
-                                          width: '100%',
-                                          overflowX: 'hidden',
-                                        }}
-                             >
-      <Grid container spacing={3}>
-        <Grid item xs={12} sm={12} md={12} lg={12}>
-          <Typography
-            variant="h3"
-            textAlign="center"
-            sx={{ mb: 3, fontWeight: "500" }}
-            gutterBottom
-          >
-            PADOMI
-          </Typography>
-        </Grid>
-      </Grid>
-      {/* <Grid container spacing={3}>
-        <Grid item xs={12} sm={12} md={12} lg={12}>
-          <Typography paragraph>
-            Here you will find a list of articles with useful tips on how to find lost pets and more.
-          </Typography>
-        </Grid>
-      </Grid> */}
+    <Container component="main" maxWidth="lg" sx={{ py: 6, paddingLeft: 0, paddingRight: 0 }}>
+      <Typography variant="h3" align="center" sx={{ mb: 5, fontWeight: 500 }}>
+        Padomi
+      </Typography>
       <Grid container spacing={3}>
         {articles.map((article) => (
           <Grid item key={article.id} xs={12} sm={6} md={3}>
@@ -136,7 +110,7 @@ const ArticlesList = () => {
   </Grid>
 </Grid>
 </Container>
-    </React.Fragment>
+
   );
 };
 

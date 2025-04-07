@@ -37,11 +37,11 @@ import UserBookmarks from './pages/UserBookmarks'
 import PetTraining from './pages/PetTraining'
 import EditPet from './pages/EditPet'
 
-import TermsOfService from './pages/policies/TermsOfService';
-import Disclaimer from './pages/policies/Disclaimer';
-import DataProtectionPolicy from './pages/policies/DataProtectionPolicy';
-import CommunityGuidelines from './pages/policies/CommunityGuidelines';
-import PrivacyAndCookiePolicy from './pages/policies/PrivacyAndCookiePolicy';
+// import TermsOfService from './pages/policies/TermsOfService';
+// import Disclaimer from './pages/policies/Disclaimer';
+// import DataProtectionPolicy from './pages/policies/DataProtectionPolicy';
+// import CommunityGuidelines from './pages/policies/CommunityGuidelines';
+// import PrivacyAndCookiePolicy from './pages/policies/PrivacyAndCookiePolicy';
 import PolicyPage from './pages/PolicyPage';
 import { SnackbarProvider } from 'notistack';
 import { HelmetProvider } from 'react-helmet-async';
@@ -49,6 +49,7 @@ import { createTheme, ThemeProvider } from '@mui/material/styles';
 import ForgotPassword from './pages/ForgotPassword';
 import ResetPassword from "./pages/ResetPassword";
 import Logout from './pages/Logout';
+import PetQuiz from './pages/PetQuiz';
 import AccountDeleted from './pages/AccountDeleted';
 import CheckoutPage from './pages/CheckoutPage';
 import SuccessPage from "./pages/SuccessPage";
@@ -62,6 +63,7 @@ import PageNotFound from './pages/PageNotFound'; // Add a PageNotFound component
 import { CssBaseline } from '@mui/material';
 import { AuthProvider } from './contexts/AuthContext'; // Path to AuthContext
 import { useAuth } from './contexts/AuthContext'; // Adjust the path as needed
+
 
 
 const PrivateRoute = ({ element }) => {
@@ -248,33 +250,27 @@ function App() {
             <Route index element={<Home />} />
             <Route path="/about" element={<About />} />
             <Route path="/feedback" element={<Feedback />} />
-            {/* <Route path="/support" element={<Support />} /> */}
-            <Route 
-            path="/support" 
-            element={<PrivateRoute element={<Support />} />} 
-          />
+            <Route path="/support" element={<Support />} />
             <Route path="/virtual-pet-training-classes" element={<PetTraining />} />
             <Route path="/contact" element={<Contact />} />
             <Route path="/collaborate" element={<Collaborate />} />
+            <Route path="/pet-matching-quiz" element={<PetQuiz />} />        
             <Route path="/login" element={<Login />} />
             <Route path="/register" element={<Register />} />
             <Route path="/Logout" element={<Logout />} />
             <Route path="/forgot-password" element={<ForgotPassword />} />
-    
             <Route path="/account-deleted" element={<AccountDeleted />} />
             <Route path="/checkout" element={<CheckoutPage />} />
             <Route path="/success" element={<SuccessPage />} />
             <Route path="/cancel" element={<CancelPage />} />
             <Route path="/fun" element={<Fun />} />
-            
             <Route path="/reset-password/:token" element={<ResetPassword />} />
-            
             <Route path="/policies" element={<PolicyPage />} />
-            <Route path="/privacy-and-cookie-policy" element={<PrivacyAndCookiePolicy />} />
+            {/* <Route path="/privacy-and-cookie-policy" element={<PrivacyAndCookiePolicy />} />
             <Route path="/terms-of-service" element={<TermsOfService />} />
             <Route path="/data-protection-policy" element={<DataProtectionPolicy />} />
             <Route path="/disclaimer" element={<Disclaimer />} />
-            <Route path="/community-guidelines" element={<CommunityGuidelines />} />
+            <Route path="/community-guidelines" element={<CommunityGuidelines />} /> */}
             {/* <Route path="/add-pet" element={<PetsAdd />} /> */}
             {/* <Route path="/add-pet" element={<PetAddStepper />} /> */}
             <Route 
@@ -300,13 +296,7 @@ function App() {
          
             <Route path="/shelters" element={<SheltersListPage />} />
             <Route path="/shelters/:id" element={<ShelterDetailsPage />} />
-            {/* <Route path="/articles" element={<ArticlesListPage />} /> */}
-
-            <Route 
-            path="/articles" 
-            element={<PrivateRoute element={<ArticlesListPage />} />} 
-          />
-            {/* <Route path="/articles/:id" element={<ArticleDetailsPage />} /> */}
+            <Route path="/articles" element={<ArticlesListPage />} />
             <Route path="/articles/:slug" element={<ArticleDetailsPage />} />
             <Route path="*" element={<PageNotFound />} />
           </Route>

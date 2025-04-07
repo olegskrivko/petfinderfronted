@@ -647,16 +647,20 @@ const PetAddStepper = () => {
     //   </Container>
     // </Container>
 
-    <Container
-    maxWidth="sm"
-    component="main"
-    sx={{
-      display: 'flex',
-      flexDirection: 'column',
-      minHeight: '90vh',
-      py: '3rem',
-    }}
-  >
+  //   <Container
+  //   maxWidth="sm"
+  //   component="main"
+  //   sx={{
+  //     display: 'flex',
+  //     flexDirection: 'column',
+  //     minHeight: '90vh',
+  //     py: '3rem',
+  //   }}
+  // >
+     <Container component="main" maxWidth="sm" sx={{ py: 6, paddingLeft: 0, paddingRight: 0 }}>
+        {/* <Typography variant="h3" align="center" sx={{ mb: 5, fontWeight: 500 }}>
+        Ziņot par mājdzīvnieku
+        </Typography> */}
     {/* Top section: Progress and Step Title */}
     <Box sx={{ display: 'flex', alignItems: 'center',  }}>
       <Box sx={{ width: 70, height: 70, mr: 2 }}>

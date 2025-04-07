@@ -138,28 +138,13 @@ const handleLogout = () => {
   if (!user) return <Typography>Loading...</Typography>;
 {/* <a href="https://storyset.com/user">User illustrations by Storyset</a> */}
   return (
-      <Container
-              component="main"
-              sx={{
-                flexGrow: 1,
-                pt: '2rem',
-                pb: '2rem',
-                width: '100%',
-                overflowX: 'hidden',
-              }}
-            >
+    <Container component="main" maxWidth="lg" sx={{ py: 6, paddingLeft: 0, paddingRight: 0 }}>
+      {/* <Typography variant="h3" align="center" sx={{ mb: 5, fontWeight: 500 }}>
+        Lietotāja profils
+      </Typography> */}
     <Grid item xs={12} md={12}>
       <Box sx={{ textAlign: 'center', position: 'relative' }}>
-        <Box sx={{ position: 'relative' }}>
-           <Typography
-                      variant="h3"
-                      textAlign="center"
-                      sx={{ mb: 3, fontWeight: "500" }}
-                      gutterBottom
-                    >
-                      LIETOTĀJA PROFILS
-                    </Typography>
-        </Box>
+
 
         {/* <img
           alt={user.username}

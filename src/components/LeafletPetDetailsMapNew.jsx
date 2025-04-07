@@ -13,6 +13,9 @@ import PropTypes from 'prop-types';
 import moment from 'moment';
 import SendMessage from './SendMessage';
 
+import { format } from "date-fns";
+import { lv } from 'date-fns/locale';
+import 'moment/locale/lv'; // Import Latvian locale
 
 // Define different search radius distances
 const getSearchRadii = (petType) => 
@@ -51,7 +54,7 @@ const SearchCircles = ({ center, petType }) => {
                     font-weight: medium;
                     text-align: center;
                     box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);
-                  ">Distance: ${radius / 1000} km
+                  ">Attālums: ${radius / 1000} km
                   </div>
                 `)
                 .openOn(map);
@@ -129,6 +132,8 @@ function LeafletPetDetailsMapNew({
   // console.log("markerPosition from map",markerPosition )
   // console.log("onRemoveLocation from map",onRemoveLocation )
   
+
+
   
  // Handle click function that sends coordinates to parent
 const handleClick = (lat, lng) => {
@@ -283,68 +288,6 @@ useEffect(() => {
     );
 })}
 
-{/* {pet?.sightings_history?.map((sighting, index) => {
-  const petPosition = [
-    parseFloat(sighting.latitude),
-    parseFloat(sighting.longitude)
-  ];
-
-  // The most recent sighting should get the paw icon
-  // const isMostRecent = index === pet.sightings_history.length - 1;
-
-  return (
-    <Marker 
-      key={index} 
-      position={petPosition} 
-      icon={isMostRecent ? createCustomMainIcon('#0077B6') : createCustomIcon('#0077B6')}
-    >    
-      <Popup offset={[0, 5]}>
-        {isMostRecent ? (
-          // Popup for the MOST RECENT sighting
-          <div style={{ textAlign: 'center' }}>
-          
-            <img
-               src={sighting.image}
-               alt={sighting.id}
-               style={{
-                 width: '120px',
-                 height: '120px',
-                 borderRadius: '50%',
-                 border: '3px solid white',
-                 objectFit: 'cover',
-               }}
-            />
-   
-          </div>
-        ) : (
-          // Popup for all OTHER sightings
-          <div
-            style={{
-              textAlign: 'center',
-              backgroundColor: 'slategray',
-              padding: '0.4rem 0.6rem',
-              borderRadius: '1rem',
-              color: 'white',
-              fontWeight: '500',
-            }}
-          ><img
-          src={sighting.image}
-          alt={sighting.id}
-          style={{
-            width: '120px',
-            height: '120px',
-            borderRadius: '50%',
-            border: '3px solid white',
-            objectFit: 'cover',
-          }}
-       />
-            Pievienots {moment(sighting.event_occurred_at).fromNow()}
-          </div>
-        )}
-      </Popup>
-    </Marker>
-  );
-})} */}
 
 <Marker 
  

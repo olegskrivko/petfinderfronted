@@ -115,16 +115,7 @@ function UserPets() {
   }
 
   return (
-       <Container
-              component="main"
-              sx={{
-                flexGrow: 1,
-                py: '2rem',
-                // pb: '2rem',
-                width: '100%',
-                overflowX: 'hidden',
-              }}
-   >
+ <Container component="main" maxWidth="lg" sx={{ py: 6, paddingLeft: 0, paddingRight: 0 }}>
       <Typography
         variant="h3"
         textAlign="center"

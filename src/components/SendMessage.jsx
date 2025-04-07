@@ -62,6 +62,7 @@ const SendMessage = ({
               id="message-input"
               label="Ierakstiet savu komentāru šeit..."
               variant="outlined"
+              size='small'
               fullWidth
               multiline
               rows={3}
@@ -70,16 +71,17 @@ const SendMessage = ({
             />
           </Box>
           {/* {addLocationTrigger && ( */}
-          {isLocationAdded && (
+          {/* {isLocationAdded && ( */}
           
           <Grid container spacing={2} marginBottom="1rem">
             <Grid item xs={12} sm={12} md={6} lg={6}>
-                <TextField id="date" name="date" label="Datums" type="date" fullWidth InputLabelProps={{ shrink: true }} variant="outlined" value={selectedDate} onChange={(e) => onSelectDate(e.target.value)} />
+                <TextField id="date" size='small' name="date" label="Datums" type="date" fullWidth InputLabelProps={{ shrink: true }} variant="outlined" value={selectedDate} onChange={(e) => onSelectDate(e.target.value)} />
             </Grid>
             <Grid item xs={12} sm={12} md={6} lg={6}>
-                <TextField id="time" name="time" label="Laiks" type="time" fullWidth InputLabelProps={{ shrink: true }} variant="outlined" value={selectedTime} onChange={(e) => onSelectTime(e.target.value)} />
+                <TextField id="time" size='small' name="time" label="Laiks" type="time" fullWidth InputLabelProps={{ shrink: true }} variant="outlined" value={selectedTime} onChange={(e) => onSelectTime(e.target.value)} />
             </Grid>
-          </Grid>)}
+          </Grid>
+          {/* )} */}
 
   
 

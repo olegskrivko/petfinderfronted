@@ -13,30 +13,23 @@ import {
 } from "@mui/material";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-
+import { useAuth } from '../contexts/AuthContext';
 import FeedbackImg from "./images/customer_feedback_amico_blue.svg";
 
 const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
 
 const Feedback = () => {
-  const [subject, setSubject] = useState(1);
+  const { user } = useAuth();
+  const [subject, setSubject] = useState("Atsauksme");
+  const [sender, setSender] = useState("");
   const [email, setEmail] = useState("");
   const [message, setMessage] = useState("");
   const [loading, setLoading] = useState(false);
   const [errors, setErrors] = useState({});
 
-  const subjects = [
-    { value: 1, label: "Vispārējā atsauksme" },
-    { value: 2, label: "Funkciju pieprasījums" },
-    { value: 3, label: "Kļūdu ziņojums" },
-    { value: 4, label: "Tehniskais atbalsts" },
-    { value: 5, label: "Reklāma un sponsori" },
-    { value: 6, label: "Partnerības iespējas" },
-    { value: 7, label: "Cits" },
-  ];
-
   const validate = () => {
     const tempErrors = {
+      sender: sender ? "" : "Lūdzu, ievadiet savu vārdu.",
       email: email ? "" : "Lūdzu, ievadiet e-pastu.",
       message: message ? "" : "Lūdzu, ievadiet ziņu.",
     };
@@ -52,13 +45,21 @@ const Feedback = () => {
     }
     setLoading(true);
     try {
-      await axios.post(`${API_BASE_URL}/utilities/send-feedback`, {
-        subject,
+      const accessToken = localStorage.getItem('access_token');
+      await axios.post(`${API_BASE_URL}/feedback`, {
+        sender,   
+        subject,    
         email,
         message,
+      }, {
+        headers: {
+          'Content-Type': 'application/json', 
+          Authorization: `Bearer ${accessToken}`,
+        },
       });
       setLoading(false);
       toast.success("Atsauksme veiksmīgi nosūtīta!");
+      setSender("");
       setEmail("");
       setMessage("");
     } catch (error) {
@@ -116,58 +117,21 @@ const Feedback = () => {
               Lūdzu, aizpildiet formu zemāk, un mēs ar jums sazināsimies, ja būs nepieciešams.
             </Typography>
 
-            <form onSubmit={handleSubmit}>
-              <Box mb={2}>
-                <TextField
-                  select
-                  label="Temats"
-                  fullWidth
-                  value={subject}
-                  onChange={(e) => setSubject(Number(e.target.value))}
-                >
-                  {subjects.map((option) => (
-                    <MenuItem key={option.value} value={option.value}>
-                      {option.label}
-                    </MenuItem>
-                  ))}
-                </TextField>
-              </Box>
-
-              <Box mb={2}>
-                <TextField
-                  label="E-pasts"
-                  type="email"
-                  fullWidth
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
-                  error={!!errors.email}
-                  helperText={errors.email}
-                />
-              </Box>
-
-              <Box mb={2}>
-                <TextField
-                  label="Ziņa"
-                  multiline
-                  fullWidth
-                  rows={4}
-                  value={message}
-                  onChange={(e) => setMessage(e.target.value)}
-                  error={!!errors.message}
-                  helperText={errors.message}
-                />
-              </Box>
-
-              <Button
-                type="submit"
-                variant="contained"
-                fullWidth
-                disabled={loading}
-                sx={{ backgroundColor: "#5B9BD5", mt: 1 }}
-              >
-                {loading ? "Nosūtīšana..." : "Iesniegt atsauksmi"}
-              </Button>
-            </form>
+          <Box component="form" onSubmit={handleSubmit} sx={{ display: "flex", flexDirection: "column", gap: 2 }}>
+            <TextField label="Jūsu vārds" fullWidth value={sender} onChange={(e) => setSender(e.target.value)} error={!!errors.sender} helperText={errors.sender} type="text" />
+            <TextField label="Jūsu e-pasts" fullWidth value={email} onChange={(e) => setEmail(e.target.value)} error={!!errors.email} helperText={errors.email} type="email" />
+            <TextField label="Jūsu ziņa" fullWidth multiline rows={4} value={message} onChange={(e) => setMessage(e.target.value)} error={!!errors.message} helperText={errors.message} type="text" />
+            <Button
+             type="submit"
+             variant="contained"
+             fullWidth
+             disabled={loading}
+             sx={{ backgroundColor: "#5B9BD5", mt: 1 }}
+            >
+               {loading ? "Nosūtīšana..." : "Iesniegt atsauksmi"}
+            </Button>
+          </Box>
+          
           </Grid>
         </Grid>
       </Container>

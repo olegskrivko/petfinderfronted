@@ -49,7 +49,7 @@ function LeafletClusterMap({ pets, centerCoords }) {
   return (
     <div>
       <MapContainer
-        style={{ height: '500px' }}
+        style={{ height: '400px' }}
         center={[56.946285, 24.105078]} // Default center (Lat, Long)
         zoom={7}
         scrollWheelZoom={true}

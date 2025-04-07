@@ -330,8 +330,8 @@ function Home() {
       {/* </Container> */}
   
 {/* <Banner /> */}
-
-<Container
+<Container component="main" maxWidth="lg" sx={{ py: 6, paddingLeft: "0", paddingRight: "0"}}> 
+{/* <Container
           component="main"
           sx={{
             flexGrow: 1,
@@ -340,7 +340,7 @@ function Home() {
             width: '100%',
             overflowX: 'hidden',
           }}
-        >
+        > */}
             <BannerSection
       title="Palīdzi pazudušiem mājdzīvniekiem atgriezties mājās!"
       imageSrc={mainIMG}

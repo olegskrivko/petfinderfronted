@@ -410,21 +410,14 @@ if (markerPosition && markerPosition.length === 2) {
   // const latestStatus = pet.sightings_history.length > 0 ? pet.sightings_history[pet.sightings_history.length - 1] : null;
 
   return (
-    <React.Fragment>
-                <Container
-                                                                component="main"
-                                                                sx={{
-                                                                  flexGrow: 1,
-                                                                  py: '2rem',
-                                                                  // pb: '2rem',
-                                                                  width: '100%',
-                                                                  overflowX: 'hidden',
-                                                                }}
-                                                     >
+    <Container component="main" maxWidth="lg" sx={{ py: 6, paddingLeft: 0, paddingRight: 0 }}>
+            <Typography variant="h3" align="center" sx={{ mb: 5, fontWeight: 500 }}>
+            {pet.status_display}<span style={{ textTransform: 'lowercase' }}> {pet.species_display} </span> 
+              </Typography>
     <Grid container spacing={3}>
-       <Grid item xs={12}>
+       {/* <Grid item xs={12}>
        <Typography variant="h3" textAlign="center" sx={{ mb: 3, fontWeight: "500" }} gutterBottom>
-          {/* Display the latest status if available */}
+   
 
              <span>
             <span style={{ textTransform: 'uppercase' }}>
@@ -433,7 +426,7 @@ if (markerPosition && markerPosition.length === 2) {
             </span>
        
         </Typography>
-          </Grid>
+          </Grid> */}
           <Grid item xs={12} sm={12} md={6} lg={6}>
             <Card style={{ position: 'relative' }}>
             <Grid item xs={12} >
@@ -442,7 +435,7 @@ if (markerPosition && markerPosition.length === 2) {
             <CardMedia
               component="img"
               alt={pet.name}
-              height="500"
+              height="420"
               image={imageList[currentIndex] || "/default_pet_image.jpg"}
             />
 
@@ -537,6 +530,18 @@ if (markerPosition && markerPosition.length === 2) {
           <ShareIcon />
           </IconButton>
           </Box>
+          {/* <Box style={{position: 'absolute', top: 20, left: 20, zIndex: 999 }}>
+            <Chip 
+  label={pet.status_display}
+  size="small"
+  variant="contained"
+  sx={{
+    backgroundColor: 'rgba(0, 0, 0, 0.6)',
+    color: 'white',
+
+    }}
+  />
+          </Box> */}
           </Card>
 
           </Grid>
@@ -584,7 +589,7 @@ if (markerPosition && markerPosition.length === 2) {
       </Grid>
   
       </Container>
-    </React.Fragment>
+
   );
 };
 

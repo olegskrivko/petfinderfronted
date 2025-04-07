@@ -31,9 +31,9 @@ const Layout = () => {
             overflowX: 'hidden',
           }}
         >
-          <Suspense fallback={<Box sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}><CircularProgress color="primary" /><Typography sx={{ ml: 2 }}>Loading...</Typography></Box>}>
+          {/* <Suspense fallback={<Box sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}><CircularProgress color="primary" /><Typography sx={{ ml: 2 }}>Loading...</Typography></Box>}> */}
             <Outlet />
-          </Suspense>
+          {/* </Suspense> */}
         </Container>
       </Box>
 

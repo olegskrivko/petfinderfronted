@@ -81,16 +81,7 @@ function UserSettings() {
 
   return (
     <>
-          <Container
-                  component="main"
-                  sx={{
-                    flexGrow: 1,
-                    py: '2rem',
-                    // pb: '2rem',
-                    width: '100%',
-                    overflowX: 'hidden',
-                  }}
-       >
+ <Container component="main" maxWidth="sm" sx={{ py: 6, paddingLeft: 0, paddingRight: 0 }}>
       <Grid item xs={12}>
         <Box sx={{ textAlign: "center" }}>
           <Typography variant="h3" sx={{ mb: 3, fontWeight: "500" }}>

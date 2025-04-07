@@ -28,7 +28,7 @@ const Footer = () => {
     { path: '/policies', label: 'Politikas un vadlīnijas', active: true },
     { path: '/how-to-use', label: 'Kā lietot lietotni', active: false },
     { path: '/whats-new', label: 'Kas jauns?', active: false },
-    { path: '/pet-matching-quiz', label: 'Kādu mājdzīvnieku izvēlēties?', active: false },
+    { path: '/pet-matching-quiz', label: 'Kādu mājdzīvnieku izvēlēties?', active: true },
   ];  
   
   const infoLinks = [
