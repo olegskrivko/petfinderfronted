@@ -22,8 +22,8 @@ import { motion } from "framer-motion";
 // Images
 import petlisting from './images/petlisting.png';
 import lostdogposter from './images/lostdogposter.png';
-import Banner from '../components/Banner';
-import BannerImg from './images/catdog.jpg'
+// import Banner from '../components/Banner';
+// import BannerImg from './images/catdog.jpg'
 import studies from './images/studies.png';
 import search from './images/search.png';
 import share from './images/share.png';
