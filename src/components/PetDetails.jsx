@@ -17,7 +17,9 @@ import 'moment/locale/lv'; // Import Latvian locale
 import { ContactSupportOutlined } from '@mui/icons-material';
 import { useAuth } from '../contexts/AuthContext';
 import PetAttributes from "./PetAttributes";
-import PetPhoto from "./PetPhoto";
+// import PetPhoto from "./PetPhoto";
+import CheckCircleIcon from '@mui/icons-material/CheckCircle';
+
 const API_BASE_URL = import.meta.env.VITE_API_BASE_URL; 
 
 const PetDetailsPage = () => {
@@ -410,10 +412,10 @@ if (markerPosition && markerPosition.length === 2) {
   // const latestStatus = pet.sightings_history.length > 0 ? pet.sightings_history[pet.sightings_history.length - 1] : null;
 
   return (
-    <Container component="main" maxWidth="lg" sx={{ py: 6, paddingLeft: 0, paddingRight: 0 }}>
-            <Typography variant="h3" align="center" sx={{ mb: 5, fontWeight: 500 }}>
+    <Container component="main" maxWidth="lg" sx={{ paddingLeft: 0, paddingRight: 0 }}>
+            {/* <Typography variant="h3" align="center" sx={{ mb: 5, fontWeight: 500 }}>
             {pet.status_display}<span style={{ textTransform: 'lowercase' }}> {pet.species_display} </span> 
-              </Typography>
+              </Typography> */}
     <Grid container spacing={3}>
        {/* <Grid item xs={12}>
        <Typography variant="h3" textAlign="center" sx={{ mb: 3, fontWeight: "500" }} gutterBottom>
@@ -430,18 +432,18 @@ if (markerPosition && markerPosition.length === 2) {
           <Grid item xs={12} sm={12} md={6} lg={6}>
             <Card style={{ position: 'relative' }}>
             <Grid item xs={12} >
-          {/* <Card style={{ position: "relative" }}> */}
             {/* Main Image */}
             <CardMedia
               component="img"
               alt={pet.name}
-              height="420"
+              height="500"
               image={imageList[currentIndex] || "/default_pet_image.jpg"}
             />
 
             {/* Dot Navigation */}
             <Box
               sx={{
+             
                 display: "flex",
                 justifyContent: "center",
                 gap: "8px",
@@ -449,7 +451,7 @@ if (markerPosition && markerPosition.length === 2) {
                 padding: "10px",
               }}
             >
-              {imageList.map((_, index) => (
+              {imageList.length > 1 && imageList.map((_, index) => (
                 <div
                   key={index}
                   onClick={() => handleDotClick(index)}
@@ -457,14 +459,13 @@ if (markerPosition && markerPosition.length === 2) {
                     width: 12,
                     height: 12,
                     borderRadius: "50%",
-                    backgroundColor: index === currentIndex ? "#ff6600" : "#ddd",
+                    backgroundColor: index === currentIndex ? "#5B9BD5" : "#ddd",
                     cursor: "pointer",
                     transition: "background-color 0.3s",
                   }}
                 />
               ))}
             </Box>
-          {/* </Card> */}
         </Grid>
               {/* <CardMedia component="img" alt={pet.name} height="400" image={currentImage}/> */}
 
@@ -530,18 +531,35 @@ if (markerPosition && markerPosition.length === 2) {
           <ShareIcon />
           </IconButton>
           </Box>
-          {/* <Box style={{position: 'absolute', top: 20, left: 20, zIndex: 999 }}>
-            <Chip 
-  label={pet.status_display}
-  size="small"
-  variant="contained"
+          <Box style={{position: 'absolute', top: 20, left: 20, zIndex: 999 }}>
+          <Chip
+    label={pet.status_display}
+    icon={<CheckCircleIcon sx={{ color: 'white', fill: "white" }} />} // Optional icon
+    variant="filled"
+    sx={{
+      // position: 'absolute',
+      top: 16,
+      left: 16,
+      backgroundColor: 'rgba(0, 0, 0, 0.6)',
+      color: 'white',
+      letterSpacing: "1.2px",
+      fontWeight: 500,
+      // borderRadius: '999px', // Makes it pill-shaped
+      backdropFilter: 'blur(6px)', // Adds a blur behind for frosted-glass effect
+      boxShadow: '0 4px 12px rgba(0,0,0,0.3)',
+      // paddingX: 1.5,
+
+      paddingY: 0.5,
+      fontSize: '0.85rem',
+    }}
+  />
+            {/* <Chip label={pet.status_display} variant="contained"
   sx={{
     backgroundColor: 'rgba(0, 0, 0, 0.6)',
     color: 'white',
-
     }}
-  />
-          </Box> */}
+  /> */}
+          </Box>
           </Card>
 
           </Grid>

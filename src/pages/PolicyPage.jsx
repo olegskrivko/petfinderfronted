@@ -3,7 +3,7 @@ import { Container, Typography, Grid, Box } from '@mui/material';
 
 const PolicyPage = () => {
   return (
-<Container component="main" maxWidth="lg" sx={{ py: 6, paddingLeft: "0", paddingRight: "0" }}>
+<Container component="main" maxWidth="lg" sx={{ paddingLeft: "0", paddingRight: "0" }}>
   <Typography component="h1" variant="h3" align="center" sx={{ mb: 5, fontWeight: 600 }}>
     Privātuma, Sīkdatņu politika un Pakalpojumu noteikumi
   </Typography>

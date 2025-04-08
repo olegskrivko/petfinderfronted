@@ -68,6 +68,24 @@ const formattedTime = eventDate
   return (
     <Box>
     <Grid container spacing={1}>
+
+    <Grid item xs={12}>
+        <Box
+          gap={1}
+          style={{
+            display: 'flex',
+            justifyContent: 'start',
+            alignItems: 'center',
+            paddingBottom: '0.3rem',
+          }}
+        >
+          <IconButton color="primary" style={{ backgroundColor: '#f7f9fd' }}>
+            <PetsIcon />
+          </IconButton>
+          <b>Suga:</b> {pet.species_display}
+          <Typography variant="body1" gutterBottom></Typography>
+        </Box>
+      </Grid>
       <Grid item xs={12}>
         <Box
           gap={1}

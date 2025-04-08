@@ -31,9 +31,9 @@ import { Button } from '@mui/material';
 // Import Custom hook
 import useFontSizes from './utils/getFontSize';
 
-import programmerImg from './images/programmer_cuate.svg';
-import lightBulbImg from './images/light_bulb_bro.svg';
-import scrumBoardImg from './images/scrum_board_pana.svg';
+// import programmerImg from './images/programmer_cuate.svg';
+// import lightBulbImg from './images/light_bulb_bro.svg';
+// import scrumBoardImg from './images/scrum_board_pana.svg';
 import mobileWireframeImg from './images/mobile_wireframe_amico.svg';
 import walkingAroundImg from './images/walking_around_amico.svg';
 import socialIdeasImg from './images/social_ideas_cuate.svg';

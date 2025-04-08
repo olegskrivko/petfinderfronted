@@ -19,7 +19,14 @@ const Layout = () => {
         sx={{
           flex: '1 0 auto',
           width: '100%',
+          pt: {
+            xs: 1,
+            sm: 2,
+            md: 4,
+            lg: 4
+          },
         }}
+      
       >
         <Container
           component="main"

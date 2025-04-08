@@ -38,7 +38,7 @@ const Support = () => {
   return (
     <>
       <ToastContainer />
-      <Container component="main" maxWidth="lg" sx={{ py: 6, paddingLeft: 0, paddingRight: 0 }}>
+      <Container component="main" maxWidth="lg" sx={{ paddingLeft: 0, paddingRight: 0 }}>
         <Typography variant="h3" align="center" sx={{ mb: 5, fontWeight: 500 }}>
           Atbalstīt projektu
         </Typography>

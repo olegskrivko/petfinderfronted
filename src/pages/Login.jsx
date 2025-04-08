@@ -52,7 +52,7 @@ const Login = () => {
   const handleClickShowPassword = () => setShowPassword(!showPassword);
 
   return (
-    <Container maxWidth="xs" sx={{ py: 6, paddingLeft: 0, paddingRight: 0 }}>
+    <Container maxWidth="xs" sx={{ paddingLeft: 0, paddingRight: 0 }}>
       <Box
         sx={{
           display: "flex",

@@ -180,7 +180,7 @@ function DrawerAppBar(props) {
   );
 
   return (
-    <Box sx={{ flexGrow: 1,marginBottom: "2rem"   }}>
+    <Box sx={{ flexGrow: 1, marginBottom: "2rem"   }}>
       <AppBar component="nav"
         sx={{
           background: '#5B9BD5' ,   

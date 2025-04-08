@@ -657,7 +657,7 @@ const PetAddStepper = () => {
   //     py: '3rem',
   //   }}
   // >
-     <Container component="main" maxWidth="sm" sx={{ py: 6, paddingLeft: 0, paddingRight: 0 }}>
+     <Container component="main" maxWidth="sm" sx={{ paddingLeft: 0, paddingRight: 0 }}>
         {/* <Typography variant="h3" align="center" sx={{ mb: 5, fontWeight: 500 }}>
         Ziņot par mājdzīvnieku
         </Typography> */}
