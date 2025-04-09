@@ -21,6 +21,7 @@ import PetAttributes from "./PetAttributes";
 import CheckCircleIcon from '@mui/icons-material/CheckCircle';
 import PetsIcon from '@mui/icons-material/Pets';
 import WifiTetheringErrorIcon from '@mui/icons-material/WifiTetheringError';
+import ImageCarousel from './ImageCarousel';
 const API_BASE_URL = import.meta.env.VITE_API_BASE_URL; 
 
 const PetDetailsPage = () => {
@@ -416,9 +417,9 @@ if (markerPosition && markerPosition.length === 2) {
     <Container component="main" maxWidth="lg" sx={{ paddingLeft: "0rem !important", paddingRight: "0rem !important" }}>
     <Grid container spacing={3}>
           <Grid item xs={12} sm={12} md={6} lg={6}>
-            <Card style={{ position: 'relative' }}>
+            {/* <Card style={{ position: 'relative' }}>
             <Grid item xs={12} >
-            {/* Main Image */}
+
             <CardMedia
               component="img"
               alt={pet.name}
@@ -426,16 +427,15 @@ if (markerPosition && markerPosition.length === 2) {
               image={imageList[currentIndex] || "/default_pet_image.jpg"}
               sx={{
                 height: {
-                  xs: 380, // Small screens
+                  xs: 380, 
                   sm: 420,
                   md: 460,
-                  lg: 500, // Large screens
+                  lg: 500, 
                 },
                 objectFit: 'cover',
               }}
             />
 
-            {/* Dot Navigation */}
             <Box
               sx={{
              
@@ -483,39 +483,51 @@ if (markerPosition && markerPosition.length === 2) {
           <ShareIcon />
           </IconButton>
           </Box>
-          <Box style={{position: 'absolute', top: 20, left: 20, zIndex: 999 }}>
+          <Box style={{position: 'absolute', top: 16, left: 16, zIndex: 999 }}>
           <Chip
     label={pet.status_display}
-    icon={<WifiTetheringErrorIcon sx={{ color: 'white', fill: "orange" }} />} // Optional icon
     variant="filled"
     sx={{
-      // position: 'absolute',
-      top: 16,
-      left: 16,
  
       backgroundColor: 'rgba(0, 0, 0, 0.6)',
       color: 'white',
       letterSpacing: "1.2px",
       fontWeight: 500,
-      // borderRadius: '999px', // Makes it pill-shaped
-      backdropFilter: 'blur(6px)', // Adds a blur behind for frosted-glass effect
+      backdropFilter: 'blur(6px)', 
       boxShadow: '0 4px 12px rgba(0,0,0,0.3)',
-      // paddingX: 1.5,
-     
-
       paddingY: 0.5,
       fontSize: '0.85rem',
     }}
   />
-            {/* <Chip label={pet.status_display} variant="contained"
-  sx={{
-    backgroundColor: 'rgba(0, 0, 0, 0.6)',
-    color: 'white',
-    }}
-  /> */}
-          </Box>
-          </Card>
 
+          </Box>
+          </Card> */}
+<ImageCarousel pet={pet} images={imageList.filter(Boolean)} />
+ {/* 👉 Action Buttons BELOW the image */}
+ <Box sx={{ display: 'flex', justifyContent: 'space-around', py: 1 }}>
+    {/* Add to Favorites */}
+    <Tooltip title={isFavorite ? "Remove from favorites" : "Add to favorites"}>
+      <IconButton onClick={handleFavorite}>
+        {isFavorite ? <BookmarkIcon color="secondary" /> : <BookmarkBorderIcon />}
+      </IconButton>
+    </Tooltip>
+
+    {/* Download */}
+    <Tooltip title="Download Poster">
+      <Link to={`/pets/${id}/poster`}>
+        <IconButton>
+          <DownloadIcon />
+        </IconButton>
+      </Link>
+    </Tooltip>
+
+    {/* Share */}
+    <Tooltip title="Share">
+      <IconButton onClick={handleShare}>
+        <ShareIcon />
+      </IconButton>
+    </Tooltip>
+  </Box>
           </Grid>
           {/* Attributes */}
           <Grid item xs={12} sm={12} md={6} lg={6}>
