@@ -22,13 +22,13 @@ const TabContact = ({ pet }) => {
         <Typography variant="body2" fontWeight="bold">
         {pet.author.username.toUpperCase()}
         </Typography>
-        <Typography variant="body2" color="textSecondary">
+        {/* <Typography variant="body2" color="textSecondary">
         {moment(pet.created_at).fromNow()}
-        </Typography>
+        </Typography> */}
       </Box>
       </Box>               
        <Box display="flex" alignItems="center" gap={2} mt={2}>
-      <IconButton style={{ backgroundColor: '#555', color: '#fff' }}>
+      <IconButton style={{ backgroundColor: '#555', color: '#fff', pointerEvents: 'none' }}>
         <PhoneIcon />
       </IconButton>
   

@@ -138,7 +138,7 @@ const handleLogout = () => {
   if (!user) return <Typography>Loading...</Typography>;
 {/* <a href="https://storyset.com/user">User illustrations by Storyset</a> */}
   return (
-    <Container component="main" maxWidth="lg" sx={{ py: 6, paddingLeft: 0, paddingRight: 0 }}>
+    <Container component="main" maxWidth="lg" sx={{ paddingLeft: 0, paddingRight: 0 }}>
       {/* <Typography variant="h3" align="center" sx={{ mb: 5, fontWeight: 500 }}>
         Lietotāja profils
       </Typography> */}

@@ -27,7 +27,7 @@ const TabNotes = ({ pet }) => {
             (
               <Typography>
                  <Box display="flex" alignItems="center" gap={2}>
-                 <IconButton style={{ backgroundColor: '#555', color: '#fff' }}>
+                 <IconButton style={{ backgroundColor: '#555', color: '#fff', pointerEvents: 'none' }}>
                   <TextSnippetIcon />
                 </IconButton> {pet.notes}
                 
@@ -39,7 +39,7 @@ const TabNotes = ({ pet }) => {
               (           
             <Typography color="textSecondary">
               <Box display="flex" alignItems="center" gap={2}>
-                <IconButton style={{ backgroundColor: '#555', color: '#fff' }}>
+                <IconButton style={{ backgroundColor: '#555', color: '#fff', pointerEvents: 'none' }}>
                   <TextSnippetIcon />
                 </IconButton> Šim sludinājumam nav pievienotas piezīmes.
               </Box>

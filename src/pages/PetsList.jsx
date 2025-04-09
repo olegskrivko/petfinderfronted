@@ -64,9 +64,9 @@ const PATTERN_CHOICES = [
 
   return (
     <form>
-      <List>
+      <List sx={{ paddingTop: '0rem !important' }}>
         {/* Filter by Status */}
-       <ListItem sx={{ padding: '0 !important', paddingTop: '0.8rem !important' }}>
+       <ListItem sx={{ padding: '0 !important', paddingTop: '0rem !important' }}>
           <Box>
             <InputLabel sx={{ fontWeight: '500', color: '#000' }}>Statuss</InputLabel>
               {STATUS_CHOICES.map((status) => (
@@ -309,13 +309,13 @@ const PetsList = () => {
   }
 
   return (
-      <Container component="main" maxWidth="lg" sx={{ paddingLeft: 0, paddingRight: 0 }}>
+      <Container component="main" maxWidth="lg" sx={{ paddingLeft: "0rem !important", paddingRight: "0rem !important" }}>
     <Grid container spacing={3}>
        
 
     
      
-     <Grid item xs={3} sm={4} md={3} sx={{ display: { xs: 'none', md: 'block', paddingLeft: "0 !important", paddingRight: "0 !important" } }}>
+     <Grid item xs={3} sm={4} md={3} sx={{ display: { xs: 'none', md: 'block',  paddingRight: "0 !important" } }}>
         <Box>
          <Sidebar filters={filters} handleChipClick={handleChipClick} handleDateChange={handleDateChange} handleSearchChange={handleSearchChange} />
         </Box>

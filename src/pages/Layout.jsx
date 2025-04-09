@@ -21,7 +21,7 @@ const Layout = () => {
           width: '100%',
           pt: {
             xs: 1,
-            sm: 2,
+            sm: 3,
             md: 4,
             lg: 4
           },
