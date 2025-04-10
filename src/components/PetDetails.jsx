@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useParams, Link } from 'react-router-dom'; // to extract the pet ID from the URL
-import { CircularProgress, Alert,Grid,Grid2,Container, Typography, Card,CardMedia,Box,Tooltip,  IconButton   } from '@mui/material';
+import { CircularProgress,Button, Alert,Grid,Grid2,Container, Typography, Card,CardMedia,Box,Tooltip,  IconButton   } from '@mui/material';
 import Chip from '@mui/material/Chip';
 import ShareIcon from '@mui/icons-material/Share';
 import DownloadIcon from '@mui/icons-material/Download';
@@ -38,7 +38,7 @@ const PetDetailsPage = () => {
   
   //   checkUser();
   // }, []);
-  
+  const [isFormOpen, setIsFormOpen] = useState(false);
   const { id } = useParams(); // Get the pet ID from the URL
   const [pet, setPet] = useState(null);
   const [sightings, setSightings] = useState([]);  // State to store pet sightings
@@ -76,6 +76,10 @@ const PetDetailsPage = () => {
     ].filter((img) => img) // Ensure only valid images are used
   : [];
 
+
+  const handleToggle = () => {
+    setIsFormOpen(prev => !prev); // Toggle form visibility
+  };
   const [currentIndex, setCurrentIndex] = useState(0);
   
   const handleDotClick = (index) => {
@@ -189,7 +193,7 @@ if (markerPosition && markerPosition.length === 2) {
     // formData.append('longitude', coords.lng); 
     // formData.append('latitude',  56.9496);
     // formData.append('longitude', 24.1052); 
-    formData.append('status', 1);  // Replace with the actual status (e.g., '3' for Seen)
+    formData.append('status', 2);  // Replace with the actual status (e.g., '3' for Seen)
     formData.append('notes', message);
     console.log("xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx")
     formData.append('reporter', user.userId);  // Optional
@@ -239,6 +243,7 @@ if (markerPosition && markerPosition.length === 2) {
       // setSelectedDateTime('');
       setSelectedDate('');
       setSelectedTime('');
+      setIsFormOpen(false);
       
     // Fetch sightings again after sending message (optional)
     fetchPetSightings();
@@ -416,7 +421,9 @@ if (markerPosition && markerPosition.length === 2) {
   return (
     <Container component="main" maxWidth="lg" sx={{ paddingLeft: "0rem !important", paddingRight: "0rem !important" }}>
     <Grid container spacing={3}>
+  
           <Grid item xs={12} sm={12} md={6} lg={6}>
+          {/* <b>{pet.status_display} {pet.species_display.toLowerCase()}</b> */}
             {/* <Card style={{ position: 'relative' }}>
             <Grid item xs={12} >
 
@@ -508,7 +515,7 @@ if (markerPosition && markerPosition.length === 2) {
     {/* Add to Favorites */}
     <Tooltip title={isFavorite ? "Remove from favorites" : "Add to favorites"}>
       <IconButton onClick={handleFavorite}>
-        {isFavorite ? <BookmarkIcon color="secondary" /> : <BookmarkBorderIcon />}
+        {isFavorite ? <BookmarkIcon sx={{color: "#5B9BD5"}} /> : <BookmarkBorderIcon />}
       </IconButton>
     </Tooltip>
 
@@ -549,6 +556,18 @@ if (markerPosition && markerPosition.length === 2) {
           setCoords={setCoords} />
           </Grid>
         <Grid item xs={12} sm={12} md={12} lg={12}>
+        <Button
+        variant="contained"
+
+        fullWidth
+        size="large"
+        sx={{ mb: 3, backgroundColor: "#5B9BD5" }}
+        onClick={handleToggle}
+      >
+        Pievienot ziņojumu par mājdzīvnieku
+      </Button>
+
+      {isFormOpen && 
           <SendMessage pet={pet} 
               message={message}
               onMessageChange={setMessage}
@@ -567,6 +586,7 @@ if (markerPosition && markerPosition.length === 2) {
               selectedTime={selectedTime}
               onSelectDate={handleDateChange}
               onSelectTime={handleTimeChange} />
+      }
       </Grid>
       <Grid item xs={12} sm={12} md={12} lg={12}>
         <IconLabelTabs pet={pet} sightings={sightings} onZoomMap={handleZoomMap} />

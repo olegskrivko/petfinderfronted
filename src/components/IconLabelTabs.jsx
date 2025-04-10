@@ -77,7 +77,7 @@ function IconLabelTabs({pet,sightings, onZoomMap}) {
         <Tab icon={<ContactPageIcon />} label="Contact" />
       </Tabs> */}
 
-      <div style={{ margin: '2rem 0' }}>
+      <div style={{ margin: '1rem 0' }}>
         <Tabs
           value={value}
           centered

@@ -218,16 +218,15 @@ const ArticleDetails = () => {
   };
 
   return (
-    <Container>
+    <Container component="main" maxWidth="lg" sx={{ paddingLeft: "0rem !important", paddingRight: "0rem !important" }}>
       <Helmet>
         <title>{article.title} | My Blog</title>
         <meta name="description" content={article.summary} />
       </Helmet>
 
-      <Typography variant="h1" textAlign="center" sx={{ mb: 3 }} gutterBottom>
-        {article.title}
-      </Typography>
-
+              <Typography variant="h3" align="center" sx={{ mb: 5, fontWeight: 500 }}>
+              {article.title}
+              </Typography>
       {/* <Typography variant="body1" color="textSecondary" paragraph sx={{textAlign: "justify"}}>
         {article.summary}
       </Typography> */}
@@ -280,7 +279,7 @@ const ArticleDetails = () => {
             ref={(el) => (paragraphRefs.current[index] = el)}
           >
             <Grid item xs={12} md={6} order={{ xs: 2, md: index % 2 === 0 ? 1 : 2 }}>
-              <CardMedia sx={{ height: 400 }} image={paragraph.image} title={paragraph.title} />
+              <CardMedia sx={{ height: 400 }} image={`https://res.cloudinary.com/dymne7cde/${paragraph.image}`} title={paragraph.title} />
               <Typography variant="caption" color="textSecondary">
                 Ilustrācija izveidota ar Mākslīgā Intelekta palīdzību
               </Typography>

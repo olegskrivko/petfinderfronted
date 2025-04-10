@@ -23,9 +23,18 @@ import useMediaQuery from '@mui/material/useMediaQuery';
 import { useTheme } from '@mui/material/styles';
 import { useAuth } from '../contexts/AuthContext';
 import ImageNotSupportedIcon from '@mui/icons-material/ImageNotSupported';
+import dayjs from 'dayjs';
+import 'dayjs/locale/lv';
+import 'moment/locale/lv'; // Latvian locale
+import relativeTime from 'dayjs/plugin/relativeTime';
+dayjs.locale('lv');
+dayjs.extend(relativeTime);
 const API_BASE_URL = import.meta.env.VITE_API_BASE_URL; 
 const TabMessages = ({ pet, sightings, onZoomMap  }) => {
+ 
+
   const { user, logout } = useAuth();
+  console.log(dayjs().format('dddd, D MMMM YYYY')); // Latvian!
   console.log("useruser", user)
   const theme = useTheme();
   // const [open, setOpen] = useState(false);
@@ -131,7 +140,10 @@ const TabMessages = ({ pet, sightings, onZoomMap  }) => {
                       {status.reporter.username.toUpperCase()}
                     </Typography>
                     <Typography variant="body2" color="textSecondary">
-                      {moment(status.timestamp).fromNow()}
+                    {/* {moment(status.created_at).locale('lv').fromNow()} */}
+                    {/* {dayjs(status.created_at).format('dddd, D MMMM YYYY')} */}
+                    {dayjs(status.created_at).fromNow()}
+
                     </Typography>
                           </Box>
               </Box>
@@ -329,104 +341,7 @@ const TabMessages = ({ pet, sightings, onZoomMap  }) => {
     )} */}
   </Grid>
   </Grid>
-  //   <Grid container spacing={2}>
 
-  //   {pet && pet.sightings_history && pet.sightings_history.length > 0 ? (
-  //     pet.sightings_history.slice(0, visibleMessages).map((status, index) => (
-  //       <Grid item xs={12} key={index}>
-  //         <Card>
-  //           <CardContent>
-       
-  //             <Box display="flex" alignItems="center" mb={2}>
-  //               <Avatar src={`a.svg`} alt={status.reporter.username.toUpperCase()} sx={{backgroundColor: "#22badf"}} />
-  //               <Box ml={2}> 
-  //                 <Typography variant="body2" fontWeight="bold">
-  //                   {status.reporter.username.toUpperCase()}
-  //                 </Typography>
-  //                 <Typography variant="body2" color="textSecondary">
-  //                   {moment(status.timestamp).fromNow()}
-  //                 </Typography>
-  //               </Box>
-  //             </Box>
-
-        
-  //             <Typography>{status.notes}</Typography>
-
-      
-  //             {status.image && (
-  //               <Box display="flex" justifyContent="flex-end" mt={2}>
-  //                 <img
-  //                   src={status.image}
-  //                   alt="Status"
-  //                   onClick={() => handleImageOpen(status.image)}
-  //                   style={{
-  //                     cursor: 'pointer',
-  //                     borderRadius: '8px',
-  //                     maxWidth: '150px', // Smaller image size
-  //                     height: 'auto',
-  //                   }}
-  //                 />
-  //               </Box>
-  //             )}
-
-        
-  //             <Box mt={2} display="flex" justifyContent="space-between">
-  //               <Tooltip title="Show on map">
-  //                 <IconButton onClick={() => onZoomMap(status?.latitude, status?.longitude)}>
-  //                   {status?.latitude && status?.longitude ? <LocationOnIcon /> : <LocationOffIcon />}
-  //                 </IconButton>
-  //               </Tooltip>
-  //               <Tooltip title="Izdzēst ziņu">
-  //                 <IconButton onClick={() => handleDeleteMessage(status.id)}>
-  //                   <DeleteIcon color="error" />
-  //                 </IconButton>
-  //               </Tooltip>
-  //               {/* {canDelete ? (
-  //                     <Tooltip title="Delete Message">
-  //                       <IconButton onClick={() => handleDeleteMessage(status.id)}>
-  //                         <DeleteIcon color="error" />
-  //                       </IconButton>
-  //                     </Tooltip>
-  //                   ) : (
-  //                     <Tooltip title="You cannot delete this message">
-  //                       <span>
-  //                         <IconButton disabled>
-  //                           <DeleteIcon color="disabled" />
-  //                         </IconButton>
-  //                       </span>
-  //                     </Tooltip>
-  //                   )} */}
-  //             </Box>
-  //           </CardContent>
-  //         </Card>
-
-  //         {/* Image Modal */}
-  //         <Modal open={open} onClose={handleImageClose} closeAfterTransition BackdropComponent={Backdrop}>
-  //           <Fade in={open}>
-  //             <Box sx={{ width: '90%', maxHeight: '90%', margin: 'auto', outline: 0 }}>
-  //               <img src={selectedImage} alt="Selected" style={{ width: '100%' }} />
-  //             </Box>
-  //           </Fade>
-  //         </Modal>
-  //       </Grid>
-  //     ))
-  //   ) : (
-  //     <Grid item xs={12}>
-  //       <Typography variant="body2" color="textSecondary">
-  //         No status history available.
-  //       </Typography>
-  //     </Grid>
-  //   )}
-    
-  //   {/* Load More Button */}
-  //   {pet.sightings_history.length > visibleMessages && (
-  //     <Grid item xs={12} style={{display: "flex", justifyContent: "center"}}>
-  //       <Button variant="outlined" onClick={loadMoreMessages}>
-  //         Load More
-  //       </Button>
-  //     </Grid>
-  //   )}
-  // </Grid>
   );
 };
 

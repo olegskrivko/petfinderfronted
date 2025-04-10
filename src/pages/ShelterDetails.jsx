@@ -6,6 +6,7 @@ import {
   Card,
   CardContent,
   CardMedia,
+  Container,
   Chip,
   Box,
   List,
@@ -85,8 +86,12 @@ function ShelterDetails() {
   };
 
   return (
-    <React.Fragment>
-      <Grid container spacing={3}>
+     <React.Fragment>
+      <Container component="main" maxWidth="lg" sx={{ paddingLeft: "0rem !important", paddingRight: "0rem !important" }}>
+              <Typography variant="h3" align="center" sx={{ mb: 5, fontWeight: 500 }}>
+              {shelter.name}
+                      </Typography>
+      {/* <Grid container spacing={3}>
         <Grid item xs={12} sm={12} md={12} lg={12}>
           <Typography
             variant="h1"
@@ -101,7 +106,7 @@ function ShelterDetails() {
             {shelter.name}
           </Typography>
         </Grid>
-      </Grid>
+      </Grid> */}
       <Grid container spacing={3}>
         <Grid item xs={12} sm={5}>
           <Card style={{ boxShadow: 'none' }}>
@@ -274,7 +279,8 @@ function ShelterDetails() {
           </Card>
         </Grid>
       </Grid>
-    </React.Fragment>
+      </Container>
+     </React.Fragment>
   );
 }
 

@@ -98,7 +98,7 @@ const StatusHistory = ({ pet, sightings }) => {
               {validSightings.length > 0 ? (
                 validSightings.slice().reverse().map((sighting, index) => {
                   return (
-                    <ListItem  sx={{ paddingLeft: 0, paddingBottom: "0rem !important" }} key={index}>
+                    <ListItem  sx={{ paddingLeft: 0 }} key={index}>
                       <ListItemAvatar>
                     
                           <Avatar style={{ backgroundColor: '#555', color: '#fff' }}>
@@ -115,7 +115,7 @@ const StatusHistory = ({ pet, sightings }) => {
      
               ) : (
                 <Grid item xs={12}>
-                   <ListItem sx={{ paddingLeft: 0, paddingBottom: 0 }}>
+                   <ListItem sx={{ paddingLeft: 0, paddingBottom: "0rem !important" }}>
                   <ListItemAvatar>
              
                       <Avatar style={{ backgroundColor: '#555', color: '#fff' }}>
