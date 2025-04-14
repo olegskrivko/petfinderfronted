@@ -12,8 +12,8 @@ const Footer = () => {
     { path: '/about', label: 'Par mums', active: true },
     { path: '/pets', label: 'Meklēt mājdzīvniekus', active: true },
     { path: '/virtual-pet-training-classes', label: 'Virtuālās dresūras nodarbības', active: true },
-    { path: '/services', label: 'Pakalpojumi', active: false },
-    { path: '/adopt-a-pet', label: 'Adoptējiet, nepērciet!', active: false },
+    { path: '/services', label: 'Pakalpojumi', active: true },
+    { path: '/adopt-a-pet', label: 'Adoptējiet, nepērciet!', active: true },
   ];
   
   const exploreLinks = [
@@ -26,9 +26,10 @@ const Footer = () => {
   
   const policyLinks = [
     { path: '/policies', label: 'Politikas un vadlīnijas', active: true },
-    { path: '/how-to-use', label: 'Kā lietot lietotni', active: false },
     { path: '/whats-new', label: 'Kas jauns?', active: false },
     { path: '/pet-matching-quiz', label: 'Kādu mājdzīvnieku izvēlēties?', active: true },
+    { path: '/frequently-asked-questions', label: 'Biežāk uzdotie jautājumi', active: true },
+    { path: '/pricing', label: 'Maksāšanas plāns', active: true },
   ];  
   
   const infoLinks = [
@@ -36,7 +37,7 @@ const Footer = () => {
     { path: '/feedback', label: 'Atsauksmes', active: true },
     { path: '/support', label: 'Atbalsts', active: true },
     { path: '/collaborate', label: 'Sadarbība', active: true },
-    { path: '/faq', label: 'Biežāk uzdotie jautājumi', active: false },
+    { path: '/partners-and-sponsors', label: 'Mūsu partneri un atbalstītāji', active: true },
   ];
 
 // Function to render links with the active/inactive state
@@ -86,14 +87,14 @@ const renderLinks = (linksArray) =>
         <Grid container spacing={2}>
           <Grid item xs={12} sm={3} textAlign="left">
             <Typography variant="h6" color="#ffcb56" style={{ fontWeight: '500' }}>
-            Lietotne
+            Lietotājiem
             </Typography>
             {renderLinks(appLinks)}
           </Grid>
 
           <Grid item xs={12} sm={3} textAlign="left">
             <Typography variant="h6" color="#ffcb56" style={{ fontWeight: '500' }}>
-            Izpēti iespējas
+            Resursi
             </Typography>
             {renderLinks(exploreLinks)}
           </Grid>

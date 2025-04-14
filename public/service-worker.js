@@ -134,3 +134,30 @@
 //   );
 //   self.clients.claim(); // Ensure clients use the new SW immediately
 // });
+
+
+// public/sw.js
+
+self.addEventListener('push', (event) => {
+    const data = event.data.json();
+  
+    const title = data.title || 'Push Notification';
+    const body = data.body || 'You have a new notification';
+   // const icon = '/icon.png'; // Path to your icon file
+  
+    event.waitUntil(
+      self.registration.showNotification(title, {
+        body: body,
+       // icon: icon,
+        tag: 'push-notification',
+      })
+    );
+  });
+  
+  self.addEventListener('notificationclick', (event) => {
+    event.notification.close();
+    event.waitUntil(
+      clients.openWindow('/')  // Open the main page (or wherever you want the user to go)
+    );
+  });
+  

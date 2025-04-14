@@ -188,51 +188,41 @@ const ImageCarousel = ({ pet, images = [] }) => {
 
           </Box>
       {/* Left arrow */}
-      <IconButton
-  onClick={handlePrev}
-  sx={{
-    position: 'absolute',
-    top: '50%',
-    left: 10,
-    transform: 'translateY(-50%)',
-    backgroundColor: 'rgba(255,255,255,0.7)',
-    width: 40,
-    height: 40,
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'center',
-  }}
->
-  <ArrowBackIosNewIcon  />
-</IconButton>
-
-      {/* <IconButton
-        onClick={handlePrev}
-        sx={{
-          position: 'absolute',
-          top: '50%',
-          left: 10,
-          transform: 'translateY(-50%)',
-          backgroundColor: 'rgba(255,255,255,0.7)',
-        }}
-      >
-        <ArrowBackIos />
-      </IconButton> */}
+      {images.length > 1 && (
+  <IconButton
+    onClick={handlePrev}
+    sx={{
+      position: 'absolute',
+      top: '50%',
+      left: 10,
+      transform: 'translateY(-50%)',
+      backgroundColor: 'rgba(255,255,255,0.7)',
+      width: 40,
+      height: 40,
+      display: 'flex',
+      alignItems: 'center',
+      justifyContent: 'center',
+    }}
+  >
+    <ArrowBackIosNewIcon />
+  </IconButton>
+)}
 
       {/* Right arrow */}
-      <IconButton
-        onClick={handleNext}
-        sx={{
-          position: 'absolute',
-          top: '50%',
-          right: 10,
-          transform: 'translateY(-50%)',
-          backgroundColor: 'rgba(255,255,255,0.7)',
-          
-        }}
-      >
-        <ArrowBackIosNewIcon sx={{ transform: 'scaleX(-1)' }} />
-      </IconButton>
+      {images.length > 1 && (
+  <IconButton
+    onClick={handleNext}
+    sx={{
+      position: 'absolute',
+      top: '50%',
+      right: 10,
+      transform: 'translateY(-50%)',
+      backgroundColor: 'rgba(255,255,255,0.7)',
+    }}
+  >
+    <ArrowBackIosNewIcon sx={{ transform: 'scaleX(-1)' }} />
+  </IconButton>
+)}
 
 
        {/* 👉 Action Buttons BELOW the image */}

@@ -172,7 +172,7 @@ function About() {
   return (
 <Container component="main" maxWidth="lg" sx={{ py: 6, paddingLeft: "0", paddingRight: "0" }}>
 <Typography variant="h3" align="center" sx={{ mb: 5, fontWeight: 500 }}>
-        Par mums
+Mūsu Vīzija
       </Typography>
       {/* <Grid container spacing={3}>
         <Grid item xs={12} sm={12} md={12} lg={12}>
@@ -193,7 +193,7 @@ function About() {
         <Grid item xs={12} sm={12} md={12} lg={12}>
           <Typography variant="body1" paragraph>
 
-          Mūsu komanda ir izstrādājusi inovatīvu risinājumu, kas apvieno sabiedrību kopīgā mērķī – atvieglot pazudušu mājdzīvnieku atgriešanos pie to īpašniekiem. Lietotne balstīta uz modernām tehnoloģijām, tai skaitā mākslīgo intelektu un reāllaika paziņojumiem, nodrošinot ērtu vidi sludinājumu publicēšanai un informācijas apmaiņai. Tā efektīvi savieno dzīvnieku īpašniekus ar tiem, kuri ir atraduši pazudušos mājdzīvniekus, ievērojami paaugstinot iespēju veiksmīgai atkalapvienošanai.
+          Lietotne ir radīta, lai apvienotu sabiedrību kopīgā mērķī – palīdzēt pazudušiem mājdzīvniekiem ātrāk atgriezties pie to īpašniekiem. Ar mūsdienu tehnoloģiju, tostarp mākslīgā intelekta un reāllaika paziņojumu izmantošanu, tā nodrošina efektīvu, vienkāršu un drošu platformu, kurā dzīvnieku īpašnieki var dalīties ar informāciju, kā arī sekot dzīvnieka meklēšanas gaitai. Turklāt, lietotne kļūs par galveno resursu, kas ietver arī citus dzīvnieku saistītus pakalpojumus, padomus un informāciju, palīdzot radīt vienotu un pārskatāmu vidi, kas veicina veiksmīgu dzīvnieku atgriešanos pie to īpašniekiem.
 
           </Typography>
         
@@ -232,9 +232,7 @@ function About() {
           </Typography>
           <Typography variant="body1" style={{ textAlign: 'left' }}>
 
-          Cik bieži esi redzējis pazuduša dzīvnieka plakātu uz laternas staba? Vai esi kādreiz aizdomājies – vai dzīvnieks jau ir atradies, vai joprojām tiek meklēts? Bez papildu informācijas šie jautājumi paliek neatbildēti, un, ja dzīvnieks ir atradies, plakāts joprojām karājas, radot maldinošu priekšstatu.
-
-Mēs piedāvājam risinājumu – profesionāli izstrādātus plakātus ar QR kodu, kuru var noskenēt, lai piekļūtu aplikācijai un redzētu aktuālāko informāciju par konkrēto dzīvnieku. Plakāti ārā neiztur ilgi – lietus, vējš un saule tos ātri sabojā. Mūsu risinājums ļauj sekot dzīvnieka meklēšanas gaitai aplikācijā, kur informācija vienmēr ir aktuāla, skaidra un pārskatāma.
+          Cik bieži ir redzēti pazuduša dzīvnieka plakāti uz stabiem? Vai ir bijušas domas – vai dzīvnieks jau ir atrasts, vai joprojām tiek meklēts? Bez papildu informācijas šie jautājumi paliek neatbildēti, un, ja dzīvnieks ir atrasts, plakāts joprojām karājas, radot maldinošu priekšstatu. Piedāvātais risinājums – profesionāli izstrādāti plakāti ar QR kodu, kuru var noskenēt, lai piekļūtu aplikācijai un iegūtu aktuālāko informāciju par konkrēto dzīvnieku. Plakāti ārā neiztur ilgi – lietus, vējš un saule tos ātri sabojā. Risinājums ļauj sekot dzīvnieka meklēšanas gaitai aplikācijā, kur informācija vienmēr ir aktuāla, skaidra un pārskatāma.
           </Typography>
         </Grid>
         <Grid item xs={12} sm={12} md={4} lg={4}>
@@ -336,7 +334,7 @@ Mēs piedāvājam risinājumu – profesionāli izstrādātus plakātus ar QR ko
             Ideja
           </Typography>
           <Typography variant="body1" style={{ textAlign: 'left' }}>
-          Mēs saskatījām iespēju risināt šo problēmu, izmantojot mūsdienu tehnoloģijas, īpaši sociālos medijus. Lai gan Latvijā ir daudz sociālo mediju grupu, kas veltītas pazudušiem dzīvniekiem, informācija ir izkliedēta dažādās platformās, kas apgrūtina efektīvu palīdzības sniegšanu. Šī problēma ir īpaši izteiktāka vecākiem cilvēkiem, kuri, iespējams, nelieto tādas platformas kā Facebook.
+          Ir iespēja risināt šo problēmu, izmantojot mūsdienu tehnoloģijas, īpaši sociālos medijus. Lai gan Latvijā pastāv vairākas sociālo mediju grupas, kas veltītas pazudušiem dzīvniekiem, informācija ir izkliedēta dažādās platformās, kas apgrūtina efektīvu palīdzības sniegšanu. Šī problēma ir īpaši izteikta cilvēkiem, kuriem ir grūtības izmantot populāras platformas, piemēram, Facebook.
           </Typography>
         </Grid>
       </Grid>
@@ -356,7 +354,7 @@ Mēs piedāvājam risinājumu – profesionāli izstrādātus plakātus ar QR ko
           </Typography>
           <Typography variant="body1" style={{ textAlign: 'left' }}>
 
-          Mūsu mērķis bija izveidot lietotni, kas spēj apvienot kopienas un vienkāršot pazudušo dzīvnieku meklēšanas procesu. Mēs vēlējāmies radīt risinājumu, kas būtu ne tikai efektīvs, bet arī tehnoloģiski moderns. Tāpēc lietotnē esam iekļāvuši jaunākās iespējas, tostarp paziņojumu sistēmu, kas ļauj cilvēkiem savlaicīgi saņemt informāciju par tuvumā pazudušiem vai atrastiem dzīvniekiem. Šāda pieeja palīdz daudz ātrāk reaģēt un palielina iespējas dzīvniekiem atgriezties mājās.
+          Izstrādāta lietotne, kas spēj apvienot kopienu un vienkāršot pazudušo dzīvnieku meklēšanas procesu. Tās mērķis ir radīt risinājumu, kas būtu ne tikai efektīvs, bet arī tehnoloģiski moderns. Lietotnē ietvertas jaunākās iespējas, tostarp paziņojumu sistēma, kas ļauj savlaicīgi saņemt informāciju par tuvumā pazudušiem vai atrastiem dzīvniekiem. Šāda pieeja ļauj ātrāk reaģēt, palielinot dzīvnieku atgriešanās iespējas mājās.
 
 
           </Typography>
@@ -464,8 +462,7 @@ Mēs piedāvājam risinājumu – profesionāli izstrādātus plakātus ar QR ko
             Ceļš
           </Typography>
           <Typography variant="body1" style={{ textAlign: 'left' }}>
-          Šī bija mūsu komandas iecere, kuras īstenošana prasīja pacietību, neatlaidību un vienotu apņēmību. Mēs mērķtiecīgi attīstījām nepieciešamās prasmes un strādājām pie lietotnes izstrādes, ejot cauri vairākiem izstrādes posmiem, nemitīgi uzlabojot un pilnveidojot mūsu risinājumu. Ceļš nebija viegls, taču bijām vienoti mērķī pārvērst ideju realitātē. Šī pieredze devusi mūsu komandai vērtīgas zināšanas un prasmes IT jomā, kas būs nozīmīgas arī nākotnē.
-          </Typography>
+          Lietotnes izstrādes ceļš prasīja pacietību, neatlaidību un mērķtiecīgu pieeju, pārejot cauri vairākiem posmiem, vienmēr uzlabojot un pilnveidojot risinājumu. Šī pieredze ļāva iegūt vērtīgas zināšanas un prasmes IT jomā, kas būs nozīmīgas arī nākotnē. Lietotne atrodas savā sākotnējā posmā, un tās attīstībā ir vēl garš ceļš ejams, lai tā kļūtu par pilnīgu risinājumu.          </Typography>
         </Grid>
       </Grid>
       {/* lefttext */}
@@ -483,7 +480,7 @@ Mēs piedāvājam risinājumu – profesionāli izstrādātus plakātus ar QR ko
             Rezultāts
           </Typography>
           <Typography variant="body1" style={{ textAlign: 'left' }}>
-          Ideja, kas sākās kā vienkāršs iecerējums, ir kļuvusi par nozīmīgu un noderīgu rīku mājdzīvnieku īpašniekiem. Izmantojot mākslīgā intelekta tehnoloģijas, esam izstrādājuši lietotni, kas palīdz meklēt un atrast pazudušos dzīvniekus. Mēs vēl neapstājamies — prātā jau ir jaunas idejas un funkcijas, kuras plānojam pievienot, lai padarītu lietotni vēl efektīvāku. Lai gan šis projekts tiek īstenots līdzās mūsu ikdienas darbiem, esam apņēmības pilni to attīstīt tālāk un sniegt reālu palīdzību tiem, kam tā visvairāk nepieciešama.
+          Ideja, kas sākās kā vienkāršs iecerējums, ir attīstījusies par nozīmīgu un noderīgu rīku mājdzīvnieku īpašniekiem. Izmantojot mākslīgā intelekta tehnoloģijas, ir izstrādāta lietotne, kas efektīvi palīdz meklēt un atrast pazudušos dzīvniekus. Projekts turpina attīstīties, ar plāniem pievienot jaunas funkcijas, lai padarītu lietotni vēl efektīvāku un noderīgāku. Mērķis ir sniegt praktisku un ilgtspējīgu risinājumu tiem, kam tas visvairāk nepieciešams.
           </Typography>
         </Grid>
 

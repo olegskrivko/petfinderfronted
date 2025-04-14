@@ -69,7 +69,7 @@ function IconLabelTabs({pet,sightings, onZoomMap}) {
   
 
   return (
-    <Box>
+    <Box sx={{ margin: '0rem !important', padding: "0rem !important" }}>
       {/* <Tabs value={value} centered onChange={handleChange} variant="fullWidth">
         <Tab icon={<MessageIcon />} label="Messages" />
         <Tab icon={<AirlineStopsIcon />} label="History" />
@@ -89,6 +89,7 @@ function IconLabelTabs({pet,sightings, onZoomMap}) {
             icon={<ForumIcon />}
             label="Ziņas"
             sx={{ fontSize: '0.7rem' }}
+        
             {...a11yProps(0)}
           />
           <Tab

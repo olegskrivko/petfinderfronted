@@ -28,6 +28,7 @@
     "react": "^18.3.1",
     "react-circular-progressbar": "^2.2.0",
     "react-confirm-alert": "^3.0.6",
+    "react-cookie-consent": "^9.0.0",
     "react-countup": "^6.5.3",
     "react-dom": "^18.3.1",
     "react-helmet-async": "^2.0.5",
@@ -39,7 +40,8 @@
     "react-router-dom": "^7.1.4",
     "react-toastify": "^11.0.3",
     "recharts": "^2.15.2",
-    "vite-plugin-pwa": "^0.21.1"
+    "vite-plugin-pwa": "^0.21.1",
+    "web-push": "^3.6.7"
   },
   "devDependencies": {
     "@eslint/js": "^9.17.0",
