@@ -23,8 +23,14 @@ import FacebookIcon from '@mui/icons-material/Facebook';
 import InstagramIcon from '@mui/icons-material/Instagram';
 import LinkedInIcon from '@mui/icons-material/LinkedIn';
 import YouTubeIcon from '@mui/icons-material/YouTube';
+import XIcon from '@mui/icons-material/X';
+import PinterestIcon from '@mui/icons-material/Pinterest';
 import PublicIcon from '@mui/icons-material/Public';
 import LocationOnIcon from '@mui/icons-material/LocationOn';
+import shelterImage from './images/animal_shelter_pana_blue.svg'
+
+
+
 // Import Custom hook
 import useFontSizes from './utils/getFontSize';
 const API_BASE_URL = import.meta.env.VITE_API_BASE_URL; 
@@ -77,7 +83,7 @@ function ShelterDetails() {
       </Typography>
     );
   }
-
+{/* <a href="https://storyset.com/love">Love illustrations by Storyset</a> */}
   const handleLocationClick = () => {
     const latitude = shelter.latitude;
     const longitude = shelter.longitude;
@@ -86,42 +92,52 @@ function ShelterDetails() {
   };
 
   return (
-     <React.Fragment>
-      <Container component="main" maxWidth="lg" sx={{ paddingLeft: "0rem !important", paddingRight: "0rem !important" }}>
+  
+         <Container component="main" maxWidth="lg" sx={{ paddingLeft: 0, paddingRight: 0 }}>
+          
               <Typography variant="h3" align="center" sx={{ mb: 5, fontWeight: 500 }}>
               {shelter.name}
                       </Typography>
-      {/* <Grid container spacing={3}>
-        <Grid item xs={12} sm={12} md={12} lg={12}>
-          <Typography
-            variant="h1"
-            textAlign="center"
-            sx={{ mb: 3 }}
-            gutterBottom
-            style={{
-              fontSize: getTypography('h1').fontSize,
-              fontWeight: getTypography('h1').fontWeight,
-            }}
-          >
-            {shelter.name}
-          </Typography>
-        </Grid>
-      </Grid> */}
+  
       <Grid container spacing={3}>
+  
         <Grid item xs={12} sm={5}>
-          <Card style={{ boxShadow: 'none' }}>
-            <CardMedia
-              component="img"
-              image={`https://placehold.co/600x400/${getRandomColor()}/${fontColor}?text=${
-                shelter.name
-              }&font=roboto`}
-              title={shelter.name}
-            />
-          </Card>
-        </Grid>
+  <Box display="flex" flexDirection="column" alignItems="center">
+    <CardMedia
+      component="img"
+      src={
+        shelterImage}
+      alt={shelter.name}
+      sx={{
+        width: { xs: "100%", sm: "80%", md: "100%" },
+        objectFit: "contain",
+        userSelect: "none",
+        pointerEvents: "none",
+        borderRadius: 2,
+        mb: 1,
+      }}
+    />
+    {!shelter.image && (
+      <MuiLink
+        href="https://storyset.com/love"
+        target="_blank"
+        rel="noopener noreferrer"
+        sx={{
+          fontSize: "0.6rem",
+          fontStyle: "italic",
+          color: "#999",
+          fontWeight: 300,
+        }}
+      >
+        Love illustrations by Storyset
+      </MuiLink>
+    )}
+  </Box>
+</Grid>
+
         <Grid item xs={12} sm={7}>
           <Card style={{ boxShadow: 'none' }}>
-            <CardContent style={{ paddingTop: '0' }}>
+            {/* <CardContent style={{ paddingTop: '0' }}> */}
               <Typography variant="body1">
                 <strong>Par mums: </strong>
                 {shelter.description}
@@ -175,20 +191,7 @@ function ShelterDetails() {
                 </ListItem>
               </List>
 
-              {/* <Box>
-                <strong>Address:</strong>{' '}
-                <MuiLink onClick={handleLocationClick}>
-                  <Typography variant="body1" sx={{ display: 'inline-block' }}>
-                    {shelter.addressDetails?.address}, {shelter.addressDetails?.city},{' '}
-                    {shelter.addressDetails?.country}
-                  </Typography>
-                </MuiLink>
-              </Box> */}
 
-              {/* <Typography variant="body1">
-                <strong>Coordinates:</strong> Latitude: {shelter.location.coordinates[1]},
-                Longitude: {shelter.location.coordinates[0]}
-              </Typography> */}
               <Typography variant="body1">
                 <strong>Kontakti:</strong>
               </Typography>
@@ -213,8 +216,55 @@ function ShelterDetails() {
                 <strong>Sociālie mediji:</strong>
               </Typography>
               <List>
+  {shelter.social_media.map((profile) => {
+    let IconComponent;
+
+    switch (profile.platform.toLowerCase()) {
+      case 'facebook':
+        IconComponent = FacebookIcon;
+        break;
+      case 'instagram':
+        IconComponent = InstagramIcon;
+        break;
+      case 'linkedin':
+        IconComponent = LinkedInIcon;
+        break;
+      case 'youtube':
+        IconComponent = YouTubeIcon;
+        break;
+      case 'x':
+        IconComponent = XIcon;
+        break;
+      case 'pinterest':
+        IconComponent = PinterestIcon;
+        break;
+      default:
+        IconComponent = PublicIcon; // fallback icon
+    }
+
+    return (
+      <ListItem key={profile.id}>
+        <ListItemIcon >
+          <IconComponent style={{ color: '#6E6E6E' }} />
+        </ListItemIcon >
+        <ListItemText style={{ marginLeft: '-1rem' }}>
+          <MuiLink
+            href={profile.profile_url}
+            target="_blank"
+            rel="noopener noreferrer"
+            style={{ textDecoration: 'none' }}
+          >
+            {profile.platform}
+          </MuiLink>
+        </ListItemText>
+      </ListItem>
+    );
+  })}
+</List>
+              {/* <List>
                 {shelter.social_media.map((profile) => (
                   <ListItem key={profile.id}>
+                   
                     <MuiLink
                       href={profile.profile_url}
                       style={{ textDecoration: 'none' }}
@@ -223,64 +273,20 @@ function ShelterDetails() {
                     >
                       {profile.platform}
                     </MuiLink>
+                    {profile.platform}
                   </ListItem>
                 ))}
 
-                {/* <ListItem>
-                  <ListItemIcon>
-                    <InstagramIcon style={{ color: '#6E6E6E' }} />
-                  </ListItemIcon>
-                  <ListItemText
-                    primary={shelter.socialMedia.instagram.name}
-                    style={{ marginLeft: '-1rem' }}
-                  />
-                </ListItem> */}
-                {/* <ListItem>
-                  <ListItemIcon>
-                    <LinkedInIcon style={{ color: '#6E6E6E' }} />
-                  </ListItemIcon>
-                  <ListItemText
-                    primary={shelter.socialMedia.linkedin.name}
-                    style={{ marginLeft: '-1rem' }}
-                  />
-                </ListItem> */}
-                {/* <ListItem>
-                  <ListItemIcon>
-                    <YouTubeIcon style={{ color: '#6E6E6E' }} />
-                  </ListItemIcon>
-                  <ListItemText
-                    primary={shelter.socialMedia.youtube.name}
-                    style={{ marginLeft: '-1rem' }}
-                  />
-                </ListItem> */}
-              </List>
+              
+              </List> */}
 
-              {/* <Typography variant="body1">
-                <strong>{t('sheltersDetailsPage.labels.tags')}:</strong>{' '}
-                {shelter.tags.map((tag) => (
-                  <Chip
-                    key={tag}
-                    label={tag}
-                    size="small"
-                    variant="contained"
-                    sx={{
-                      textTransform: 'capitalize',
-                      backgroundColor: '#6E6E6E',
-                      // backgroundColor: '#20c997',
-                      // backgroundColor: 'rgba(0,0,0,0.5)',
-                      color: 'white',
-                      position: 'relative', // Changed from 'absolute' to 'relative'
-                      marginRight: '4px',
-                    }}
-                  />
-                ))}
-              </Typography> */}
-            </CardContent>
+           
+            {/* </CardContent> */}
           </Card>
         </Grid>
       </Grid>
       </Container>
-     </React.Fragment>
+ 
   );
 }
 

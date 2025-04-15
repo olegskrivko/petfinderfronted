@@ -235,12 +235,12 @@ const SheltersList = () => {
                     gutterBottom
                     variant="h6"
                     component="div"
-                    sx={{ fontWeight: 600, fontSize: '1rem' }}
+                    sx={{ fontWeight: 600, fontSize: '1rem', letterSpacing: "1.2px" }}
                   >
                     {shelter.name}
                   </Typography>
-                  <Typography variant="body2" color="text.secondary">
-                  {shelter.street + ", " + shelter.city + ", " + shelter.postal_code || 'Adrese nav norādīta'}
+                  <Typography variant="body2" color="text.secondary"  sx={{ fontWeight: 600, fontSize: '0.8rem' }}>
+                  {shelter.full_address || 'Adrese nav norādīta'}
               
                   </Typography>
                 </CardContent>

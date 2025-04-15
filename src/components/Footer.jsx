@@ -13,7 +13,7 @@ const Footer = () => {
     { path: '/pets', label: 'Meklēt mājdzīvniekus', active: true },
     { path: '/virtual-pet-training-classes', label: 'Virtuālās dresūras nodarbības', active: true },
     { path: '/services', label: 'Pakalpojumi', active: true },
-    { path: '/adopt-a-pet', label: 'Adoptējiet, nepērciet!', active: true },
+    // { path: '/adopt-a-pet', label: 'Adoptējiet, nepērciet!', active: true },
   ];
   
   const exploreLinks = [
@@ -21,12 +21,12 @@ const Footer = () => {
     { path: '/articles', label: 'Mājdzīvnieku aprūpes padomi', active: true },
     { path: '/articles/ko-darit-ja-pazudis-kakis', label: 'Ko darīt, ja pazudis kaķis?', active: true },
     { path: '/articles/ka-rikoties-ja-pazudis-suns', label: 'Kā rīkoties, ja pazudis suns?', active: true },
-    { path: '/submit-your-story', label: 'Iesūtīt savu stāstu', active: false },
+    // { path: '/submit-your-story', label: 'Iesūtīt savu stāstu', active: false },
   ];
   
   const policyLinks = [
     { path: '/policies', label: 'Politikas un vadlīnijas', active: true },
-    { path: '/whats-new', label: 'Kas jauns?', active: false },
+    // { path: '/whats-new', label: 'Kas jauns?', active: false },
     { path: '/pet-matching-quiz', label: 'Kādu mājdzīvnieku izvēlēties?', active: true },
     { path: '/frequently-asked-questions', label: 'Biežāk uzdotie jautājumi', active: true },
     { path: '/pricing', label: 'Maksāšanas plāns', active: true },
@@ -37,7 +37,7 @@ const Footer = () => {
     { path: '/feedback', label: 'Atsauksmes', active: true },
     { path: '/support', label: 'Atbalsts', active: true },
     { path: '/collaborate', label: 'Sadarbība', active: true },
-    { path: '/partners-and-sponsors', label: 'Mūsu partneri un atbalstītāji', active: true },
+    // { path: '/partners-and-sponsors', label: 'Mūsu partneri un atbalstītāji', active: true },
   ];
 
 // Function to render links with the active/inactive state

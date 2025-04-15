@@ -4,6 +4,7 @@ import { MapContainer, Marker, TileLayer, Popup, useMap } from 'react-leaflet';
 import Chip from '@mui/material/Chip';
 import L from 'leaflet';
 import MarkerClusterGroup from 'react-leaflet-cluster';
+import shelterIcon from '../pages/images/pet_house.png'
 import 'leaflet/dist/leaflet.css';
 
 
@@ -18,6 +19,12 @@ import 'leaflet/dist/leaflet.css';
 //   iconUrl: require('./userlocation.svg').default, // Replace with your icon path
 //   iconSize: new L.Point(44, 44),
 // });
+
+// Icons
+const defaultIcon = new L.Icon({
+  iconUrl: shelterIcon,
+  iconSize: new L.Point(40, 40),
+});
 
 // Function to create custom cluster icons
 const createClusterCustomIcon = function (cluster) {
@@ -68,42 +75,34 @@ function LeafletSheltersMap({ shelters, centerCoords }) {
             shelter.latitude && shelter.longitude ? (
               <Marker
                 key={shelter.id}
+              icon={defaultIcon}
                 position={[
                   parseFloat(shelter.latitude), // Ensure latitude is a float
                   parseFloat(shelter.longitude) // Ensure longitude is a float
                 ]}
                 // icon={customIcon}
               >
-         <Popup offset={[0, 5]}>
-  <div
-    // style={{
-    //   textAlign: "center",
-    //   background: "white",
-    //   padding: "10px",
-    //   borderRadius: "8px",
-    //   boxShadow: "0px 4px 10px rgba(0, 0, 0, 0.2)",
-    // }}
-  >
-    <a href={`/shelters/${shelter.id}`} style={{ textDecoration: "none" }}>
-      <p
-        style={{
-          background: "deepskyblue",
-          color: "#333",
-          fontWeight: "bold",
-          padding: "8px 12px",
-          borderRadius: "6px",
-          transition: "background 0.3s ease",
-          cursor: "pointer",
-        }}
-        // onMouseOver={(e) => (e.target.style.background = "deepskyblue")}
-        // onMouseOut={(e) => (e.target.style.background = "lightblue")}
-      >
-        {shelter.name}
-      </p>
-    </a>
-  </div>
-</Popup>
 
+ <Popup offset={[0, 5]}>
+ <a href={`/shelters/${shelter.id}`} style={{ textDecoration: "none" }}>
+      <div
+        style={{
+          background: '#5B9BD5',
+          color: 'white',
+          padding: '6px 12px',
+          borderRadius: '12px',
+          fontSize: '14px',
+          fontWeight: 500,
+          boxShadow: '0 2px 6px rgba(0, 0, 0, 0.15)',
+          whiteSpace: 'nowrap',
+          textDecoration: "none"
+        }}
+      > 
+        {shelter.name}
+      
+      </div>
+      </a>
+    </Popup>
               </Marker>
             ) : null
           ))}

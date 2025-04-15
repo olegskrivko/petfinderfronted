@@ -46,7 +46,7 @@ const Feedback = () => {
     setLoading(true);
     try {
       const accessToken = localStorage.getItem('access_token');
-      await axios.post(`${API_BASE_URL}/feedback`, {
+      await axios.post(`${API_BASE_URL}/feedback/`, {
         sender,   
         subject,    
         email,

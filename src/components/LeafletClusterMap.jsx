@@ -139,10 +139,23 @@ const catIcon = new L.Icon({
   iconSize: new L.Point(40, 47),
 });
 
-const userLocationIcon = new L.Icon({
-  iconUrl: userLocationIconUrl,
-  iconSize: new L.Point(44, 44),
+// const userLocationIcon = new L.Icon({
+//   iconUrl: userLocationIconUrl,
+//   iconSize: new L.Point(44, 44),
+// });
+const userPulseIcon = L.divIcon({
+  className: '',
+  html: `
+    <div class="user-location-wrapper">
+      <div class="user-location-core"></div>
+      <div class="user-location-pulse"></div>
+    </div>
+  `,
+  iconSize: [30, 30],
+  iconAnchor: [15, 15], // Centers the marker properly
 });
+
+
 
 // Custom cluster icon
 const createClusterCustomIcon = (cluster) => {
@@ -234,17 +247,27 @@ function LeafletClusterMap({ pets, centerCoords }) {
             ) : null
           )}
 
-          {userLocation && (
-            <Marker position={userLocation} icon={userLocationIcon}>
-              <Popup offset={[0, 5]}>
-                <Chip
-                  size="small"
-                  label="Your current location"
-                  style={{ backgroundColor: '#fff1f1', color: '#6d0202' }}
-                />
-              </Popup>
-            </Marker>
-          )}
+{userLocation && (
+  <Marker position={userLocation} icon={userPulseIcon}>
+    <Popup offset={[0, 5]}>
+      <div
+        style={{
+          background: '#5B9BD5',
+          color: 'white',
+          padding: '6px 12px',
+          borderRadius: '12px',
+          fontSize: '14px',
+          fontWeight: 500,
+          boxShadow: '0 2px 6px rgba(0, 0, 0, 0.15)',
+          whiteSpace: 'nowrap',
+        }}
+      >
+        Tava atrašanās vieta
+      </div>
+    </Popup>
+  </Marker>
+)}
+
         </MarkerClusterGroup>
       </MapContainer>
     </div>

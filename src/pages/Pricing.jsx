@@ -186,7 +186,7 @@
 
 // export default PricingPage;
 import React from "react";
-import { Button, Box, Typography, Grid, Card, CardContent, CardActions } from "@mui/material";
+import { Button, Box, Container, Typography, Grid, Card, CardContent, CardActions } from "@mui/material";
 import { Link } from "react-router-dom"; // Import Link from react-router-dom
 import { List, ListItem, ListItemText } from '@mui/material';
 
@@ -238,7 +238,8 @@ const PricingPage = () => {
   };
 
   return (
-    <Box style={{ marginTop: "50px", padding: "0 20px" }}>
+          <Container component="main" maxWidth="lg" sx={{ paddingLeft: 0, paddingRight: 0 }}>
+  
       <Typography variant="h3" style={{ textAlign: "center", marginBottom: "40px" }}>
         Izvēlieties savu plānu
       </Typography>
@@ -375,7 +376,8 @@ const PricingPage = () => {
           </tr>
         </tbody>
       </table>
-    </Box>
+   
+    </Container>
   );
 };
 

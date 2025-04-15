@@ -265,7 +265,8 @@ useEffect(() => {
                   width: '120px',
                   height: '120px',
                   borderRadius: '50%',
-                  border: '3px solid slategray',
+                  // border: '3px solid slategray',
+                  border: '3px solid white',
                   objectFit: 'cover',
                 }}
               />
@@ -299,7 +300,8 @@ useEffect(() => {
                  width: '120px',
                  height: '120px',
                  borderRadius: '50%',
-                 border: '3px solid slategray',
+                //  border: '3px solid slategray',
+                border: '3px solid white',
                  objectFit: 'cover',
                }}
             />
