@@ -20,17 +20,16 @@ import NotificationsActiveIcon from '@mui/icons-material/NotificationsActive';
 import PetCounter from '../components/PetCounter'
 import { motion } from "framer-motion";
 // Images
-import petlisting from './images/petlisting.png';
-import lostdogposter from './images/lostdogposter.png';
-// import Banner from '../components/Banner';
-// import BannerImg from './images/catdog.jpg'
-import studies from './images/studies.png';
-import search from './images/search.png';
-import share from './images/share.png';
-import pathlocations from './images/pathlocations.png';
+import petlisting from './images/features/petlisting.png';
+import lostdogposter from './images/features/lostdogposter.png';
+import studies from './images/features/studies.png';
+import search from './images/features/search.png';
+import share from './images/features/share.png';
+import pathlocations from './images/features/pathlocations.png';
+
 import RecentPets from '../components/RecentPets';
 import Jumbotron from './Jumbotron';
-import mainIMG from './images/404_Error_with_a_cute_animal_pana_blue.svg';
+import mainIMG from './images/home_banner/404_Error_with_a_cute_animal_pana_blue.svg';
 import Statistics from "../components/Statistics"
 const LiquidBlob = () => (
   <motion.div

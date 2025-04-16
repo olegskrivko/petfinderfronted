@@ -13,7 +13,7 @@ import {
   ListItemText,
 } from '@mui/material';
 import { Pets } from '@mui/icons-material';
-import collaborateImage from './images/creative_team_amico_blue.svg';
+import collaborateImage from './images/collaboration_banner/creative_team_amico_blue.svg';
 
 const collaborationPoints = [
   'Dzīvnieku patversmēm un glābšanas organizācijām – lai palīdzētu ātrāk atrast mājas pazudušajiem mājdzīvniekiem.',

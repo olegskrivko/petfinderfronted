@@ -14,7 +14,7 @@ import {
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { useAuth } from '../contexts/AuthContext';
-import FeedbackImg from "./images/customer_feedback_amico_blue.svg";
+import FeedbackImg from "./images/feedback_banner/customer_feedback_amico_blue.svg";
 
 const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
 

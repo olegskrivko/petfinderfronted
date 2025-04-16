@@ -603,7 +603,7 @@ import {
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { useAuth } from "../contexts/AuthContext";
-import contactImage from "./images/mobile_marketing_cuate_blue.svg";
+import contactImage from "./images/contact_banner/mobile_marketing_cuate_blue.svg";
 import { EMAIL, PHONE, COUNTRY, CITY, FACEBOOK, INSTAGRAM } from "./config/config";
 
 const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;

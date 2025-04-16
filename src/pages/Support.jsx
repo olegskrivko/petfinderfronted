@@ -18,7 +18,7 @@ import { Pets, CopyAll } from '@mui/icons-material';
 import { Link } from 'react-router-dom';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import SupportImg from './images/cat_astronaut_cuate_blue.svg';
+import SupportImg from './images/support_banner/cat_astronaut_cuate_blue.svg';
 
 const supportPoints = [
   'Finansiāls atbalsts hostinga vai mākoņservisu segšanai.',

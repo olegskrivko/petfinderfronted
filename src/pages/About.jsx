@@ -34,11 +34,11 @@ import useFontSizes from './utils/getFontSize';
 // import programmerImg from './images/programmer_cuate.svg';
 // import lightBulbImg from './images/light_bulb_bro.svg';
 // import scrumBoardImg from './images/scrum_board_pana.svg';
-import mobileWireframeImg from './images/mobile_wireframe_amico.svg';
-import walkingAroundImg from './images/walking_around_amico.svg';
-import socialIdeasImg from './images/social_ideas_cuate.svg';
-import navigationImg from './images/navigation_pana.svg';
-import programmingImg from './images/programming_pana.svg';
+import mobileWireframeImg from './images/vision/mobile_wireframe_amico.svg';
+import walkingAroundImg from './images/vision/walking_around_amico.svg';
+import socialIdeasImg from './images/vision/social_ideas_cuate.svg';
+import navigationImg from './images/vision/navigation_pana.svg';
+import programmingImg from './images/vision/programming_pana.svg';
 import Jumbotron from './Jumbotron';
 
 function About() {
