@@ -201,7 +201,7 @@ const SheltersList = () => {
 
       <Grid container spacing={4} mt={1}>
         {shelters.map((shelter) => (
-          <Grid item key={shelter._id} xs={12} sm={6} md={4} lg={3}>
+          <Grid item key={shelter.id} xs={12} sm={6} md={4} lg={3}>
             <Card
               elevation={3}
               sx={{
