@@ -55,3 +55,22 @@ export const GENDER_CHOICES = [
     { label: 'Kaštanbrūns', value: '15' },
   ];
   
+
+  export const CATEGORY_CHOICES = [
+    { label: 'Dzīvnieku pieskatīšana', value: '1' },
+    { label: 'Suņu pastaigas', value: '2' },
+    { label: 'Kopšana', value: '3' },
+    { label: 'Apmācība', value: '4' },
+    { label: 'Izmitināšana', value: '5' },
+    { label: 'Veterinārārsts', value: '6' },
+    { label: 'Foto sesijas', value: '7' },
+    { label: 'Glābšana un meklēšana', value: '8' },
+    { label: 'Piederumi un aksesuāri', value: '9' },
+    { label: 'Māksla', value: '10' },
+    { label: 'Apbedīšana', value: '11' },
+    { label: 'Transports', value: '12' },
+    { label: 'Audzētavas', value: '13' },
+    { label: 'Apdrošināšana', value: '14' },
+    { label: 'Citi pakalpojumi', value: '15' },
+  ];
+

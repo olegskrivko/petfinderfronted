@@ -2,6 +2,8 @@ import React from 'react';
 import {
   Grid,
   Typography,
+  IconButton,
+  Box,
   Card,
   CardContent,
   List,
@@ -123,20 +125,15 @@ const StatusHistory = ({ pet, sightings }) => {
                       </Avatar>
              
                   </ListItemAvatar>
-                  <ListItemText
-                    secondary={"Nav pieejami novērojumi."}
-                    // secondary={moment(pet.created_at).format('MMMM Do YYYY, h:mm a')}
-                  />
+          
+                         <Typography color="textSecondary">
+              <Box display="flex" alignItems="center" gap={2}>
+                Nav pieejami novērojumi.
+              </Box>
+            </Typography>
                 </ListItem>
-
-                  {/* <Typography variant="body2" color="textSecondary">
-                    Nav pieejami novērojumi.
-                  </Typography> */}
                 </Grid>
               )}
-
-
-              {/* Future: Add pet.sightings_history here when ready */}
 
             </List>
           </CardContent>

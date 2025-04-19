@@ -99,7 +99,7 @@ const formattedTime = eventDate
           <IconButton color="primary" style={{ backgroundColor: '#f7f9fd' }}>
             <TagIcon />
           </IconButton>
-          <b>ID:</b> {pet.identifier ? pet.identifier : 'N/A'}
+          <b>ID:</b> {pet.identifier ? pet.identifier : '-'}
           <Typography variant="body1" gutterBottom ></Typography>
         </Box>
       </Grid>

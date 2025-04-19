@@ -23,6 +23,7 @@ import useMediaQuery from '@mui/material/useMediaQuery';
 import { useTheme } from '@mui/material/styles';
 import { useAuth } from '../contexts/AuthContext';
 import ImageNotSupportedIcon from '@mui/icons-material/ImageNotSupported';
+import TextSnippetIcon from '@mui/icons-material/TextSnippet';
 import dayjs from 'dayjs';
 import 'dayjs/locale/lv';
 import 'moment/locale/lv'; // Latvian locale
@@ -325,9 +326,25 @@ const TabMessages = ({ pet, sightings, onZoomMap  }) => {
       })
     ) : (
       <Grid item xs={12}>
-        <Typography variant="body2" color="textSecondary">
+        <Card>
+                  <CardContent style={{ paddingBottom: "1rem" }}>
+        {/* <Typography variant="body2" color="textSecondary">
           No status history available.
-        </Typography>
+        </Typography> */}
+                             {/* <Typography color="textSecondary">
+                      <Box display="flex" alignItems="center" gap={2}>
+                        Šobrīd nav pievienota neviena novērojuma.
+                      </Box>
+                    </Typography> */}
+                               <Typography color="textSecondary">
+                                  <Box display="flex" alignItems="center" gap={2}>
+                                    <IconButton style={{ backgroundColor: '#555', color: '#fff', pointerEvents: 'none' }}>
+                                      <TextSnippetIcon />
+                                    </IconButton> Šobrīd nav pievienots neviens novērojums.
+                                  </Box>
+                                </Typography>
+                                </CardContent>
+                                </Card>
       </Grid>
     )}
 

@@ -775,7 +775,7 @@ const PetsList = () => {
             open={drawerOpen}
             onClose={() => setDrawerOpen(false)}
           >
-            <Box sx={{ width: 320, p: 2 }}>
+            <Box sx={{ width: 300, p: 2 }}>
               <Sidebar
                 filters={filters}
                 setFilters={setFilters}

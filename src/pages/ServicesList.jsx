@@ -566,6 +566,218 @@
 // };
 
 // export default ServicesList;
+// import React, { useState, useEffect } from 'react';
+// import {
+//   Grid, Button, CircularProgress, Box, Container,
+//   Alert, Drawer, useTheme, useMediaQuery, Pagination
+// } from '@mui/material';
+// import FilterListIcon from '@mui/icons-material/FilterList';
+// import { useLocation, useNavigate } from 'react-router-dom';
+
+// import ServiceCard from './ServiceCard';
+// import ServiceCardSkeleton from './ServiceCardSkeleton';
+// import Sidebar from './ServiceSidebar'; // You need to implement this
+// import LeafletServicesMap from '../components/LeafletServicesMap';
+// const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
+
+// const ServicesList = () => {
+//   const [services, setServices] = useState([]);
+//   const [loading, setLoading] = useState(true);
+//   const [error, setError] = useState(null);
+//   const [pagination, setPagination] = useState({ page: 1, totalPages: 1 });
+//   const [filters, setFilters] = useState({ category: '', search: '' });
+
+//   const [drawerOpen, setDrawerOpen] = useState(false);
+
+//   const theme = useTheme();
+//   const isMobile = useMediaQuery(theme.breakpoints.down('md'));
+//  const [centerCoords, setCenterCoords] = useState([56.946285, 24.105078]); 
+//   const location = useLocation();
+//   const navigate = useNavigate();
+
+//   useEffect(() => {
+//     const queryParams = new URLSearchParams(location.search);
+//     const category = queryParams.get('category') || '';
+//     const search = queryParams.get('search') || '';
+//     const page = parseInt(queryParams.get('page')) || 1;
+
+//     setFilters({ category, search });
+//     setPagination((prev) => ({ ...prev, page }));
+
+//     fetchServices({ category, search, page });
+//   }, [location.search]);
+
+//   const fetchServices = async ({ category, search, page }) => {
+//     try {
+//       const accessToken = localStorage.getItem('access_token');  // Retrieve the access token from localStorage
+//       if (!accessToken) {
+//         setError('You must be logged in to view shelters.');
+//         setLoading(false);
+//         return;
+//       }
+//       setLoading(true);
+//       setError(null);
+
+//       const queryParams = new URLSearchParams();
+//       if (category) queryParams.append('category', category);
+//       if (search) queryParams.append('search', search);
+//       queryParams.append('page', page);
+
+//       const res = await fetch(`${API_BASE_URL}/services/?${queryParams}`,  {
+//                   headers: {
+//                     Authorization: `Bearer ${accessToken}`,
+//                   },
+//                 });
+//       if (!res.ok) throw new Error('Failed to fetch services');
+
+//       const data = await res.json();
+//       setServices(data.results);
+//       setPagination((prev) => ({
+//         ...prev,
+//         totalPages: Math.ceil(data.count / 8),
+//       }));
+//     } catch (err) {
+//       setError(err.message);
+//     } finally {
+//       setLoading(false);
+//     }
+//   };
+
+//   const handlePaginationChange = (e, page) => {
+//     setPagination((prev) => ({ ...prev, page }));
+//     const queryParams = new URLSearchParams(location.search);
+//     queryParams.set('page', page);
+//     navigate(`${window.location.pathname}?${queryParams.toString()}`, { replace: true });
+//   };
+
+//   const handleResetFilters = () => {
+//     setFilters({ category: '', search: '' });
+//     navigate(`${window.location.pathname}?page=1`, { replace: true });
+//   };
+
+//   const handleFilterChange = (newFilters) => {
+//     setFilters(newFilters);
+//     setPagination((prev) => ({ ...prev, page: 1 }));
+
+//     const queryParams = new URLSearchParams();
+//     if (newFilters.category) queryParams.append('category', newFilters.category);
+//     if (newFilters.search) queryParams.append('search', newFilters.search);
+//     queryParams.append('page', 1);
+
+//     navigate(`${window.location.pathname}?${queryParams.toString()}`, { replace: true });
+//   };
+
+//   return (
+//     <Container maxWidth="lg" sx={{ paddingLeft: "0rem !important", paddingRight: "0rem !important" }}>
+//       <Grid container spacing={3}>
+//         {!isMobile && (
+//           <Grid item xs={12} md={3}>
+//             <Sidebar
+//               filters={filters}
+//               onFilterChange={handleFilterChange}
+//               onReset={handleResetFilters}
+//             />
+//           </Grid>
+//         )}
+
+//         <Grid item xs={12} md={isMobile ? 12 : 9}>
+//           {/* <Box
+//             py={2}
+//             sx={{
+//               display: { xs: 'flex', md: 'none' },
+//               justifyContent: 'flex-end',
+//             }}
+//           >
+//             <Button
+//               variant="contained"
+//               color="primary"
+//               size="small"
+//               onClick={() => setDrawerOpen(true)}
+//               startIcon={<FilterListIcon />}
+//             >
+//               Filter
+//             </Button>
+//           </Box> */}
+
+//              <Box
+              
+//                       sx={{
+//                         marginBottom: { xs: 'none', md: '1rem' },
+//                         justifyContent: 'flex-end',
+//                       }}
+//                     >
+//                       <LeafletServicesMap services={services} centerCoords={centerCoords} />
+//                     {/* <LeafletClusterMap pets={pets} centerCoords={centerCoords} /> */}
+//                     </Box>
+//                     <Box
+//                       py={2}
+//                       sx={{
+//                         display: { xs: 'flex', md: 'none' },
+//                         justifyContent: 'flex-end',
+//                       }}
+//                     >
+//                       <Button
+//                         variant="contained"
+//                         color="primary"
+//                         size="small"
+//                         onClick={() => setDrawerOpen(true)}
+//                         startIcon={<FilterListIcon />}
+//                       >
+//                         Filter
+//                       </Button>
+//                     </Box>
+
+//           {/* Drawer for mobile */}
+//           <Drawer
+//             anchor="left"
+//             open={drawerOpen}
+//             onClose={() => setDrawerOpen(false)}
+//           >
+//             <Box sx={{ width: 320, p: 2 }}>
+//               <Sidebar
+//                 filters={filters}
+//                 onFilterChange={handleFilterChange}
+//                 onReset={handleResetFilters}
+//               />
+//             </Box>
+//           </Drawer>
+// {/* <LeafletServicesMap services={services} centerCoords={centerCoords} /> */}
+//           {loading ? (
+//             <Grid container spacing={2}>
+//               {[...Array(8)].map((_, index) => (
+//                 <Grid item xs={12} sm={6} md={4} lg={3} key={index}>
+//                   <ServiceCardSkeleton />
+//                 </Grid>
+//               ))}
+//             </Grid>
+//           ) : error ? (
+//             <Alert severity="error">{error}</Alert>
+//           ) : (
+//             <>
+//               <Grid container spacing={2}>
+//                 {services && services.length > 0 && services.map((service) => (
+//                   <Grid item xs={12} sm={6} md={4} lg={3} key={service.id}>
+//                     <ServiceCard service={service} />
+//                   </Grid>
+//                 ))}
+//               </Grid>
+              
+//               <Pagination
+//                 color="primary"
+//                 sx={{ mt: '2rem' }}
+//                 page={pagination.page}
+//                 count={pagination.totalPages}
+//                 onChange={handlePaginationChange}
+//               />
+//             </>
+//           )}
+//         </Grid>
+//       </Grid>
+//     </Container>
+//   );
+// };
+
+// export default ServicesList;
 import React, { useState, useEffect } from 'react';
 import {
   Grid, Button, CircularProgress, Box, Container,
@@ -586,48 +798,53 @@ const ServicesList = () => {
   const [error, setError] = useState(null);
   const [pagination, setPagination] = useState({ page: 1, totalPages: 1 });
   const [filters, setFilters] = useState({ category: '', search: '' });
-
   const [drawerOpen, setDrawerOpen] = useState(false);
-
-  const theme = useTheme();
-  const isMobile = useMediaQuery(theme.breakpoints.down('md'));
- const [centerCoords, setCenterCoords] = useState([56.946285, 24.105078]); 
+  const [centerCoords, setCenterCoords] = useState([56.946285, 24.105078]);
   const location = useLocation();
   const navigate = useNavigate();
 
+  const theme = useTheme();
+  const isMobile = useMediaQuery(theme.breakpoints.down('md'));
+
+  // const handlePanToLocation = (lat, lng) => {
+  //   console.log('lat, lng', lat, lng);
+  //   setCenterCoords([lat, lng]);
+  // };
+
+
+
   useEffect(() => {
     const queryParams = new URLSearchParams(location.search);
-    const category = queryParams.get('category') || '';
-    const search = queryParams.get('search') || '';
+    const category = queryParams.get('category') || ''; // One value only
+    const search = queryParams.get('search') || ''; // One value only
     const page = parseInt(queryParams.get('page')) || 1;
 
     setFilters({ category, search });
-    setPagination((prev) => ({ ...prev, page }));
+    setPagination({page, totalPages: pagination.totalPages });
 
     fetchServices({ category, search, page });
   }, [location.search]);
 
   const fetchServices = async ({ category, search, page }) => {
     try {
-      const accessToken = localStorage.getItem('access_token');  // Retrieve the access token from localStorage
-      if (!accessToken) {
-        setError('You must be logged in to view shelters.');
-        setLoading(false);
-        return;
-      }
+      // const accessToken = localStorage.getItem('access_token');  // Retrieve the access token from localStorage
+      // if (!accessToken) {
+      //   setError('You must be logged in to view shelters.');
+      //   setLoading(false);
+      //   return;
+      // }
       setLoading(true);
       setError(null);
 
       const queryParams = new URLSearchParams();
-      if (category) queryParams.append('category', category);
+      if (category) queryParams.append('category', category); // One category only
       if (search) queryParams.append('search', search);
       queryParams.append('page', page);
 
-      const res = await fetch(`${API_BASE_URL}/services/?${queryParams}`,  {
-                  headers: {
-                    Authorization: `Bearer ${accessToken}`,
-                  },
-                });
+      const newUrl = `${window.location.pathname}?${queryParams.toString()}`;
+      navigate(newUrl, { replace: true });
+
+      const res = await fetch(`${API_BASE_URL}/services/?${queryParams}`);
       if (!res.ok) throw new Error('Failed to fetch services');
 
       const data = await res.json();
@@ -651,19 +868,33 @@ const ServicesList = () => {
   };
 
   const handleResetFilters = () => {
-    setFilters({ category: '', search: '' });
+    setFilters({ category: '', search: '' }); // Reset to empty values
+    setPagination((prev) => ({ ...prev, page: 1 }));
     navigate(`${window.location.pathname}?page=1`, { replace: true });
   };
 
   const handleFilterChange = (newFilters) => {
+    // Ensure each filter only has one value
+    if (newFilters.category) {
+      newFilters.category = newFilters.category;  // One value only
+    }
+    if (newFilters.search) {
+      newFilters.search = newFilters.search;  // One value only
+    }
+
     setFilters(newFilters);
     setPagination((prev) => ({ ...prev, page: 1 }));
 
     const queryParams = new URLSearchParams();
+
+    // Add status filter to query params (only one value allowed)
     if (newFilters.category) queryParams.append('category', newFilters.category);
     if (newFilters.search) queryParams.append('search', newFilters.search);
+
+    // Add the page number
     queryParams.append('page', 1);
 
+    // Update the URL with the new query params
     navigate(`${window.location.pathname}?${queryParams.toString()}`, { replace: true });
   };
 
@@ -674,6 +905,7 @@ const ServicesList = () => {
           <Grid item xs={12} md={3}>
             <Sidebar
               filters={filters}
+              setFilters={setFilters}
               onFilterChange={handleFilterChange}
               onReset={handleResetFilters}
             />
@@ -681,25 +913,7 @@ const ServicesList = () => {
         )}
 
         <Grid item xs={12} md={isMobile ? 12 : 9}>
-          {/* <Box
-            py={2}
-            sx={{
-              display: { xs: 'flex', md: 'none' },
-              justifyContent: 'flex-end',
-            }}
-          >
-            <Button
-              variant="contained"
-              color="primary"
-              size="small"
-              onClick={() => setDrawerOpen(true)}
-              startIcon={<FilterListIcon />}
-            >
-              Filter
-            </Button>
-          </Box> */}
-
-             <Box
+                <Box
               
                       sx={{
                         marginBottom: { xs: 'none', md: '1rem' },
@@ -707,7 +921,6 @@ const ServicesList = () => {
                       }}
                     >
                       <LeafletServicesMap services={services} centerCoords={centerCoords} />
-                    {/* <LeafletClusterMap pets={pets} centerCoords={centerCoords} /> */}
                     </Box>
                     <Box
                       py={2}
@@ -733,15 +946,16 @@ const ServicesList = () => {
             open={drawerOpen}
             onClose={() => setDrawerOpen(false)}
           >
-            <Box sx={{ width: 320, p: 2 }}>
+            <Box sx={{ width: 300, p: 2 }}>
               <Sidebar
                 filters={filters}
+                setFilters={setFilters}
                 onFilterChange={handleFilterChange}
                 onReset={handleResetFilters}
               />
             </Box>
           </Drawer>
-{/* <LeafletServicesMap services={services} centerCoords={centerCoords} /> */}
+
           {loading ? (
             <Grid container spacing={2}>
               {[...Array(8)].map((_, index) => (
@@ -757,7 +971,10 @@ const ServicesList = () => {
               <Grid container spacing={2}>
                 {services && services.length > 0 && services.map((service) => (
                   <Grid item xs={12} sm={6} md={4} lg={3} key={service.id}>
-                    <ServiceCard service={service} />
+                    <ServiceCard service={service}  
+                    filters={filters}
+                        pagination={pagination}
+                         />
                   </Grid>
                 ))}
               </Grid>
