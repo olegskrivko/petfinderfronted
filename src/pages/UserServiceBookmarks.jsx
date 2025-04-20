@@ -25,39 +25,39 @@ import ArrowDownwardIcon from '@mui/icons-material/ArrowDownward';
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 const API_BASE_URL = import.meta.env.VITE_API_BASE_URL; 
 
-function UserBookmarks() {
+function UserServiceBookmarks() {
   const { user } = useAuth(); // Assuming you are managing user state in context
   const navigate = useNavigate();
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
-  const [favoritedPets, setFavoritedPets] = useState([]);
+  const [favoritedServices, setFavoritedServices] = useState([]);
 
   useEffect(() => {
-    const fetchFavoritedPets = async () => {
+    const fetchFavoritedServices = async () => {
       const accessToken = localStorage.getItem('access_token');
       if (!accessToken) {
-        setError('You must be logged in to view favorited pets.');
+        setError('You must be logged in to view favorited services.');
         setLoading(false);
         return;
       }
 
       try {
-        const response = await axios.get(`${API_BASE_URL}/user-profile/favorite-pets/`, {
+        const response = await axios.get(`${API_BASE_URL}/user-profile/favorite-services/`, {
           headers: {
             Authorization: `Bearer ${accessToken}`,  // Add Authorization header with token
           },
         });
 
-        setFavoritedPets(response.data);  // Since axios already parses the response
+        setFavoritedServices(response.data);  // Since axios already parses the response
         setLoading(false);  // Stop loading when data is fetched
       } catch (error) {
-        console.error('Error fetching favorited pets data:', error);
-        setError('Failed to fetch favorited pets data');
+        console.error('Error fetching favorited services data:', error);
+        setError('Failed to fetch favorited services data');
         setLoading(false);  // Stop loading even when there’s an error
       }
     };
 
-    fetchFavoritedPets();
+    fetchFavoritedServices();
   }, []);
 
   // const handleDeletePet = async (petId) => {
@@ -88,15 +88,15 @@ function UserBookmarks() {
   //     alert('Error removing pet from favorites');
   //   }
   // };
-  const handleDeletePet = async (petId) => {
+  const handleDeleteService = async (serviceId) => {
     const accessToken = localStorage.getItem('access_token');
     if (!accessToken) {
-        alert('You must be logged in to delete pets.');
+        alert('You must be logged in to delete services.');
         return;
     }
 
     try {
-        const response = await fetch(`${API_BASE_URL}/user-profile/favorite-pets/${petId}/remove/`, {
+        const response = await fetch(`${API_BASE_URL}/user-profile/favorite-services/${serviceId}/remove/`, {
             method: 'DELETE',
             headers: {
                 Authorization: `Bearer ${accessToken}`,
@@ -105,20 +105,20 @@ function UserBookmarks() {
         });
 
         if (response.ok) {
-            // Remove the deleted pet from state
-            setFavoritedPets((prevPets) => prevPets.filter((pet) => pet.id !== petId));
+            // Remove the deleted service from state
+            setFavoritedServices((prevServices) => prevServices.filter((service) => service.id !== serviceId));
         } else {
             const errorData = await response.json();
             alert(`Error: ${errorData.detail}`);
         }
     } catch (error) {
-        console.error('Error removing pet from favorites:', error);
-        alert('Error removing pet from favorites');
+        console.error('Error removing service from favorites:', error);
+        alert('Error removing service from favorites');
     }
 };
 
-  const handleEditPet = (petId) => {
-    navigate(`/user-profile/edit-pet/${petId}`);
+  const handleEditService = (serviceId) => {
+    navigate(`/user-profile/edit-service/${serviceId}`);
   };
 
   // Loading and error state handling
@@ -126,7 +126,7 @@ function UserBookmarks() {
     return (
       <Container>
         <Typography variant="h5" align="center">
-          Loading your favorited pets...
+          Loading your favorited services...
         </Typography>
       </Container>
     );
@@ -153,7 +153,7 @@ function UserBookmarks() {
       SAGLABĀTIE SLUDINĀJUMI
     </Typography>
 
-    {favoritedPets.length === 0 ? (
+    {favoritedServices.length === 0 ? (
       // Show message when no bookmarks are available
       <Card >
         <CardContent  sx={{paddingBottom: "1rem !important"}}>
@@ -169,21 +169,21 @@ function UserBookmarks() {
       </Card>
     ) : (
       <Grid container spacing={2}>
-        {favoritedPets.map((pet) => (
-          <Grid item xs={12} key={pet.id}>
+        {favoritedServices.map((service) => (
+          <Grid item xs={12} key={service.id}>
             <Card>
               <CardContent>
                 <Box display="flex" alignItems="center">
                   <Avatar
-                    src={pet.pet_image_1}
-                    alt={pet.species_display}
+                    src={service.service_image}
+                    alt={service.title}
                     sx={{ width: 64, height: 64, marginRight: 2 }}
                   />
                   <Box flexGrow={1}>
                     <Typography variant="h6">
-                      <MuiLink href={`/pets/${pet.id}`} underline="none">
+                      <MuiLink href={`/services/${service.id}`} underline="none">
                         <Chip
-                          label={pet.species_display || "Nezināms"}
+                          label={service.title || "Nezināms"}
                           size="small"
                           variant="contained"
                           style={{ backgroundColor: "#5B9BD5", color: "#fff" }}
@@ -191,7 +191,7 @@ function UserBookmarks() {
                       </MuiLink>
                     </Typography>
                     <Typography variant="body1" color="textSecondary">
-                      {pet.status_display || "Nav statusa"}
+                      {service.title || "Nav statusa"}
                     </Typography>
                   </Box>
                   <Tooltip title="Izdzēst">
@@ -199,7 +199,7 @@ function UserBookmarks() {
                       edge="end"
                       color="error"
                       aria-label="delete"
-                      onClick={() => handleDeletePet(pet.id)}
+                      onClick={() => handleDeleteService(service.id)}
                     >
                       <DeleteIcon />
                     </IconButton>
@@ -235,4 +235,4 @@ function UserBookmarks() {
 
 
 
-export default UserBookmarks;
+export default UserServiceBookmarks;

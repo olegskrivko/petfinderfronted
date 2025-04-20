@@ -1,0 +1,138 @@
+// import React from 'react';
+// import { Box, Typography, Rating, Divider, Paper } from '@mui/material';
+
+// const ServiceRatingDisplay = ({ rating, reviewCount, reviews }) => {
+//   return (
+//     <Box my={4}>
+//       <Box display="flex" alignItems="center" gap={2} mb={2}>
+//         <Typography variant="h6" fontWeight={600}>
+//           Atsauksmes
+//         </Typography>
+//         <Rating value={rating || 0} readOnly precision={0.5} />
+//         <Typography variant="body2" color="text.secondary">
+//           {reviewCount || 0} atsauksmes
+//         </Typography>
+//       </Box>
+
+//       {reviews?.length ? (
+//         reviews.map((review, idx) => (
+//           <Paper key={idx} elevation={1} sx={{ p: 2, mb: 2 }}>
+//             <Box display="flex" alignItems="center" gap={1}>
+//               <Rating value={review.rating} readOnly size="small" precision={0.5} />
+//               <Typography variant="subtitle2">{review.user_name}</Typography>
+//             </Box>
+//             <Typography variant="body2" color="text.secondary">
+//               {review.comment}
+//             </Typography>
+//           </Paper>
+//         ))
+//       ) : (
+//         <Typography variant="body2" color="text.secondary">
+//           Lietotāji vēl nav pievienojuši atsauksmes. Esi pirmais!
+//         </Typography>
+//       )}
+//     </Box>
+//   );
+// };
+
+// export default ServiceRatingDisplay;
+// import React from 'react';
+// import { Box, Typography, Rating, Divider, Paper } from '@mui/material';
+
+// const ServiceRatingDisplay = ({ rating, reviewCount, reviews }) => {
+//   return (
+//     <Box my={4}>
+//       <Box display="flex" alignItems="center" gap={2} mb={2}>
+//         <Typography variant="h6" fontWeight={600}>
+//           Atsauksmes
+//         </Typography>
+//         <Rating value={rating || 0} readOnly precision={0.5} />
+//         <Typography variant="body2" color="text.secondary">
+//           {reviewCount || 0} atsauksmes
+//         </Typography>
+//       </Box>
+
+//       {reviews?.length ? (
+//         reviews.map((review, idx) => (
+//           <Paper key={idx} elevation={1} sx={{ p: 2, mb: 2 }}>
+//             <Box display="flex" alignItems="center" gap={1}>
+//               <Rating value={review.rating} readOnly size="small" precision={0.5} />
+//               <Typography variant="subtitle2">{review.user_name}</Typography>
+//             </Box>
+//             <Typography variant="body2" color="text.secondary">
+//               {review.comment}
+//             </Typography>
+//           </Paper>
+//         ))
+//       ) : (
+//         <Typography variant="body2" color="text.secondary">
+//           Lietotāji vēl nav pievienojuši atsauksmes. Esi pirmais!
+//         </Typography>
+//       )}
+//     </Box>
+//   );
+// };
+
+// export default ServiceRatingDisplay;
+import React, { useEffect, useState } from 'react';
+import { Box, Typography, Rating, Divider, Paper } from '@mui/material';
+import axios from 'axios';  // You can use axios or fetch to make API requests
+const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
+const ServiceRatingDisplay = ({ serviceId, rating, reviewCount }) => {
+  const [reviews, setReviews] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+
+  useEffect(() => {
+    const fetchReviews = async () => {
+      try {
+        setLoading(true);
+        const response = await axios.get(`${API_BASE_URL}/services/${serviceId}/reviews/`);
+        setReviews(response.data);
+      } catch (error) {
+        setError("Failed to load reviews.");
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchReviews();
+  }, [serviceId]);
+
+  if (loading) return <Typography>Loading reviews...</Typography>;
+  if (error) return <Typography>{error}</Typography>;
+
+  return (
+    <Box my={4}>
+      <Box display="flex" alignItems="center" gap={2} mb={2}>
+        <Typography variant="h6" fontWeight={600}>
+          Atsauksmes
+        </Typography>
+        <Rating value={rating || 0} readOnly precision={0.5} />
+        <Typography variant="body2" color="text.secondary">
+          {reviewCount || 0} atsauksmes
+        </Typography>
+      </Box>
+
+      {reviews?.length ? (
+        reviews.map((review, idx) => (
+          <Paper key={idx} elevation={1} sx={{ p: 2, mb: 2 }}>
+            <Box display="flex" alignItems="center" gap={1}>
+              <Rating value={review.rating} readOnly size="small" precision={0.5} />
+              <Typography variant="subtitle2">{review.user_name}</Typography>
+            </Box>
+            <Typography variant="body2" color="text.secondary">
+              {review.comment}
+            </Typography>
+          </Paper>
+        ))
+      ) : (
+        <Typography variant="body2" color="text.secondary">
+          Lietotāji vēl nav pievienojuši atsauksmes. Esi pirmais!
+        </Typography>
+      )}
+    </Box>
+  );
+};
+
+export default ServiceRatingDisplay;

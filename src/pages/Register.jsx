@@ -25,7 +25,7 @@ const Register = () => {
     setLoading(true); // Start loading
 
     try {
-      const response = await fetch(`${API_BASE_URL}/api/register`, { // Replace with your API URL
+      const response = await fetch(`${API_BASE_URL}/auth/register/`, { // Replace with your API URL
         method: "POST",
         headers: {
           "Content-Type": "application/json",

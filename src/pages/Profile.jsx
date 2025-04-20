@@ -8,8 +8,10 @@ import { Link, useNavigate } from 'react-router-dom';
 import SettingsIcon from '@mui/icons-material/Settings';
 import TryIcon from '@mui/icons-material/Try';
 import { useAuth } from '../contexts/AuthContext';
-import FavoriteIcon from '@mui/icons-material/Favorite';
+
 import PetsIcon from '@mui/icons-material/Pets';
+import WorkIcon from '@mui/icons-material/Work';
+import FavoriteIcon from '@mui/icons-material/Favorite';
 // import user_avatar from './images/cathead-01.png'
 // import user_avatar from './images/account_amico_blue.svg'
 // import user_avatar from './images/ava/Asset 9.svg'
@@ -145,33 +147,22 @@ const handleLogout = () => {
     <Grid item xs={12} md={12}>
       <Box sx={{ textAlign: 'center', position: 'relative' }}>
 
-
-        {/* <img
-          alt={user.username}
-          src={user_avatar}
-          style={{
-            width: '200px',
-            height: '200px',
-            padding: '1rem 1rem',
-
-          }}
-        /> */}
         <AvatarWithAnimal user={user} />
 
         <Typography variant="body1" color="primary" mt={1} style={{ fontWeight: 'bold' }}>
           {user.username}
         </Typography>
      
-        <Grid container spacing={2} sx={{ mt: 1, mb: 5 }} justifyContent="center">
-          <Grid item xs={12} md={4}>
-            <Link to="/user-profile/bookmarks" style={{ textDecoration: 'none' }}>
+        {/* <Grid container spacing={2} sx={{ mt: 1, mb: 5 }} justifyContent="center">
+          <Grid item xs={12} >
+            <Link to="/user-profile/bookmarks/pets" style={{ textDecoration: 'none' }}>
               <Paper sx={{ padding: '2rem 0', backgroundColor: '#f7f9fd' }}>
                 <BookmarkIcon fontSize="large" sx={{ color: '#5B9BD5' }} />
-                <Typography variant="body1">Saglabātie sludinājumi</Typography>
+                <Typography variant="body1">Saglabātie dzīvnieku sludinājumi</Typography>
               </Paper>
             </Link>
           </Grid>
-          <Grid item xs={12} md={4}>
+          <Grid item xs={12} md={3}>
             <Link to="/user-profile/settings" style={{ textDecoration: 'none' }}>
               <Paper sx={{ padding: '2rem 0', backgroundColor: '#f7f9fd' }}>
                 <SettingsIcon fontSize="large" sx={{ color: '#5B9BD5' }} />
@@ -179,7 +170,7 @@ const handleLogout = () => {
               </Paper>
             </Link>
           </Grid>
-          <Grid item xs={12} md={4}>
+          <Grid item xs={12} md={3}>
             <Link to="/user-profile/pets" style={{ textDecoration: 'none' }}>
               <Paper sx={{ padding: '2rem 0', backgroundColor: '#f7f9fd' }}>
                 <PetsIcon fontSize="large" sx={{ color: '#5B9BD5' }} />
@@ -187,7 +178,82 @@ const handleLogout = () => {
               </Paper>
             </Link>
           </Grid>
-        </Grid>
+          <Grid item xs={12} md={3}>
+            <Link to="/user-profile/services" style={{ textDecoration: 'none' }}>
+              <Paper sx={{ padding: '2rem 0', backgroundColor: '#f7f9fd' }}>
+                <WorkIcon fontSize="large" sx={{ color: '#5B9BD5' }} />
+                <Typography variant="body1">Mani pakalpojumi</Typography>
+              </Paper>
+            </Link>
+          </Grid>
+          <Grid item xs={12} md={3}>
+            <Link to="/user-profile/bookmarks/services" style={{ textDecoration: 'none' }}>
+              <Paper sx={{ padding: '2rem 0', backgroundColor: '#f7f9fd' }}>
+                <WorkIcon fontSize="large" sx={{ color: '#5B9BD5' }} />
+                <Typography variant="body1">Saglabātie pakalpojumi</Typography>
+              </Paper>
+            </Link>
+          </Grid>
+        </Grid> */}
+        <Grid container spacing={2} sx={{ mt: 1, mb: 5 }} justifyContent="center">
+  <Grid item xs={12}>
+    <Link to="/user-profile/bookmarks/pets" style={{ textDecoration: 'none' }}>
+      <Paper sx={{ padding: '1rem', backgroundColor: '#f7f9fd' }}>
+        <Box display="flex" alignItems="center">
+          <BookmarkIcon fontSize="large" sx={{ color: '#5B9BD5', mr: 2 }} />
+          <Typography variant="body1">Saglabātie dzīvnieku sludinājumi</Typography>
+        </Box>
+      </Paper>
+    </Link>
+  </Grid>
+
+
+
+  <Grid item xs={12}>
+    <Link to="/user-profile/pets" style={{ textDecoration: 'none' }}>
+      <Paper sx={{ padding: '1rem', backgroundColor: '#f7f9fd' }}>
+        <Box display="flex" alignItems="center">
+          <PetsIcon fontSize="large" sx={{ color: '#5B9BD5', mr: 2 }} />
+          <Typography variant="body1">Mani mājdzīvnieki</Typography>
+        </Box>
+      </Paper>
+    </Link>
+  </Grid>
+
+  <Grid item xs={12}>
+    <Link to="/user-profile/services" style={{ textDecoration: 'none' }}>
+      <Paper sx={{ padding: '1rem', backgroundColor: '#f7f9fd' }}>
+        <Box display="flex" alignItems="center">
+          <WorkIcon fontSize="large" sx={{ color: '#5B9BD5', mr: 2 }} />
+          <Typography variant="body1">Mani pakalpojumi</Typography>
+        </Box>
+      </Paper>
+    </Link>
+  </Grid>
+
+  <Grid item xs={12}>
+    <Link to="/user-profile/bookmarks/services" style={{ textDecoration: 'none' }}>
+      <Paper sx={{ padding: '1rem', backgroundColor: '#f7f9fd' }}>
+        <Box display="flex" alignItems="center">
+          <FavoriteIcon fontSize="large" sx={{ color: '#5B9BD5', mr: 2 }} />
+          <Typography variant="body1">Saglabātie pakalpojumi</Typography>
+        </Box>
+      </Paper>
+    </Link>
+  </Grid>
+
+  <Grid item xs={12}>
+    <Link to="/user-profile/settings" style={{ textDecoration: 'none' }}>
+      <Paper sx={{ padding: '1rem', backgroundColor: '#f7f9fd' }}>
+        <Box display="flex" alignItems="center">
+          <SettingsIcon fontSize="large" sx={{ color: '#5B9BD5', mr: 2 }} />
+          <Typography variant="body1">Iestatījumi</Typography>
+        </Box>
+      </Paper>
+    </Link>
+  </Grid>
+</Grid>
+
         {/* <Grid container>
         <div>
     <svg

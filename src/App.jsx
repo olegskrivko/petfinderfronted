@@ -36,7 +36,10 @@ import Profile from './pages/Profile'
 
 import UserSettings from './pages/UserSettings'
 import UserPets from './pages/UserPets'
-import UserBookmarks from './pages/UserBookmarks'
+import UserServices from './pages/UserServices'
+
+import UserPetBookmarks from './pages/UserPetBookmarks'
+import UserServiceBookmarks from './pages/UserServiceBookmarks'
 
 import PetTraining from './pages/PetTraining'
 import EditPet from './pages/EditPet'
@@ -75,6 +78,8 @@ import { useAuth } from './contexts/AuthContext'; // Adjust the path as needed
 import CookieConsent from 'react-cookie-consent';
 import SubscribePage from './pages/SubscribePage';
 import FrequentlyAskedQuestions from './pages/FrequentlyAskedQuestions';
+import BookmarksIndexPage from './pages/BookmarksIndexPage'
+
 // import CookieBanner from 'react-cookie-banner';
 import cookieIcon from '../src/pages/images/paw.png';
 
@@ -394,8 +399,12 @@ function App() {
             
             <Route path="/user-profile" element={<Profile />} />
             <Route path="/user-profile/settings" element={<UserSettings />} />
-            <Route path="/user-profile/bookmarks" element={<UserBookmarks />} />
+            <Route path="/user-profile/bookmarks/pets" element={<UserPetBookmarks />} />
+            <Route path="/user-profile/bookmarks/services" element={<UserServiceBookmarks />} />
+            <Route path="/user-profile/bookmarks" element={<BookmarksIndexPage />} />
+      
             <Route path="/user-profile/pets" element={<UserPets />} />
+            <Route path="/user-profile/services" element={<UserServices />} />
             {/* <Route path="/user-profile/edit-pet/:id" element={<EditPet />} /> */}
             <Route 
             path="/user-profile/edit-pet/:id" 

@@ -581,11 +581,22 @@ import { LocationOn, AccessTime, Phone, Email, Euro } from '@mui/icons-material'
 import { Facebook, Instagram, Language, YouTube, Twitter, LinkedIn } from '@mui/icons-material';
 import WhatsAppIcon from '@mui/icons-material/WhatsApp';
 import MapIcon from '@mui/icons-material/Map';
+import { Rating } from '@mui/material';
+import RatingForm from './RatingForm';
+import ServiceRatingDisplay from './ServiceRatingDisplay';
+
+
 import {  Link as MuiLink} from '@mui/material';
 import ArrowOutwardIcon from '@mui/icons-material/ArrowOutward';
+import BookmarkIcon from '@mui/icons-material/Bookmark';
+import BookmarkBorderIcon from '@mui/icons-material/BookmarkBorder';
+import FavoriteIcon from '@mui/icons-material/Favorite';
+import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 import LeafletServiceDetailsMap from '../components/LeafletServiceDetailsMap';
 import HolidayCard from './HolidayCard';
 import PublicIcon from '@mui/icons-material/Public';
+import { useSnackbar } from 'notistack';
+
 const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
 // You can define this helper map at the top of your component file
 const platformIcons = {
@@ -599,10 +610,11 @@ const platformIcons = {
 
 const ServiceDetail = () => {
   const { id } = useParams();
+  const [userRating, setUserRating] = useState(0);
   const [service, setService] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState('');
-
+const [isFavorite, setIsFavorite] = useState(false);
   const [userCoords, setUserCoords] = useState(null);
 const [distances, setDistances] = useState([]);
 const [centerCoords, setCenterCoords] = useState([56.946285, 24.105078]); 
@@ -610,6 +622,7 @@ const handlePanToLocation = (lat, lng) => {
   console.log('lat, lng', lat, lng);
   setCenterCoords([lat, lng]);
 };
+const { enqueueSnackbar } = useSnackbar();
 const handleLocationClick = () => {
   console.log('Pet coords from pet card');
   onPanToLocation(serviceLatitude, serviceLongitude);
@@ -670,9 +683,65 @@ const calculateDistance = (lat1, lon1, lat2, lon2) => {
       }
     };
 
+    const fetchFavoriteStatus = async () => {
+      const accessToken = localStorage.getItem('access_token');
+      if (!accessToken) return;
+  
+      try {
+          const response = await fetch(`${API_BASE_URL}/user-profile/favorite-services/${id}/`, {
+              method: 'GET',
+              headers: { Authorization: `Bearer ${accessToken}` },
+          });
+  
+          if (response.ok) {
+              const data = await response.json();
+              setIsFavorite(data.is_favorite);
+          } else {
+              setIsFavorite(false);
+          }
+      } catch (error) {
+          console.error('Error checking favorite status:', error);
+      }
+  };
+  
     fetchService();
+    fetchFavoriteStatus();
   }, [id]);
 
+
+  // Callback to refresh reviews when a new review is successfully submitted
+  const handleReviewSuccess = () => {
+    // enqueueSnackbar('Review successfully submitted!', { variant: 'success' });
+  };
+  const handleFavorite = async () => {
+    const accessToken = localStorage.getItem('access_token');
+    if (!accessToken) {
+      alert('You must be logged in to manage favorites.');
+      return;
+    }
+
+    const url = `${API_BASE_URL}/user-profile/favorite-services/${id}/`;
+    try {
+      const response = await fetch(url, {
+        method: isFavorite ? 'DELETE' : 'POST',
+        headers: {
+          Authorization: `Bearer ${accessToken}`,
+          'Content-Type': 'application/json',
+        },
+      });
+
+      if (response.ok) {
+        setIsFavorite(!isFavorite);
+        enqueueSnackbar(isFavorite ? 'Service removed from favorites' : 'Service added to favorites', { variant: 'success' });
+      } else {
+        const errorData = await response.json();
+        enqueueSnackbar(errorData.detail || 'Something went wrong', { variant: 'error' });
+      }
+    } catch (error) {
+      console.error('Error updating favorite status:', error);
+      enqueueSnackbar('Error updating favorite status. Please try again later.', { variant: 'error' });
+    }
+  };
   if (loading) {
     return (
       <Box display="flex" justifyContent="center" alignItems="center" height="100vh">
@@ -696,64 +765,56 @@ const calculateDistance = (lat1, lon1, lat2, lon2) => {
             <Container component="main" maxWidth="lg" sx={{ paddingLeft: "0 !important", paddingRight: "0 !important" }}>
 
       {/* Service Image */}
-      <Box mb={5} >
-        <Card elevation={4} sx={{ borderRadius: 4, overflow: 'hidden' }}>
-          <CardMedia
-            component="img"
-            image={service.service_image}
-            alt={service.title}
-            sx={{ maxHeight: 500, objectFit: 'cover' }}
-          />
-          <CardContent sx={{ p: { xs: 2, md: 3 }}}>
-            <Typography variant="h5" fontWeight={600} gutterBottom>
-              {service.title}
-            </Typography>
-            <Typography variant="body1" color="text.secondary" sx={{ mb: 3 }}>
-              {service.description || 'No description provided.'}
-            </Typography>
+      <Box mb={5}>
+  <Card elevation={4} sx={{ borderRadius: 4, overflow: 'hidden', position: 'relative' }}>
+    <CardMedia
+      component="img"
+      image={service.service_image}
+      alt={service.title}
+      sx={{ maxHeight: 500, objectFit: 'cover' }}
+    />
 
-            <Divider sx={{ mb: 2 }} />
+    {/* Favorite Button Positioned Absolutely */}
+    <IconButton
+      onClick={handleFavorite}
+      sx={{
+        position: 'absolute',
+        top: 16,
+        right: 16,
+        backgroundColor: '#FFFFFF',
+        zIndex: 2,
+        '&:hover': {
+          backgroundColor: '#f0f0f0',
+        },
+      }}
+      aria-label="toggle favorite"
+    >
+      {isFavorite ? <FavoriteIcon color="secondary" /> : <FavoriteBorderIcon />}
+    </IconButton>
 
-            {/* <Stack direction="row" spacing={2} alignItems="center" mb={2}>
-              <Euro color="action" />
-              <Typography variant="body2" >
-                Cena sākot no {service.price} EUR / {service.price_type_display}
-              </Typography>
-            </Stack> */}
-            <Stack direction="row" spacing={2} alignItems="center" >
-  <Euro color="action" />
-  <Typography variant="body2">
-    {service.price_type === 4
-      ? 'Cena pēc vienošanās'
-      : `Cena sākot no ${service.price} EUR / ${service.price_type_display.toLowerCase()}`}
-  </Typography>
-</Stack>
+    <CardContent sx={{ p: { xs: 2, md: 3 } }}>
+      <Typography variant="h5" fontWeight={600} gutterBottom>
+        {service.title}
+      </Typography>
 
-            {/* "provider_type_display": "Fiziska persona",
-            "price_type_display": "Dienā", */}
-            {/* <Stack direction="row" spacing={2} alignItems="center" mb={2}>
-              <Euro color="action" />
-              <Typography variant="body2">
-                Price Range: {service.price_min} – {service.price_max} EUR
-              </Typography>
-            </Stack> */}
+      <Typography variant="body1" color="text.secondary" sx={{ mb: 3 }}>
+        {service.description || 'No description provided.'}
+      </Typography>
 
-            {/* <Stack direction="row" spacing={2} alignItems="center"  mb={2}>
-              <AccessTime color="action" />
-              <Typography variant="body2">Price per hour: {service.price_per_hour} EUR</Typography>
-            </Stack> */}
-            {/* <Stack direction="row" spacing={2} alignItems="center">
-              <AccessTime color="action" />
-              <Typography variant="body2">Duration: {service.duration} min</Typography>
-            </Stack> */}
-            {/* <Stack direction="row" spacing={1} justifyContent="center" mt={2}>
-          <Chip label="Dogs" variant="outlined" />
-          <Chip label="Cats" variant="outlined" />
-          <Chip label="Veterinary" variant="outlined" />
-        </Stack> */}
-          </CardContent>
-        </Card>
-      </Box>
+      <Divider sx={{ mb: 2 }} />
+
+      <Stack direction="row" spacing={2} alignItems="center">
+        <Euro color="action" />
+        <Typography variant="body2">
+          {service.price_type === 4
+            ? 'Cena pēc vienošanās'
+            : `Cena sākot no ${service.price} EUR / ${service.price_type_display.toLowerCase()}`}
+        </Typography>
+      </Stack>
+    </CardContent>
+  </Card>
+</Box>
+
 
       {/* <HolidayCard /> */}
 
@@ -931,6 +992,21 @@ const calculateDistance = (lat1, lon1, lat2, lon2) => {
     Uzmanību! Pirms jebkādu maksājumu veikšanas pārliecinieties par pakalpojuma sniedzēja uzticamību. Mēs iesakām tikties sabiedriskā vietā un būt piesardzīgiem. Mūsu platforma neuzņemas atbildību par jebkādiem zaudējumiem, krāpniecību vai nesaskaņām starp lietotājiem.
   </Alert>
 </Box>
+<Divider sx={{ my: 3 }} />
+
+{/* <RatingForm serviceId={id} onSuccess={() => fetchService()} /> */}
+      {/* Review form */}
+      <RatingForm serviceId={id} onSuccess={handleReviewSuccess} />
+
+      {/* Service reviews display */}
+      {/* <ServiceRatingDisplay serviceId={id} loading={loading} /> */}
+<ServiceRatingDisplay
+serviceId={service.id}
+  rating={service.rating}
+  reviewCount={service.review_count}
+  reviews={service.reviews}
+/>
+
 
 
     </Container>
