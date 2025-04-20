@@ -582,6 +582,7 @@ import { Facebook, Instagram, Language, YouTube, Twitter, LinkedIn } from '@mui/
 import WhatsAppIcon from '@mui/icons-material/WhatsApp';
 import MapIcon from '@mui/icons-material/Map';
 import {  Link as MuiLink} from '@mui/material';
+import ArrowOutwardIcon from '@mui/icons-material/ArrowOutward';
 import LeafletServiceDetailsMap from '../components/LeafletServiceDetailsMap';
 import HolidayCard from './HolidayCard';
 import PublicIcon from '@mui/icons-material/Public';
@@ -601,6 +602,49 @@ const ServiceDetail = () => {
   const [service, setService] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState('');
+
+  const [userCoords, setUserCoords] = useState(null);
+const [distances, setDistances] = useState([]);
+const [centerCoords, setCenterCoords] = useState([56.946285, 24.105078]); 
+const handlePanToLocation = (lat, lng) => {
+  console.log('lat, lng', lat, lng);
+  setCenterCoords([lat, lng]);
+};
+const handleLocationClick = () => {
+  console.log('Pet coords from pet card');
+  onPanToLocation(serviceLatitude, serviceLongitude);
+};
+useEffect(() => {
+  navigator.geolocation.getCurrentPosition((position) => {
+    const { latitude, longitude } = position.coords;
+    setUserCoords({ latitude, longitude });
+
+    if (service?.locations?.length) {
+      const calculatedDistances = service.locations.map((loc) =>
+        calculateDistance(latitude, longitude, loc.latitude, loc.longitude)
+      );
+      setDistances(calculatedDistances);
+    }
+  });
+}, [service]);
+
+const calculateDistance = (lat1, lon1, lat2, lon2) => {
+  const toRad = (value) => (value * Math.PI) / 180;
+  const R = 6371; // Radius of Earth in km
+
+  const dLat = toRad(lat2 - lat1);
+  const dLon = toRad(lon2 - lon1);
+
+  const a =
+    Math.sin(dLat / 2) ** 2 +
+    Math.cos(toRad(lat1)) *
+      Math.cos(toRad(lat2)) *
+      Math.sin(dLon / 2) ** 2;
+
+  const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+
+  return (R * c).toFixed(2); // km
+};
 
   useEffect(() => {
     const fetchService = async () => {
@@ -649,10 +693,10 @@ const ServiceDetail = () => {
 
   return (
     // <Container maxWidth="md" sx={{ mt: 6, mb: 6 }}>
-            <Container component="main" maxWidth="lg" sx={{ paddingLeft: 0, paddingRight: 0 }}>
+            <Container component="main" maxWidth="lg" sx={{ paddingLeft: "0 !important", paddingRight: "0 !important" }}>
 
       {/* Service Image */}
-      <Box mb={5}>
+      <Box mb={5} >
         <Card elevation={4} sx={{ borderRadius: 4, overflow: 'hidden' }}>
           <CardMedia
             component="img"
@@ -670,33 +714,43 @@ const ServiceDetail = () => {
 
             <Divider sx={{ mb: 2 }} />
 
-            <Stack direction="row" spacing={2} alignItems="center" mb={2}>
+            {/* <Stack direction="row" spacing={2} alignItems="center" mb={2}>
               <Euro color="action" />
-              <Typography variant="body1" fontWeight={500}>
-                Base Price: {service.price} EUR
+              <Typography variant="body2" >
+                Cena sākot no {service.price} EUR / {service.price_type_display}
               </Typography>
-            </Stack>
+            </Stack> */}
+            <Stack direction="row" spacing={2} alignItems="center" >
+  <Euro color="action" />
+  <Typography variant="body2">
+    {service.price_type === 4
+      ? 'Cena pēc vienošanās'
+      : `Cena sākot no ${service.price} EUR / ${service.price_type_display.toLowerCase()}`}
+  </Typography>
+</Stack>
 
-            <Stack direction="row" spacing={2} alignItems="center" mb={2}>
+            {/* "provider_type_display": "Fiziska persona",
+            "price_type_display": "Dienā", */}
+            {/* <Stack direction="row" spacing={2} alignItems="center" mb={2}>
               <Euro color="action" />
               <Typography variant="body2">
                 Price Range: {service.price_min} – {service.price_max} EUR
               </Typography>
-            </Stack>
+            </Stack> */}
 
-            <Stack direction="row" spacing={2} alignItems="center"  mb={2}>
+            {/* <Stack direction="row" spacing={2} alignItems="center"  mb={2}>
               <AccessTime color="action" />
               <Typography variant="body2">Price per hour: {service.price_per_hour} EUR</Typography>
-            </Stack>
-            <Stack direction="row" spacing={2} alignItems="center">
+            </Stack> */}
+            {/* <Stack direction="row" spacing={2} alignItems="center">
               <AccessTime color="action" />
               <Typography variant="body2">Duration: {service.duration} min</Typography>
-            </Stack>
-            <Stack direction="row" spacing={1} justifyContent="center" mt={2}>
+            </Stack> */}
+            {/* <Stack direction="row" spacing={1} justifyContent="center" mt={2}>
           <Chip label="Dogs" variant="outlined" />
           <Chip label="Cats" variant="outlined" />
           <Chip label="Veterinary" variant="outlined" />
-        </Stack>
+        </Stack> */}
           </CardContent>
         </Card>
       </Box>
@@ -704,7 +758,8 @@ const ServiceDetail = () => {
       {/* <HolidayCard /> */}
 
 
-      <LeafletServiceDetailsMap shelters={service.locations} />
+      <LeafletServiceDetailsMap shelters={service.locations} onPanToLocation={handlePanToLocation}
+  centerCoords={centerCoords}  />
 
       {/* Locations */}
         <Typography variant="h5" fontWeight={600} my={3}>
@@ -718,112 +773,56 @@ const ServiceDetail = () => {
             elevation={3}
             sx={{ borderRadius: 4, mb: 4, p: { xs: 2, md: 3 }, backgroundColor: '#fafafa' }}
           >
-            {/* <Stack spacing={2}> */}
-              {/* <Typography variant="h6" fontWeight={600}>
-              <LocationOn fontSize="small" sx={{ verticalAlign: 'middle', mr: 1 }} />{location.city}, {location.street}
-              </Typography> */}
-              <Box display="flex" alignItems="center" gap={2}>
-                                    <IconButton style={{ backgroundColor: '#555', color: '#fff', pointerEvents: 'none' }}>
-                                      <LocationOn />
-                                    </IconButton> {location.city}, {location.street}
-                                  </Box>
+      
+<Box display="flex" alignItems="center" gap={2} justifyContent="space-between">
+<Box display="flex" flexDirection="column" alignItems="flex-start" gap={2}>
+  <Box display="flex" alignItems="center" gap={1}>
+    <IconButton style={{ backgroundColor: '#555', color: '#fff' }} onClick={() => handlePanToLocation(location.latitude, location.longitude)} >
+      <LocationOn />
+    </IconButton>
 
-              {/* {location.full_address && (
-                <Typography variant="body2" color="text.secondary">
-                  <LocationOn fontSize="small" sx={{ verticalAlign: 'middle', mr: 1 }} />
-                  {location.full_address}
-                </Typography>
-              )} */}
-              {/* {location.full_address && (
-  <Typography variant="body2" color="text.secondary" sx={{ display: 'flex', alignItems: 'center' }}>
-    <MapIcon fontSize="small" sx={{ verticalAlign: 'middle', mr: 1 }} />
-    <MuiLink
-      href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(location.full_address)}`}
-      target="_blank"
-      rel="noopener"
-      underline="hover"
-      color="inherit"
-    >
-      Parādīt google kartē
-
-    </MuiLink>
-  </Typography>
-)} */}
-
-              {/* {location.phone_number && (
-                <Typography variant="body2">
-                  <Phone fontSize="small" sx={{ verticalAlign: 'middle', mr: 1 }} />
-                  {location.phone_number}
-                </Typography>
-              )} */}
-
-              {/* {location.email && (
-                <Typography variant="body2">
-                  <Email fontSize="small" sx={{ verticalAlign: 'middle', mr: 1 }} />
-                  {location.email}
-                </Typography>
-              )} */}
-
-{/* {location.working_hours && (
-  <Box mt={2}>
-    <Typography variant="subtitle2" fontWeight={500} gutterBottom>
-      Darba laiks:
+    <Typography variant="body1">
+      {/* {location.city}, {location.street}{' '} */}
+      <a
+        href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(
+          `${location.street}, ${location.city}`
+        )}`}
+        target="_blank"
+        rel="noopener noreferrer"
+        style={{ color: '#90caf9', textDecoration: 'underline', marginLeft: '0.3rem' }}
+      >
+          {location.city}, {location.street}{' '} 
+      </a>
     </Typography>
-
-    <Box component="ul" sx={{ listStyle: 'none', pl: 0, mt: 1 }}>
-      {[
-        { id: 0, label: 'Pirmdiena' },
-        { id: 1, label: 'Otrdiena' },
-        { id: 2, label: 'Trešdiena' },
-        { id: 3, label: 'Ceturtdiena' },
-        { id: 4, label: 'Piektdiena' },
-        { id: 5, label: 'Sestdiena' },
-        { id: 6, label: 'Svētdiena' },
-      ].map((day) => {
-        const entry = location.working_hours.find((time) => time.day === day.id);
-
-        return (
-          <Box
-            key={day.id}
-            component="li"
-            sx={{
-              display: 'flex',
-              justifyContent: 'space-between',
-              fontFamily: 'monospace',
-              color: 'text.secondary',
-              fontSize: '0.875rem',
-              mb: 0.5,
-            }}
-          >
-            <span>{day.label}</span>
-            <span>
-              {entry && entry.from_hour && entry.to_hour
-                ? `${entry.from_hour.slice(0, 5)} - ${entry.to_hour.slice(0, 5)}`
-                : 'Brīvdiena'}
-            </span>
-          </Box>
-        );
-      })}
-    </Box>
+ 
   </Box>
-)} */}
-{/* {location.full_address && (
-  <Typography variant="body2" color="text.secondary" sx={{ display: 'flex', alignItems: 'center' }}>
-    <LocationOn fontSize="small" sx={{ verticalAlign: 'middle', mr: 1 }} />
-    <MuiLink
-      href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(location.full_address)}`}
-      target="_blank"
-      rel="noopener"
-      underline="hover"
-      color="inherit"
-    >
-      {location.full_address}
-    </MuiLink>
-  </Typography>
-)} */}
+  <Box display="flex" flexDirection="column" gap={0.5}>
+  {location.location_title && (
+    <Typography variant="subtitle1" fontWeight={600}>
+      {location.location_title}
+    </Typography>
+  )}
+  {location.location_description && (
+    <Typography variant="body2" color="text.secondary">
+      {location.location_description}
+    </Typography>
+  )}
+</Box>
+</Box>
+
+  <Box display="flex" alignItems="center" gap={1}>
+    <ArrowOutwardIcon />
+    {distances.length > index && (
+      <Typography variant="body2" color="text.secondary">
+        {distances[index]} km
+      </Typography>
+    )}
+  </Box>
+</Box>
 
 
-            {/* </Stack> */}
+
+           
           </Card>
         ))
       ) : (
@@ -840,30 +839,6 @@ const ServiceDetail = () => {
   <Card elevation={3} sx={{ borderRadius: 3,p: { xs: 2, md: 3 } }}>
     <Stack spacing={2}>
       {/* Phone */}
-      {/* {service.phone_number && service.phone_code && (
-        <Typography variant="body1" sx={{ display: 'flex', alignItems: 'center' }}>
-          <WhatsAppIcon sx={{ mr: 1, color: '#4FCE5D' }} />
-          <MuiLink
-            href={`tel:${service.phone_code}${service.phone_number}`}
-            underline="hover"
-            color="inherit"
-          >
-            {service.phone_code} {service.phone_number}
-          </MuiLink>
-        </Typography>
-      )} */}
-            {/* {service.phone_number && service.phone_code && (
-        <Typography variant="body1" sx={{ display: 'flex', alignItems: 'center' }}>
-          <WhatsAppIcon sx={{ mr: 1, color: '#4FCE5D' }} />
-          <MuiLink
-            href={`tel:${service.phone_code}${service.phone_number}`}
-            underline="hover"
-            color="inherit"
-          >
-            {service.phone_code} {service.phone_number}
-          </MuiLink>
-        </Typography>
-      )} */}
        {service.phone_number && service.phone_code && (
       <Box display="flex" alignItems="center" gap={2}>
       <IconButton style={{ backgroundColor: '#555', color: '#4FCE5D', pointerEvents: 'none' }}>
@@ -878,19 +853,6 @@ const ServiceDetail = () => {
       </Box>
            )}
       {/* Email */}
-      {/* {service.email && (
-        <Typography variant="body1" sx={{ display: 'flex', alignItems: 'center' }}>
-          <Email sx={{ mr: 1, color: '#FFDE21' }} />
-          <MuiLink
-            href={`mailto:${service.email}`}
-            underline="hover"
-            color="inherit"
-          >
-            {service.email}
-          </MuiLink>
-        </Typography>
-      )} */}
-
 {service.email && (
       <Box display="flex" alignItems="center" gap={2}>
       <IconButton style={{ backgroundColor: '#555', color: '#FFDE21', pointerEvents: 'none' }}>
@@ -906,20 +868,6 @@ const ServiceDetail = () => {
            )}
 
       {/* Website */}
-      {/* {service.website && (
-        <Typography variant="body1" sx={{ display: 'flex', alignItems: 'center' }}>
-          <Language sx={{ mr: 1, color: '#115588' }} />
-          <MuiLink
-            href={service.website}
-            target="_blank"
-            rel="noopener"
-            underline="hover"
-            color="inherit"
-          >
-            {service.website.replace(/^https?:\/\//, '')}
-          </MuiLink>
-        </Typography>
-      )} */}
 
 {service.website && (
       <Box display="flex" alignItems="center" gap={2}>
@@ -952,8 +900,9 @@ const ServiceDetail = () => {
             const icon = iconMap[social.platform] || null;
 
             return (
-              <Typography variant="body1" sx={{ display: 'flex', alignItems: 'center' }}  gap={2}>
-                  <IconButton style={{ backgroundColor: '#555', color: '#90D5FF', pointerEvents: 'none' }}>
+              <Typography key={idx} variant="body1" sx={{ display: 'flex', alignItems: 'center' }}  gap={2}>
+             
+                  <IconButton style={{ backgroundColor: '#555', color: '#90D5FF', pointerEvents: 'none' }} >
                   {icon}
       </IconButton> 
               
@@ -967,22 +916,6 @@ const ServiceDetail = () => {
                 {social.profile_url.replace(/^https?:\/\//, '')}
               </MuiLink>
             </Typography>
-              // <Typography
-              //   key={idx}
-              //   variant="body1"
-              //   sx={{ display: 'flex', alignItems: 'center' }}
-              // >
-              //   {icon}
-              //   <MuiLink
-              //     href={social.profile_url}
-              //     target="_blank"
-              //     rel="noopener"
-              //     underline="hover"
-              //     color="inherit"
-              //   >
-              //     {social.profile_url.replace(/^https?:\/\//, '')}
-              //   </MuiLink>
-              // </Typography>
             );
           })}
         </>
@@ -992,12 +925,7 @@ const ServiceDetail = () => {
 </Box>
 
 
-      {/* Footer Contact */}
-      {/* <Box sx={{ mt: 6 }}>
-  <Alert severity="info">
-    Ja esat pakalpojuma sniedzējs un vēlaties atjaunināt sava pakalpojuma informāciju, lūdzu, sazinieties ar mums.
-  </Alert>
-</Box> */}
+
 <Box sx={{ mt: 4 }}>
   <Alert severity="warning">
     Uzmanību! Pirms jebkādu maksājumu veikšanas pārliecinieties par pakalpojuma sniedzēja uzticamību. Mēs iesakām tikties sabiedriskā vietā un būt piesardzīgiem. Mūsu platforma neuzņemas atbildību par jebkādiem zaudējumiem, krāpniecību vai nesaskaņām starp lietotājiem.

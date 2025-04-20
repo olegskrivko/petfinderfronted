@@ -14,6 +14,18 @@ const defaultIcon = new L.Icon({
   iconSize: new L.Point(40, 40),
 });
 
+const userPulseIcon = L.divIcon({
+  className: '',
+  html: `
+    <div class="user-location-wrapper">
+      <div class="user-location-core"></div>
+      <div class="user-location-pulse"></div>
+    </div>
+  `,
+  iconSize: [30, 30],
+  iconAnchor: [15, 15],
+});
+
 // Function to create custom cluster icons
 const createClusterCustomIcon = function (cluster) {
   return new L.DivIcon({
@@ -29,7 +41,7 @@ const MapUpdater = ({ centerCoords }) => {
 
   useEffect(() => {
     if (centerCoords && centerCoords.length === 2) {
-      map.setView(centerCoords, 9);
+      map.setView(centerCoords, 13);
     }
   }, [centerCoords, map]);
 
@@ -57,6 +69,17 @@ const MapTilerLayerComponent = () => {
 };
 
 function LeafletServiceDetailsMap({ shelters, centerCoords }) {
+      const [userLocation, setUserLocation] = useState(null);
+  
+      useEffect(() => {
+        navigator.geolocation.getCurrentPosition(
+          (pos) => {
+            const { latitude, longitude } = pos.coords;
+            setUserLocation([latitude, longitude]);
+          },
+          (err) => console.error('Location error:', err)
+        );
+      }, []);
   return (
     <div>
       <MapContainer
@@ -159,6 +182,27 @@ function LeafletServiceDetailsMap({ shelters, centerCoords }) {
               </Marker>
             ) : null
           )}
+
+
+                    {userLocation && (
+                      <Marker position={userLocation} icon={userPulseIcon}>
+                        <Popup offset={[0, 5]}>
+                          <div
+                            style={{
+                              background: '#5B9BD5',
+                              color: 'white',
+                              padding: '6px 12px',
+                              borderRadius: '12px',
+                              fontSize: '14px',
+                              fontWeight: 500,
+                              whiteSpace: 'nowrap',
+                            }}
+                          >
+                            Tava atrašanās vieta
+                          </div>
+                        </Popup>
+                      </Marker>
+                    )}
         </MarkerClusterGroup>
       </MapContainer>
     </div>

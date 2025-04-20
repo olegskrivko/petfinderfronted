@@ -607,7 +607,7 @@ import contactImage from "./images/contact_banner/mobile_marketing_cuate_blue.sv
 import { EMAIL, PHONE, COUNTRY, CITY, FACEBOOK, INSTAGRAM } from "./config/config";
 
 const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
-
+ 
 const Contact = () => {
   const { user } = useAuth();
 

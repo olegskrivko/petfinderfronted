@@ -179,7 +179,7 @@ import '@maptiler/leaflet-maptilersdk';
 import { MaptilerLayer } from '@maptiler/leaflet-maptilersdk';
 
 import locationIcon from './location.svg';
-import dogIconUrl from './doglocation.svg';
+import dogIconUrl from '../pages/images/map_icons/dog-walking.png';
 import catIconUrl from './catlocation.svg';
 
 const defaultIcon = new L.Icon({

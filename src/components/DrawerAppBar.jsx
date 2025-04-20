@@ -5,7 +5,6 @@ import { Link, useNavigate } from 'react-router-dom';
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
 import Grid from '@mui/material/Grid';
-
 import CssBaseline from '@mui/material/CssBaseline';
 import Divider from '@mui/material/Divider';
 import Drawer from '@mui/material/Drawer';
@@ -19,18 +18,11 @@ import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
 import Container from '@mui/material/Container';
-// import SearchIcon from '@mui/icons-material/Search';
-// import { BASE_URL } from '../../middleware/config';
 import PetsIcon from '@mui/icons-material/Pets';
 import Logout from './Logout'; 
-// import LanguageSelector from '../LanguageSelector';
-// import ManageSearchIcon from '@mui/icons-material/ManageSearch';
 
 // Custom Components
-
 import { useAuth } from '../contexts/AuthContext';
-// import { LanguageContext } from '../../middleware/LanguageContext';
-// import { useDrawer } from '../../context/DrawerContext';
 
 const drawerWidth = 240;
 
@@ -38,19 +30,8 @@ const navItems = {
   "/": "Galvenā",
   '/pets': 'Mājdzīvnieki',
   '/shelters': 'Patversmes',
+  '/services': 'Pakalpojumi',
   '/articles': 'Padomi',
-  // "/login": "Login",
-  // '/services': 'Pakalpojumi',
-  // '/add-service-category': 'Add service category',
-  // '/service-categories': 'services',
-  // '/create-service': 'Add Service',
-  // '/create-business': 'Add Business',
-  // '/create-article': 'Create Article',
-  // "/contact": "Contact",
-  // '/user-profile': 'Profils',
-  // '/admin/dashboard': 'Dashboard',
-  // ...(user ? { '/user-profile': 'Profils' } : { '/login': 'Login' }) // Conditional Profile/Login
-
 };
 
 function DrawerAppBar(props) {

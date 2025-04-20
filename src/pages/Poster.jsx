@@ -10,6 +10,7 @@ import {
   CircularProgress,
   TextField,
   Input,
+  Stack,
   Container,
   IconButton
 } from '@mui/material';
@@ -34,15 +35,27 @@ import ColorLensIcon from '@mui/icons-material/ColorLens';
 import DescriptionIcon from '@mui/icons-material/Description';
 import MergeTypeIcon from '@mui/icons-material/MergeType';
 import { CheckBox } from '@mui/icons-material';
+import { useAuth } from "../contexts/AuthContext";
 const API_BASE_URL = import.meta.env.VITE_API_BASE_URL; 
 const Poster = () => {
+  const { user } = useAuth();
   const { id } = useParams();
   const [pet, setPet] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const [phone, setPhone] = useState('');
+  const [phoneCode, setPhoneCode] = useState('');
   const [isEmpty, setIsEmpty] = useState(false);
   const [displayText, setDisplayText] = useState('Ja esat redzējuši, lūgums zvaniet!');
+
+
+  // useEffect(() => {
+  //   if (pet && pet.contact_phone && pet.phone_code) {
+  //     setPhoneCode(pet.phone_code || "");
+  //     setPhone(pet.contact_phone || "");
+  //   }
+  // }, [pet]);
+
 
   const formatDate = (dateString) => {
     if (!dateString) return 'N/A';
@@ -141,16 +154,17 @@ const Poster = () => {
   }
 
   return (
-    <Container
-    component="main"
-    sx={{
-      flexGrow: 1,
-      pt: '2rem',
-      pb: '2rem',
-      width: '100%',
-      overflowX: 'hidden',
-    }}
-  >
+  //   <Container
+  //   component="main"
+  //   sx={{
+  //     flexGrow: 1,
+  //     pt: '2rem',
+  //     pb: '2rem',
+  //     width: '100%',
+  //     overflowX: 'hidden',
+  //   }}
+  // >
+  <Container component="main" maxWidth="lg" sx={{ paddingLeft: "0 !important", paddingRight: "0 !important" }}>
         <Box
     sx={{
       display: 'flex',
@@ -200,7 +214,7 @@ const Poster = () => {
         </Box>
         <Grid container spacing={3}>
         <Grid item xs={12} md={12}>
-  {pet.pet_image_1 && (
+  {/* {pet.pet_image_1 && (
     <Box display="flex" justifyContent="center" alignItems="center">
       <img
         src={pet.pet_image_1}
@@ -208,7 +222,42 @@ const Poster = () => {
         style={{ maxWidth: '100%', height: 'auto', borderRadius: 1 }}
       />
     </Box>
-  )}
+  )} */}
+  {pet.pet_image_1 && (
+  <Box 
+    position="relative"
+    display="flex"
+    justifyContent="center"
+    alignItems="center"
+    sx={{ width: '100%', borderRadius: 1 }}
+  >
+    <img
+      src={pet.pet_image_1}
+      alt={pet.name}
+      style={{ maxWidth: '100%', height: 'auto', borderRadius: '4px' }}
+    />
+    <Typography
+      variant="caption"
+      sx={{
+        position: 'absolute',
+        bottom: 8,
+        right: 8,
+        backgroundColor: 'rgba(255, 255, 255, 0.5)',
+        // backgroundColor: 'rgba(255, 255, 255, 0.7)',
+        color: 'black',
+        px: 1,
+        py: 0.2,
+        borderRadius: 1,
+        fontSize: '0.6rem',
+        fontWeight: 500,
+      }}
+    >
+      Made by Pawclix
+    </Typography>
+    
+  </Box>
+)}
+
 </Grid>
 
         </Grid>
@@ -338,37 +387,39 @@ const Poster = () => {
       </Typography>
       
       {/* Conditionally render input only if phone is not empty */}
-      {phone && (
-        <Box display="flex" justifyContent="center" alignItems="center">
-          <input
-            type="text"
-            placeholder=""
-            value={phone}
-            style={{
-              backgroundColor: 'transparent',
-              border: 'none',
-              outline: 'none',
-              color: '#fff',
-              textAlign: 'center',
-              fontSize: '1.4rem',
-              fontWeight: '500',
-              marginTop: '0.2rem',
-              padding: '0.2rem',
-            }}
-          />
-        </Box>
-      )}
+      {pet.contact_phone && (
+  <Box display="flex" justifyContent="center" alignItems="center">
+    <span
+      style={{
+        color: '#fff',
+        fontSize: '1.4rem',
+        fontWeight: '500',
+      }}
+    >
+      +{pet.phone_code} {pet.contact_phone}
+    </span>
+  </Box>
+)}
+
     </Box>
   </Grid>
 </Grid>
 
-                 <Grid container spacing={3} py={1}>
-          <Grid item xs={4} md={6} style={{display: "flex", justifyContent: "center", alignItems: "center"}}>
-        <Box  >
+                 <Grid container spacing={3} py={2}>
+          <Grid item xs={4} md={6} style={{display: "flex", justifyContent: "center", alignItems: "center"}}  mt={1}>
+        {/* <Box  >
           <QRCode value={`https://pawclix.com/pets/${pet.id}`}  style={{maxHeight: 140}} />
-        </Box>
+        </Box> */}
+        <Box sx={{ width: '100%', maxWidth: 160, aspectRatio: '1 / 1' }}>
+  <QRCode
+    value={`https://pawclix.com/pets/${pet.id}`}
+    style={{ width: '100%', height: '100%' }}
+    viewBox={`0 0 256 256`}
+  />
+</Box>
+
         </Grid>
-        <Grid item xs={8} md={6}>
+        <Grid item xs={8} md={6} mt={1}>
 
         <Box  
               style={{
@@ -379,6 +430,7 @@ const Poster = () => {
                 // marginLeft: '1rem',
               }}
             >
+              <Stack direction="column" spacing={2} alignItems="left" >
               <Typography variant="body2" textAlign="start" sx={{  fontWeight: 'bold' }}>
                1. Noskenējiet QR kodu
               </Typography>
@@ -394,18 +446,18 @@ const Poster = () => {
               <Typography variant="body2" textAlign="start" sx={{ mt: 1, fontWeight: 'bold' }}>
               5. Dalieties ar saiti, lai palīdzētu mājdzīvniekam
               </Typography>
-
+              </Stack>
             </Box>
             </Grid>
             </Grid>
-            <Grid container spacing={1} justifyContent="center" alignItems="center" >
+            {/* <Grid container spacing={1} justifyContent="center" alignItems="center" >
             <Grid item xs={12} md={12} style={{display: "flex", justifyContent: "center", alignItems: "center", margin: "0",  padding: "0"}}>
               <Typography variant='body2' style={{fontSize: "0.7rem"}}>Made by PawClix</Typography>
               </Grid>
-              </Grid>
+              </Grid> */}
       </Box>
 
-      <Grid container spacing={3} my={1} style={{display: "flex", justifyContent: "center"}}>
+      {/* <Grid container spacing={3} my={1} style={{display: "flex", justifyContent: "center"}}>
             <Grid item xs={12} md={12}>
               <Box style={{display: "flex", justifyContent: "center", flexDirection: "column"}}>
             <TextField
@@ -415,11 +467,11 @@ const Poster = () => {
           onChange={handlePhoneChange}
           style={{  width: "100%" }}
         />
-        {/* <FormControlLabel control={<Checkbox   onChange={handleAcceptChange} />} label="Es nevēlos norādīt savu telefona numuru" /> */}
+       
         </Box>
               </Grid>
               
-              </Grid>
+              </Grid> */}
    
 
               <Grid container spacing={3} py={1}>
