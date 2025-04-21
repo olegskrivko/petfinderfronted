@@ -37,13 +37,14 @@ const ServiceCard = ({ service }) => {
           )}
         </Box>
       </Link> 
-      <CardContent sx={{ flexGrow: 1 }}>
-        <Typography variant="h6" gutterBottom>
-          {service.title}
-        </Typography>
-        <Typography variant="body2" color="text.secondary">
-          {service.description?.slice(0, 100)}...
-        </Typography>
+      <CardContent sx={{ flexGrow: 1, paddingBottom: '1rem !important' }}>
+      <Typography variant="h6">
+  {service.title?.length > 20
+    ? `${service.title.slice(0, 20)}...`
+    : service.title}
+</Typography>
+
+
       </CardContent>
 
     </Card>

@@ -266,53 +266,101 @@ const Poster = () => {
 
           <Grid item xs={4} md={4}  >
           <Box display="flex" alignItems="center" my={1} gap={1}>
-          <IconButton color="primary" style={{ backgroundColor: '#f7f9fd' }}>
+          <IconButton color="primary"    sx={{
+      backgroundColor: '#f7f9fd',
+      p: { xs: 0.5, sm: 1 }, // Smaller padding on small screens
+      '& svg': {
+        fontSize: { xs: 18, sm: 24 }, // Icon size responsive
+      },
+    }}>
           <MergeTypeIcon />
             </IconButton>
            
-              <Typography><strong>Šķirne:</strong> {pet.breed || '-'}</Typography>
+              <Typography    sx={{
+      fontSize: { xs: '0.8rem', sm: '1rem' }, 
+    }}><strong>Šķirne:</strong> {pet.breed || '-'}</Typography>
           </Box>
           <Box display="flex" alignItems="center" my={1} gap={1}>
-            <IconButton color="primary" style={{ backgroundColor: '#f7f9fd' }}>
+            <IconButton color="primary"    sx={{
+      backgroundColor: '#f7f9fd',
+      p: { xs: 0.5, sm: 1 }, // Smaller padding on small screens
+      '& svg': {
+        fontSize: { xs: 18, sm: 24 }, // Icon size responsive
+      },
+    }}>
             <MaleIcon />
             </IconButton>
               
 
-              <Typography><strong>Dzimums:</strong> {pet.gender_display || '-'}</Typography>
+              <Typography    sx={{
+      fontSize: { xs: '0.8rem', sm: '1rem' }, 
+    }}><strong>Dzimums:</strong> {pet.gender_display || '-'}</Typography>
           </Box>
 
           <Box display="flex" alignItems="center" my={1} gap={1}>
-            <IconButton color="primary" style={{ backgroundColor: '#f7f9fd' }}>
+            <IconButton color="primary"    sx={{
+      backgroundColor: '#f7f9fd',
+      p: { xs: 0.5, sm: 1 }, // Smaller padding on small screens
+      '& svg': {
+        fontSize: { xs: 18, sm: 24 }, // Icon size responsive
+      },
+    }}>
             <TextureIcon />
             </IconButton>
               
 
-              <Typography><strong>Kažoks:</strong> {pet.pattern_display || '-'}</Typography>
+              <Typography    sx={{
+      fontSize: { xs: '0.8rem', sm: '1rem' }, 
+    }}><strong>Kažoks:</strong> {pet.pattern_display || '-'}</Typography>
           </Box>
       
           </Grid>
           <Grid item xs={4} md={4} >
 
                         <Box display="flex" alignItems="center" my={1} gap={1}>
-            <IconButton color="primary" style={{ backgroundColor: '#f7f9fd' }}>
+            <IconButton color="primary"    sx={{
+      backgroundColor: '#f7f9fd',
+      p: { xs: 0.5, sm: 1 }, // Smaller padding on small screens
+      '& svg': {
+        fontSize: { xs: 18, sm: 24 }, // Icon size responsive
+      },
+    }}>
             <CakeIcon />
             </IconButton>
              
-              <Typography><strong>Vecums:</strong> {pet.age_display || '-'}</Typography>
+              <Typography    sx={{
+      fontSize: { xs: '0.8rem', sm: '1rem' }, 
+    }}><strong>Vecums:</strong> {pet.age_display || '-'}</Typography>
             </Box>
               <Box display="flex" alignItems="center" my={1} gap={1}>
-              <IconButton color="primary" style={{ backgroundColor: '#f7f9fd' }}>
+              <IconButton color="primary"    sx={{
+      backgroundColor: '#f7f9fd',
+      p: { xs: 0.5, sm: 1 }, // Smaller padding on small screens
+      '& svg': {
+        fontSize: { xs: 18, sm: 24 }, // Icon size responsive
+      },
+    }}>
               <HeightIcon /> 
             </IconButton>
-            <Typography><strong>Augums:</strong> {pet.size_display || '-'}</Typography>
+            <Typography    sx={{
+      fontSize: { xs: '0.8rem', sm: '1rem' }, 
+    }}><strong>Augums:</strong> {pet.size_display || '-'}</Typography>
             </Box>  
             <Box display="flex" alignItems="center" my={1} gap={1}>
-            <IconButton color="primary" style={{ backgroundColor: '#f7f9fd' }}>
+            <IconButton color="primary"    sx={{
+      backgroundColor: '#f7f9fd',
+      p: { xs: 0.5, sm: 1 }, // Smaller padding on small screens
+      '& svg': {
+        fontSize: { xs: 18, sm: 24 }, // Icon size responsive
+      },
+    }}>
             <ColorLensIcon />
             </IconButton>
               
 
-              <Typography><strong>Pamatkrāsa:</strong> {pet.primary_color_display || '-'}</Typography>
+              <Typography    sx={{
+      fontSize: { xs: '0.8rem', sm: '1rem' }, 
+    }}><strong>Pamatkrāsa:</strong> {pet.primary_color_display || '-'}</Typography>
           </Box>       
           </Grid>
           <Grid item xs={4} md={4} >
@@ -323,25 +371,67 @@ const Poster = () => {
             </IconButton>
             <Typography><strong>Uzvedība:</strong> {pet.behavior_display || '-'}</Typography>
             </Box> */}
-            <Box display="flex" alignItems="center" my={1} gap={1}>
+            {/* <Box display="flex" alignItems="center" my={1} gap={1}>
             <IconButton color="primary" style={{ backgroundColor: '#f7f9fd' }}>
             <AccessTimeIcon />
             </IconButton>
              <Typography><strong>Datums:</strong> {formatDate(pet.created_at)}</Typography>
-            </Box>
+            </Box> */}
+            <Box
+  display="flex"
+  alignItems="center"
+  my={1}
+  gap={1}
+>
+  <IconButton
+    color="primary"
+    sx={{
+      backgroundColor: '#f7f9fd',
+      p: { xs: 0.5, sm: 1 }, // Smaller padding on small screens
+      '& svg': {
+        fontSize: { xs: 18, sm: 24 }, // Icon size responsive
+      },
+    }}
+  >
+    <AccessTimeIcon />
+  </IconButton>
+  <Typography
+    sx={{
+      fontSize: { xs: '0.8rem', sm: '1rem' }, 
+    }}
+  >
+    <strong>Datums:</strong> {formatDate(pet.created_at)}
+  </Typography>
+</Box>
             <Box display="flex" alignItems="center" my={1} gap={1}>
-            <IconButton color="primary" style={{ backgroundColor: '#f7f9fd' }}>
+            <IconButton color="primary"    sx={{
+      backgroundColor: '#f7f9fd',
+      p: { xs: 0.5, sm: 1 }, // Smaller padding on small screens
+      '& svg': {
+        fontSize: { xs: 18, sm: 24 }, // Icon size responsive
+      },
+    }}>
             <TagIcon />
             </IconButton>
-             <Typography><strong>ID:</strong> {pet.identifier}</Typography>
+             <Typography    sx={{
+      fontSize: { xs: '0.8rem', sm: '1rem' }, 
+    }}><strong>ID:</strong> {pet.identifier}</Typography>
             </Box>
             <Box display="flex" alignItems="center" my={1} gap={1}>
-            <IconButton color="primary" style={{ backgroundColor: '#f7f9fd' }}>
+            <IconButton color="primary"    sx={{
+      backgroundColor: '#f7f9fd',
+      p: { xs: 0.5, sm: 1 }, // Smaller padding on small screens
+      '& svg': {
+        fontSize: { xs: 18, sm: 24 }, // Icon size responsive
+      },
+    }}>
             <ColorLensIcon />
             </IconButton>
               
 
-              <Typography><strong>Sekundārā krāsa:</strong> {pet.secondary_color_display || '-'}</Typography>
+              <Typography    sx={{
+      fontSize: { xs: '0.8rem', sm: '1rem' }, 
+    }}><strong>Sekundārā krāsa:</strong> {pet.secondary_color_display || '-'}</Typography>
           </Box>  
           </Grid>
 
