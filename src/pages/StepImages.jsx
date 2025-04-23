@@ -135,6 +135,7 @@ const StepImages = ({ formState, handleChange }) => {
    {["pet_image_1", "pet_image_2", "pet_image_3", "pet_image_4"].map((field) => (
     <Grid item xs={6} md={6} key={field} >
       <Box sx={{ position: "relative" }}>
+
       <input
         accept="image/*"
         id={field}

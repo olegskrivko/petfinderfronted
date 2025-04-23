@@ -52,29 +52,29 @@ function ShelterDetails() {
 
   useEffect(() => {
     const fetchShelter = async () => {
-      const accessToken = localStorage.getItem('access_token');  // Retrieve the access token from localStorage
-      if (!accessToken) {
-        setError('You must be logged in to view shelters.');
-        setLoading(false);
-        return;
-      }
+      const accessToken = localStorage.getItem('access_token');
+  
       try {
         const response = await axios.get(`${API_BASE_URL}/shelters/${id}/?format=json`, {
-          headers: {
-            Authorization: `Bearer ${accessToken}`,  // Add Authorization header with token
-          },
+          headers: accessToken
+            ? { Authorization: `Bearer ${accessToken}` }
+            : {}, // Send no auth header if token is not present
         });
+  
         setShelter(response.data);
+        setLoading(false);
       } catch (error) {
         console.error('Error fetching shelter:', error);
-        // Handle error (e.g., show error message)
+        setError('Failed to load shelter. Please try again later.');
+        setLoading(false);
       }
     };
-
+  
     if (id) {
       fetchShelter();
     }
   }, [id]);
+  
 
   if (!shelter) {
     return (
@@ -261,27 +261,7 @@ function ShelterDetails() {
     );
   })}
 </List>
-              {/* <List>
-                {shelter.social_media.map((profile) => (
-                  <ListItem key={profile.id}>
-                   
-                    <MuiLink
-                      href={profile.profile_url}
-                      style={{ textDecoration: 'none' }}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                    >
-                      {profile.platform}
-                    </MuiLink>
-                    {profile.platform}
-                  </ListItem>
-                ))}
-
-              
-              </List> */}
-
-           
-            {/* </CardContent> */}
+         
           </Card>
         </Grid>
       </Grid>

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import axios from "axios";
 import {
   Typography,
@@ -26,7 +26,7 @@ const Feedback = () => {
   const [message, setMessage] = useState("");
   const [loading, setLoading] = useState(false);
   const [errors, setErrors] = useState({});
-
+ 
   const validate = () => {
     const tempErrors = {
       sender: sender ? "" : "Lūdzu, ievadiet savu vārdu.",
@@ -36,6 +36,12 @@ const Feedback = () => {
     setErrors(tempErrors);
     return Object.values(tempErrors).every((x) => x === "");
   };
+
+    useEffect(() => {
+      if (user) {
+        setEmail(user.email || "");
+      }
+    }, [user]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();

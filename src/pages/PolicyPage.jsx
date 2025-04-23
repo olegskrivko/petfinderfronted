@@ -1,5 +1,5 @@
 import React from 'react';
-import { Container, Typography, Grid, Box } from '@mui/material';
+import { Container, Typography, Grid, Box, Stack } from '@mui/material';
 
 const PolicyPage = () => {
   return (
@@ -13,12 +13,26 @@ const PolicyPage = () => {
       Saturs
     </Typography>
     <Typography>
+      <Stack spacing={1} mt={1}>
+      <Typography variant="body1" sx={{ fontWeight: 600 }}>
       1. <a href="#privacy-policy">Privātuma politika</a><br />
+      </Typography>
+      <Typography variant="body1" sx={{ fontWeight: 600 }}>
       2. <a href="#cookie-policy">Sīkdatņu politika</a><br />
+      </Typography>
+      <Typography variant="body1" sx={{ fontWeight: 600 }}>
       3. <a href="#terms-of-service">Pakalpojumu noteikumi</a><br />
+      </Typography>
+      <Typography variant="body1" sx={{ fontWeight: 600 }}>
       4. <a href="#data-protection-policy">Datu aizsardzības politika</a><br />
+      </Typography>
+      <Typography variant="body1" sx={{ fontWeight: 600 }}>
       5. <a href="#disclaimer">Atruna</a><br />
+      </Typography>
+      <Typography variant="body1" sx={{ fontWeight: 600 }}>
       6. <a href="#community-guidelines">Kopienas vadlīnijas</a><br />
+      </Typography>
+      </Stack>
     </Typography>
   </Box>
 

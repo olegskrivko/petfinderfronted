@@ -620,7 +620,6 @@ const Contact = () => {
 
   useEffect(() => {
     if (user) {
-      setSender(user.name || "");
       setEmail(user.email || "");
     }
   }, [user]);

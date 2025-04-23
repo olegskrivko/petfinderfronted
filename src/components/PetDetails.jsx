@@ -17,7 +17,6 @@ import 'moment/locale/lv'; // Import Latvian locale
 import { ContactSupportOutlined } from '@mui/icons-material';
 import { useAuth } from '../contexts/AuthContext';
 import PetAttributes from "./PetAttributes";
-// import PetPhoto from "./PetPhoto";
 import CheckCircleIcon from '@mui/icons-material/CheckCircle';
 import PetsIcon from '@mui/icons-material/Pets';
 import WifiTetheringErrorIcon from '@mui/icons-material/WifiTetheringError';
@@ -26,18 +25,6 @@ const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
 
 const PetDetailsPage = () => {
   const { user } = useAuth();
-  // console.log("useruseruser",user)
-  // useEffect(() => {
-  //   console.log("Updated user:", user);
-  // }, [user]);
-  // useEffect(() => {
-  //   const checkUser = async () => {
-  //     const storedUser = localStorage.getItem("user");
-  //     console.log("Stored user:", storedUser);
-  //   };
-  
-  //   checkUser();
-  // }, []);
   const [isFormOpen, setIsFormOpen] = useState(false);
   const { id } = useParams(); // Get the pet ID from the URL
   const [pet, setPet] = useState(null);
@@ -45,7 +32,6 @@ const PetDetailsPage = () => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const [isFavorite, setIsFavorite] = useState(false);
-  // const [currentImage, setCurrentImage] = useState('');
   const { enqueueSnackbar } = useSnackbar();
   const [zoomPosition, setZoomPosition] = useState(null)
   // new states for sending message
@@ -56,9 +42,7 @@ const PetDetailsPage = () => {
   const [selectedTime, setSelectedTime] = useState('');
   const [markerPosition, setMarkerPosition] = useState(null);
   const [locationAdded, setLocationAdded] = useState(false);
-  // const [addLocationTrigger, setAddLocationTrigger] = useState(false);
   const [isLocationAdded, setIsLocationAdded] = useState(false);
-  
   const [coords, setCoords] = useState({ lat: null, lng: null });
 
     // Function to receive data from child
@@ -124,37 +108,18 @@ const PetDetailsPage = () => {
 
   };
 
-  // const handleAddLocation = (lat, lng) => {
-  //   console.log('Added location:', lat, lng);
-  //   setLocationAdded(true);
-  // };
-
     // Function to trigger "Add Location" in the map
     const handleAddLocation = () => {
       console.log("parent location")
-      // setAddLocationTrigger((prev) => !prev); // Toggle state to trigger re-render in LeafletMap
-      // setAddLocationTrigger(true);
       setIsLocationAdded(true);
       
     };
-  
-    // useEffect(() => {
-    //   console.log("Updated user:", user);
-    // }, [user]);
     
   const handleRemoveLocation = () => {
     console.log('Removed location');
-    //setLocationAdded(false);
-    // setAddLocationTrigger(false);
     console.log("parent location setIslocationadded false")
     setIsLocationAdded(false);
   };
-
-  // const handleMarkerDrag = (lat, lng) => {
-  //   console.log("Marker dragged to:", lat, lng);
-  //   setCoords({ lat, lng }); // Update state in parent
-  //   // setZoomPosition({ lat, lng });
-  // };
 
   const handleMarkerDrag = (newPosition) => {
     setMarkerPosition(newPosition);
@@ -195,7 +160,6 @@ if (markerPosition && markerPosition.length === 2) {
     // formData.append('longitude', 24.1052); 
     formData.append('status', 2);  // Replace with the actual status (e.g., '3' for Seen)
     formData.append('notes', message);
-    console.log("xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx")
     formData.append('reporter', user.userId);  // Optional
    // ✅ Validate date & time before sending
    if (!selectedDate || !selectedTime) {
@@ -204,12 +168,6 @@ if (markerPosition && markerPosition.length === 2) {
   }
   formData.append('date', selectedDate);
   formData.append('time', selectedTime);
-    // formData.append('event_occurred_at', selectedDateTime);  // Event time
-    // formData.append('event_occurred_at', selectedDate + " " + selectedTime); 
-    // formData.append('event_occurred_at', selectedDate); 
-    // formData.append('event_occurred_at', selectedTime); 
-    //formData.append('image', fileInput.files[0]);  // Optional image
-
    
   const accessToken = localStorage.getItem('access_token');  // Retrieve the access token from localStorage
     if (!accessToken) {
@@ -220,7 +178,6 @@ if (markerPosition && markerPosition.length === 2) {
   
   try {
       const response = await fetch(`${API_BASE_URL}/pets/${id}/pet-sightings/?format=json`, {
-        // const response = await fetch(`http://127.0.0.1:8000/api/pets/${id}/pet-sightings/?format=json`, {
         method: 'POST',
         body: formData,
         headers: {
@@ -252,34 +209,48 @@ if (markerPosition && markerPosition.length === 2) {
     }
   };
   useEffect(() => {
+    // const fetchPetDetails = async () => {
+    //   const accessToken = localStorage.getItem('access_token'); // Retrieve token from localStorage
+
+    //   if (!accessToken) {
+    //     setError('You must be logged in to view pets.');
+    //     setLoading(false);
+    //     return; // Exit early if no token
+    //   }
+
+    //   try {
+    //     setLoading(true);
+    //     setError(null);
+    //       const response = await fetch(`${API_BASE_URL}/pets/${id}/?format=json`, {
+          
+    //       headers: {
+    //         Authorization: `Bearer ${accessToken}`, // Add the token to the request header
+    //       },
+    //     });
+    //     const data = await response.json();
+
+    //     if (data) {
+    //       setPet(data);
+    //     } else {
+    //       throw new Error('Pet not found');
+    //     }
+    //   } catch (err) {
+    //     setError('Failed to fetch pet details. Please try again later.');
+    //   } finally {
+    //     setLoading(false);
+    //   }
+    // };
+
     const fetchPetDetails = async () => {
-      const accessToken = localStorage.getItem('access_token'); // Retrieve token from localStorage
-
-      if (!accessToken) {
-        setError('You must be logged in to view pets.');
-        setLoading(false);
-        return; // Exit early if no token
-      }
-
       try {
         setLoading(true);
         setError(null);
-        
-        
 
-        
-
-          const response = await fetch(`${API_BASE_URL}/pets/${id}/?format=json`, {
-          
-          headers: {
-            Authorization: `Bearer ${accessToken}`, // Add the token to the request header
-          },
-        });
+        const response = await fetch(`${API_BASE_URL}/pets/${id}/?format=json`);
         const data = await response.json();
 
         if (data) {
           setPet(data);
-          // setCurrentImage(data.image || '/default_pet_image.jpg'); // Initialize with the main image
         } else {
           throw new Error('Pet not found');
         }
@@ -289,50 +260,87 @@ if (markerPosition && markerPosition.length === 2) {
         setLoading(false);
       }
     };
-
-
-    const fetchFavoriteStatus = async () => {
-      const accessToken = localStorage.getItem('access_token');
-      if (!accessToken) return;
+  //   const fetchFavoriteStatus = async () => {
+  //     const accessToken = localStorage.getItem('access_token');
+  //     if (!accessToken) return;
   
-      try {
-          const response = await fetch(`${API_BASE_URL}/user-profile/favorite-pets/${id}/`, {
-              method: 'GET',
-              headers: { Authorization: `Bearer ${accessToken}` },
-          });
+  //     try {
+  //         const response = await fetch(`${API_BASE_URL}/user-profile/favorite-pets/${id}/`, {
+  //             method: 'GET',
+  //             headers: { Authorization: `Bearer ${accessToken}` },
+  //         });
   
-          if (response.ok) {
-              const data = await response.json();
-              setIsFavorite(data.is_favorite);
-          } else {
-              setIsFavorite(false);
-          }
-      } catch (error) {
-          console.error('Error checking favorite status:', error);
+  //         if (response.ok) {
+  //             const data = await response.json();
+  //             setIsFavorite(data.is_favorite);
+  //         } else {
+  //             setIsFavorite(false);
+  //         }
+  //     } catch (error) {
+  //         console.error('Error checking favorite status:', error);
+  //     }
+  // };
+  const fetchFavoriteStatus = async () => {
+    // If the user is not logged in, skip favorite fetch
+    const accessToken = localStorage.getItem('access_token');
+    if (!accessToken) return;
+
+    try {
+      const response = await fetch(`${API_BASE_URL}/user-profile/favorite-pets/${id}/`, {
+        method: 'GET',
+        headers: { Authorization: `Bearer ${accessToken}` },
+      });
+
+      if (response.ok) {
+        const data = await response.json();
+        setIsFavorite(data.is_favorite);
+      } else {
+        setIsFavorite(false);
       }
+    } catch (error) {
+      console.error('Error checking favorite status:', error);
+    }
   };
-  
     fetchPetDetails();
     fetchFavoriteStatus();
   }, [id]); // Run the effect when the pet ID changes
 
-  const fetchPetSightings = async () => {
-    const accessToken = localStorage.getItem('access_token');
-    if (!accessToken) {
-      setError('You must be logged in to view sightings.');
-      return;
-    }
+  // const fetchPetSightings = async () => {
+  //   const accessToken = localStorage.getItem('access_token');
+  //   if (!accessToken) {
+  //     setError('You must be logged in to view sightings.');
+  //     return;
+  //   }
   
+  //   try {
+  //     setLoading(true);
+  //     setError(null);
+  
+  //     const response = await fetch(`${API_BASE_URL}/pets/${id}/pet-sightings/?format=json`, {
+  //       headers: {
+  //         Authorization: `Bearer ${accessToken}`,
+  //       },
+  //     });
+  
+  //     const data = await response.json();
+  //     if (data) {
+  //       setSightings(data);  // Store the fetched sightings
+  //       console.log("Sightings fetched:", data);
+  //     } else {
+  //       throw new Error('No sightings found');
+  //     }
+  //   } catch (err) {
+  //     setError('Failed to fetch pet sightings. Please try again later.');
+  //   } finally {
+  //     setLoading(false);
+  //   }
+  // };
+  const fetchPetSightings = async () => {
     try {
       setLoading(true);
       setError(null);
-  
-      const response = await fetch(`${API_BASE_URL}/pets/${id}/pet-sightings/?format=json`, {
-        headers: {
-          Authorization: `Bearer ${accessToken}`,
-        },
-      });
-  
+
+      const response = await fetch(`${API_BASE_URL}/pets/${id}/pet-sightings/?format=json`);
       const data = await response.json();
       if (data) {
         setSightings(data);  // Store the fetched sightings
@@ -346,10 +354,11 @@ if (markerPosition && markerPosition.length === 2) {
       setLoading(false);
     }
   };
-  
+
   useEffect(() => {
-    // fetchPetDetails();
-    // fetchFavoriteStatus();
+    fetchPetSightings();  // Automatically fetch sightings on initial load
+  }, [id]);
+  useEffect(() => {
     fetchPetSightings();  // Automatically fetch sightings on initial load
   }, [id]);  // Trigger when the pet ID or access token changes
 
@@ -382,19 +391,7 @@ if (markerPosition && markerPosition.length === 2) {
       enqueueSnackbar('Error updating favorite status. Please try again later.', { variant: 'error' });
     }
   };
-  // const handleImageClick = (clickedImageKey) => {
-  //   // Store the clicked image
-  //   const clickedImage = pet[clickedImageKey];
-  
-  //   // Swap the images
-  //   setPet((prevPet) => ({
-  //     ...prevPet,
-  //     [clickedImageKey]: currentImage, // Replace the clicked image with the current main image
-  //   }));
-  
-  //   // Update the current image
-  //   setCurrentImage(clickedImage);
-  // };
+
   if (loading) {
     return (
       <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100vh' }}>
@@ -416,7 +413,7 @@ if (markerPosition && markerPosition.length === 2) {
       </div>
     );
   }
-  // const latestStatus = pet.sightings_history.length > 0 ? pet.sightings_history[pet.sightings_history.length - 1] : null;
+  
 
   return (
     <Container component="main" maxWidth="lg" sx={{ paddingLeft: "0rem !important", paddingRight: "0rem !important" }}>
