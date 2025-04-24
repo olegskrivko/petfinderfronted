@@ -363,6 +363,7 @@ function App() {
             <Route path="/services/:id" element={<ServiceDetailsPage />} />
             <Route path="/collaborate" element={<Collaborate />} />
             <Route path="/frequently-asked-questions" element={<FrequentlyAskedQuestions />} />
+            <Route path="/pricing" element={<Pricing />} />
             
             <Route path="/pet-matching-quiz" element={<PetQuiz />} />        
             <Route path="/login" element={<Login />} />
@@ -406,27 +407,9 @@ function App() {
             <Route path="/user-profile/pets" element={<UserPets />} />
             <Route path="/user-profile/services" element={<UserServices />} />
             {/* <Route path="/user-profile/edit-pet/:id" element={<EditPet />} /> */}
-            <Route 
-            path="/user-profile/edit-pet/:id" 
-            element={<PrivateRoute element={<EditPet />} />} 
-          />
-         
-         <Route path="/pricing" element={<Pricing />} />
-         <Route path="/subscribe" element={<SubscribePage />} />
-            <Route path="/shelters" element={<SheltersListPage />} />
-            <Route path="/shelters/:id" element={<ShelterDetailsPage />} />
-            <Route path="/articles" element={<ArticlesListPage />} />
-            <Route path="/articles/:slug" element={<ArticleDetailsPage />} />
-            <Route path="*" element={<PageNotFound />} />
-            
-          </Route>
-       
-          </Routes>
-          {/* </FilterPaginationProvider> */}
-           {/* Routes for Login/Register pages with separate layout (without Navigation and Footer) */}
-            {/* <Route path='/login' element={<AuthLayout />}>
-              <Route index element={<Login />} />
-            </Route> */}
+ 
+            </Route>
+            </Routes>
 {/*         
             <Route path='/register' element={<AuthLayout />}>
               <Route index element={<Register />} />
