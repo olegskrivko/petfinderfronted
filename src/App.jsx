@@ -364,7 +364,12 @@ function App() {
             <Route path="/collaborate" element={<Collaborate />} />
             <Route path="/frequently-asked-questions" element={<FrequentlyAskedQuestions />} />
             <Route path="/pricing" element={<Pricing />} />
-            
+
+            <Route path="/shelters" element={<SheltersListPage />} />
+            <Route path="/shelters/:id" element={<ShelterDetailsPage />} />
+            <Route path="/articles" element={<ArticlesListPage />} />
+            <Route path="/articles/:slug" element={<ArticleDetailsPage />} />
+
             <Route path="/pet-matching-quiz" element={<PetQuiz />} />        
             <Route path="/login" element={<Login />} />
             <Route path="/register" element={<Register />} />
@@ -407,7 +412,7 @@ function App() {
             <Route path="/user-profile/pets" element={<UserPets />} />
             <Route path="/user-profile/services" element={<UserServices />} />
             {/* <Route path="/user-profile/edit-pet/:id" element={<EditPet />} /> */}
- 
+            <Route path="*" element={<PageNotFound />} />
             </Route>
             </Routes>
 {/*         
@@ -425,7 +430,7 @@ function App() {
     
 
             {/* Catch-all Route for Page Not Found */}
-            {/* <Route path="*" element={<PageNotFound />} /> */}
+        
             {/* colors = ['2474A3', '21ABCD', '31758D', '006980', '476997', '666699', '88AFD2', '8AB9F1']; */}
             <CookieConsent
         location="bottom"
