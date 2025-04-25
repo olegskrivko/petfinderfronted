@@ -1,0 +1,4 @@
+1 Add Google reCAPTCHA v2 ("I'm not a robot" checkbox) in frontend (Contact Page)
+2 Verify reCAPTCHA token on backend before processing form submission (Feedback app)
+3 Add Google reCAPTCHA v2 ("I'm not a robot" checkbox) in frontend (Feedback Page)
+4 Verify reCAPTCHA token on backend before processing form submission (Feedback app)

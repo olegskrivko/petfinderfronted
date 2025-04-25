@@ -15,7 +15,7 @@ import {
   ListItemIcon,
   ListItemText,
 } from '@mui/material';
-import { BASE_URL } from './config/config';
+// import { BASE_URL } from './config/config';
 import { useParams } from 'react-router-dom'; // Import useParams hook
 import PhoneIcon from '@mui/icons-material/Phone';
 import EmailIcon from '@mui/icons-material/Email';
@@ -29,15 +29,10 @@ import PublicIcon from '@mui/icons-material/Public';
 import LocationOnIcon from '@mui/icons-material/LocationOn';
 import shelterImage from './images/animal_shelter_pana_blue.svg'
 
-
-
-// Import Custom hook
-import useFontSizes from './utils/getFontSize';
 const API_BASE_URL = import.meta.env.VITE_API_BASE_URL; 
-// import { useTranslation } from 'react-i18next';
+
 function ShelterDetails() {
-  // const { t } = useTranslation(); // Initialize translation hook
-  const { getTypography } = useFontSizes();
+
   const { id } = useParams(); // Retrieve slug from URL params
   const [shelter, setShelter] = useState(null);
     const [loading, setLoading] = useState(true);

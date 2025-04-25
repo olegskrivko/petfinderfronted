@@ -1,13 +1,11 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-{/* <a href="https://storyset.com/web">Web illustrations by Storyset</a> */}
 // React MUI components
 import Typography from '@mui/material/Typography';
 import Grid from '@mui/material/Grid';
 import Button from '@mui/material/Button';
 import Box from '@mui/material/Box';
 import Container from '@mui/material/Container';
-
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
@@ -28,7 +26,7 @@ import share from './images/features/share.png';
 import pathlocations from './images/features/pathlocations.png';
 
 import RecentPets from '../components/RecentPets';
-import Jumbotron from './Jumbotron';
+
 import mainIMG from './images/home_banner/404_Error_with_a_cute_animal_pana_blue.svg';
 import Statistics from "../components/Statistics"
 const LiquidBlob = () => (
@@ -164,84 +162,6 @@ const BannerSection = ({
     </Grid>
   );
 };
-
-
-// const BannerSection = ({
-//   title,
-//   imageSrc,
-//   btnPrimaryText,
-//   btnPrimaryLink,
-//   btnSecondaryText,
-//   btnSecondaryLink,
-//   isSmallScreen,
-//   isLargeScreen,
-// }) => {
-//   return (
-//     <Grid container spacing={3}>
-//       <Grid item xs={12}>
-//         {/* Title */}
-//         <Typography
-//           variant="h3"
-//           gutterBottom
-//           sx={{
-//             fontSize: isSmallScreen ? "2.2rem" : "3.2rem",
-//             color: "#5B5B5B",
-//             fontWeight: "700",
-//             textAlign: "center",
-//             letterSpacing: "2px",
-//           }}
-//         >
-//           {title}
-//         </Typography>
-
-//         {/* Banner Image */}
-//         <Box position="relative" display="flex" justifyContent="center">
-//           <img
-//             src={imageSrc}
-//             alt="Banner"
-//             style={{
-//               width: isLargeScreen ? "90%" : "100%",
-//               maxHeight: isLargeScreen ? "60vh" : "600px",
-//               objectFit: "cover",
-//             }}
-//           />
-//         </Box>
-//       </Grid>
-
-//       {/* Buttons */}
-//       <Grid item xs={12} sx={{ paddingTop: "0 !important", marginBottom: "2rem" }}>
-//         <Box display="flex" justifyContent="center" alignItems="center">
-//           {btnPrimaryText && (
-//             <Link to={btnPrimaryLink}>
-//               <Button
-//                 variant="contained"
-//                 size={isSmallScreen ? "small" : "large"}
-//                 color="primary"
-//                 sx={{ marginRight: "20px",  marginTop: isSmallScreen ? "0" : "2rem" }}
-//               >
-//                 {btnPrimaryText}
-//               </Button>
-//             </Link>
-//           )}
-
-//           {btnSecondaryText && (
-//             <Link to={btnSecondaryLink}>
-//               <Button
-//                 variant="outlined"
-//                 size={isSmallScreen ? "small" : "large"}
-//                 color="primary"
-//                 sx={{  marginTop: isSmallScreen ? "0" : "2rem" }}
-//               >
-//                 {btnSecondaryText}
-//               </Button>
-//             </Link>
-//           )}
-//         </Box>
-//       </Grid>
-//     </Grid>
-//   );
-// };
-
 
 function Home() {
   const theme = useTheme();
@@ -381,7 +301,7 @@ function Home() {
           </Typography>
         </Grid>
       </Grid> */}
-      {/* <Jumbotron /> */}
+    
       <Grid container spacing={3} style={{ marginTop: '1rem' }}>
         <Grid item xs={12} textAlign="center">
           <Typography

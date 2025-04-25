@@ -27,26 +27,18 @@ import GroupsIcon from '@mui/icons-material/Groups';
 import { Link as MuiLink } from '@mui/material';
 import PetsIcon from '@mui/icons-material/Pets'; // Example MUI icon
 import { Button } from '@mui/material';
-// import { useTranslation } from 'react-i18next';
-// Import Custom hook
-import useFontSizes from './utils/getFontSize';
 
-// import programmerImg from './images/programmer_cuate.svg';
-// import lightBulbImg from './images/light_bulb_bro.svg';
-// import scrumBoardImg from './images/scrum_board_pana.svg';
+import useFontSizes from './utils/getFontSize';
 import mobileWireframeImg from './images/vision/mobile_wireframe_amico.svg';
 import walkingAroundImg from './images/vision/walking_around_amico.svg';
 import socialIdeasImg from './images/vision/social_ideas_cuate.svg';
 import navigationImg from './images/vision/navigation_pana.svg';
 import programmingImg from './images/vision/programming_pana.svg';
-import Jumbotron from './Jumbotron';
+import Jumbotron from '../components/Jumbotron';
 
 function About() {
    const { getTypography } = useFontSizes();
-  {
-    /* <a href="https://storyset.com/technology">Technology illustrations by Storyset</a> */
-  }
-  // <a href="https://storyset.com/people">People illustrations by Storyset</a>
+
 
   const features = [
     {
@@ -174,21 +166,7 @@ function About() {
 <Typography variant="h3" align="center" sx={{ mb: 5, fontWeight: 500 }}>
 Mūsu Vīzija
       </Typography>
-      {/* <Grid container spacing={3}>
-        <Grid item xs={12} sm={12} md={12} lg={12}>
-          <Typography
-            variant="h2"
-            textAlign="center"
-            gutterBottom
-            style={{
-              fontSize: getTypography('h2').fontSize,
-              fontWeight: getTypography('h2').fontWeight,
-            }}
-          >
-            Mūsu mērķis
-          </Typography>
-        </Grid>
-      </Grid> */}
+ 
       <Grid container spacing={3}>
         <Grid item xs={12} sm={12} md={12} lg={12}>
           <Typography variant="body1" paragraph>
@@ -203,30 +181,22 @@ Mūsu Vīzija
       <Grid container spacing={3} mt={2}>
         <Grid item xs={12} sm={12} md={12} lg={12}>
           <Typography
-            variant="h2"
+            variant="h4"
             textAlign="center"
             gutterBottom
-            style={{
-              fontSize: getTypography('h2').fontSize,
-              fontWeight: getTypography('h2').fontWeight,
-            }}
           >
             Mūsu Ceļš
           </Typography>
         </Grid>
       </Grid>
-      {/* <a href="https://storyset.com/work">Work illustrations by Storyset</a> */}
       {/* lefttext */}
       <Grid container spacing={3}>
         <Grid item xs={12} sm={12} md={8} lg={8}>
           <Typography
-            variant="h3"
+            variant="h5"
             textAlign="left"
             gutterBottom
-            style={{
-              fontSize: getTypography('h3').fontSize,
-              fontWeight: getTypography('h3').fontWeight,
-            }}
+    
           >
            Problēma
           </Typography>
@@ -247,11 +217,7 @@ Mūsu Vīzija
               component="img"
               src={walkingAroundImg}
               alt="Feedabck"
-            //   style={{
-            //     width: 'auto',
-            //     maxHeight: '380px',
-            //     objectFit: 'cover',
-            //   }}
+ 
             />
             <Box
               style={{
@@ -323,13 +289,10 @@ Mūsu Vīzija
         </Grid>
         <Grid item xs={12} sm={12} md={8} lg={8} order={{ xs: 1, md: 2 }}>
           <Typography
-            variant="h3"
+            variant="h5"
             textAlign="left"
             gutterBottom
-            style={{
-              fontSize: getTypography('h3').fontSize,
-              fontWeight: getTypography('h3').fontWeight,
-            }}
+        
           >
             Ideja
           </Typography>
@@ -342,13 +305,10 @@ Mūsu Vīzija
       <Grid container spacing={3}>
         <Grid item xs={12} sm={12} md={8} lg={8}>
           <Typography
-            variant="h3"
+            variant="h5"
             textAlign="left"
             gutterBottom
-            style={{
-              fontSize: getTypography('h3').fontSize,
-              fontWeight: getTypography('h3').fontWeight,
-            }}
+   
           >
         Izaicinājums
           </Typography>
@@ -402,10 +362,7 @@ Mūsu Vīzija
           </Box>
         </Grid>
       </Grid>
-      {/* <a href="https://storyset.com/technology">Technology illustrations by Storyset</a> */}
-      {/* <a href="https://storyset.com/technology">Technology illustrations by Storyset</a> */}
 
-      {/* <a href="https://storyset.com/user">User illustrations by Storyset</a> */}
       {/* rightext */}
       <Grid container spacing={3}>
         <Grid item xs={12} sm={12} md={4} lg={4} order={{ xs: 2, md: 1 }}>
@@ -451,13 +408,10 @@ Mūsu Vīzija
         </Grid>
         <Grid item xs={12} sm={12} md={8} lg={8} order={{ xs: 1, md: 2 }}>
           <Typography
-            variant="h3"
+            variant="h5"
             textAlign="left"
             gutterBottom
-            style={{
-              fontSize: getTypography('h3').fontSize,
-              fontWeight: getTypography('h3').fontWeight,
-            }}
+
           >
             Ceļš
           </Typography>
@@ -469,13 +423,10 @@ Mūsu Vīzija
       <Grid container spacing={3}>
         <Grid item xs={12} sm={12} md={8} lg={8}>
           <Typography
-            variant="h3"
+            variant="h5"
             textAlign="left"
             gutterBottom
-            style={{
-              fontSize: getTypography('h3').fontSize,
-              fontWeight: getTypography('h3').fontWeight,
-            }}
+
           >
             Rezultāts
           </Typography>

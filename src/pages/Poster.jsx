@@ -36,6 +36,7 @@ import DescriptionIcon from '@mui/icons-material/Description';
 import MergeTypeIcon from '@mui/icons-material/MergeType';
 import { CheckBox } from '@mui/icons-material';
 import { useAuth } from "../contexts/AuthContext";
+import { DOMAIN_URL, APP_NAME } from "../constants/config";
 const API_BASE_URL = import.meta.env.VITE_API_BASE_URL; 
 const Poster = () => {
   const { user } = useAuth();
@@ -252,7 +253,7 @@ const Poster = () => {
         fontWeight: 500,
       }}
     >
-      Made by Pawclix
+      Made by {APP_NAME}
     </Typography>
     
   </Box>
@@ -497,12 +498,9 @@ const Poster = () => {
 
                  <Grid container spacing={3} py={2}>
           <Grid item xs={4} md={6} style={{display: "flex", justifyContent: "center", alignItems: "center"}}  mt={1}>
-        {/* <Box  >
-          <QRCode value={`https://pawclix.com/pets/${pet.id}`}  style={{maxHeight: 140}} />
-        </Box> */}
         <Box sx={{ width: '100%', maxWidth: 160, aspectRatio: '1 / 1' }}>
   <QRCode
-    value={`https://pawclix.com/pets/${pet.id}`}
+    value={`${DOMAIN_URL}/pets/${pet.id}`}
     style={{ width: '100%', height: '100%' }}
     viewBox={`0 0 256 256`}
   />

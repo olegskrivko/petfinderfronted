@@ -1056,6 +1056,20 @@ const ServiceDetail = () => {
     setCenterCoords([lat, lng]);
   };
 
+  useEffect(() => {
+  navigator.geolocation.getCurrentPosition((position) => {
+    const { latitude, longitude } = position.coords;
+    setUserCoords({ latitude, longitude });
+
+    if (service?.locations?.length) {
+      const calculatedDistances = service.locations.map((loc) =>
+        calculateDistance(latitude, longitude, loc.latitude, loc.longitude)
+      );
+      setDistances(calculatedDistances);
+    }
+  });
+}, [service]);
+
   const calculateDistance = (lat1, lon1, lat2, lon2) => {
     const toRad = (value) => (value * Math.PI) / 180;
     const R = 6371; // Radius of Earth in km

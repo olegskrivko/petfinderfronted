@@ -1,4 +1,5 @@
 import React from 'react';
+import { Helmet } from 'react-helmet-async';
 import {
   Box,
   Typography,
@@ -25,6 +26,16 @@ const collaborationPoints = [
 
 const Collaborate = () => {
   return (
+<>
+     {/* SEO Meta Tags */}
+     <Helmet>
+     <title>Sadarbības iespējas - Mājdzīvnieku platforma</title>
+     <meta name="description" content="Izpētiet dažādas sadarbības iespējas ar mūsu platformu, lai palīdzētu atrast mājas pazudušajiem mājdzīvniekiem un uzlabotu dzīvnieku aprūpi."/>
+     <meta name="keywords" content="sadarbība, dzīvnieki, mājdzīvnieki, patversmes, veterinārās klīnikas, partnerības, tehnoloģijas"/>
+      <meta property="og:title" content="Sadarbības iespējas - Mājdzīvnieku platforma" />
+      <meta property="og:description" content="Izpētiet dažādas sadarbības iespējas ar mūsu platformu, lai palīdzētu atrast mājas pazudušajiem mājdzīvniekiem un uzlabotu dzīvnieku aprūpi." />
+      <meta property="og:type" content="website" />
+   </Helmet>
     <Container component="main" maxWidth="lg" sx={{ paddingLeft: "0", paddingRight: "0"}}> 
       <Typography variant="h3" align="center" sx={{ mb: 5, fontWeight: 500 }}>
         Sadarbības iespējas
@@ -94,7 +105,7 @@ const Collaborate = () => {
           <Button
             variant="contained"
             sx={{ backgroundColor: '#5B9BD5', px: 4 }}
-            href="/feedback"
+            href="/contact"
             fullWidth
           >
             Sazināties ar mums
@@ -102,6 +113,7 @@ const Collaborate = () => {
         </Grid>
       </Grid>
     </Container>
+    </>
   );
 };
 

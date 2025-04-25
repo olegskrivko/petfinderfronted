@@ -4,12 +4,12 @@ import axios from 'axios';
 import { Box, Typography, CardMedia, CircularProgress, Container, Grid, List, ListItem, ListItemButton, ListItemIcon } from '@mui/material';
 import { Helmet } from "react-helmet-async";
 import TipsAndUpdatesIcon from '@mui/icons-material/TipsAndUpdates';
-import useFontSizes from './utils/getFontSize';
+
 import { format, parseISO } from 'date-fns';
 import { lv } from 'date-fns/locale';
 const API_BASE_URL = import.meta.env.VITE_API_BASE_URL; 
 const ArticleDetails = () => {
-  const { getTypography } = useFontSizes();
+
   const { slug } = useParams();  
   const [article, setArticle] = useState(null);
   const [loading, setLoading] = useState(true);
@@ -80,9 +80,6 @@ const ArticleDetails = () => {
               <Typography variant="h3" align="center" sx={{ mb: 5, fontWeight: 500 }}>
               {article.title}
               </Typography>
-      {/* <Typography variant="body1" color="textSecondary" paragraph sx={{textAlign: "justify"}}>
-        {article.summary}
-      </Typography> */}
       <Typography
   variant="body1"
   color="textSecondary"
@@ -100,9 +97,6 @@ const ArticleDetails = () => {
       <Typography variant="body2" color="textSecondary" textAlign="left" sx={{ mb: 1, fontStyle: "italic" }}>
         Publicēts: {formattedDate}
       </Typography>
-      {/* <Typography variant="body2" color="textSecondary" textAlign="left" sx={{ mb: 3, fontStyle: "italic" }}>
-  Autors: {article?.author?.username || 'Nezināms autors'}
-</Typography> */}
 
 
       {/* Table of Contents */}

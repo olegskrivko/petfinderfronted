@@ -1,7 +1,17 @@
-import React from 'react';
+import React, { useRef } from 'react';
 import { Container, Typography, Grid, Box, Stack } from '@mui/material';
 
 const PolicyPage = () => {
+
+  // Create a ref array to store references to each paragraph or section
+  const paragraphRefs = useRef([]);
+
+  // Function to scroll to a specific paragraph using its index
+  const scrollToParagraph = (index) => {
+    if (paragraphRefs.current[index]) {
+      paragraphRefs.current[index].scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  };
   return (
 <Container component="main" maxWidth="lg" sx={{ paddingLeft: "0", paddingRight: "0" }}>
   <Typography component="h1" variant="h3" align="center" sx={{ mb: 5, fontWeight: 600 }}>
@@ -13,31 +23,31 @@ const PolicyPage = () => {
       Saturs
     </Typography>
     <Typography>
-      <Stack spacing={1} mt={1}>
-      <Typography variant="body1" sx={{ fontWeight: 600 }}>
-      1. <a href="#privacy-policy">Privātuma politika</a><br />
-      </Typography>
-      <Typography variant="body1" sx={{ fontWeight: 600 }}>
-      2. <a href="#cookie-policy">Sīkdatņu politika</a><br />
-      </Typography>
-      <Typography variant="body1" sx={{ fontWeight: 600 }}>
-      3. <a href="#terms-of-service">Pakalpojumu noteikumi</a><br />
-      </Typography>
-      <Typography variant="body1" sx={{ fontWeight: 600 }}>
-      4. <a href="#data-protection-policy">Datu aizsardzības politika</a><br />
-      </Typography>
-      <Typography variant="body1" sx={{ fontWeight: 600 }}>
-      5. <a href="#disclaimer">Atruna</a><br />
-      </Typography>
-      <Typography variant="body1" sx={{ fontWeight: 600 }}>
-      6. <a href="#community-guidelines">Kopienas vadlīnijas</a><br />
-      </Typography>
-      </Stack>
+    <Stack spacing={1} mt={1}>
+            <Typography variant="body1" sx={{ fontWeight: 600 }}>
+              1. <a href="#privacy-policy" onClick={() => scrollToParagraph(0)}>Privātuma politika</a><br />
+            </Typography>
+            <Typography variant="body1" sx={{ fontWeight: 600 }}>
+              2. <a href="#cookie-policy" onClick={() => scrollToParagraph(1)}>Sīkdatņu politika</a><br />
+            </Typography>
+            <Typography variant="body1" sx={{ fontWeight: 600 }}>
+              3. <a href="#terms-of-service" onClick={() => scrollToParagraph(2)}>Pakalpojumu noteikumi</a><br />
+            </Typography>
+            <Typography variant="body1" sx={{ fontWeight: 600 }}>
+              4. <a href="#data-protection-policy" onClick={() => scrollToParagraph(3)}>Datu aizsardzības politika</a><br />
+            </Typography>
+            <Typography variant="body1" sx={{ fontWeight: 600 }}>
+              5. <a href="#disclaimer" onClick={() => scrollToParagraph(4)}>Atruna</a><br />
+            </Typography>
+            <Typography variant="body1" sx={{ fontWeight: 600 }}>
+              6. <a href="#community-guidelines" onClick={() => scrollToParagraph(5)}>Kopienas vadlīnijas</a><br />
+            </Typography>
+    </Stack>
     </Typography>
   </Box>
 
   {/* Privacy Policy Section */}
-  <Box id="privacy-policy" sx={{ mb: 3 }}>
+  <Box id="privacy-policy" ref={(el) => paragraphRefs.current[0] = el} sx={{ mb: 3 }}>
     <Typography variant="h4" sx={{ fontWeight: 600 }}>
       1. Privātuma politika
     </Typography>
@@ -99,7 +109,7 @@ const PolicyPage = () => {
   </Box>
 
     {/* Cookie Policy Section */}
-    <Box id="privacy-policy" sx={{ mb: 3 }}>
+    <Box id="privacy-policy" ref={(el) => paragraphRefs.current[1] = el} sx={{ mb: 3 }}>
     <Typography variant="h4" sx={{ fontWeight: 600 }}>
       2. Sīkdatņu politika
     </Typography>
@@ -186,7 +196,7 @@ const PolicyPage = () => {
   </Box>
 
   {/* Terms of Service Section */}
-  <Box id="terms-of-service" sx={{ mb: 3 }}>
+  <Box id="terms-of-service" ref={(el) => paragraphRefs.current[2] = el} sx={{ mb: 3 }}>
     <Typography variant="h4" sx={{ fontWeight: 600 }}>
       3. Pakalpojumu noteikumi
     </Typography>
@@ -278,7 +288,7 @@ const PolicyPage = () => {
   </Box>
 
   {/* Data Protection Policy Section */}
-  <Box id="data-protection-policy" sx={{ mb: 3 }}>
+  <Box id="data-protection-policy" ref={(el) => paragraphRefs.current[3] = el} sx={{ mb: 3 }}>
     <Typography variant="h4" sx={{ fontWeight: 600 }}>
       4. Datu aizsardzības politika
     </Typography>
@@ -377,7 +387,7 @@ const PolicyPage = () => {
   </Box>
 
   {/* Disclaimer Section */}
-  <Box id="disclaimer" sx={{ mb: 3 }}>
+  <Box id="disclaimer" ref={(el) => paragraphRefs.current[4] = el} sx={{ mb: 3 }}>
     <Typography variant="h4" sx={{ fontWeight: 600 }}>
       5. Atruna
     </Typography>
@@ -405,7 +415,7 @@ const PolicyPage = () => {
   </Box>
 
   {/* Community Guidelines Section */}
-  <Box id="community-guidelines" sx={{ mb: 3 }}>
+  <Box id="community-guidelines" ref={(el) => paragraphRefs.current[5] = el} sx={{ mb: 3 }}>
     <Typography variant="h4" sx={{ fontWeight: 600 }}>
       6. Kopienas vadlīnijas
     </Typography>
