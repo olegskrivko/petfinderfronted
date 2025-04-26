@@ -81,10 +81,11 @@ function LeafletServiceDetailsMap({ shelters, centerCoords }) {
         );
       }, []);
   return (
-    <div>
+    <div    style={{  marginBottom: "2rem"}}>
       <MapContainer
         style={{ height: '500px' }}
         center={[56.946285, 24.105078]} // Default center (Lat, Long)
+   
         zoom={13}
         scrollWheelZoom
         maxZoom={18}  // Add maxZoom

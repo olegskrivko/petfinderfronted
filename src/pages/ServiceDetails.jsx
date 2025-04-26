@@ -1235,6 +1235,7 @@ const ServiceDetail = () => {
       <Typography variant="h5" fontWeight={600} my={3}>
         Vietas
       </Typography>
+    <LeafletServiceDetailsMap shelters={service.locations}  centerCoords={centerCoords} />
 
       {service.locations?.length > 0 ? (
         service.locations.map((location, index) => (
