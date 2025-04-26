@@ -74,20 +74,27 @@ const Poster = () => {
     const fetchPetDetails = async () => {
       const accessToken = localStorage.getItem('access_token');
 
-      if (!accessToken) {
-        setError('You must be logged in to view pets.');
-        setLoading(false);
-        return;
-      }
+      // if (!accessToken) {
+      //   setError('You must be logged in to view pets.');
+      //   setLoading(false);
+      //   return;
+      // }
 
       try {
         setLoading(true);
         setError(null);
-        const response = await fetch(`${API_BASE_URL}/pets/${id}/?format=json`, {
-          headers: {
-            Authorization: `Bearer ${accessToken}`,
-          },
-        });
+          const response = await fetch(`${API_BASE_URL}/pets/${id}/?format=json`, {
+                  headers: accessToken
+                    ? { Authorization: `Bearer ${accessToken}` }
+                    : {}, // no auth header if not logged in
+                });
+          
+
+        // const response = await fetch(`${API_BASE_URL}/pets/${id}/?format=json`, {
+        //   headers: {
+        //     Authorization: `Bearer ${accessToken}`,
+        //   },
+        // });
         if (!response.ok) {
           throw new Error('Failed to fetch pet details');
         }
@@ -561,7 +568,7 @@ const Poster = () => {
               
               </Grid> */}
    
-
+   <Container component="main" maxWidth="sm" sx={{ paddingLeft: "0 !important", paddingRight: "0 !important" }}>
               <Grid container spacing={3} py={1}>
               <Grid item xs={12} md={12}>
       <Box textAlign="center" style={{display: "flex", justifyContent: "space-between"}} mt={4}>
@@ -588,6 +595,7 @@ const Poster = () => {
       </Box>
       </Grid>
       </Grid>
+      </Container>
       </Box>
       </Container>
   );

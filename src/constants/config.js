@@ -1,7 +1,7 @@
 // src/constants/config.js
 export const COMPANY_NAME = "PawClix";
 export const APP_NAME = "PawClix";
-export const EMAIL = "example@example.com";
+export const EMAIL = "info.pawclix@gmail.com";
 export const PHONE_CODE = "+371";
 export const PHONE_NUMBER = "12345678";
 export const COUNTRY = "Latvija";
@@ -15,5 +15,5 @@ export const X = "https://www.x.com";
 export const THREADS = "https://www.threads.com";
 export const FACEBOOK = "https://www.facebook.com";
 export const INSTAGRAM = "https://www.instagram.com";
-export const DOMAIN_URL = "https://pawclix.com";
+export const DOMAIN_URL = "https://pawclix.netlify.app";
 export const PAYPAL_BUTTON_ID = "7X42GYG39BMSG";
