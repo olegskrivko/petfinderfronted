@@ -1,4 +1,5 @@
 import React from 'react';
+import { Helmet } from 'react-helmet-async';
 import Typography from '@mui/material/Typography';
 import Grid from '@mui/material/Grid';
 import Card from '@mui/material/Card';
@@ -27,8 +28,6 @@ import GroupsIcon from '@mui/icons-material/Groups';
 import { Link as MuiLink } from '@mui/material';
 import PetsIcon from '@mui/icons-material/Pets'; // Example MUI icon
 import { Button } from '@mui/material';
-
-import useFontSizes from './utils/getFontSize';
 import mobileWireframeImg from './images/vision/mobile_wireframe_amico.svg';
 import walkingAroundImg from './images/vision/walking_around_amico.svg';
 import socialIdeasImg from './images/vision/social_ideas_cuate.svg';
@@ -37,7 +36,6 @@ import programmingImg from './images/vision/programming_pana.svg';
 import Jumbotron from '../components/Jumbotron';
 
 function About() {
-   const { getTypography } = useFontSizes();
 
 
   const features = [
@@ -162,6 +160,16 @@ function About() {
   ];
 
   return (
+    <>
+    <Helmet>
+  <title>Par Mums - Mājdzīvnieku Meklēšanas Platforma</title>
+  <meta name="description" content="Mūsu lietotne palīdz atrast pazudušus mājdzīvniekus, izmantojot modernās tehnoloģijas, reāllaika paziņojumus un kopienas atbalstu. Uzziniet vairāk par mūsu vīziju un misiju." />
+  <meta name="keywords" content="pazudis mājdzīvnieks, atrasts mājdzīvnieks, mājdzīvnieku meklēšana, mājdzīvnieku platforma, pazudušu dzīvnieku karte, paziņojumi par dzīvniekiem, dzīvnieku īpašnieku palīdzība, dzīvnieku glābšana, QR kods plakāts, sabiedrības atbalsts dzīvniekiem" />
+  <meta property="og:title" content="Par Mums - Mājdzīvnieku Meklēšanas Platforma" />  {/* Open Graph title */}
+  <meta property="og:description" content="Mūsu lietotne palīdz atrast pazudušus mājdzīvniekus, izmantojot modernās tehnoloģijas, reāllaika paziņojumus un kopienas atbalstu. Uzziniet vairāk par mūsu vīziju un misiju." />  {/* Open Graph description */}
+  <meta property="og:type" content="website" />
+</Helmet>
+
 <Container component="main" maxWidth="lg" sx={{ py: 6, paddingLeft: "0", paddingRight: "0" }}>
 <Typography variant="h3" align="center" sx={{ mb: 5, fontWeight: 500 }}>
 Mūsu Vīzija
@@ -482,7 +490,7 @@ Mūsu Vīzija
 
 
       </Container>
-
+      </>
   );
 }
 

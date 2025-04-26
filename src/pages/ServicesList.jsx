@@ -179,7 +179,7 @@ const ServicesList = () => {
           {loading ? (
             <Grid container spacing={2}>
               {[...Array(8)].map((_, index) => (
-                <Grid item xs={12} sm={6} md={4} lg={3} key={index}>
+                <Grid item xs={12} sm={6} md={4} lg={4} key={index}>
                   <ServiceCardSkeleton />
                 </Grid>
               ))}
@@ -190,7 +190,7 @@ const ServicesList = () => {
             <>
               <Grid container spacing={2}>
                 {services && services.length > 0 && services.map((service) => (
-                  <Grid item xs={12} sm={6} md={4} lg={3} key={service.id}>
+                  <Grid item xs={12} sm={6} md={4} lg={4} key={service.id}>
                     <ServiceCard service={service}  
                     filters={filters}
                         pagination={pagination}

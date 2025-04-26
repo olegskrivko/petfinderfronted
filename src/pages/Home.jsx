@@ -1,4 +1,5 @@
 import React from 'react';
+import { Helmet } from 'react-helmet-async';
 import { Link } from 'react-router-dom';
 // React MUI components
 import Typography from '@mui/material/Typography';
@@ -171,84 +172,20 @@ function Home() {
  
   return (
     <React.Fragment>
-      {/* <Container
-          component="main"
-          sx={{
-            flexGrow: 1,
-            // pt: '2rem',
-            // pb: '2rem',
-            width: '100%',
-            overflowX: 'hidden',
-          }}
-        > */}
-      {/* <Grid container spacing={3}>
-        <Grid item xs={12}>
-          <Typography
-            variant="h1"
-            textAlign="center"
-            style={{
-              fontWeight: '700',
-              fontSize: isSmallScreen ? '2.2rem' : '2.6rem',
-            }}
-          >
-            <span style={{color: '#FFCB56'}}>PawClix</span> - atrodi pazudušo mājdzīvnieku ar vienu klikšķi!
-          </Typography>
-          <Box
-            position="relative"
-            display="flex"
-            flexDirection="column"
-            justifyContent="center"
-            alignItems="center"
-          >
-            <CardMedia
-              component="img"
-              src={BannerImg}
-              alt="Dog and cat floating with balloons"
-              style={{
-                width: isLargeScreen ? '30%' : '100%',
-                maxHeight: isLargeScreen ? '60vh' : '600px',
-                objectFit: 'cover',
-              }}
-            />
-          </Box>
-        </Grid>
-  
-      </Grid> */}
-      {/* <Grid container spacing={3} justifyContent="center" style={{ marginTop: '2rem' }}>
-      <Grid item xs={12} sm={6} md={4}>
-        <Link to="/pets" style={{ textDecoration: 'none' }}>
-          <Card sx={{ backgroundColor: '#ffcb56', color: '#5B5B5B', textAlign: 'center' }}>
-            <CardActionArea>
-            <CardContent>
-                <SearchIcon fontSize="large" />
-                <Typography variant={isSmallScreen ? "h5" : "h4"}>
-                  Meklēt mājdzīvnieku
-                </Typography>
-              </CardContent>
-            </CardActionArea>
-          </Card>
-        </Link>
-      </Grid>
-
-      <Grid item xs={12} sm={6} md={4}>
-        <Link to="/add-pet" style={{ textDecoration: 'none' }}>
-          <Card sx={{ backgroundColor: '#5B9BD5', color: 'white', textAlign: 'center' }}>
-            <CardActionArea>
-            <CardContent>
-                <NotificationsActiveIcon fontSize="large" />
-                <Typography variant={isSmallScreen ? "h5" : "h4"}>
-                  Ziņot par mājdzīvnieku
-                </Typography>
-              </CardContent>
-            </CardActionArea>
-          </Card>
-        </Link>
-      </Grid>
-    </Grid> */}
-      {/* <PetCounter dailyCount={20} yearlyCount={7300} /> */}
-      {/* </Container> */}
-  
-{/* <Banner /> */}
+       <Helmet>
+      <title>Galvenā - Atrodi savu pazudušo mājdzīvnieku</title>
+      <meta
+        name="description"
+        content="Palīdzi atrast pazudušus mājdzīvniekus un atkalapvienot ģimenes ar saviem mīluļiem. Ziņo, meklē un dalies ar svarīgu informāciju savā reģionā."
+      />
+      <meta
+        name="keywords"
+        content="pazudis dzīvnieks, atrast suni, atrast kaķi, mājdzīvnieks pazudis, PetRescue, meklēt mīluli, atrasti dzīvnieki Latvija"
+      />
+      <meta property="og:title" content="Galvenā - Atrodi savu pazudušo mājdzīvnieku" />
+      <meta property="og:description" content="Kopā palīdzam pazudušiem mājdzīvniekiem atgriezties mājās. Ziņojiet vai meklējiet pazudušu mīluli savā apkārtnē." />
+      <meta property="og:type" content="website" />
+    </Helmet>
 <Container component="main" maxWidth="lg" sx={{ py: 6, paddingLeft: "0", paddingRight: "0"}}> 
 {/* <Container
           component="main"
@@ -285,22 +222,9 @@ function Home() {
           </Typography>
         </Grid>
       </Grid>
+*/}
+      {/* <RecentPets />  */}
 
-      <RecentPets /> */}
-      {/* <Grid container spacing={3} style={{ marginTop: '1rem' }}>
-        <Grid item xs={12} textAlign="center">
-          <Typography
-            variant="h2"
-            style={{
-              fontSize: '1.6rem',
-              fontWeight: '500',
-              marginTop: '1rem',
-            }}
-          >
-           Palīdzi mājdzīvniekiem atgriezties mājās
-          </Typography>
-        </Grid>
-      </Grid> */}
     
       <Grid container spacing={3} style={{ marginTop: '1rem' }}>
         <Grid item xs={12} textAlign="center">
@@ -452,15 +376,6 @@ function Home() {
     </Card>
   </Grid>
 </Grid>
-{/* <Box
-  sx={{
-    width: 200,
-    height: 200,
-    backgroundColor: "#FF6B6B",
-    clipPath: "circle(50% at 50% 50%)",
-    animation: "morph 5s infinite alternate ease-in-out"
-  }}
-/> */}
 
 
 

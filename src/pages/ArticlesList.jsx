@@ -8,6 +8,9 @@ import {
   Grid,
   CircularProgress,
   Container,
+  Dialog,
+  DialogContent,
+  IconButton
 } from '@mui/material';
 import useMediaQuery from '@mui/material/useMediaQuery';
 import { useTheme } from '@mui/material/styles';
@@ -16,11 +19,14 @@ import { Link } from 'react-router-dom';
 // import { BASE_URL } from './config/config';
 import Alert from '@mui/material/Alert';
 import AlertTitle from '@mui/material/AlertTitle';
-
+import CloseIcon from '@mui/icons-material/Close';
 const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
+  
+
 
 const ArticlesList = () => {
   const theme = useTheme();
+  const [showPopup, setShowPopup] = useState(false);
   const isLargeScreen = useMediaQuery(theme.breakpoints.up('lg'));
   const isSmallScreen = useMediaQuery(theme.breakpoints.down('sm'));
   const colors = ['2474A3', '21ABCD', '31758D', '006980', '476997', '666699', '88AFD2', '8AB9F1'];
@@ -34,7 +40,14 @@ const ArticlesList = () => {
   const [articles, setArticles] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState('');
+  useEffect(() => {
+    const popupShown = localStorage.getItem('articlesPopupShown');
 
+    if (!popupShown) {
+      setShowPopup(true);
+      localStorage.setItem('articlesPopupShown', 'true');
+    }
+  }, []);
   useEffect(() => {
     const fetchArticles = async () => {
       const accessToken = localStorage.getItem('access_token');
@@ -101,15 +114,23 @@ const ArticlesList = () => {
         ))}
       </Grid>
 
-      {/* Display a note */}
-      <Grid container spacing={3}>
-        <Grid item xs={12} sm={12} md={12} lg={12}>
-          <Alert severity="info" style={{ marginTop: '1rem', marginBottom: '1rem' }}>
-            <AlertTitle>Piezīme</AlertTitle>
-            Ja jums ir kādi ieteikumi vai atsauksmes par šiem rakstiem, droši sazinieties ar mums!
-          </Alert>
-        </Grid>
-      </Grid>
+
+            {/* Pop-up alert as Dialog */}
+            <Dialog open={showPopup} onClose={() => setShowPopup(false)}>
+              <DialogContent sx={{ position: 'relative', p: 4 }}>
+                <IconButton
+                  aria-label="close"
+                  onClick={() => setShowPopup(false)}
+                  sx={{ position: 'absolute', right: 8, top: 8 }}
+                >
+                  <CloseIcon />
+                </IconButton>
+                <Alert severity="info">
+                  <AlertTitle>Piezīme</AlertTitle>
+                  Ja jums ir kādi ieteikumi vai atsauksmes par šiem rakstiem, droši sazinieties ar mums!
+                </Alert>
+              </DialogContent>
+            </Dialog>
     </Container>
   );
 };

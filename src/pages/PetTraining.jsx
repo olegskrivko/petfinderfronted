@@ -1,4 +1,5 @@
 import React from 'react';
+import { Helmet } from 'react-helmet-async';
 import {
   Box,
   Grid,
@@ -102,6 +103,22 @@ const PetTraining = () => {
   const isSmallScreen = useMediaQuery(theme.breakpoints.down('sm'));
 
   return (
+    <>
+    <Helmet>
+  <title>Virtuālās mājdzīvnieku apmācības nodarbības</title>
+  <meta
+    name="description"
+    content="Apgūsti mājdzīvnieku apmācību ar video pamācībām un svarīgiem padomiem no ekspertiem. Uzlabo sava mājdzīvnieka uzvedību pozitīvā un jautrā veidā."
+  />
+  <meta
+    name="keywords"
+    content="mājdzīvnieku apmācība, suņu apmācība, kaķu apmācība, mājdzīvnieku uzvedība, pozitīva apmācība, mājdzīvnieku padomi, video pamācības, dzīvnieku uzvedība, suņu komandas, mājdzīvnieku socializācija"
+  />
+        <meta property="og:title" content="Virtuālās mājdzīvnieku apmācības nodarbības" />
+      <meta property="og:description" content="Apgūsti mājdzīvnieku apmācību ar video pamācībām un svarīgiem padomiem no ekspertiem. Uzlabo sava mājdzīvnieka uzvedību pozitīvā un jautrā veidā." />
+      <meta property="og:type" content="website" />
+</Helmet>
+
       <Container component="main" maxWidth="lg" sx={{ paddingLeft: "0", paddingRight: "0"}}> 
       <Typography variant="h3" align="center" sx={{ mb: 5, fontWeight: 500 }}>
         Virtuālās mājdzīvnieku apmācības nodarbības
@@ -184,6 +201,7 @@ const PetTraining = () => {
         ))}
       </Grid>
     </Container>
+    </>
   );
 };
 
