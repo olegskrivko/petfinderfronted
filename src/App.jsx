@@ -17,6 +17,7 @@ import ShelterDetailsPage from './pages/ShelterDetails'; // Your pet details pag
 import ArticlesListPage from './pages/ArticlesList'; // Your pets list page
 import ArticleDetailsPage from './pages/ArticleDetails'; // Your pets list page
 import Collaborate from './pages/Collaborate'; // Your pets list page
+import Notifications from './pages/Notifications';
 
 
 import LoadingScreen from './pages/LoadingScreen';
@@ -355,6 +356,8 @@ function App() {
           <Route path='/' element={<Layout />}>
             <Route index element={<Home />} />
             <Route path="/about" element={<About />} />
+     
+            
             <Route path="/feedback" element={<Feedback />} />
             <Route path="/support" element={<Support />} />
             <Route path="/virtual-pet-training-classes" element={<PetTraining />} />
@@ -408,7 +411,7 @@ function App() {
             <Route path="/user-profile/bookmarks/pets" element={<UserPetBookmarks />} />
             <Route path="/user-profile/bookmarks/services" element={<UserServiceBookmarks />} />
             <Route path="/user-profile/bookmarks" element={<BookmarksIndexPage />} />
-      
+            <Route path="/user-profile/notifications" element={<Notifications />} />
             <Route path="/user-profile/pets" element={<UserPets />} />
             <Route path="/user-profile/services" element={<UserServices />} />
             {/* <Route path="/user-profile/edit-pet/:id" element={<EditPet />} /> */}

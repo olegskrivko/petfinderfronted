@@ -8,7 +8,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import SettingsIcon from '@mui/icons-material/Settings';
 import TryIcon from '@mui/icons-material/Try';
 import { useAuth } from '../contexts/AuthContext';
-
+import NotificationsIcon from '@mui/icons-material/Notifications';
 import PetsIcon from '@mui/icons-material/Pets';
 import WorkIcon from '@mui/icons-material/Work';
 import FavoriteIcon from '@mui/icons-material/Favorite';
@@ -237,6 +237,17 @@ const handleLogout = () => {
         <Box display="flex" alignItems="center">
           <FavoriteIcon fontSize="large" sx={{ color: '#5B9BD5', mr: 2 }} />
           <Typography variant="body1">Saglabātie pakalpojumi</Typography>
+        </Box>
+      </Paper>
+    </Link>
+  </Grid>
+
+  <Grid item xs={12}>
+    <Link to="/user-profile/notifications" style={{ textDecoration: 'none' }}>
+      <Paper sx={{ padding: '1rem', backgroundColor: '#f7f9fd' }}>
+        <Box display="flex" alignItems="center">
+          <NotificationsIcon fontSize="large" sx={{ color: '#5B9BD5', mr: 2 }} />
+          <Typography variant="body1">Paziņojumi</Typography>
         </Box>
       </Paper>
     </Link>
