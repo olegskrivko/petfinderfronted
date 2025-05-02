@@ -66,6 +66,7 @@ import WorkInProgress from "./pages/WorkInProgress";
 import Pricing from "./pages/Pricing";
 
 import PartnersAndSponsors from "./pages/PartnersAndSponsors"
+import AddServicePage from "./pages/AddServicePage"
 
 import { Elements } from "@stripe/react-stripe-js";
 import { loadStripe } from "@stripe/stripe-js";
@@ -356,7 +357,7 @@ function App() {
           <Route path='/' element={<Layout />}>
             <Route index element={<Home />} />
             <Route path="/about" element={<About />} />
-     
+            <Route path="/add-service" element={<AddServicePage />} />
             
             <Route path="/feedback" element={<Feedback />} />
             <Route path="/support" element={<Support />} />
