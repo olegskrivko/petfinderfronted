@@ -242,7 +242,7 @@ const handleLogout = () => {
     </Link>
   </Grid>
 
-  <Grid item xs={12}>
+  {/* <Grid item xs={12}>
     <Link to="/user-profile/notifications" style={{ textDecoration: 'none' }}>
       <Paper sx={{ padding: '1rem', backgroundColor: '#f7f9fd' }}>
         <Box display="flex" alignItems="center">
@@ -251,7 +251,7 @@ const handleLogout = () => {
         </Box>
       </Paper>
     </Link>
-  </Grid>
+  </Grid> */}
 
   <Grid item xs={12}>
     <Link to="/user-profile/settings" style={{ textDecoration: 'none' }}>
