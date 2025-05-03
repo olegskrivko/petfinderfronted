@@ -29,6 +29,9 @@ import pathlocations from './images/features/pathlocations.png';
 import RecentPets from '../components/RecentPets';
 
 import mainIMG from './images/home_banner/404_Error_with_a_cute_animal_pana_blue.svg';
+import secondaryIMG from './images/home_banner/dog_walking_bro_blue.svg';
+import ChatBot from '../components/ChatBot';
+{/* <a href="https://storyset.com/animal">Animal illustrations by Storyset</a> */}
 import Statistics from "../components/Statistics"
 const LiquidBlob = () => (
   <motion.div
@@ -226,7 +229,7 @@ function Home() {
       {/* <RecentPets />  */}
 
     
-      <Grid container spacing={3} style={{ marginTop: '1rem' }}>
+      <Grid container spacing={3} style={{ marginTop: '3rem' }}>
         <Grid item xs={12} textAlign="center">
           <Typography
             variant="h2"
@@ -243,7 +246,7 @@ function Home() {
       </Grid>
 
       {/* <Grid container spacing={3} style={{ marginTop: '1rem' }}> */}
-      <Grid container spacing={3} style={{ marginTop: '1rem' }}>
+      <Grid container spacing={3} style={{ marginTop: '1rem', marginBottom: '3rem' }}>
   {/* First Card */}
   <Grid item xs={12} sm={12} md={6} lg={4} textAlign="center">
     <Card style={{ backgroundColor: '#f7f9fd', display: 'flex', flexDirection: 'column', height: '100%' }}>
@@ -377,11 +380,22 @@ function Home() {
   </Grid>
 </Grid>
 
+<BannerSection
+      title="Pakalpojumi mājdzīvniekiem!"
+      imageSrc={secondaryIMG}
+      btnPrimaryText="Meklēt pakalpojumu"
+      btnPrimaryLink="/services"
+      btnSecondaryText="Pievienot pakalpojumu"
+      btnSecondaryLink="/add-service"
+      isSmallScreen={isSmallScreen}
+      isLargeScreen={isLargeScreen}
+    />
 
 
 {/* </Grid> */}
-{/* <Statistics /> */}
 
+<Statistics />
+<ChatBot />
       </Container>
     </React.Fragment>
   );

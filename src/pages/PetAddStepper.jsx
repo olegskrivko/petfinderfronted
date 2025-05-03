@@ -591,72 +591,7 @@ const PetAddStepper = () => {
   const progress = ((activeStep + 1) / steps.length) * 100;
 
   return (
-    // <Container
-    // maxWidth="sm"
-    //   component="main"
-    //   sx={{
-    //     display: 'flex',
-    //     flexDirection: 'column',
-    //     minHeight: '100vh', // Ensure it takes the full height
-    //     py: '3rem',
-    //     overflowX: 'hidden',
-    //   }}
-    // >
-    //   {/* <Container  sx={{ py: 4, flexGrow: 1 }}> */}
-    //     {/* Donut progress + step name */}
-    //     <Box sx={{ display: 'flex', alignItems: 'center' }}>
-    //       <Box sx={{ width: 70, height: 70, mr: 2 }}>
-    //         <CircularProgressbar
-    //           value={progress}
-    //           text={`${activeStep + 1}/${steps.length}`}
-    //           styles={buildStyles({
-    //             textSize: "18px",
-    //             pathColor: "#1976d2",
-    //             textColor: "#333",
-    //             trailColor: "#ddd",
-    //           })}
-    //         />
-    //       </Box>
-    //       <Typography variant="h6">{steps[activeStep]}</Typography>
-    //     </Box>
-
-    //     {/* Current Step Content */}
-    //     <Box sx={{ mb: 4 }}>
-    //       {getStepContent(activeStep)}
-    //     </Box>
-    //   {/* </Container> */}
-
-    //   {/* Navigation Buttons (Inside Container) */}
-    //   <Container  maxWidth="lg" sx={{ display: 'flex', justifyContent: 'space-between', mb: 4, px: 2, padding: "0 !important" }}>
-    //     <Button
-    //       variant="outlined"
-    //       disabled={activeStep === 0}
-    //       onClick={handleBack}
-         
-    //       sx={{ flex: 1, mr: 1, }}
-    //     >
-    //       Back
-    //     </Button>
-    //     <Button
-    //       variant="contained"
-    //       onClick={handleNext}
-    //       sx={{ flex: 1, ml: 1 }}
-    //     >
-    //       {activeStep === steps.length - 1 ? "Submit" : "Next"}
-    //     </Button>
-    //   </Container>
-    // </Container>
-
-  //   <Container
-  //   maxWidth="sm"
-  //   component="main"
-  //   sx={{
-  //     display: 'flex',
-  //     flexDirection: 'column',
-  //     minHeight: '90vh',
-  //     py: '3rem',
-  //   }}
-  // >
+    
      <Container component="main" maxWidth="lg" sx={{ paddingLeft: 0, paddingRight: 0 }}>
         {/* <Typography variant="h3" align="center" sx={{ mb: 5, fontWeight: 500 }}>
         Ziņot par mājdzīvnieku

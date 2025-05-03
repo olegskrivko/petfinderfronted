@@ -34,9 +34,25 @@ import socialIdeasImg from './images/vision/social_ideas_cuate.svg';
 import navigationImg from './images/vision/navigation_pana.svg';
 import programmingImg from './images/vision/programming_pana.svg';
 import Jumbotron from '../components/Jumbotron';
-
+// Import MUI Icons
+// import AppShortcutIcon from '@mui/icons-material/AppShortcut';
+// import HealthAndSafetyIcon from '@mui/icons-material/HealthAndSafety';
+// import NotificationsIcon from '@mui/icons-material/Notifications';
+// import TipsAndUpdatesIcon from '@mui/icons-material/TipsAndUpdates';
+// import ArticleIcon from '@mui/icons-material/Article';
+// import NewspaperIcon from '@mui/icons-material/Newspaper';
+// import PostAddIcon from '@mui/icons-material/PostAdd';
+// import ShareIcon from '@mui/icons-material/Share';
+// import StorageIcon from '@mui/icons-material/Storage';
+// import TuneIcon from '@mui/icons-material/Tune';
+// import MapIcon from '@mui/icons-material/Map';
+// import PrintIcon from '@mui/icons-material/Print';
+// import WorkIcon from '@mui/icons-material/Work';
+// import PushPinIcon from '@mui/icons-material/PushPin';
+// import GroupsIcon from '@mui/icons-material/Groups';
+// import PetsIcon from '@mui/icons-material/Pets'; // Example MUI icon
 function About() {
-
+ 
 
   const features = [
     {
@@ -485,6 +501,41 @@ Mūsu Vīzija
           </Box>
         </Grid>
       </Grid>
+
+
+      {/* <Grid container spacing={3} mt={2}>
+        <Grid item xs={12} sm={12} md={12} lg={12} mb={2}>
+          <Typography
+            variant="h4"
+            textAlign="center"
+            gutterBottom
+          >
+            Funkcijas
+          </Typography>
+        </Grid>
+      </Grid> */}
+      {/* features */}
+      {/* <Grid container spacing={3}>
+  {features.map((feature) => (
+    <Grid item xs={12} sm={6} md={4} lg={4} key={feature.id}>
+      <Card sx={{ minHeight: '250px' }}> 
+        <CardContent>
+        
+          <Box style={{ display: 'flex', alignItems: 'center', marginBottom: '0.4rem' }}>
+            {feature.icon}
+            <Typography variant="h3" gutterBottom>
+              {feature.title}
+            </Typography>
+          </Box>
+          <Box>
+            <Typography variant="body1">{feature.description}</Typography>
+          </Box>
+        </CardContent>
+      </Card>
+    </Grid>
+  ))}
+</Grid> */}
+
       <Jumbotron />
 
 

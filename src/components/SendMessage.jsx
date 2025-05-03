@@ -50,13 +50,20 @@ const SendMessage = ({
   return (
     <Card>
       <CardContent style={{ paddingBottom: "1rem" }} >
-          <Box display="flex" alignItems="center" marginBottom="1rem">
+          {/* <Box display="flex" alignItems="center" marginBottom="1rem">
             <Avatar sx={{backgroundColor: "#f1c40f"}} >{user?.username ? user.username.charAt(0).toUpperCase() : '?'}</Avatar>
             <Box ml={2}>
               <Typography variant="body2" style={{ fontWeight: 'bold' }}>{user?.username ? user.username.toUpperCase() : 'Nezināms'}</Typography>
             </Box>
+          </Box> */}
+  <Box display="flex" alignItems="center" marginBottom="1rem">
+          
+            <Box >
+                    <Typography variant="h6" gutterBottom>
+                      Pievieno ziņu
+                    </Typography>
+            </Box>
           </Box>
-
           <Box mb={2}>
             <TextField
               id="message-input"

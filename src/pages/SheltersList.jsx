@@ -237,12 +237,12 @@ const SheltersList = () => {
                     position: 'relative',
                   }}
                 />
-                <CardContent sx={{ p: 2, paddingBottom: "1rem !important" }}>
+                <CardContent sx={{  paddingBottom: "1rem !important", paddingTop: "1rem !important" }}>
                   <Typography
                     // gutterBottom
                     variant="h6"
                     component="div"
-                    sx={{ fontWeight: 600, fontSize: '0.7rem', letterSpacing: "1px" }}
+                    sx={{ fontWeight: 600,  letterSpacing: "1px" }}
                   >
                     {shelter.name}
                   </Typography>
