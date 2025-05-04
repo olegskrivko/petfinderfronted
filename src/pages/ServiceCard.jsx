@@ -17,7 +17,7 @@ const ServiceCard = ({ service }) => {
       <Box position="relative">
         <CardMedia
           component="img"
-          image={service.service_image || logo}
+          image={service.service_image_1 || logo}
           alt={service.title}
           sx={{ width: '100%', height: 'auto' }}
         />

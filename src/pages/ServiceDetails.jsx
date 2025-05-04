@@ -1183,7 +1183,8 @@ const ServiceDetail = () => {
         <Card elevation={4} sx={{ borderRadius: 4, overflow: 'hidden', position: 'relative' }}>
           <CardMedia
             component="img"
-            image={service.service_image}
+            // image={service.service_image}
+            image={service.service_image_1}
             alt={service.title}
             sx={{ maxHeight: 500, objectFit: 'cover' }}
           />

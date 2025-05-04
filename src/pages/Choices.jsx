@@ -74,3 +74,14 @@ export const GENDER_CHOICES = [
     { label: 'Citi pakalpojumi', value: '15' },
   ];
 
+  export const PROVIDER_TYPES = [
+    { value: 1, label: "Fiziska persona" },
+    { value: 2, label: "Juridiska persona" },
+  ];
+  
+  export const PRICE_TYPE_CHOICES = [
+    { value: 1, label: "Stundā" },
+    { value: 2, label: "Vienībā" },
+    { value: 3, label: "Dienā" },
+    { value: 4, label: "Pēc vienošanās" },
+  ];

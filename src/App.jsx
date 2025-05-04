@@ -353,9 +353,12 @@ function App() {
                   )} */}
                     {/* <FilterPaginationProvider> */}
         <Routes>
-      
+        <Route path='/' element={<AuthLayout />}>
+              <Route index element={<Home />} />
+            </Route> 
+
           <Route path='/' element={<Layout />}>
-            <Route index element={<Home />} />
+            {/* <Route index element={<Home />} /> */}
             <Route path="/about" element={<About />} />
             <Route path="/add-service" element={<AddServicePage />} />
             
@@ -382,6 +385,7 @@ function App() {
             <Route path="/account-deleted" element={<AccountDeleted />} />
             <Route path="/checkout" element={<CheckoutPage />} />
             <Route path="/success" element={<SuccessPage />} />
+            <Route path="/subscription-success" element={<SuccessPage />} />
             <Route path="/cancel" element={<CancelPage />} />
             <Route path="/fun" element={<Fun />} />
             <Route path="/reset-password/:token" element={<ResetPassword />} />
@@ -426,10 +430,8 @@ function App() {
             <Route path='/logout' element={<AuthLayout />}>
               <Route index element={<Logout />} />
             </Route>
-
-            <Route path='/forgot-password' element={<AuthLayout />}>
-              <Route index element={<ForgotPassword />} />
-            </Route> */}
+*/}
+         
 
     
 

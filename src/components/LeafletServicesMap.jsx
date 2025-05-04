@@ -283,10 +283,15 @@ console.log("locationservices", services)
           spiderfyOnMaxZoom={false}
           showCoverageOnHover={false}
         >
-        {services?.flatMap((service) =>
+        {/* {services?.flatMap((service) =>
   service.locations
     .filter(loc => loc.latitude && loc.longitude)
+    .map((loc) => ( */}
+    {services?.flatMap((service) =>
+  (service.locations || [])
+    .filter(loc => loc.latitude && loc.longitude)
     .map((loc) => (
+
       <Marker
         key={`service-${service.id}-loc-${loc.id}`}
         icon={getIconByCategory(service.category)}

@@ -88,9 +88,12 @@ const CheckoutButton = ({ amount }) => {
 
     try {
       const accessToken = localStorage.getItem("access_token");
-
+ 
       const response = await fetch(
-        `${API_BASE_URL}/payments/create-checkout-session/`,
+        // `${API_BASE_URL}/payments/create-checkout-session/`,
+        // `${API_BASE_URL}/payments/create-checkout-session/one-time/`,
+        `${API_BASE_URL}/payments/create-checkout-session/subscription/`,
+        
         {
           method: "POST",
           headers: {

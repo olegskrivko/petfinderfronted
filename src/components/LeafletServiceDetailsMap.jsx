@@ -103,8 +103,9 @@ function LeafletServiceDetailsMap({ shelters, centerCoords }) {
           spiderfyOnMaxZoom={false}
           showCoverageOnHover={false}
         >
-          {shelters.map((shelter) =>
-            shelter.latitude && shelter.longitude ? (
+       {(shelters || []).map((shelter) =>
+  shelter?.latitude && shelter?.longitude ? (
+
               <Marker
                 key={shelter.id}
                 icon={defaultIcon}
@@ -143,7 +144,10 @@ function LeafletServiceDetailsMap({ shelters, centerCoords }) {
             { id: 5, label: 'Sestdiena' },
             { id: 6, label: 'Svētdiena' },
           ].map((day) => {
-            const entry = shelter.working_hours.find((time) => time.day === day.id);
+            const entry = Array.isArray(shelter.working_hours)
+  ? shelter.working_hours.find((time) => time.day === day.id)
+  : null;
+            // const entry = shelter.working_hours.find((time) => time.day === day.id);
             const isToday = new Date().getDay() === (day.id === 0 ? 1 : day.id + 1) % 7;
 
             return (

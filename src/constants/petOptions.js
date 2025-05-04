@@ -97,6 +97,37 @@ const PATTERN_CHOICES = [
   { value: 4, label: "Plankumains" },
   { value: 5, label: "Raibs" },
 ]
-  
-  export { STATUS_CHOICES, SPECIES_CHOICES,AGE_CHOICES_BY_SPECIES, SIZE_CHOICES, GENDER_CHOICES, BEHAVIOR_CHOICES, AGE_CHOICES, PHONE_CODE_CHOICES, COLOR_CHOICES, PATTERN_CHOICES };
+
+const SERVICE_CATEGORIES = [
+  { value: 1, label: "Dzīvnieku pieskatīšana" },
+  { value: 2, label: "Suņu pastaigas" },
+  { value: 3, label: "Kopšana" },
+  { value: 4, label: "Apmācība" },
+  { value: 5, label: "Izmitināšana" },
+  { value: 6, label: "Veterinārārsts" },
+  { value: 7, label: "Foto sesijas" },
+  { value: 8, label: "Glābšana un meklēšana" },
+  { value: 9, label: "Piederumi un aksesuāri" },
+  { value: 10, label: "Māksla" },
+  { value: 11, label: "Apbedīšana" },
+  { value: 12, label: "Transports" },
+  { value: 13, label: "Audzētavas" },
+  { value: 14, label: "Apdrošināšana" },
+  { value: 15, label: "Citi pakalpojumi" },
+];
+
+const PROVIDER_TYPES = [
+  { value: 1, label: "Fiziska persona" },
+  { value: 2, label: "Juridiska persona" },
+];
+
+const PRICE_TYPE_CHOICES = [
+  { value: 1, label: "Stundā" },
+  { value: 2, label: "Vienībā" },
+  { value: 3, label: "Dienā" },
+  { value: 4, label: "Pēc vienošanās" },
+];
+
+
+export { PRICE_TYPE_CHOICES, PROVIDER_TYPES, SERVICE_CATEGORIES, STATUS_CHOICES, SPECIES_CHOICES,AGE_CHOICES_BY_SPECIES, SIZE_CHOICES, GENDER_CHOICES, BEHAVIOR_CHOICES, AGE_CHOICES, PHONE_CODE_CHOICES, COLOR_CHOICES, PATTERN_CHOICES };
   

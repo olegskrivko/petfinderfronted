@@ -158,6 +158,7 @@
 //   );
 // }
 import React, { useState, useEffect } from 'react';
+import { useNavigate, Link } from 'react-router-dom';
 import {
   Box,
   Card,
@@ -175,68 +176,49 @@ import {
   IconButton
 } from '@mui/material';
 import { AddCircle, Delete } from '@mui/icons-material';
+import axios from 'axios';
 import CloseIcon from '@mui/icons-material/Close';
 import AddPhotoAlternateIcon from '@mui/icons-material/AddPhotoAlternate';
+import  {  SERVICE_CATEGORIES, PROVIDER_TYPES, PRICE_TYPE_CHOICES, PHONE_CODE_CHOICES } from "../constants/petOptions";
+
 const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
 export default function AddServicePage() {
-//     const [formState, setFormState] = useState({
-//     image: '',
-//     title: '',
-//     description: '',
-//     price: '',
-//     priceUnit: 'hour',
-//     email: '',
-//     phone: '',
-//     website: '',
-//     facebook: '',
-//     youtube: '',
-//     instagram: '',
-//     showSocials: false,
-//     locations: []
-//   });
+    const navigate = useNavigate();
 const [formState, setFormState] = useState({
+    category: '',
+    provider_type: '',
     title: '',
     description: '',
     price: '',
-    priceUnit: 'hour',
+    price_type: '',
     email: '',
-    phone: '',
+    // phone: '',
+    phone_number: "", 
+    phone_code: "371",
     website: '',
-
-    species: '',
-    location: { lat: 56.946285, lng: 24.105078 },
-    identifier: '',
-    size: '',
-    gender: '',
-    behavior: '',
-    age: '',
-    breed: '',
-    pattern: "",
-    primary_color: { hex: "", label: "", value: "" },
-    secondary_color: { hex: "", label: "", value: "" },
-    notes: '',
-    contact_phone: '',
-    phone_code: '371',
-
-    pet_image_1: "",
-    pet_image_2: "",
-    pet_image_3: "",
-    pet_image_4: ""
+    facebook: '',
+  youtube: '',
+  instagram: '',
+  showSocials: false,
+//   locations: [{ title: '', description: '', lat: '', lng: '' }],
+   locations: [{ title: '', description: '', lat: '', lng: '', region: '', city: '', street: '', postal_code: '', full_address: '' }],
+    service_image_1: "",
+    service_image_2: "",
+    service_image_3: "",
+    service_image_4: ""
   });
   const [extraImagesPreview, setExtraImagesPreview] = useState({
-    pet_image_1: "",
-    pet_image_2: "",
-    pet_image_3: "",
-    pet_image_4: "",
+    service_image_1: "",
+    service_image_2: "",
+    service_image_3: "",
+    service_image_4: "",
   });
   const [imageErrors, setImageErrors] = useState({
-    pet_image_1: "",
-    pet_image_2: "",
-    pet_image_3: "",
-    pet_image_4: "",
+    service_image_1: "",
+    service_image_2: "",
+    service_image_3: "",
+    service_image_4: "",
   });
-
-// const [ageChoices, setAgeChoices] = useState(AGE_CHOICES_BY_SPECIES[3]);
 
     const validateImage = (file, field) => {
       let errors = {};
@@ -297,33 +279,14 @@ const [formState, setFormState] = useState({
         let newState = { ...prevState, [field]: value };
     
         // Reset secondary color when pattern changes
-        if (field === 'pattern') {
-          newState.secondary_color = { hex: "", label: "", value: "", };
-        }
+        // if (field === 'pattern') {
+        //   newState.secondary_color = { hex: "", label: "", value: "", };
+        // }
     
         return newState;
       });
     };
     
-
-    const handleLocationChange = (coords) => {
-      setFormState((prevState) => ({
-        ...prevState,
-        location: {
-          lat: coords.lat,
-          lng: coords.lng,
-        },
-      }));
-
-    };
-  
-    /** Update age choices when species changes */
-    // useEffect(() => {
-    //   setAgeChoices(AGE_CHOICES_BY_SPECIES[formState.species] || AGE_CHOICES_BY_SPECIES[3]); 
-    // }, [formState.species]);
-  
-
-
   const handleClearSelect = (field) => {
     setFormState((prevState) => {
       let updatedState = { ...prevState };
@@ -376,7 +339,7 @@ const [formState, setFormState] = useState({
         const mimeType = fileExtension === 'png' ? 'image/png' : 'image/jpeg';
 
         canvas.toBlob((blob) => {
-          const resizedFile = new File([blob], `resized_pet.${fileExtension}`, { type: mimeType });
+          const resizedFile = new File([blob], `resized_service.${fileExtension}`, { type: mimeType });
           callback(resizedFile);
         }, mimeType, quality);
       };
@@ -398,7 +361,28 @@ const [formState, setFormState] = useState({
         });
       };
     }, [extraImagesPreview]);
-
+    const handleLocationChange = (index, field) => (e) => {
+        const newLocations = [...formState.locations];
+        newLocations[index][field] = e.target.value;
+        setFormState((prevState) => ({
+          ...prevState,
+          locations: newLocations
+        }));
+      };
+    const handleAddLocation = () => {
+        setFormState((prev) => ({
+          ...prev,
+          locations: [...prev.locations, { title: '', description: '', lat: '', lng: '' }]
+        }));
+      };
+      
+      const handleRemoveLocation = (index) => {
+        const updatedLocations = formState.locations.filter((_, i) => i !== index);
+        setFormState((prev) => ({
+          ...prev,
+          locations: updatedLocations
+        }));
+      };
     /** Submit form data to the backend */
     const handleSubmit = async (event) => {
         event.preventDefault();
@@ -408,46 +392,57 @@ const [formState, setFormState] = useState({
           const accessToken = localStorage.getItem('access_token');
           const formData = new FormData();
     
-          // Round latitude & longitude to 6 decimal places
-          const latitude = parseFloat(formState.location.lat).toFixed(6);
-          const longitude = parseFloat(formState.location.lng).toFixed(6);
-          console.log("formState", formState)
-        
-    
-          if (isNaN(latitude) || isNaN(longitude)) {
-            console.error("❌ Invalid latitude or longitude");
-            return;
-          }
-    
+    // Format the locations properly
+    // formState.locations.forEach((loc, index) => {
+    //     const lat = parseFloat(loc.lat).toFixed(6);
+    //     const lng = parseFloat(loc.lng).toFixed(6);
+  
+    //     if (isNaN(lat) || isNaN(lng)) {
+    //       console.error(`❌ Invalid coordinates at location ${index + 1}`);
+    //       return;
+    //     }
+  
+    //     // Append each location's fields to FormData
+    //     formData.append(`locations[${index}][title]`, loc.title);
+    //     formData.append(`locations[${index}][description]`, loc.description);
+    //     formData.append(`locations[${index}][lat]`, lat);
+    //     formData.append(`locations[${index}][lng]`, lng);
+    //   });
+    // const locations = [
+    //     {
+    //       title: 'vv',
+    //       description: 'vvv',
+    //       lat: '22.450000',
+    //       lng: '56.230000'
+    //     },
+    //     {
+    //       title: 'mmm',
+    //       description: 'mmm',
+    //       lat: '23.450000',
+    //       lng: '57.230000'
+    //     }
+    //   ];
+    //   formData.append("locations", JSON.stringify(locations));  
+      formData.append("locations", JSON.stringify(formState.locations));
+
+    //   formData.append("locations", locations);  
           // Append form fields
+          formData.append('category', formState.category);
+          formData.append('provider_type', formState.provider_type);
+          formData.append('phone_number', formState.phone_number);
+          formData.append('phone_code', formState.phone_code);
           formData.append('title', formState.title);
           formData.append('description', formState.description);
           formData.append('price', formState.price);
-          formData.append('priceUnit', formState.priceUnit);
+          formData.append('price_type', formState.price_type);
           formData.append('email', formState.email);
           formData.append('phone', formState.phone);
           formData.append('website', formState.website);
-
-          formData.append('species', formState.species);
-          formData.append('identifier', formState.identifier);
-          formData.append('size', formState.size);
-          formData.append('gender', formState.gender);
-          formData.append('behavior', formState.behavior);
-          formData.append('age', formState.age);
-          formData.append('breed', formState.breed);
-          formData.append('date', formState.date);
-          formData.append('time', formState.time);
-          formData.append('latitude', latitude);
-          formData.append('longitude', longitude);
-          formData.append('pattern', formState.pattern);
-          formData.append('primary_color', formState.primary_color.value);
-          formData.append('secondary_color', formState.secondary_color.value);
-          formData.append('notes', formState.notes);
-          formData.append('phone_code', formState.phone_code);
-          formData.append('contact_phone', formState.contact_phone);
+        //   formData.append('latitude', latitude);
+        //   formData.append('longitude', longitude);
     
                 // Append images
-                ['pet_image_1', 'pet_image_2', 'pet_image_3', 'pet_image_4'].forEach((field) => {
+                ['service_image_1', 'service_image_2', 'service_image_3', 'service_image_4'].forEach((field) => {
                   if (formState[field]) {
                     formData.append(`${field}_media`, formState[field]);
                   }
@@ -457,24 +452,24 @@ const [formState, setFormState] = useState({
     
     
           // Append the author (logged-in user)
-          if (user?.userId) {
-            formData.append('author', user.userId);
-          }
+        //   if (user?.userId) {
+        //     formData.append('user', user.userId);
+        //   }
     
           console.log('🚀 FormData ready to send:', Object.fromEntries(formData.entries()));
     
           // Send request to backend
-            const response = await axios.post(`${API_BASE_URL}/pets/`, formData, {
+            const response = await axios.post(`${API_BASE_URL}/services/`, formData, {
             headers: {
               'Content-Type': 'multipart/form-data',
               Authorization: `Bearer ${accessToken}`,
             },
           });
     
-          console.log('✅ Pet successfully added!', response.data);
-          navigate(`/pets/${response.data.id}`);
+          console.log('✅ Service successfully added!', response.data);
+          navigate(`/services/${response.data.id}`);
         } catch (error) {
-          console.error('❌ Error sending pet data:', error.response?.data || error.message);
+          console.error('❌ Error sending service data:', error.response?.data || error.message);
         }
       };
     
@@ -490,18 +485,10 @@ const [formState, setFormState] = useState({
       <Card sx={{ mb: 3 }}>
         <CardContent>
           <Typography variant="h6">Service Info</Typography>
-
-          {/* <Box my={2}>
-            <Button variant="contained" component="label">
-              Upload Picture
-              <input type="file" hidden onChange={handleFileChange} />
-            </Button>
-            {service.image && <img src={URL.createObjectURL(service.image)} alt="Preview" style={{ width: 100, marginTop: 10 }} />}
-          </Box> */}
           <Box my={2}>
                 <Grid container spacing={2}>
             
-               {["pet_image_1", "pet_image_2", "pet_image_3", "pet_image_4"].map((field) => (
+               {["service_image_1", "service_image_2", "service_image_3", "service_image_4"].map((field) => (
                 <Grid item xs={6} md={3} key={field} >
                   <Box sx={{ position: "relative" }}>
                   <input
@@ -582,42 +569,62 @@ const [formState, setFormState] = useState({
                 </Grid>
               ))}
             </Grid>
-            {/* <Button variant="contained" component="label">
-              Upload Picture
-              <input type="file" hidden accept="image/jpeg, image/jpg" onChange={(e) => handleImageUpload(e.target.files[0])} />
-            </Button> */}
-            {/* {extraImagePreview && (
-              <Box sx={{ position: 'relative', display: 'inline-block', width: 100, height: 100 }}>
-                <img src={extraImagePreview} alt="Preview" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
-                <IconButton
-                  onClick={handleClearImage}
-                  sx={{
-                    position: 'absolute',
-                    top: 0,
-                    right: 0,
-                    backgroundColor: 'rgba(255, 255, 255, 0.6)',
-                    '&:hover': { backgroundColor: 'rgba(255, 255, 255, 0.8)' }
-                  }}
-                >
-                  <CloseIcon />
-                </IconButton>
-              </Box>
-            )}
-            {imageErrors && <Typography color="red" variant="body2">{imageErrors}</Typography>} */}
           </Box>
-
+ 
           <TextField label="Title" fullWidth margin="normal" value={formState.title}  onChange={(e) => handleChange('title', e.target.value)} />
           <TextField label="Description" fullWidth multiline rows={4} margin="normal" value={formState.description} onChange={(e) => handleChange('description', e.target.value)} />
-          <TextField label="Price" type="number" fullWidth margin="normal" value={formState.price} onChange={(e) => handleChange('price', e.target.value)} />
-
           <FormControl fullWidth margin="normal">
+  <InputLabel>Kategorija</InputLabel>
+  <Select
+    value={formState.category}
+    label="Kategorija"
+    onChange={(e) => handleChange('category', e.target.value)}
+  >
+    {SERVICE_CATEGORIES.map((category) => (
+      <MenuItem key={category.value} value={category.value}>
+        {category.label}
+      </MenuItem>
+    ))}
+  </Select>
+</FormControl>
+<FormControl fullWidth margin="normal">
+  <InputLabel>Pakalpojuma sniedzējs</InputLabel>
+  <Select
+    value={formState.provider_type}
+    label="Pakalpojuma sniedzējs"
+    onChange={(e) => handleChange('provider_type', e.target.value)}
+  >
+    {PROVIDER_TYPES.map((provider) => (
+      <MenuItem key={provider.value} value={provider.value}>
+        {provider.label}
+      </MenuItem>
+    ))}
+  </Select>
+</FormControl>
+          <TextField label="Cena" type="number" fullWidth margin="normal" value={formState.price} onChange={(e) => handleChange('price', e.target.value)} />
+          
+          {/* <FormControl fullWidth margin="normal">
             <InputLabel>Price Unit</InputLabel>
             <Select value={formState.priceUnit} label="Price Unit"  onChange={(e) => handleChange('priceUnit', e.target.value)}>
               <MenuItem value="hour">Per Hour</MenuItem>
               <MenuItem value="day">Per Day</MenuItem>
               <MenuItem value="item">Per Item</MenuItem>
             </Select>
-          </FormControl>
+          </FormControl> */}
+          <FormControl fullWidth margin="normal">
+  <InputLabel>Mērvienība</InputLabel>
+  <Select
+    value={formState.price_type}
+    label="Mērvienība"
+    onChange={(e) => handleChange('price_type', e.target.value)}
+  >
+    {PRICE_TYPE_CHOICES.map((unit) => (
+      <MenuItem key={unit.value} value={unit.value}>
+        {unit.label}
+      </MenuItem>
+    ))}
+  </Select>
+</FormControl>
         </CardContent>
       </Card>
 
@@ -625,30 +632,71 @@ const [formState, setFormState] = useState({
         <CardContent>
           <Typography variant="h6">Contacts</Typography>
           <TextField label="Email" fullWidth margin="normal" value={formState.email}  onChange={(e) => handleChange('email', e.target.value)} />
-          <TextField label="Phone" fullWidth margin="normal" value={formState.phone}  onChange={(e) => handleChange('phone', e.target.value)} />
+          {/* <FormControl fullWidth margin="normal">
+  <InputLabel>Mērvienība</InputLabel>
+  <Select
+    value={formState.phone_code}
+    label="Mērvienība"
+    onChange={(e) => handleChange('phone_code', e.target.value)}
+  >
+    {PRICE_TYPE_CHOICES.map((code) => (
+      <MenuItem key={unit.value} value={code.value}>
+        {code.label}
+      </MenuItem>
+    ))}
+  </Select>
+</FormControl> */}
+ 
+                                  <FormControl fullWidth variant="outlined">
+                                        <InputLabel id="phoneCode-label" shrink>
+                                        Telefona kods
+                                        </InputLabel>
+                                        <Select
+                                          labelId="phoneCode-label"
+                                          id="phoneCode"
+                                          name="phone_code"
+                                          readOnly
+                                     
+                                          value={formState.phone_code}
+                                          onChange={(e) => handleChange('phone_code', e.target.value)}
+                                          label="Telefona kods"
+                                          notched
+                                        >
+                                          {PHONE_CODE_CHOICES.map((code) => (
+                                            <MenuItem key={code.value} value={code.value}>
+                                              {code.label}
+                                            </MenuItem>
+                                          ))}
+                      
+                                        </Select>
+                                      </FormControl>
+                              
+          <TextField label="Telefons" fullWidth margin="normal" value={formState.phone_number}  onChange={(e) => handleChange('phone_number', e.target.value)} />
+          
+        
           <TextField label="Website" fullWidth margin="normal" value={formState.website}  onChange={(e) => handleChange('website', e.target.value)} />
+      
 
-          {/* <FormControlLabel
-            control={<Checkbox checked={service.showSocials} onChange={() => setService({ ...service, showSocials: !service.showSocials })} />}
-            label="Add Social Networks"
-          />
-
-          {service.showSocials && (
-            <>
-              <TextField label="Facebook" fullWidth margin="normal" value={service.facebook} onChange={handleChange('facebook')} />
-              <TextField label="YouTube" fullWidth margin="normal" value={service.youtube} onChange={handleChange('youtube')} />
-              <TextField label="Instagram" fullWidth margin="normal" value={service.instagram} onChange={handleChange('instagram')} />
-            </>
-          )} */}
+<FormControlLabel
+  control={<Checkbox checked={formState.showSocials} onChange={() => handleChange('showSocials', !formState.showSocials)} />}
+  label="Add Social Networks"
+/>
+{formState.showSocials && (
+  <>
+    <TextField label="Facebook" fullWidth margin="normal" value={formState.facebook} onChange={(e) => handleChange('facebook', e.target.value)} />
+    <TextField label="YouTube" fullWidth margin="normal" value={formState.youtube} onChange={(e) => handleChange('youtube', e.target.value)} />
+    <TextField label="Instagram" fullWidth margin="normal" value={formState.instagram} onChange={(e) => handleChange('instagram', e.target.value)} />
+  </>
+)}
         </CardContent>
       </Card>
 
       <Card sx={{ mb: 3 }}>
         <CardContent>
           <Typography variant="h6">Locations</Typography>
-          {/* {service.locations.map((loc, index) => (
+          {formState.locations.map((loc, index) => (
             <Grid container spacing={2} alignItems="center" key={index} sx={{ mb: 2 }}>
-              <Grid item xs={12} sm={3}>
+              <Grid item xs={12} sm={4}>
                 <TextField label="Title" fullWidth value={loc.title} onChange={handleLocationChange(index, 'title')} />
               </Grid>
               <Grid item xs={12} sm={4}>
@@ -660,16 +708,32 @@ const [formState, setFormState] = useState({
               <Grid item xs={12} sm={2}>
                 <TextField label="Lng" fullWidth value={loc.lng} onChange={handleLocationChange(index, 'lng')} />
               </Grid>
+   
+              <Grid item xs={12} sm={6} >
+                <TextField label="Region" fullWidth value={loc.region} onChange={handleLocationChange(index, 'region')} />
+              </Grid>
+              <Grid item xs={12} sm={6} >
+                <TextField label="City" fullWidth value={loc.city} onChange={handleLocationChange(index, 'city')} />
+              </Grid>
+              <Grid item xs={12} sm={6} >
+                <TextField label="Street" fullWidth value={loc.street} onChange={handleLocationChange(index, 'street')} />
+              </Grid>
+              <Grid item xs={12} sm={6} >
+                <TextField label="Postal code" fullWidth value={loc.postal_code} onChange={handleLocationChange(index, 'postal_code')} />
+              </Grid>
+              <Grid item xs={12}  >
+                <TextField label="Full address" fullWidth value={loc.full_address} onChange={handleLocationChange(index, 'full_address')} />
+              </Grid>
               <Grid item xs={12} sm={1}>
                 <IconButton color="error" onClick={() => handleRemoveLocation(index)}>
                   <Delete />
                 </IconButton>
               </Grid>
             </Grid>
-          ))} */}
-          {/* <Button startIcon={<AddCircle />} onClick={handleAddLocation}>
+          ))}
+          <Button startIcon={<AddCircle />} onClick={handleAddLocation}>
             Add Location
-          </Button> */}
+          </Button>
         </CardContent>
       </Card>
 

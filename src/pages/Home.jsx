@@ -227,16 +227,17 @@ function Home() {
       </Grid>
 */}
       {/* <RecentPets />  */}
-
-    
-      <Grid container spacing={3} style={{ marginTop: '3rem' }}>
+</Container>
+    <Box style={{backgroundColor: "#5B9BD5"}}>
+<Container component="main" maxWidth="lg" sx={{ py: 6, paddingLeft: "0", paddingRight: "0"}}> 
+      <Grid container spacing={3} >
         <Grid item xs={12} textAlign="center">
           <Typography
             variant="h2"
             style={{
-              fontSize: '1.6rem',
+              // fontSize: '1.6rem',
               fontWeight: '500',
-              color: "#5B5B5B",
+              color: "white",
               // marginTop: '1rem',
             }}
           >
@@ -244,10 +245,10 @@ function Home() {
           </Typography>
         </Grid>
       </Grid>
-
+   
       {/* <Grid container spacing={3} style={{ marginTop: '1rem' }}> */}
-      <Grid container spacing={3} style={{ marginTop: '1rem', marginBottom: '3rem' }}>
-  {/* First Card */}
+      {/* <Grid container spacing={3} style={{ marginTop: '1rem', marginBottom: '3rem' }}>
+  
   <Grid item xs={12} sm={12} md={6} lg={4} textAlign="center">
     <Card style={{ backgroundColor: '#f7f9fd', display: 'flex', flexDirection: 'column', height: '100%' }}>
       <CardContent style={{ display: 'flex', flexDirection: 'row', justifyContent: 'flex-start', alignItems: 'center', flex: 1 }}>
@@ -269,7 +270,7 @@ function Home() {
     </Card>
   </Grid>
 
-  {/* Second Card */}
+
   <Grid item xs={12} sm={12} md={6} lg={4} textAlign="center">
     <Card style={{ backgroundColor: '#f7f9fd', display: 'flex', flexDirection: 'column', height: '100%' }}>
       <CardContent style={{ display: 'flex', flexDirection: 'row', justifyContent: 'flex-start', alignItems: 'center', flex: 1 }}>
@@ -291,7 +292,7 @@ function Home() {
     </Card>
   </Grid>
 
-  {/* Third Card */}
+
   <Grid item xs={12} sm={12} md={6} lg={4} textAlign="center">
     <Card style={{ backgroundColor: '#f7f9fd', display: 'flex', flexDirection: 'column', height: '100%' }}>
       <CardContent style={{ display: 'flex', flexDirection: 'row', justifyContent: 'flex-start', alignItems: 'center', flex: 1 }}>
@@ -313,7 +314,7 @@ function Home() {
     </Card>
   </Grid>
 
-  {/* Fourth Card */}
+
   <Grid item xs={12} sm={12} md={6} lg={4} textAlign="center">
     <Card style={{ backgroundColor: '#f7f9fd', display: 'flex', flexDirection: 'column', height: '100%' }}>
       <CardContent style={{ display: 'flex', flexDirection: 'row', justifyContent: 'flex-start', alignItems: 'center', flex: 1 }}>
@@ -335,7 +336,7 @@ function Home() {
     </Card>
   </Grid>
 
-  {/* Fifth Card */}
+ 
   <Grid item xs={12} sm={12} md={6} lg={4} textAlign="center">
     <Card style={{ backgroundColor: '#f7f9fd', display: 'flex', flexDirection: 'column', height: '100%' }}>
       <CardContent style={{ display: 'flex', flexDirection: 'row', justifyContent: 'flex-start', alignItems: 'center', flex: 1 }}>
@@ -357,7 +358,6 @@ function Home() {
     </Card>
   </Grid>
 
-  {/* Sixth Card */}
   <Grid item xs={12} sm={12} md={6} lg={4} textAlign="center">
     <Card style={{ backgroundColor: '#f7f9fd', display: 'flex', flexDirection: 'column', height: '100%' }}>
       <CardContent style={{ display: 'flex', flexDirection: 'row', justifyContent: 'flex-start', alignItems: 'center', flex: 1 }}>
@@ -378,8 +378,79 @@ function Home() {
       </CardContent>
     </Card>
   </Grid>
+</Grid> */}
+<Grid container spacing={3} style={{ marginTop: '1rem', marginBottom: '3rem' }}>
+  
+  <Grid item xs={12} sm={12} md={6} lg={4} textAlign="center">
+    {/* <Card style={{ backgroundColor: 'transparent', display: 'flex', flexDirection: 'column', height: '100%' }}> */}
+      <CardContent style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', flex: 1 }}>
+        <CardMedia
+          component="img"
+          alt="Iekļaušana mūsu mājaslapā"
+          image={petlisting}
+          style={{ width: 'auto', height: '80px', marginBottom: '1rem' }}
+        />
+        <div>
+          <Typography variant="h6" style={{ marginBottom: '0.5rem', color: '#5B9BD5', color: "white", textAlign:  "center" }}>
+            Iekļaušana mūsu mājaslapā
+          </Typography>
+          <Typography variant="body2" style={{color: "white", textAlign:  "center" }}>
+            Jūsu mājdzīvnieks tiek pievienots mūsu lapai, padarot ziņošanu par novērojumiem īpaši ērtu.
+          </Typography>
+        </div>
+      </CardContent>
+    {/* </Card> */}
+  </Grid>
+
+  <Grid item xs={12} sm={12} md={6} lg={4} textAlign="center">
+    {/* <Card style={{ backgroundColor: '#f7f9fd', display: 'flex', flexDirection: 'column', height: '100%' }}> */}
+      <CardContent style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', flex: 1 }}>
+        <CardMedia
+          component="img"
+          alt="Izdrukājams plakāts"
+          image={lostdogposter}
+          style={{ width: 'auto', height: '80px', marginBottom: '1rem' }}
+        />
+        <div>
+          <Typography variant="h6" style={{ marginBottom: '0.5rem', color: '#5B9BD5',color: "white", textAlign:  "center" }}>
+            Izdrukājams plakāts
+          </Typography>
+          <Typography variant="body2" style={{ color: "white",textAlign:  "center" }}>
+            Saņemiet profesionāli izstrādātu pazudušā mājdzīvnieka plakātu ar QR kodu.
+          </Typography>
+        </div>
+      </CardContent>
+    {/* </Card> */}
+  </Grid>
+  <Grid item xs={12} sm={12} md={6} lg={4} textAlign="center">
+    {/* <Card style={{ backgroundColor: '#f7f9fd', display: 'flex', flexDirection: 'column', height: '100%' }}> */}
+      <CardContent style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', flex: 1 }}>
+        <CardMedia
+          component="img"
+          alt="Saņemiet novērojumu ziņojumus"
+          image={pathlocations}
+          style={{ width: 'auto', height: '80px', marginBottom: '1rem' }}
+        />
+        <div>
+          <Typography variant="h6" style={{ marginBottom: '0.5rem', color: '#5B9BD5',color: "white", textAlign:  "center" }}>
+            Saņemiet novērojumu ziņojumus
+          </Typography>
+          <Typography variant="body2" style={{ color: "white",textAlign:  "center" }}>
+            Pārbaudiet jaunus novērojumus, ko ziņojusi kopiena, lai sekotu līdzi norādēm par savu mājdzīvnieku.
+          </Typography>
+        </div>
+      </CardContent>
+    {/* </Card> */}
+  </Grid>
+
+
+
+
 </Grid>
 
+</Container>
+</Box>
+<Container component="main" maxWidth="lg" sx={{ py: 6, paddingLeft: "0", paddingRight: "0"}}> 
 <BannerSection
       title="Pakalpojumi mājdzīvniekiem!"
       imageSrc={secondaryIMG}
@@ -394,7 +465,7 @@ function Home() {
 
 {/* </Grid> */}
 
-<Statistics />
+{/* <Statistics /> */}
 <ChatBot />
       </Container>
     </React.Fragment>
