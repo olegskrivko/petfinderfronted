@@ -228,7 +228,7 @@ function Home() {
 */}
       {/* <RecentPets />  */}
 </Container>
-    <Box style={{backgroundColor: "#5B9BD5"}}>
+    <Box >
 <Container component="main" maxWidth="lg" sx={{ py: 6, paddingLeft: "0", paddingRight: "0"}}> 
       <Grid container spacing={3} >
         <Grid item xs={12} textAlign="center">
@@ -237,7 +237,6 @@ function Home() {
             style={{
               // fontSize: '1.6rem',
               fontWeight: '500',
-              color: "white",
               // marginTop: '1rem',
             }}
           >
@@ -391,10 +390,10 @@ function Home() {
           style={{ width: 'auto', height: '80px', marginBottom: '1rem' }}
         />
         <div>
-          <Typography variant="h6" style={{ marginBottom: '0.5rem', color: "white", textAlign:  "center" }}>
+          <Typography variant="h6" style={{ marginBottom: '0.5rem', textAlign:  "center" }}>
             Iekļaušana mūsu mājaslapā
           </Typography>
-          <Typography variant="body2" style={{color: "white", textAlign:  "center" }}>
+          <Typography variant="body2" style={{ textAlign:  "center" }}>
             Jūsu mājdzīvnieks tiek pievienots mūsu lapai, padarot ziņošanu par novērojumiem īpaši ērtu.
           </Typography>
         </div>
@@ -412,10 +411,10 @@ function Home() {
           style={{ width: 'auto', height: '80px', marginBottom: '1rem' }}
         />
         <div>
-          <Typography variant="h6" style={{ marginBottom: '0.5rem', color: "white", textAlign:  "center" }}>
+          <Typography variant="h6" style={{ marginBottom: '0.5rem', textAlign:  "center" }}>
             Izdrukājams plakāts
           </Typography>
-          <Typography variant="body2" style={{ color: "white",textAlign:  "center" }}>
+          <Typography variant="body2" style={{ textAlign:  "center" }}>
             Saņemiet profesionāli izstrādātu pazudušā mājdzīvnieka plakātu ar QR kodu.
           </Typography>
         </div>
@@ -432,10 +431,10 @@ function Home() {
           style={{ width: 'auto', height: '80px', marginBottom: '1rem' }}
         />
         <div>
-          <Typography variant="h6" style={{ marginBottom: '0.5rem', color: "white", textAlign:  "center" }}>
+          <Typography variant="h6" style={{ marginBottom: '0.5rem',  textAlign:  "center" }}>
             Saņemiet novērojumu ziņojumus
           </Typography>
-          <Typography variant="body2" style={{ color: "white",textAlign:  "center" }}>
+          <Typography variant="body2" style={{ textAlign:  "center" }}>
             Pārbaudiet jaunus novērojumus, ko ziņojusi kopiena, lai sekotu līdzi norādēm par savu mājdzīvnieku.
           </Typography>
         </div>

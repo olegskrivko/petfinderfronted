@@ -80,6 +80,7 @@ function DrawerAppBar(props) {
   const [mobileOpen, setMobileOpen] = React.useState(false);
   const { user, logout } = useAuth(); // Get user and logout from AuthContext
   const { selectedLanguage, setSelectedLanguage } = useContext(LanguageContext);
+  console.log("selectedLanguage", selectedLanguage)
   // const { isAuthenticated, logout } = useAuth();
   // const { user, logout } = useAuth();
 

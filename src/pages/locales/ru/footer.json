@@ -1,9 +1,9 @@
 {
-    "hello": "Hello",
-    "welcome": "Welcome to our site!",
-    "goodbye": "Goodbye",
-    "thank_you": "Thank you",
-    "yes": "Yes",
-    "no": "No"
-  }
-  
+    "supportMessage": "Мы благодарны за любую поддержку или спонсорскую помощь, которая может помочь раскрыть полный потенциал приложения",
+    "copyright": "Все права защищены.",
+    "support": "Поддержка",
+    "getStarted": "Начать",
+    "resources": "Ресурсы",
+    "learnMore": "Узнать больше",
+    "info": "Полезная информация"
+}

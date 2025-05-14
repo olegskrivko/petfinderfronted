@@ -1,66 +1,47 @@
-import React from 'react';
+import { useContext } from 'react';
 import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
 import Grid from '@mui/material/Grid';
 import Container from '@mui/material/Container';
 import { Link } from 'react-router-dom';
 import InstallPWAButton from '../InstallPWAButton';
-
+import { useTranslation } from 'react-i18next';
+import { LanguageContext } from '../contexts/LanguageContext';
+import {APP_NAME } from "../constants/config"
+ 
 const Footer = () => {
+  const year = new Date().getFullYear();
 
+const { selectedLanguage, setSelectedLanguage } = useContext(LanguageContext);
+const { t } = useTranslation('footer'); 
   const appLinks = [
-    { path: '/about', label: 'Par mums', active: true },
-    { path: '/pets', label: 'Meklēt mājdzīvniekus', active: true },
-    { path: '/virtual-pet-training-classes', label: 'Virtuālās dresūras nodarbības', active: true },
-    { path: '/services', label: 'Pakalpojumi', active: true },
-    // { path: '/adopt-a-pet', label: 'Adoptējiet, nepērciet!', active: true },
-  ];
+  { path: '/', label: { lv: 'Galvenā', en: 'Home', ru: 'Главная' }},
+  { path: '/about', label: { lv: 'Par mums', en: 'About us', ru: 'О нас' }},
+  { path: '/pets', label: { lv: 'Meklēt mājdzīvniekus', en: 'Find a pet', ru: 'Найти питомца' }},
+  { path: '/services', label: { lv: 'Pakalpojumi', en: 'Services', ru: 'Услуги' }},
+];
+
   
   const exploreLinks = [
-    { path: '/shelters', label: 'Dzīvnieku patversmes', active: true },
-    { path: '/articles', label: 'Mājdzīvnieku aprūpes padomi', active: true },
-    { path: '/articles/ko-darit-ja-pazudis-kakis', label: 'Ko darīt, ja pazudis kaķis?', active: true },
-    { path: '/articles/ka-rikoties-ja-pazudis-suns', label: 'Kā rīkoties, ja pazudis suns?', active: true },
-    // { path: '/submit-your-story', label: 'Iesūtīt savu stāstu', active: false },
+    { path: '/shelters', label: { lv: 'Dzīvnieku patversmes', en: 'Animal shelters', ru: 'Приюты для животных'}},
+    { path: '/articles', label: { lv: 'Mājdzīvnieku aprūpes padomi', en: 'Pet care tips', ru: 'Советы по уходу за питомцами'}},
+    { path: '/virtual-pet-training-classes', label: { lv: 'Virtuālās dresūras nodarbības', en: 'Virtual training classes', ru: 'Виртуальные тренировки'}},
   ];
   
   const policyLinks = [
-    { path: '/policies', label: 'Politikas un vadlīnijas', active: true },
-    // { path: '/whats-new', label: 'Kas jauns?', active: false },
-    { path: '/pet-matching-quiz', label: 'Kādu mājdzīvnieku izvēlēties?', active: true },
-    { path: '/frequently-asked-questions', label: 'Biežāk uzdotie jautājumi', active: true },
-    { path: '/pricing', label: 'Maksāšanas plāns', active: true },
+    { path: '/policies',  label: { lv: 'Politikas un vadlīnijas', en: 'Policies and guidelines', ru: 'Политика и рекомендации'}},
+    { path: '/pet-matching-quiz', label: { lv: 'Kādu mājdzīvnieku izvēlēties?', en: 'Which pet should I choose?', ru: 'Какого питомца выбрать?'}},
+    { path: '/frequently-asked-questions', label: {lv: 'Biežāk uzdotie jautājumi', en: 'Frequently asked questions',  ru: 'Часто задаваемые вопросы'}},
+    { path: '/pricing', label: { lv: 'Maksāšanas plāns', en: 'Pricing plan', ru: 'Платёжный план'}},
   ];  
   
-  const infoLinks = [
-    { path: '/contact', label: 'Kontakti', active: true },
-    { path: '/feedback', label: 'Atsauksmes', active: true },
-    { path: '/support', label: 'Atbalsts', active: true },
-    { path: '/collaborate', label: 'Sadarbība', active: true },
-    // { path: '/partners-and-sponsors', label: 'Mūsu partneri un atbalstītāji', active: true },
-  ];
+const infoLinks = [
+  { path: '/contact',  label: { lv: 'Kontakti', en: 'Contact', ru: 'Контакты' }},
+  { path: '/feedback',  label: { lv: 'Atsauksmes', en: 'Feedback', ru: 'Отзывы' }},  
+  { path: '/support',  label: { lv: 'Atbalsts',  en: 'Support',  ru: 'Поддержка'}}, 
+  { path: '/collaborate',  label: { lv: 'Sadarbība', en: 'Collaboration', ru: 'Сотрудничество' }}
+];
 
-// Function to render links with the active/inactive state
-const renderLinks = (linksArray) =>
-  linksArray.map((link) => (
-    <Typography
-      key={link.path}
-      variant="body1"
-      style={{
-        fontWeight: '400',
-        color: link.active ? '#fff' : '#D3D3D3',
-        pointerEvents: link.active ? 'auto' : 'none',
-      }}
-    >
-      {link.active ? (
-        <Link to={link.path} style={{ color: 'inherit', textDecoration: 'none' }}>
-          {link.label}
-        </Link>
-      ) : (
-        link.label
-      )}
-    </Typography>
-  ));
 
   return (
     <Box
@@ -87,30 +68,93 @@ const renderLinks = (linksArray) =>
         <Grid container spacing={2}>
           <Grid item xs={12} sm={3} textAlign="left">
             <Typography variant="h6" color="#ffcb56" style={{ fontWeight: '500' }}>
-            Lietotājiem
+            {t("getStarted")}
             </Typography>
-            {renderLinks(appLinks)}
+  {appLinks.map(link => (
+
+<Typography
+      key={link.path}
+      variant="body1"
+      style={{
+        fontWeight: '400',
+        color: "#fff",
+        pointerEvents: 'auto',
+      }}
+    >
+      <Link key={link.path} to={link.path} style={{color: "#fff", textDecoration: 'none'}}>
+      {link.label[selectedLanguage] || link.label.en}
+    </Link>
+    </Typography>
+  
+))}
           </Grid>
 
           <Grid item xs={12} sm={3} textAlign="left">
             <Typography variant="h6" color="#ffcb56" style={{ fontWeight: '500' }}>
-            Resursi
+            {t("resources")}
             </Typography>
-            {renderLinks(exploreLinks)}
+    
+              {exploreLinks.map(link => (
+
+<Typography
+      key={link.path}
+      variant="body1"
+      style={{
+        fontWeight: '400',
+        color: "#fff",
+        pointerEvents: 'auto',
+      }}
+    >
+      <Link key={link.path} to={link.path} style={{color: "#fff", textDecoration: 'none'}}>
+      {link.label[selectedLanguage] || link.label.en}
+    </Link>
+    </Typography>
+))}
           </Grid>
 
           <Grid item xs={12} sm={3} textAlign="left">
             <Typography variant="h6" color="#ffcb56" style={{ fontWeight: '500' }}>
-            Uzzini vairāk
+             {t("learnMore")}
             </Typography>
-            {renderLinks(policyLinks)}
+                         {policyLinks.map(link => (
+
+<Typography
+      key={link.path}
+      variant="body1"
+      style={{
+        fontWeight: '400',
+        color: "#fff",
+        pointerEvents: 'auto',
+      }}
+    >
+      <Link key={link.path} to={link.path} style={{color: "#fff", textDecoration: 'none'}}>
+      {link.label[selectedLanguage] || link.label.en}
+    </Link>
+    </Typography>
+))}
           </Grid>
 
           <Grid item xs={12} sm={3} textAlign="left">
             <Typography variant="h6" color="#ffcb56" style={{ fontWeight: '500' }}>
-            Noderīga informācija
+          {t("info")}
             </Typography>
-            {renderLinks(infoLinks)}
+            {/* {renderLinks(infoLinks)} */}
+            {infoLinks.map(link => (
+
+<Typography
+      key={link.path}
+      variant="body1"
+      style={{
+        fontWeight: '400',
+        color: "#fff",
+        pointerEvents: 'auto',
+      }}
+    >
+      <Link key={link.path} to={link.path} style={{color: "#fff", textDecoration: 'none'}}>
+      {link.label[selectedLanguage] || link.label.en}
+    </Link>
+    </Typography>
+))}
           </Grid>
         </Grid>
       </Container>
@@ -127,7 +171,7 @@ const renderLinks = (linksArray) =>
               variant="body2"
               style={{ fontSize: '0.8rem', color: '#fff', fontWeight: '300' }}
             >
-              Mēs esam pateicīgi par jebkādu atbalstu vai sponsora palīdzību, kas var palīdzēt atklāt lietotnes pilno potenciālu - <Link
+              {t("supportMessage")} - <Link
                 to="/support"
                 style={{
                   color: '#fff',
@@ -136,14 +180,14 @@ const renderLinks = (linksArray) =>
                   textTransform: 'uppercase',
                 }}
               >
-                Atbalsts
+                {t("support")}
               </Link>
             </Typography>
           </Grid>
           
           <Grid item xs={12} textAlign="center">
             <Typography variant="body2" color="#fff">
-              &copy; 2025 PawClix. Visas tiesības aizsargātas.
+              &copy; {year} {APP_NAME}. {t("copyright")}
             </Typography>
 
           </Grid>

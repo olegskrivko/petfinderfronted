@@ -14,25 +14,25 @@ const LanguageSelector = () => {
       value={selectedLanguage}
       onChange={handleChangeLanguage}
       size="small"
+      disableUnderline
       sx={{
-        color: '#fff', // Text color
-        fontWeight: '500',
+        color: '#fff',
+        fontWeight: 500,
         fontSize: 'small',
-
         '& .MuiSelect-icon': {
-          color: '#fff', // Dropdown arrow color
+          color: '#fff',
         },
-      }}
-      MenuProps={{
-        anchorOrigin: {
-          vertical: 'bottom',
-          horizontal: 'left',
+        '&:focus': {
+          backgroundColor: 'transparent',
         },
-        transformOrigin: {
-          vertical: 'top',
-          horizontal: 'left',
+        '&.Mui-focused .MuiOutlinedInput-notchedOutline': {
+          border: 'none',
         },
-        getContentAnchorEl: null,
+        '& .MuiOutlinedInput-notchedOutline': {
+          border: 'none',
+        },
+        backgroundColor: 'transparent',
+        minWidth: 60,
       }}
       variant="outlined"
     >

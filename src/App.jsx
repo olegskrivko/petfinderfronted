@@ -301,12 +301,12 @@ function App() {
                   )} */}
                
         <Routes>
-        <Route path='/' element={<AuthLayout />}>
+        {/* <Route path='/' element={<AuthLayout />}>
               <Route index element={<Home />} />
-            </Route> 
+            </Route>  */}
 
           <Route path='/' element={<Layout />}>
-            {/* <Route index element={<Home />} /> */}
+            <Route index element={<Home />} />
             <Route path="/about" element={<About />} />
             <Route path="/add-service" element={<AddServicePage />} />
             
