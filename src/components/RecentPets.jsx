@@ -48,7 +48,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { useAuth } from '../contexts/AuthContext';
-import PetCard from './PetCard'; // Assuming PetCard is in the same directory or adjust the path
+import PetCard from '../pages/pets/components/PetCard'; // Assuming PetCard is in the same directory or adjust the path
 import { Grid, Typography, CircularProgress ,Button} from '@mui/material'; // Import MUI components
 import { Link } from "react-router-dom";
 import useMediaQuery from "@mui/material/useMediaQuery";

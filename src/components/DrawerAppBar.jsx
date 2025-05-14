@@ -19,25 +19,67 @@ import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
 import Container from '@mui/material/Container';
 import PetsIcon from '@mui/icons-material/Pets';
-import Logout from './Logout'; 
+import { useTranslation } from 'react-i18next';
+import LanguageSelector from '../pages/LanguageSelector';
+import { LanguageContext } from '../contexts/LanguageContext';
+// import Logout from './Logout'; 
+
+
+
+// function Welcome() {
+//   const { t } = useTranslation('common'); // use 'common' namespace
+
+//   return (
+//     <div>
+//       <h1>{t('hello')}</h1>
+//       <p>{t('welcome')}</p>
+//     </div>
+//   );
+// }
 
 // Custom Components
 import { useAuth } from '../contexts/AuthContext';
 
 const drawerWidth = 240;
 
+// const navItems = {
+//   "/": "Galvenā",
+//   '/pets': 'Mājdzīvnieki',
+//   '/shelters': 'Patversmes',
+//   '/services': 'Pakalpojumi',
+//   '/articles': 'Padomi',
+// };
+
+// const navItems = {
+//   '/pets': 'pets',
+//   '/shelters': 'shelters',
+//   '/services': 'Services',
+//   '/articles': 'articles',
+
+// };
+// const navItems = {
+
+//   'pets': 'Mājdzīvnieki',
+//   'shelters': 'Patversmes',
+//   'services': 'Pakalpojumi',
+//   'guides': 'Padomi',
+
+// };
 const navItems = {
-  "/": "Galvenā",
-  '/pets': 'Mājdzīvnieki',
-  '/shelters': 'Patversmes',
-  '/services': 'Pakalpojumi',
-  '/articles': 'Padomi',
+  '/pets': 'pets',
+  '/shelters': 'shelters',
+  '/services': 'services',
+  '/articles': 'guides',
+
 };
 
 function DrawerAppBar(props) {
+  const { t } = useTranslation('navbar'); 
+
   // const { openDrawer } = useDrawer();
   const [mobileOpen, setMobileOpen] = React.useState(false);
   const { user, logout } = useAuth(); // Get user and logout from AuthContext
+  const { selectedLanguage, setSelectedLanguage } = useContext(LanguageContext);
   // const { isAuthenticated, logout } = useAuth();
   // const { user, logout } = useAuth();
 
@@ -91,68 +133,31 @@ function DrawerAppBar(props) {
 
       <Divider />
       <List>
-      {Object.entries(navItems).map(([path, itemName]) => (
+      {/* {Object.entries(navItems).map(([path, itemName]) => (
           <ListItem  key={path} disablePadding>
             <ListItemButton sx={{ textAlign: 'left' }}>
               <Link to={path} style={{ textDecoration: 'none', width: '100%' }}>
                 <ListItemText primary={itemName} />
+            
               </Link>
             </ListItemButton>
           </ListItem>
-        ))}
-        
-        {/* {user && (
-          <Button
-            variant="contained"
-            size="small"
-            onClick={handleLogout}
-            sx={{ marginLeft: '10px', color: '#000', fontWeight: '500', backgroundColor: '#ffcb56',
-              '&:hover': { backgroundColor: '#e0a800' },
-            }}
-          >
-            Logout
-          </Button>
-        )} */}
-          {/* {user ? (
-          <>
-            <Button
-              variant="contained"
-              size="small"
-              onClick={handleLogout}
-              sx={{
-                marginLeft: '10px',
-                color: '#000',
-                fontWeight: '500',
-                backgroundColor: '#ffcb56',
-                '&:hover': {
-                  backgroundColor: '#e0a800',
-                },
-              }}
-            >
-              Logout
-            </Button>
-          </>
-        ) : (
-          <Link to="/login">
-            <Button
-              size="small"
-              sx={{
-                color: '#000',
-                fontWeight: '500',
-                backgroundColor: '#ffcb56',
-                '&:hover': {
-                  backgroundColor: '#e0a800',
-                },
-              }}
-            >
-              Login
-            </Button>
-          </Link>
-        )} */}
+        ))} */}
+        {Object.entries(navItems).map(([path, key]) => (
+           <ListItem  key={path} disablePadding>
+            <ListItemButton sx={{ textAlign: 'left' }}>
+  <Link key={path} to={path} style={{textDecoration: 'none', color: "black"}}>
+    <ListItemText primary={t(key)}  />
+  </Link>
+  </ListItemButton>
+  </ListItem>
+))}
+
+      
         <ListItem disablePadding>
           <ListItemButton sx={{ textAlign: 'left' }}>
-            <Link to={user ? "/user-profile" : "/login"} style={{ textDecoration: 'none', width: '100%' }}>
-              <ListItemText primary={user ? "Profils" : "Login"} />
+            <Link to={user ? "/user-profile" : "/login"} style={{ textDecoration: 'none',color: "black", width: '100%' }}>
+              <ListItemText primary={user ? t('profile') : t('login')} />
             </Link>
           </ListItemButton>
         </ListItem>
@@ -184,7 +189,7 @@ function DrawerAppBar(props) {
             >
               <MenuIcon />
             </IconButton>
-
+     
             <Typography variant="h6" component="div">
               <Link
                 to="/"
@@ -199,36 +204,32 @@ function DrawerAppBar(props) {
                 PawClix
               </Link>
             </Typography>
-
+          
             <Box sx={{ display: { xs: 'none', sm: 'block' } }}>
-            {Object.entries(navItems).map(([path, itemName]) => (
+            {/* {Object.entries(navItems).map(([path, itemName]) => (
               <Link key={path} to={path}>
                 <Button size='small' sx={{ color: '#fff', fontWeight: '400' }}>{itemName}</Button>
               </Link>
-            ))}
-             {/* {user && (
-                <Button onClick={handleLogout} sx={{ color: '#fff' }}>
-                  Logout
-                </Button>
-              )} */}
-              {/* {user ? (
-              <Button onClick={handleLogout} sx={{ color: '#fff' }}>
-                Logout
-              </Button>
-            ) : (
-              <Link to="/login">
-                <Button sx={{ color: '#fff' }}>Login</Button>
-              </Link>
-            )} */}
+            ))} */}
+          {Object.entries(navItems).map(([path, key]) => (
+          //  <ListItem  key={path} >
+          //   <ListItemButton sx={{ textAlign: 'left' }}>
+  <Link key={path} to={path} style={{textDecoration: 'none', color: "#fff"}}>
+    {/* <ListItemText primary={t(key)}  /> */}
+    <Button size='small' sx={{ color: '#fff', fontWeight: '400' }}>{t(key)}</Button>
+  </Link>
+  // </ListItemButton>
+  // </ListItem>
+))}
 
              {/* Show Profile or Login Button */}
              <Link to={user ? "/user-profile" : "/login"}>
                 <Button size='small' sx={{ color: '#5B5B5B', backgroundColor: "#ffcb56" }}>
-                  {user ? "Profils" : "Login"}
+                  {user ? t("profile") : t("login")}
                 </Button>
               </Link>
             </Box>
-
+            <LanguageSelector />
           </Toolbar>
         </Container>
       </AppBar>

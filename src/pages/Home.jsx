@@ -203,10 +203,10 @@ function Home() {
             <BannerSection
       title="Palīdzi pazudušiem mājdzīvniekiem atgriezties mājās!"
       imageSrc={mainIMG}
-      btnPrimaryText="Ziņot par mājdzīvnieku"
-      btnPrimaryLink="/add-pet"
-      btnSecondaryText="Meklēt mājdzīvnieku"
-      btnSecondaryLink="/pets"
+      btnPrimaryText="Meklēt mājdzīvnieku"
+      btnPrimaryLink="/pets"
+      btnSecondaryText="Ziņot par mājdzīvnieku"
+      btnSecondaryLink="/add-pet"
       isSmallScreen={isSmallScreen}
       isLargeScreen={isLargeScreen}
     />
@@ -391,7 +391,7 @@ function Home() {
           style={{ width: 'auto', height: '80px', marginBottom: '1rem' }}
         />
         <div>
-          <Typography variant="h6" style={{ marginBottom: '0.5rem', color: '#5B9BD5', color: "white", textAlign:  "center" }}>
+          <Typography variant="h6" style={{ marginBottom: '0.5rem', color: "white", textAlign:  "center" }}>
             Iekļaušana mūsu mājaslapā
           </Typography>
           <Typography variant="body2" style={{color: "white", textAlign:  "center" }}>
@@ -412,7 +412,7 @@ function Home() {
           style={{ width: 'auto', height: '80px', marginBottom: '1rem' }}
         />
         <div>
-          <Typography variant="h6" style={{ marginBottom: '0.5rem', color: '#5B9BD5',color: "white", textAlign:  "center" }}>
+          <Typography variant="h6" style={{ marginBottom: '0.5rem', color: "white", textAlign:  "center" }}>
             Izdrukājams plakāts
           </Typography>
           <Typography variant="body2" style={{ color: "white",textAlign:  "center" }}>
@@ -432,7 +432,7 @@ function Home() {
           style={{ width: 'auto', height: '80px', marginBottom: '1rem' }}
         />
         <div>
-          <Typography variant="h6" style={{ marginBottom: '0.5rem', color: '#5B9BD5',color: "white", textAlign:  "center" }}>
+          <Typography variant="h6" style={{ marginBottom: '0.5rem', color: "white", textAlign:  "center" }}>
             Saņemiet novērojumu ziņojumus
           </Typography>
           <Typography variant="body2" style={{ color: "white",textAlign:  "center" }}>

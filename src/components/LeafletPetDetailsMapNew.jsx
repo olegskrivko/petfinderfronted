@@ -328,7 +328,7 @@ import AddLocationAltIcon from '@mui/icons-material/AddLocationAlt';
 import { renderToStaticMarkup } from 'react-dom/server';
 import PropTypes from 'prop-types';
 import moment from 'moment';
-import SendMessage from './SendMessage';
+import SendMessage from '../pages/pets/components/SendMessage';
 
 import { format } from "date-fns";
 import { lv } from 'date-fns/locale';

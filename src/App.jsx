@@ -1,22 +1,33 @@
 import './App.css';
+
 import React, { Suspense, lazy, useEffect, useState } from 'react';
 import Box from "@mui/material/Box";
 import CircularProgress from "@mui/material/CircularProgress";
 import { BrowserRouter as Router, Route, Routes, useNavigate,Link  } from 'react-router-dom';
-import { DrawerProvider } from './pages/DrawerContext'
-import { FilterPaginationProvider } from './contexts/FilterPaginationContext';
-//import { BrowserRouter, Routes, Route } from 'react-router-dom';
-//import PetList from './components/PetList';
-import PetsListPage from './pages/PetsList'; // Your pets list page
-import PetDetailsPage from './components/PetDetails'; // Your pet details page
-import ServicesListPage from './pages/ServicesList'; // Your pets list page
-import ServiceDetailsPage from './pages/ServiceDetails';
+import { DrawerProvider } from './contexts/DrawerContext'
+import { LanguageProvider } from './contexts/LanguageContext';
+import { ThemeProviderContext, useDarkTheme } from './contexts/ThemeContext';
+import { SnackbarProvider } from 'notistack';
+import { HelmetProvider } from 'react-helmet-async';
+import { createTheme, ThemeProvider } from '@mui/material/styles';
 
-import SheltersListPage from './pages/SheltersList'; // Your pets list page
-import ShelterDetailsPage from './pages/ShelterDetails'; // Your pet details page
-import ArticlesListPage from './pages/ArticlesList'; // Your pets list page
-import ArticleDetailsPage from './pages/ArticleDetails'; // Your pets list page
-import Collaborate from './pages/Collaborate'; // Your pets list page
+import PetsListPage from './pages/pets/views/PetsList'; // Your pets list page
+import EditPet from './pages/pets/views/EditPet'
+import PetsAdd from './pages/pets/views/PetsAdd';
+import Poster from './pages/pets/views/Poster';
+import PetDetailsPage from './pages/pets/views/PetDetails'; // Your pet details page
+
+import ServicesListPage from './pages/services/views/ServicesList'; // Your pets list page
+import ServiceDetailsPage from './pages/services/views/ServiceDetails';
+import AddServicePage from "./pages/services/views/AddServicePage"
+
+import SheltersListPage from './pages/shelters/views/SheltersList'; // Your pets list page
+import ShelterDetailsPage from './pages/shelters/views/ShelterDetails'; // Your pet details page
+
+import ArticlesListPage from './pages/articles/views/ArticlesList'; // Your pets list page
+import ArticleDetailsPage from './pages/articles/views/ArticleDetails'; // Your pets list page
+
+import Collaborate from './pages/static/Collaborate'; // Your pets list page
 import Notifications from './pages/Notifications';
 
 
@@ -24,54 +35,49 @@ import LoadingScreen from './pages/LoadingScreen';
 import Layout from './pages/Layout';
 import AuthLayout from './pages/AuthLayout'; // Layout without Navigation and Footer (for login/register)
 import Home from './pages/Home';
-import About from './pages/About';
-import Feedback from './pages/Feedback';
-import Support from './pages/Support';
-import Contact from './pages/Contact';
-import Login from './pages/Login';
-import Register from './pages/Register';
-import Poster from './pages/Poster';
+import About from './pages/static/About';
+import Feedback from './pages/static/Feedback';
+import Support from './pages/static/Support';
+import Contact from './pages/static/Contact';
+
+import Login from './pages/auth/views/Login';
+import Register from './pages/auth/views/Register';
+import ForgotPassword from './pages/auth/views/ForgotPassword';
+import ResetPassword from "./pages/auth/views/ResetPassword";
+import Logout from './pages/auth/views/Logout';
+
+
 import Fun from './pages/Fun';
-import PetsAdd from './pages/PetsAdd';
-import Profile from './pages/Profile'
 
-import UserSettings from './pages/UserSettings'
-import UserPets from './pages/UserPets'
-import UserServices from './pages/UserServices'
+import Profile from './pages/profile/views/Profile'
+import UserSettings from './pages/profile/views/UserSettings'
+import UserPets from './pages/profile/views/UserPets'
+import UserServices from './pages/profile/views/UserServices'
+import BookmarksIndexPage from './pages/profile/views/BookmarksIndexPage'
+import UserPetBookmarks from './pages/profile/views/UserPetBookmarks'
+import UserServiceBookmarks from './pages/profile/views/UserServiceBookmarks'
 
-import UserPetBookmarks from './pages/UserPetBookmarks'
-import UserServiceBookmarks from './pages/UserServiceBookmarks'
+import PetTraining from './pages/static/PetTraining'
 
-import PetTraining from './pages/PetTraining'
-import EditPet from './pages/EditPet'
 
-// import TermsOfService from './pages/policies/TermsOfService';
-// import Disclaimer from './pages/policies/Disclaimer';
-// import DataProtectionPolicy from './pages/policies/DataProtectionPolicy';
-// import CommunityGuidelines from './pages/policies/CommunityGuidelines';
-// import PrivacyAndCookiePolicy from './pages/policies/PrivacyAndCookiePolicy';
-import PolicyPage from './pages/PolicyPage';
-import { SnackbarProvider } from 'notistack';
-import { HelmetProvider } from 'react-helmet-async';
-import { createTheme, ThemeProvider } from '@mui/material/styles';
-import ForgotPassword from './pages/ForgotPassword';
-import ResetPassword from "./pages/ResetPassword";
-import Logout from './pages/Logout';
-import PetQuiz from './pages/PetQuiz';
-import AccountDeleted from './pages/AccountDeleted';
-import CheckoutPage from './pages/CheckoutPage';
-import SuccessPage from "./pages/SuccessPage";
-import CancelPage from "./pages/CancelPage";
-import WorkInProgress from "./pages/WorkInProgress";
-import Pricing from "./pages/Pricing";
+import PolicyPage from './pages/static/PolicyPage';
 
-import PartnersAndSponsors from "./pages/PartnersAndSponsors"
-import AddServicePage from "./pages/AddServicePage"
+
+import PetQuiz from './pages/static/PetQuiz';
+import AccountDeleted from './pages/auth/views/AccountDeleted';
+
+import CheckoutPage from './pages/payments/views/CheckoutPage';
+import SuccessPage from "./pages/payments/views/SuccessPage";
+import CancelPage from "./pages/payments/views/CancelPage";
+import Pricing from "./pages/payments/views/Pricing";
+
+import WorkInProgress from "./pages/static/WorkInProgress";
+import PartnersAndSponsors from "./pages/static/PartnersAndSponsors"
+
 
 import { Elements } from "@stripe/react-stripe-js";
 import { loadStripe } from "@stripe/stripe-js";
-import CheckoutButton from "./pages/CheckoutButton";
-import PetAddStepper from "./pages/PetAddStepper";
+import PetAddStepper from "./pages/pets/views/PetAddStepper";
 import PageNotFound from './pages/PageNotFound'; // Add a PageNotFound component
 // import InstallPWAButton from './InstallPWAButton';
 import { CssBaseline } from '@mui/material';
@@ -79,11 +85,13 @@ import { AuthProvider } from './contexts/AuthContext'; // Path to AuthContext
 import { useAuth } from './contexts/AuthContext'; // Adjust the path as needed
 import CookieConsent from 'react-cookie-consent';
 import SubscribePage from './pages/SubscribePage';
-import FrequentlyAskedQuestions from './pages/FrequentlyAskedQuestions';
-import BookmarksIndexPage from './pages/BookmarksIndexPage'
+import FrequentlyAskedQuestions from './pages/static/FrequentlyAskedQuestions';
+
 
 // import CookieBanner from 'react-cookie-banner';
 import cookieIcon from '../src/pages/images/paw.png';
+
+
 
 const PrivateRoute = ({ element }) => {
   const { user, isAuthLoading } = useAuth();
@@ -170,16 +178,7 @@ const PrivateRoute = ({ element }) => {
 //   });
 // }
 
-// const theme = createTheme({
-//   typography: {
-//     h1: { fontSize: "2em" },   // 32px
-//     h2: { fontSize: "1.5em" }, // 24px
-//     h3: { fontSize: "1.17em" },// 18.72px
-//     h4: { fontSize: "1em" },   // 16px
-//     h5: { fontSize: "0.83em" },// 13.28px
-//     h6: { fontSize: "0.67em" },// 10.72px
-//   },
-// });
+
 const theme = createTheme({
   palette: {
     primary: {
@@ -241,74 +240,21 @@ const theme = createTheme({
         fontSize: '0.75rem', // Responsive adjustment for small screens
       },
     },
-  // typography: {
-  //   h1: { fontSize: '3rem', fontWeight: '400' },
-  //   h2: { fontSize: '2rem' },
-  //   h3: { fontSize: '1.6rem' },
-  //   h4: { fontSize: '1.4rem' },
-  //   h5: { fontSize: '1.2rem' },
-  //   h6: { fontSize: '1rem' },
-  //   body1: { fontSize: '1rem' },
-  //   body2: { fontSize: '0.875rem' },
-  // },
+
 }});
-// const theme = createTheme({
-//   typography: {
-//     h1: {
-//       fontSize: '3rem', // Adjust the font size for h1
-//       '@media (max-width:600px)': {
-//         fontSize: '2rem', // Responsive adjustment for small screens
-//       },
-//       fontWeight: '400'
-//     },
-//     h2: {
-//       fontSize: '2rem', // Adjust the font size for h2
-//       '@media (max-width:600px)': {
-//         fontSize: '1.6rem', // Responsive adjustment for small screens
-//       },
-//     },
-//     h3: {
-//       fontSize: '1.6rem', // Adjust the font size for h3
-//       '@media (max-width:600px)': {
-//         fontSize: '1.4rem', // Responsive adjustment for small screens
-//       },
-//     },
-//     h4: {
-//       fontSize: '1.4rem', // Adjust the font size for h4
-//       '@media (max-width:600px)': {
-//         fontSize: '1.2rem', // Responsive adjustment for small screens
-//       },
-//     },
-//     h5: {
-//       fontSize: '1.2rem', // Adjust the font size for h5
-//       '@media (max-width:600px)': {
-//         fontSize: '1rem', // Responsive adjustment for small screens
-//       },
-//     },
-//     h6: {
-//       fontSize: '1rem', // Adjust the font size for h6
-//       '@media (max-width:600px)': {
-//         fontSize: '0.8rem', // Responsive adjustment for small screens
-//       },
-//     },
-//     body1: {
-//       fontSize: '1rem', // Adjust the font size for body1
-//       '@media (max-width:600px)': {
-//         fontSize: '0.875rem', // Responsive adjustment for small screens
-//       },
-//     },
-//     body2: {
-//       fontSize: '0.875rem', // Adjust the font size for body2
-//       '@media (max-width:600px)': {
-//         fontSize: '0.75rem', // Responsive adjustment for small screens
-//       },
-//     },
-//   },})
+
 
 
   const stripePromise = loadStripe("pk_test_51MsAnbFtt77ZbwT7jUTgepakOdkTikP2RJ3kzrwX5Gb87hbTQidZ6ZGzUFkPxdsEuZ8pBrQUihsEcV2JefMUXRWE00it4TPUPI");
 
+  // Define themes
+// const lightTheme = createTheme({ palette: { mode: 'light' } });
+// const darkTheme = createTheme({ palette: { mode: 'dark' } });
+
 function App() {
+
+  //   const { darkMode } = useDarkTheme();
+  // const theme = darkMode ? darkTheme : lightTheme;
   // const [showBanner, setShowBanner] = useState(true);
 
   // const handleAccept = () => {
@@ -328,11 +274,13 @@ function App() {
   return (
     <HelmetProvider>
        <ThemeProvider theme={theme}>
+        
        <CssBaseline /> {/* Ensures global styles */}
     <SnackbarProvider maxSnack={3} autoHideDuration={3000}>
     <Elements stripe={stripePromise}>
     <Router>
     <AuthProvider>
+      <LanguageProvider>
       <DrawerProvider>
       {/* {showBanner && (
                     <div
@@ -351,7 +299,7 @@ function App() {
                       <button onClick={handleAccept}>Accept</button>
                     </div>
                   )} */}
-                    {/* <FilterPaginationProvider> */}
+               
         <Routes>
         <Route path='/' element={<AuthLayout />}>
               <Route index element={<Home />} />
@@ -523,6 +471,7 @@ function App() {
        
   
       </DrawerProvider>
+      </LanguageProvider>
     </AuthProvider>
   </Router>
   </Elements>
