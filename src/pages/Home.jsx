@@ -237,7 +237,11 @@ function Home() {
             style={{
               // fontSize: '1.6rem',
               fontWeight: '500',
+              color: '#16477c',
               // marginTop: '1rem',
+              background: "linear-gradient(60deg, #16477c 0%, #00b5ad 100%)",
+              "-webkit-background-clip": "text",
+    "-webkit-text-fill-color": "transparent"
             }}
           >
             Kā tieši mēs jums palīdzam?
@@ -390,10 +394,10 @@ function Home() {
           style={{ width: 'auto', height: '80px', marginBottom: '1rem' }}
         />
         <div>
-          <Typography variant="h6" style={{ marginBottom: '0.5rem', textAlign:  "center" }}>
+          <Typography variant="h6" style={{ marginBottom: '0.5rem', textAlign:  "center", color: '#16477c' }}>
             Iekļaušana mūsu mājaslapā
           </Typography>
-          <Typography variant="body2" style={{ textAlign:  "center" }}>
+          <Typography variant="body2" style={{ textAlign:  "center", color: '#616f7d' }}>
             Jūsu mājdzīvnieks tiek pievienots mūsu lapai, padarot ziņošanu par novērojumiem īpaši ērtu.
           </Typography>
         </div>
@@ -411,10 +415,10 @@ function Home() {
           style={{ width: 'auto', height: '80px', marginBottom: '1rem' }}
         />
         <div>
-          <Typography variant="h6" style={{ marginBottom: '0.5rem', textAlign:  "center" }}>
+          <Typography variant="h6" style={{ marginBottom: '0.5rem', textAlign:  "center", color: '#16477c' }}>
             Izdrukājams plakāts
           </Typography>
-          <Typography variant="body2" style={{ textAlign:  "center" }}>
+          <Typography variant="body2" style={{ textAlign:  "center", color: '#616f7d'  }}>
             Saņemiet profesionāli izstrādātu pazudušā mājdzīvnieka plakātu ar QR kodu.
           </Typography>
         </div>
@@ -431,10 +435,10 @@ function Home() {
           style={{ width: 'auto', height: '80px', marginBottom: '1rem' }}
         />
         <div>
-          <Typography variant="h6" style={{ marginBottom: '0.5rem',  textAlign:  "center" }}>
+          <Typography variant="h6" style={{ marginBottom: '0.5rem',  textAlign:  "center", color: '#16477c' }}>
             Saņemiet novērojumu ziņojumus
           </Typography>
-          <Typography variant="body2" style={{ textAlign:  "center" }}>
+          <Typography variant="body2" style={{ textAlign:  "center" , color: '#616f7d' }}>
             Pārbaudiet jaunus novērojumus, ko ziņojusi kopiena, lai sekotu līdzi norādēm par savu mājdzīvnieku.
           </Typography>
         </div>

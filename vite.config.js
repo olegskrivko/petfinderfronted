@@ -4,6 +4,7 @@ import react from '@vitejs/plugin-react';
 import { VitePWA } from 'vite-plugin-pwa';
 
 export default defineConfig({
+  assetsInclude: ['**/*.lottie'], // ✅ This line allows Vite to treat .lottie files as assets
   plugins: [
     react(),
     VitePWA({
