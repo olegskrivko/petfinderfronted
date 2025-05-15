@@ -150,7 +150,7 @@ const MapBanner = () => {
         alignItems: 'center',
         justifyContent: 'space-between',
         background: 'linear-gradient(145deg, #e3f2fd, #ffffff)',
-        padding: '60px 40px',
+        // padding: '60px 40px',
         minHeight: '500px',
         position: 'relative',
       }}
@@ -164,7 +164,11 @@ const MapBanner = () => {
         // padding: '60px 40px',
         // minHeight: '500px',
         // position: 'relative',
-      }} sx={{ py: 6, paddingLeft: "0", paddingRight: "0"}}> 
+      }} sx={{ py: 6, 
+      
+      // paddingLeft: "0", 
+      //  paddingRight: "0 !important"
+      }}> 
         {/* RIGHT SIDE - SVG IMAGE */}
       <div
         style={{
@@ -190,7 +194,7 @@ const MapBanner = () => {
         style={{
           flex: '1 1 400px',
           maxWidth: '600px',
-          paddingRight: '40px',
+          paddingLeft: '40px',
           zIndex: 2,
         }}
       >

@@ -42,7 +42,38 @@ import PetPath from '../components/PetPath'
 import PetCardsRow from '../components/PetCardsRow';
 import MapBanner from '../components/MapBanner';
 import MapBannerBottom from '../components/MapBannerBottom';
+const ZigzagDashedLine = () => {
+  return (
+<svg
+  viewBox="0 0 1000 300"
+  preserveAspectRatio="none"
+  style={{
+    width: '100%',
+    height: '300px',
+    position: 'absolute',
+    top: 0,
+    left: 0,
+    zIndex: 1,
+  }}
+>
+  <path
+    d="
+      M 0 20
+      C 80 80, 120 120, 200 100
+      S 320 60, 400 140
+      S 520 240, 600 200
+      S 720 120, 800 180
+      S 920 280, 1000 260
+    "
+    fill="none"
+    stroke="#ccc"
+    strokeDasharray="10 10"
+    strokeWidth="2"
+  />
+</svg>
 
+  );
+};
 const LiquidBlob = () => (
   <motion.div
     style={{
@@ -535,7 +566,9 @@ function Home() {
       </Container> */}
 {/* <PetCardsRow /> */}
 <MapBannerBottom />
+  {/* <ZigzagDashedLine /> */}
 <Container component="main" maxWidth="lg" sx={{ py: 6, paddingLeft: "0", paddingRight: "0"}}> 
+
 {/* <BannerSection
       title="Pakalpojumi mājdzīvniekiem!"
       imageSrc={secondaryIMG}
