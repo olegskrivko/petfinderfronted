@@ -219,7 +219,7 @@ const MapBanner = () => {
             fontFamily: "'Inter', sans-serif",
           }}
         >
-          Izmanto mūsu aplikāciju, lai ievietotu pazuduša vai atrasta mājdzīvnieka sludinājumu.  Izmanto mūsu aplikāciju, lai ievietotu pazuduša vai atrasta mājdzīvnieka sludinājumu.
+          Izmanto mūsu aplikāciju, lai ievietotu pazuduša vai atrasta mājdzīvnieka sludinājumu.
         </p>
           {/* Button Group */}
   <div style={{ display: 'flex', gap: '1rem', flexWrap: 'wrap' }}>
