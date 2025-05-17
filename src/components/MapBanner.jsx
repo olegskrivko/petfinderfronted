@@ -133,7 +133,9 @@
 
 // export default MapBanner;
 import React from 'react';
-import illustration from '../pages/images/navigation_amico_blue2.svg'; // replace with your own SVG
+import illustration from '../pages/images/navigation_animate.svg'; // replace with your own SVG
+
+{/* <a href="https://storyset.com/business">Business illustrations by Storyset</a> */}
 //import illustration from '../pages/images/navigation_cuate.svg';
 import { useNavigate } from 'react-router-dom';
 import Container from '@mui/material/Container';
@@ -230,6 +232,8 @@ const MapBanner = () => {
         fontSize: '1rem',
         fontWeight: 'bold',
         backgroundColor: '#0EB9F0',
+                // backgroundColor: '#00b5ad',
+        
         color: '#fff',
         borderRadius: '8px',
         border: 'none',

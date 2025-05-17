@@ -133,7 +133,8 @@
 
 // export default MapBanner;
 import React from 'react';
-import illustration from '../pages/images/navigation_cuate_blue.svg'; // replace with your own SVG
+//import illustration from '../pages/images/navigation_cuate_blue.svg'; // replace with your own SVG
+import illustration from '../pages/images/online_ads_animate.svg';
 //import illustration from '../pages/images/navigation_cuate.svg';
 import { useNavigate } from 'react-router-dom';
 import Container from '@mui/material/Container';

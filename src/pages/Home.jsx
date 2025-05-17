@@ -18,6 +18,7 @@ import LocationOnIcon from '@mui/icons-material/LocationOn';
 import NotificationsActiveIcon from '@mui/icons-material/NotificationsActive';
 import NotificationsIcon from '@mui/icons-material/Notifications';
 import SimCardDownloadIcon from '@mui/icons-material/SimCardDownload';
+
 import MapIcon from '@mui/icons-material/Map';
 // Components
 import PetCounter from '../components/PetCounter'
@@ -48,6 +49,7 @@ import MapBanner from '../components/MapBanner';
 import MapBannerBottom from '../components/MapBannerBottom';
 import MapBannerDeepBottom from '../components/MapBannerDeepBottom';
 import GroupsIcon from '@mui/icons-material/Groups';
+import PetPathVertical from "../components/PetPathVertical"
 const ZigzagDashedLine = () => {
   return (
 <svg
@@ -446,7 +448,7 @@ function Home() {
              
             }}
           >
-            Mūsdienīgs risinājums
+            Digitālais atbalsts
           </Typography>
           <Typography
             variant="h2"
@@ -593,7 +595,7 @@ function Home() {
              
             }}
           >
-            Jaunākās tehnoloģijas
+             Mūsdienīgs risinājums
           </Typography>
           <Typography
             variant="h2"
@@ -698,6 +700,7 @@ Neatkarīgi no tā, vai lieto telefonu vai planšeti – mūsu platforma ir piel
 </Grid>
 
 </Container>
+{/* <PetPathVertical /> */}
 
 <Container component="main" maxWidth="lg" sx={{ py: 6, paddingLeft: "0", paddingRight: "0"}}> 
   

@@ -133,7 +133,8 @@
 
 // export default MapBanner;
 import React from 'react';
-import illustration from '../pages/images/innovation_amico_blue.svg'; // replace with your own SVG
+//import illustration from '../pages/images/innovation_amico_blue.svg'; // replace with your own SVG
+import illustration from "../pages/images/innovation_animate.svg"
 //import illustration from '../pages/images/navigation_cuate.svg';
 import { useNavigate } from 'react-router-dom';
 import Container from '@mui/material/Container';
@@ -178,17 +179,7 @@ const MapBanner = () => {
           zIndex: 2,
         }}
       >
-        {/* <h2
-          style={{
-            color: '#0D47A1',
-            fontSize: '2.5rem',
-            fontWeight: 600,
-            marginBottom: '1rem',
-            fontFamily: "'Inter', sans-serif",
-          }}
-        >
-          Atrodi tuvāko patversmi
-        </h2> */}
+   
            <h2
           style={{
             color: '#0D47A1',
@@ -198,19 +189,9 @@ const MapBanner = () => {
             fontFamily: "'Inter', sans-serif",
           }}
         >
-          Mājdzīvnieku aprūpes pakalpojumi
+          Praktiski padomi mājdzīvnieku aprūpei
         </h2>
-        {/* <p
-          style={{
-            color: '#616f7d',
-            fontSize: '1.1rem',
-            lineHeight: '1.6',
-            marginBottom: '2rem',
-            fontFamily: "'Inter', sans-serif",
-          }}
-        >
-          Mēs palīdzam tev ātri un ērti atrast dzīvnieku patversmes tuvākajā apkaimē. Apskati karti vai iesniedz ziņojumu par pazudušu mājdzīvnieku.
-        </p> */}
+  
          <p
           style={{
             color: '#616f7d',
@@ -247,75 +228,9 @@ const MapBanner = () => {
       Apskatīt pakalpojumus
     </button>
 
-    {/* <button
-      style={{
-        padding: '12px 28px',
-        fontSize: '1rem',
-        fontWeight: 'bold',
-        backgroundColor: 'transparent',
-        color: '#0EB9F0',
-        border: '2px solid #0EB9F0',
-        borderRadius: '8px',
-        cursor: 'pointer',
-        transition: 'all 0.3s ease',
-      }}
-      onClick={() => navigate('/add-pet')}
-      onMouseOver={(e) => {
-        e.currentTarget.style.backgroundColor = '#e5faff';
-      }}
-      onMouseOut={(e) => {
-        e.currentTarget.style.backgroundColor = 'transparent';
-      }}
-    >
-      Pievienot
-    </button> */}
+ 
   </div>
-        {/* <button
-          style={{
-            padding: '12px 28px',
-            fontSize: '1rem',
-            fontWeight: 'bold',
-            backgroundColor: '#0EB9F0',
-            color: '#fff',
-            borderRadius: '8px',
-            border: 'none',
-            cursor: 'pointer',
-            transition: 'all 0.3s ease',
-            
-          }}
-           onClick={() => navigate('/pets')}
-          onMouseOver={(e) => {
-            e.currentTarget.style.backgroundColor = '#0a98c2';
-          }}
-          onMouseOut={(e) => {
-            e.currentTarget.style.backgroundColor = '#0EB9F0';
-          }}
-        >
-          Skatīt karti
-        </button>
-           <button
-          style={{
-            padding: '12px 28px',
-            fontSize: '1rem',
-            fontWeight: 'bold',
-            backgroundColor: '#0EB9F0',
-            color: '#fff',
-            borderRadius: '8px',
-            border: 'none',
-            cursor: 'pointer',
-            transition: 'all 0.3s ease',
-            
-          }}
-           onClick={() => navigate('/pets')}
-          onMouseOver={(e) => {
-            e.currentTarget.style.backgroundColor = '#0a98c2';
-          }}
-          onMouseOut={(e) => {
-            e.currentTarget.style.backgroundColor = '#0EB9F0';
-          }}
-        >
-          Pievienot
-        </button> */}
+      
       </div>
 
       {/* RIGHT SIDE - SVG IMAGE */}

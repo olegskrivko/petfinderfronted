@@ -227,7 +227,7 @@ function DrawerAppBar(props) {
 
              {/* Show Profile or Login Button */}
              <Link to={user ? "/user-profile" : "/login"}>
-                <Button size='small' sx={{ color: '#5B5B5B', backgroundColor: "#ffcb56" }}>
+                <Button size='small' sx={{ color: '#fff', backgroundColor: "#00b5ad" }}>
                   {user ? t("profile") : t("login")}
                 </Button>
               </Link>
