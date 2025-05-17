@@ -35,13 +35,19 @@ import ComputerIcon from '@mui/icons-material/Computer';
 import mainIMG from './images/home_banner/404_Error_with_a_cute_animal_pana_blue.svg';
 import secondaryIMG from './images/home_banner/dog_walking_bro_blue.svg';
 import ChatBot from '../components/ChatBot';
-
+import TestimonialSlider from '../components/TestimonialSlider';
+import AutoFixHighIcon from '@mui/icons-material/AutoFixHigh';
+import SmartphoneIcon from '@mui/icons-material/Smartphone';
+import QrCodeIcon from '@mui/icons-material/QrCode';
 {/* <a href="https://storyset.com/animal">Animal illustrations by Storyset</a> */}
 import Statistics from "../components/Statistics"
 import PetPath from '../components/PetPath'
 import PetCardsRow from '../components/PetCardsRow';
+import DevicesIcon from '@mui/icons-material/Devices';
 import MapBanner from '../components/MapBanner';
 import MapBannerBottom from '../components/MapBannerBottom';
+import MapBannerDeepBottom from '../components/MapBannerDeepBottom';
+import GroupsIcon from '@mui/icons-material/Groups';
 const ZigzagDashedLine = () => {
   return (
 <svg
@@ -493,7 +499,7 @@ function Home() {
           style={{ width: 'auto', height: '80px', marginBottom: '1rem' }}
         /> */}
           {/* <NotificationsIcon sx={{ fontSize: 60, color: '#00b5ad', mb: 2 }} /> */}
-          <SimCardDownloadIcon sx={{ fontSize: 60, color: '#16477c', mb: 2 }} />
+          <QrCodeIcon sx={{ fontSize: 60, color: '#16477c', mb: 2 }} />
           
         <div>
           <Typography variant="h6" style={{ marginBottom: '0.5rem', textAlign:  "center", color: '#00b5ad', fontFamily: "Titillium Web, sans-serif" }}>
@@ -567,7 +573,134 @@ function Home() {
 {/* <PetCardsRow /> */}
 <MapBannerBottom />
   {/* <ZigzagDashedLine /> */}
+  <TestimonialSlider />
+  <MapBannerDeepBottom />
+
+<Container component="main" maxWidth="lg" sx={{ py: 4, paddingLeft: "0", paddingRight: "0"}}> 
+<Grid container spacing={3} style={{ marginTop: '1rem', marginBottom: '3rem' }}>
+
+     <Grid container spacing={3} >
+        <Grid item xs={12} textAlign="center">
+               <Typography
+            variant="h4"
+            style={{
+              // fontSize: '1.6rem',
+              fontWeight: '400',
+              color: '#00b5ad',
+              fontFamily: "Titillium Web, sans-serif",
+              textTransform: "uppercase",
+              marginBottom: '2rem',
+             
+            }}
+          >
+            Jaunākās tehnoloģijas
+          </Typography>
+          <Typography
+            variant="h2"
+            style={{
+              // fontSize: '1.6rem',
+              fontWeight: '500',
+              color: '#16477c',
+              // marginTop: '1rem',
+              background: "linear-gradient(60deg, #16477c 0%, #00b5ad 100%)",
+              "-webkit-background-clip": "text",
+    "-webkit-text-fill-color": "transparent"
+            }}
+          >
+            Tehnoloģijas, kas strādā Tavā labā
+          </Typography>
+        </Grid>
+      </Grid>
+      
+  <Grid item xs={12} sm={12} md={6} lg={3} textAlign="center">
+   
+      <CardContent style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', flex: 1 }}>
+        {/* <CardMedia
+          component="img"
+          alt="Iekļaušana mūsu mājaslapā"
+          image={petlisting}
+          style={{ width: 'auto', height: '80px', marginBottom: '1rem' }}
+        /> */}
+         <GroupsIcon sx={{ fontSize: 60, color: '#16477c', mb: 2 }} />
+    
+         
+        <div>
+          <Typography variant="h6" style={{ marginBottom: '0.5rem', textAlign:  "center", color: '#00b5ad', fontFamily: "Titillium Web, sans-serif" }}>
+            Tehnoloģija, kas vieno dzīvnieku draugus
+          </Typography>
+          <Typography variant="body2" style={{ textAlign:  "center", color: '#616f7d', fontFamily: "Titillium Web, sans-serif" }}>
+            Mūsu lietotne savieno cilvēkus ar kopīgu mērķi – palīdzēt atrast pazudušos mājdzīvniekus. Kopiena, kas sadarbojas un rūpējas.
+          </Typography>
+        </div>
+      </CardContent>
+  
+  </Grid>
+
+  <Grid item xs={12} sm={12} md={6} lg={3} textAlign="center">
+   
+      <CardContent style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', flex: 1 }}>
+        {/* <CardMedia
+          component="img"
+          alt="Izdrukājams plakāts"
+          image={lostdogposter}
+          style={{ width: 'auto', height: '80px', marginBottom: '1rem' }}
+        /> */}
+          {/* <NotificationsIcon sx={{ fontSize: 60, color: '#00b5ad', mb: 2 }} /> */}
+          <DevicesIcon sx={{ fontSize: 60, color: '#16477c', mb: 2 }} />
+          
+        <div>
+          <Typography variant="h6" style={{ marginBottom: '0.5rem', textAlign:  "center", color: '#00b5ad', fontFamily: "Titillium Web, sans-serif" }}>
+            Mobilajām ierīcēm optimizēta platforma
+          </Typography>
+          <Typography variant="body2" style={{ textAlign:  "center", color: '#616f7d', fontFamily: "Titillium Web, sans-serif"  }}>
+            
+Neatkarīgi no tā, vai lieto telefonu vai planšeti – mūsu platforma ir pielāgota ērtai un ātrai lietošanai visās ierīcēs. Piekļūsti vajadzīgajam jebkurā laikā un vietā.
+          </Typography>
+        </div>
+      </CardContent>
+   
+  </Grid>
+  <Grid item xs={12} sm={12} md={6} lg={3} textAlign="center">
+   
+      <CardContent style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', flex: 1 }}>
+      <SmartphoneIcon sx={{ fontSize: 60, color: '#16477c', mb: 2 }} />
+        <div>
+          <Typography variant="h6" style={{ marginBottom: '0.5rem',  textAlign:  "center", color: '#00b5ad', fontFamily: "Titillium Web, sans-serif" }}>
+            Lietotnes pieredze – pārlūkā
+          </Typography>
+          <Typography variant="body2" style={{ textAlign:  "center" , color: '#616f7d', fontFamily: "Titillium Web, sans-serif" }}>
+            Pievieno mūsu platformu savam ierīces sākuma ekrānam un izmanto to kā īstu lietotni. Bez lejupielādes no veikala – vienkārši, ātri un vienmēr pieejami.
+
+
+          </Typography>
+        </div>
+      </CardContent>
+   
+  </Grid>
+
+
+  <Grid item xs={12} sm={12} md={6} lg={3} textAlign="center">
+   
+      <CardContent style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', flex: 1 }}>
+      <AutoFixHighIcon sx={{ fontSize: 60, color: '#16477c', mb: 2 }} />
+        <div>
+          <Typography variant="h6" style={{ marginBottom: '0.5rem',  textAlign:  "center", color: '#00b5ad', fontFamily: "Titillium Web, sans-serif" }}>
+            Mākslīgais intelekts Tava mīluļa labā
+          </Typography>
+          <Typography variant="body2" style={{ textAlign:  "center" , color: '#616f7d', fontFamily: "Titillium Web, sans-serif" }}>
+            Mūsu AI asistents atbild uz jautājumiem par mājdzīvniekiem – no ikdienas aprūpes līdz ārkārtas situācijām. Zināšanas vienmēr pa rokai, lai Tu justos droši un informēti.
+          </Typography>
+        </div>
+      </CardContent>
+   
+  </Grid>
+
+</Grid>
+
+</Container>
+
 <Container component="main" maxWidth="lg" sx={{ py: 6, paddingLeft: "0", paddingRight: "0"}}> 
+  
 
 {/* <BannerSection
       title="Pakalpojumi mājdzīvniekiem!"

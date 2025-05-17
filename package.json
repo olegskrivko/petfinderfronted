@@ -49,6 +49,7 @@
     "react-router-dom": "^7.1.4",
     "react-toastify": "^11.0.3",
     "recharts": "^2.15.2",
+    "swiper": "^11.2.6",
     "vite-plugin-pwa": "^0.21.1"
   },
   "devDependencies": {

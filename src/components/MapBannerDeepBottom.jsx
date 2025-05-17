@@ -133,7 +133,7 @@
 
 // export default MapBanner;
 import React from 'react';
-import illustration from '../pages/images/navigation_amico_blue2.svg'; // replace with your own SVG
+import illustration from '../pages/images/innovation_amico_blue.svg'; // replace with your own SVG
 //import illustration from '../pages/images/navigation_cuate.svg';
 import { useNavigate } from 'react-router-dom';
 import Container from '@mui/material/Container';
@@ -198,7 +198,7 @@ const MapBanner = () => {
             fontFamily: "'Inter', sans-serif",
           }}
         >
-          Vai esi pazaudējis mājdzīvnieku?
+          Mājdzīvnieku aprūpes pakalpojumi
         </h2>
         {/* <p
           style={{
@@ -220,7 +220,7 @@ const MapBanner = () => {
             fontFamily: "'Inter', sans-serif",
           }}
         >
-          Izmanto mūsu aplikāciju, lai ievietotu pazuduša vai atrasta mājdzīvnieka sludinājumu.
+          Uzzini, kā vislabāk parūpēties par savu mīluli – no ikdienas aprūpes līdz rīcībai ārkārtas situācijās. Praktiski padomi, ceļveži un atbildes uz svarīgiem jautājumiem vienuviet.
         </p>
           {/* Button Group */}
   <div style={{ display: 'flex', gap: '1rem', flexWrap: 'wrap' }}>
@@ -236,7 +236,7 @@ const MapBanner = () => {
         cursor: 'pointer',
         transition: 'all 0.3s ease',
       }}
-      onClick={() => navigate('/pets')}
+      onClick={() => navigate('/articles')}
       onMouseOver={(e) => {
         e.currentTarget.style.backgroundColor = '#0a98c2';
       }}
@@ -244,10 +244,10 @@ const MapBanner = () => {
         e.currentTarget.style.backgroundColor = '#0EB9F0';
       }}
     >
-      Skatīt karti
+      Apskatīt pakalpojumus
     </button>
 
-    <button
+    {/* <button
       style={{
         padding: '12px 28px',
         fontSize: '1rem',
@@ -268,7 +268,7 @@ const MapBanner = () => {
       }}
     >
       Pievienot
-    </button>
+    </button> */}
   </div>
         {/* <button
           style={{
@@ -344,3 +344,8 @@ const MapBanner = () => {
 };
 
 export default MapBanner;
+
+
+
+
+

@@ -170,7 +170,9 @@ function DrawerAppBar(props) {
     <Box sx={{ flexGrow: 1  }}>
       <AppBar component="nav" position="static"
         sx={{
-          background: '#5B9BD5' ,   
+          // background: '#5B9BD5' ,   
+                background: 'linear-gradient(to right, rgba(0,150,136,0.7), rgba(63,81,181,0.7))',
+                // background: "linear-gradient(190deg, #16477c 0%, #00b5ad 100%)",
         }}
       >
         <Container disableGutters>
