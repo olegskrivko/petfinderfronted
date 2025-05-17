@@ -141,7 +141,9 @@ const Contact = () => {
       </Helmet>
       <ToastContainer position="top-right" autoClose={3000} />
       <Container component="main" maxWidth="lg" sx={{ paddingLeft: 0, paddingRight: 0 }}>
-        <Typography variant="h3" align="center" sx={{ mb: 5, fontWeight: 500 }}>
+        <Typography variant="h3" align="center" sx={{ mb: 5, fontWeight: 500,  }} style={{              background: "linear-gradient(60deg, #16477c 0%, #00b5ad 100%)",
+              WebkitBackgroundClip: "text",
+    WebkitTextFillColor: "transparent"}}>
           Sazinieties ar mums
         </Typography>
 
@@ -222,7 +224,8 @@ const Contact = () => {
   variant="contained"
   fullWidth
   disabled={loading}
-  sx={{ backgroundColor: "#5B9BD5", mt: 1 }}
+  
+  sx={{ background: "linear-gradient(0deg, #0994ba 30%, #02b4c4 90%)", mt: 1 }}
   startIcon={loading ? <CircularProgress size={20} color="inherit" /> : null}
 >
   {loading ? "Nosūtīšana..." : "Nosūtīt ziņu"}

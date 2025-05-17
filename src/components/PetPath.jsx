@@ -166,14 +166,16 @@ import petIcon1 from '../pages/images/dog_icon1.jpg';
 import petIcon2 from '../pages/images/dog_icon2.jpg';
 import petIcon3 from '../pages/images/dog_icon3.jpg';
 import petIcon4 from '../pages/images/cat_icon2.jpg';
+import petIcon5 from '../pages/images/pet_icon_1.jpg';
+import petIcon6 from '../pages/images/pet_icon_2.jpg';
 
 const pets = [
   { src: petIcon1, x: '5%', y: '60%', size: 50 },
   { src: petIcon2, x: '18%', y: '35%', size: 66 },
   { src: petIcon3, x: '32%', y: '75%', size: 58 },
   { src: petIcon4, x: '52%', y: '25%', size: 74 },
-  { src: petIcon1, x: '68%', y: '70%', size: 52 },
-  { src: petIcon3, x: '85%', y: '50%', size: 68 },
+  { src: petIcon5, x: '68%', y: '70%', size: 52 },
+  { src: petIcon6, x: '85%', y: '50%', size: 68 },
 ];
 
 const PetPath = () => {

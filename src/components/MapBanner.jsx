@@ -193,11 +193,14 @@ const MapBanner = () => {
         </h2> */}
            <h2
           style={{
-            color: '#0D47A1',
+            // color: '#0D47A1',
             fontSize: '2.5rem',
             fontWeight: 600,
             marginBottom: '1rem',
             fontFamily: "'Inter', sans-serif",
+                          background: "linear-gradient(60deg, #16477c 0%, #00b5ad 100%)",
+              WebkitBackgroundClip: "text",
+    WebkitTextFillColor: "transparent"
           }}
         >
           Vai esi pazaudējis mājdzīvnieku?
@@ -231,7 +234,8 @@ const MapBanner = () => {
         padding: '12px 28px',
         fontSize: '1rem',
         fontWeight: 'bold',
-        backgroundColor: '#0EB9F0',
+        // backgroundColor: '#0EB9F0',
+            background: "linear-gradient(0deg, #0994ba 30%, #02b4c4 90%)",
                 // backgroundColor: '#00b5ad',
         
         color: '#fff',
@@ -257,8 +261,10 @@ const MapBanner = () => {
         fontSize: '1rem',
         fontWeight: 'bold',
         backgroundColor: 'transparent',
-        color: '#0EB9F0',
-        border: '2px solid #0EB9F0',
+        
+        color: '#0994ba',
+        // border: '2px solid #0EB9F0',
+        border: "2px solid  #0994ba ",
         borderRadius: '8px',
         cursor: 'pointer',
         transition: 'all 0.3s ease',

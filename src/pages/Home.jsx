@@ -458,8 +458,8 @@ function Home() {
               color: '#16477c',
               // marginTop: '1rem',
               background: "linear-gradient(60deg, #16477c 0%, #00b5ad 100%)",
-              "-webkit-background-clip": "text",
-    "-webkit-text-fill-color": "transparent"
+              WebkitBackgroundClip: "text",
+    WebkitTextFillColor: "transparent"
             }}
           >
             Kā tieši mēs jums palīdzam?

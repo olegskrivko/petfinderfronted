@@ -210,7 +210,8 @@ const MapBanner = () => {
         padding: '12px 28px',
         fontSize: '1rem',
         fontWeight: 'bold',
-        backgroundColor: '#0EB9F0',
+        // backgroundColor: '#0EB9F0',
+        background: "linear-gradient(0deg, #0994ba 30%, #02b4c4 90%)",
         color: '#fff',
         borderRadius: '8px',
         border: 'none',
@@ -225,7 +226,7 @@ const MapBanner = () => {
         e.currentTarget.style.backgroundColor = '#0EB9F0';
       }}
     >
-      Apskatīt pakalpojumus
+      Apskatīt padomus
     </button>
 
  
