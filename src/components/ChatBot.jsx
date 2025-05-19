@@ -2056,6 +2056,7 @@ const ChatBot = () => {
               justifyContent: 'space-between',
               borderTopLeftRadius: isFullscreen ? 0 : '12px',
               borderTopRightRadius: isFullscreen ? 0 : '12px',
+                background: 'linear-gradient(to right, rgba(0,150,136,0.7), rgba(63,81,181,0.7))',
             }}
           >
             <Box style={{ display: 'flex', alignItems: 'center' }}>

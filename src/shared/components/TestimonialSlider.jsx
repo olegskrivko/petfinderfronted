@@ -536,7 +536,7 @@ export default function TestimonialSlider({ dotsPosition = 'center' }) {
         >
           {testimonials.map((t, i) => (
             <SwiperSlide key={i}>
-              <Box display="flex" alignItems="center" gap={4} px={2}>
+              <Box display="flex" alignItems="center" gap={4} >
                 {/* Quote Bubble with Tail */}
                 <Box
                   sx={{

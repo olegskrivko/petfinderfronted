@@ -133,14 +133,19 @@
 
 // export default MapBanner;
 import React from 'react';
+import { useMediaQuery } from '@mui/material';
+import { useTheme } from '@mui/material/styles';
 //import illustration from '../pages/images/navigation_cuate_blue.svg'; // replace with your own SVG
 import illustration from '../pages/images/online_ads_animate.svg';
 //import illustration from '../pages/images/navigation_cuate.svg';
 import { useNavigate } from 'react-router-dom';
 import Container from '@mui/material/Container';
+
 {/* <a href="https://storyset.com/city">City illustrations by Storyset</a> */}
 {/* <a href="https://storyset.com/city">City illustrations by Storyset</a> */}
 const MapBanner = () => {
+  const theme = useTheme();
+const isSmallScreen = useMediaQuery(theme.breakpoints.down('sm'));
      const navigate = useNavigate();
   return (
     
@@ -192,14 +197,26 @@ const MapBanner = () => {
         />
       </div>
       {/* LEFT SIDE */}
-      <div
+      {/* <div
         style={{
           flex: '1 1 400px',
           maxWidth: '600px',
           paddingLeft: '40px',
           zIndex: 2,
         }}
-      >
+      > */}
+      <div
+  style={{
+    flex: '1 1 400px',
+    maxWidth: '600px',
+    paddingLeft: isSmallScreen ? '0' : '40px',
+    zIndex: 2,
+    textAlign: isSmallScreen ? 'center' : 'right', // 🔁 Text centered on small screens
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: isSmallScreen ? 'center' : 'flex-end', // 🔁 Button alignment
+  }}
+>
         {/* <h2
           style={{
             color: '#0D47A1',

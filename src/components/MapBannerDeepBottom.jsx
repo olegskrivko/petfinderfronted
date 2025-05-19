@@ -133,6 +133,8 @@
 
 // export default MapBanner;
 import React from 'react';
+import { useMediaQuery } from '@mui/material';
+import { useTheme } from '@mui/material/styles';
 //import illustration from '../pages/images/innovation_amico_blue.svg'; // replace with your own SVG
 import illustration from "../pages/images/innovation_animate.svg"
 //import illustration from '../pages/images/navigation_cuate.svg';
@@ -140,6 +142,8 @@ import { useNavigate } from 'react-router-dom';
 import Container from '@mui/material/Container';
 {/* <a href="https://storyset.com/city">City illustrations by Storyset</a> */}
 const MapBanner = () => {
+  const theme = useTheme();
+const isSmallScreen = useMediaQuery(theme.breakpoints.down('sm'));
      const navigate = useNavigate();
   return (
     
@@ -171,15 +175,26 @@ const MapBanner = () => {
       // paddingRight: "0"
       }}> 
       {/* LEFT SIDE */}
-      <div
+      {/* <div
         style={{
           flex: '1 1 400px',
           maxWidth: '600px',
           paddingRight: '40px',
           zIndex: 2,
         }}
-      >
-   
+      > */}
+   <div
+  style={{
+    flex: '1 1 400px',
+    maxWidth: '600px',
+    paddingRight: isSmallScreen ? '0' : '40px',
+    zIndex: 2,
+    textAlign: isSmallScreen ? 'center' : 'left', // 🔁 Text centered on small screens
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: isSmallScreen ? 'center' : 'flex-start', // 🔁 Button alignment
+  }}
+>
            <h2
           style={{
             color: '#0D47A1',

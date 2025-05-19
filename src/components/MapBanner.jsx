@@ -134,13 +134,16 @@
 // export default MapBanner;
 import React from 'react';
 import illustration from '../pages/images/navigation_animate.svg'; // replace with your own SVG
-
+import { useMediaQuery } from '@mui/material';
+import { useTheme } from '@mui/material/styles';
 {/* <a href="https://storyset.com/business">Business illustrations by Storyset</a> */}
 //import illustration from '../pages/images/navigation_cuate.svg';
 import { useNavigate } from 'react-router-dom';
 import Container from '@mui/material/Container';
 {/* <a href="https://storyset.com/city">City illustrations by Storyset</a> */}
 const MapBanner = () => {
+  const theme = useTheme();
+const isSmallScreen = useMediaQuery(theme.breakpoints.down('sm'));
      const navigate = useNavigate();
   return (
     
@@ -172,25 +175,27 @@ const MapBanner = () => {
       // paddingRight: "0"
       }}> 
       {/* LEFT SIDE */}
-      <div
+      {/* <div
         style={{
           flex: '1 1 400px',
           maxWidth: '600px',
           paddingRight: '40px',
           zIndex: 2,
         }}
-      >
-        {/* <h2
-          style={{
-            color: '#0D47A1',
-            fontSize: '2.5rem',
-            fontWeight: 600,
-            marginBottom: '1rem',
-            fontFamily: "'Inter', sans-serif",
-          }}
-        >
-          Atrodi tuvāko patversmi
-        </h2> */}
+      > */}
+<div
+  style={{
+    flex: '1 1 400px',
+    maxWidth: '600px',
+    paddingRight: isSmallScreen ? '0' : '40px',
+    zIndex: 2,
+    textAlign: isSmallScreen ? 'center' : 'left', // 🔁 Text centered on small screens
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: isSmallScreen ? 'center' : 'flex-start', // 🔁 Button alignment
+  }}
+>
+
            <h2
           style={{
             // color: '#0D47A1',
@@ -205,17 +210,7 @@ const MapBanner = () => {
         >
           Vai esi pazaudējis mājdzīvnieku?
         </h2>
-        {/* <p
-          style={{
-            color: '#616f7d',
-            fontSize: '1.1rem',
-            lineHeight: '1.6',
-            marginBottom: '2rem',
-            fontFamily: "'Inter', sans-serif",
-          }}
-        >
-          Mēs palīdzam tev ātri un ērti atrast dzīvnieku patversmes tuvākajā apkaimē. Apskati karti vai iesniedz ziņojumu par pazudušu mājdzīvnieku.
-        </p> */}
+
          <p
           style={{
             color: '#616f7d',

@@ -75,199 +75,13 @@ function Home() {
       <meta property="og:type" content="website" />
     </Helmet>
     <MapBanner />
-<Container component="main" maxWidth="lg" sx={{ py: 6, paddingLeft: "0", paddingRight: "0"}}> 
-{/* <Container
-          component="main"
-          sx={{
-            flexGrow: 1,
-            pt: '2rem',
-            pb: '2rem',
-            width: '100%',
-            overflowX: 'hidden',
-          }}
-        > */}
-            {/* <BannerSection
-      title="Palīdzi pazudušiem mājdzīvniekiem atgriezties mājās!"
-      imageSrc={mainIMG}
-      btnPrimaryText="Meklēt mājdzīvnieku"
-      btnPrimaryLink="/pets"
-      btnSecondaryText="Ziņot par mājdzīvnieku"
-      btnSecondaryLink="/add-pet"
-      isSmallScreen={isSmallScreen}
-      isLargeScreen={isLargeScreen}
-    /> */}
-           
-                {/* <Grid container spacing={3} style={{ marginTop: '1rem' }}>
-        <Grid item xs={12} textAlign="center">
-          <Typography
-            variant="h2"
-            style={{
-              fontSize: '1.6rem',
-              fontWeight: '500',
-              marginTop: '1rem',
-            }}
-          >
-           Pēdējie pievienotie mājdzīvnieki
-          </Typography>
-        </Grid>
-      </Grid>
-*/}
+<Container component="main" maxWidth="lg" sx={{ py: 6, paddingLeft: "0", paddingRight: "0"}}>       
+        
       {/* <RecentPets />  */}
 </Container>
     <Box >
 <Container component="main" maxWidth="lg" sx={{ py: 4, paddingLeft: "0", paddingRight: "0"}}> 
-      {/* <Grid container spacing={3} >
-        <Grid item xs={12} textAlign="center">
-          <Typography
-            variant="h2"
-            style={{
-              // fontSize: '1.6rem',
-              fontWeight: '500',
-              color: '#16477c',
-              // marginTop: '1rem',
-              background: "linear-gradient(60deg, #16477c 0%, #00b5ad 100%)",
-              "-webkit-background-clip": "text",
-    "-webkit-text-fill-color": "transparent"
-            }}
-          >
-            Kā tieši mēs jums palīdzam?
-          </Typography>
-        </Grid>
-      </Grid> */}
-   
-      {/* <Grid container spacing={3} style={{ marginTop: '1rem' }}> */}
-      {/* <Grid container spacing={3} style={{ marginTop: '1rem', marginBottom: '3rem' }}>
-  
-  <Grid item xs={12} sm={12} md={6} lg={4} textAlign="center">
-    <Card style={{ backgroundColor: '#f7f9fd', display: 'flex', flexDirection: 'column', height: '100%' }}>
-      <CardContent style={{ display: 'flex', flexDirection: 'row', justifyContent: 'flex-start', alignItems: 'center', flex: 1 }}>
-        <CardMedia
-          component="img"
-          alt=""
-          image={petlisting}
-          style={{ width: 'auto', height: '80px', marginRight: '1rem' }}
-        />
-        <div>
-          <Typography variant="h6" style={{ marginBottom: '0.5rem', color: '#5B9BD5', textAlign: isSmallScreen ? "left" : "center" }}>
-            Iekļaušana mūsu mājaslapā
-          </Typography>
-          <Typography variant="body2" style={{textAlign: isSmallScreen ? "left" : "center"}}>
-            Jūsu mājdzīvnieks tiek pievienots mūsu lapai, padarot ziņošanu par novērojumiem īpaši ērtu.
-          </Typography>
-        </div>
-      </CardContent>
-    </Card>
-  </Grid>
 
-
-  <Grid item xs={12} sm={12} md={6} lg={4} textAlign="center">
-    <Card style={{ backgroundColor: '#f7f9fd', display: 'flex', flexDirection: 'column', height: '100%' }}>
-      <CardContent style={{ display: 'flex', flexDirection: 'row', justifyContent: 'flex-start', alignItems: 'center', flex: 1 }}>
-        <CardMedia
-          component="img"
-          alt=""
-          image={lostdogposter}
-          style={{ width: 'auto', height: '80px', marginRight: '1rem' }}
-        />
-        <div>
-          <Typography variant="h6" style={{ marginBottom: '0.5rem', color: '#5B9BD5', textAlign: isSmallScreen ? "left" : "center" }}>
-            Izdrukājams plakāts
-          </Typography>
-          <Typography variant="body2" style={{textAlign: isSmallScreen ? "left" : "center"}}>
-            Saņemiet profesionāli izstrādātu pazudušā mājdzīvnieka plakātu ar QR kodu.
-          </Typography>
-        </div>
-      </CardContent>
-    </Card>
-  </Grid>
-
-
-  <Grid item xs={12} sm={12} md={6} lg={4} textAlign="center">
-    <Card style={{ backgroundColor: '#f7f9fd', display: 'flex', flexDirection: 'column', height: '100%' }}>
-      <CardContent style={{ display: 'flex', flexDirection: 'row', justifyContent: 'flex-start', alignItems: 'center', flex: 1 }}>
-        <CardMedia
-          component="img"
-          alt=""
-          image={studies}
-          style={{ width: 'auto', height: '80px', marginRight: '1rem' }}
-        />
-        <div>
-          <Typography variant="h6" style={{ marginBottom: '0.5rem', color: '#5B9BD5', textAlign: isSmallScreen ? "left" : "center" }}>
-            Personīga vadība un atbalsts
-          </Typography>
-          <Typography variant="body2" style={{textAlign: isSmallScreen ? "left" : "center"}}>
-            Mēs sniedzam atbalstu katrā solī, piedāvājot ekspertu rakstus un padomus, lai palīdzētu jums.
-          </Typography>
-        </div>
-      </CardContent>
-    </Card>
-  </Grid>
-
-
-  <Grid item xs={12} sm={12} md={6} lg={4} textAlign="center">
-    <Card style={{ backgroundColor: '#f7f9fd', display: 'flex', flexDirection: 'column', height: '100%' }}>
-      <CardContent style={{ display: 'flex', flexDirection: 'row', justifyContent: 'flex-start', alignItems: 'center', flex: 1 }}>
-        <CardMedia
-          component="img"
-          alt=""
-          image={search}
-          style={{ width: 'auto', height: '80px', marginRight: '1rem' }}
-        />
-        <div>
-          <Typography variant="h6" style={{ marginBottom: '0.5rem', color: '#5B9BD5', textAlign: isSmallScreen ? "left" : "center" }}>
-            Sāciet PawClix meklēšanu
-          </Typography>
-          <Typography variant="body2" style={{textAlign: isSmallScreen ? "left" : "center"}}>
-            Noskaidrojiet, vai kāds cits jau ir pamanījis vai ziņojis par jūsu mājdzīvnieku.
-          </Typography>
-        </div>
-      </CardContent>
-    </Card>
-  </Grid>
-
- 
-  <Grid item xs={12} sm={12} md={6} lg={4} textAlign="center">
-    <Card style={{ backgroundColor: '#f7f9fd', display: 'flex', flexDirection: 'column', height: '100%' }}>
-      <CardContent style={{ display: 'flex', flexDirection: 'row', justifyContent: 'flex-start', alignItems: 'center', flex: 1 }}>
-        <CardMedia
-          component="img"
-          alt=""
-          image={share}
-          style={{ width: 'auto', height: '80px', marginRight: '1rem' }}
-        />
-        <div>
-          <Typography variant="h6" style={{ marginBottom: '0.5rem', color: '#5B9BD5', textAlign: isSmallScreen ? "left" : "center" }}>
-            Koplietošana sociālajos tīklos
-          </Typography>
-          <Typography variant="body2" style={{textAlign: isSmallScreen ? "left" : "center"}}>
-            Dalieties ar sava mājdzīvnieka informāciju sociālajos tīklos, lai palielinātu redzamību.
-          </Typography>
-        </div>
-      </CardContent>
-    </Card>
-  </Grid>
-
-  <Grid item xs={12} sm={12} md={6} lg={4} textAlign="center">
-    <Card style={{ backgroundColor: '#f7f9fd', display: 'flex', flexDirection: 'column', height: '100%' }}>
-      <CardContent style={{ display: 'flex', flexDirection: 'row', justifyContent: 'flex-start', alignItems: 'center', flex: 1 }}>
-        <CardMedia
-          component="img"
-          alt=""
-          image={pathlocations}
-          style={{ width: 'auto', height: '80px', marginRight: '1rem' }}
-        />
-        <div>
-          <Typography variant="h6" style={{ marginBottom: '0.5rem', color: '#5B9BD5', textAlign: isSmallScreen ? "left" : "center" }}>
-            Saņemiet novērojumu ziņojumus
-          </Typography>
-          <Typography variant="body2" style={{textAlign: isSmallScreen ? "left" : "center"}}>
-            Pārbaudiet jaunus novērojumus, ko ziņojusi kopiena, lai sekotu līdzi norādēm par savu mājdzīvnieku.
-          </Typography>
-        </div>
-      </CardContent>
-    </Card>
-  </Grid>
-</Grid> */}
 <Grid container spacing={3} style={{ marginTop: '1rem', marginBottom: '3rem' }}>
 
      <Grid container spacing={3} >
@@ -388,26 +202,7 @@ function Home() {
 </Container>
 </Box>
 <PetPath />
-{/* <Container component="main" maxWidth="lg" sx={{ py: 6, paddingLeft: "0", paddingRight: "0"}}> 
-     <Grid container spacing={3} >
-        <Grid item xs={12} textAlign="center">
-          <Typography
-            variant="h2"
-            style={{
-              // fontSize: '1.6rem',
-              fontWeight: '500',
-              color: '#16477c',
-              // marginTop: '1rem',
-              background: "linear-gradient(60deg, #16477c 0%, #00b5ad 100%)",
-              "-webkit-background-clip": "text",
-    "-webkit-text-fill-color": "transparent"
-            }}
-          >
-            Kā tieši mēs jums palīdzam?
-          </Typography>
-        </Grid>
-      </Grid>
-      </Container> */}
+
 {/* <PetCardsRow /> */}
 <MapBannerBottom />
   {/* <ZigzagDashedLine /> */}
@@ -540,17 +335,6 @@ Neatkarīgi no tā, vai lieto telefonu vai planšeti – mūsu platforma ir piel
 
 <Container component="main" maxWidth="lg" sx={{ py: 6, paddingLeft: "0", paddingRight: "0"}}> 
   
-
-{/* <BannerSection
-      title="Pakalpojumi mājdzīvniekiem!"
-      imageSrc={secondaryIMG}
-      btnPrimaryText="Meklēt pakalpojumu"
-      btnPrimaryLink="/services"
-      btnSecondaryText="Pievienot pakalpojumu"
-      btnSecondaryLink="/add-service"
-      isSmallScreen={isSmallScreen}
-      isLargeScreen={isLargeScreen}
-    /> */}
 
 
 {/* </Grid> */}
