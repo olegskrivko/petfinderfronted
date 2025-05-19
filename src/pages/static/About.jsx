@@ -33,7 +33,7 @@ import walkingAroundImg from '../images/vision/walking_around_amico.svg';
 import socialIdeasImg from '../images/vision/social_ideas_cuate.svg';
 import navigationImg from '../images/vision/navigation_pana.svg';
 import programmingImg from '../images/vision/programming_pana.svg';
-import Jumbotron from '../../components/Jumbotron';
+import Jumbotron from '../../shared/components/Jumbotron';
 // Import MUI Icons
 // import AppShortcutIcon from '@mui/icons-material/AppShortcut';
 // import HealthAndSafetyIcon from '@mui/icons-material/HealthAndSafety';

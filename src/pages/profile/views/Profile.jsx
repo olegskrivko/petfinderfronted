@@ -16,7 +16,7 @@ import FavoriteIcon from '@mui/icons-material/Favorite';
 // import user_avatar from './images/account_amico_blue.svg'
 // import user_avatar from './images/ava/Asset 9.svg'
 import BookmarkIcon from '@mui/icons-material/Bookmark';
-import AvatarWithAnimal from "../../../components/AvatarWithAnimal"
+import AvatarWithAnimal from "../components/AvatarWithAnimal"
 // import AvatarImg from '../images/beaver.avif'; // Use a valid image
 // import OneSignal from 'react-onesignal';
 const Profile = () => {
@@ -196,9 +196,10 @@ const handleLogout = () => {
           </Grid>
         </Grid> */}
         <Grid container spacing={2} sx={{ mt: 1, mb: 5 }} justifyContent="center">
-  <Grid item xs={12}>
+  <Grid item xs={12} >
     <Link to="/user-profile/bookmarks/pets" style={{ textDecoration: 'none' }}>
-      <Paper sx={{ padding: '1rem', backgroundColor: '#f7f9fd' }}>
+    {/* style={{ background: "linear-gradient(135deg, #0f4c81, #00b3a4)"}} */}
+      <Paper sx={{ padding: '1rem', backgroundColor: '#f7f9fd' }} >
         <Box display="flex" alignItems="center">
           <BookmarkIcon fontSize="large" sx={{ color: '#5B9BD5', mr: 2 }} />
           <Typography variant="body1">Saglabātie dzīvnieku sludinājumi</Typography>

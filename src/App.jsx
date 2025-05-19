@@ -182,7 +182,7 @@ const PrivateRoute = ({ element }) => {
 const theme = createTheme({
   palette: {
     primary: {
-      main: '#5B9BD5',
+      main: '#00b3a4',
       contrastText: '#ffffff', // This ensures white text on primary background 
     },
     secondary: {
@@ -338,13 +338,6 @@ function App() {
             <Route path="/fun" element={<Fun />} />
             <Route path="/reset-password/:token" element={<ResetPassword />} />
             <Route path="/policies" element={<PolicyPage />} />
-            {/* <Route path="/privacy-and-cookie-policy" element={<PrivacyAndCookiePolicy />} />
-            <Route path="/terms-of-service" element={<TermsOfService />} />
-            <Route path="/data-protection-policy" element={<DataProtectionPolicy />} />
-            <Route path="/disclaimer" element={<Disclaimer />} />
-            <Route path="/community-guidelines" element={<CommunityGuidelines />} /> */}
-            {/* <Route path="/add-pet" element={<PetsAdd />} /> */}
-            {/* <Route path="/add-pet" element={<PetAddStepper />} /> */}
             <Route 
             path="/add-pet" 
             element={<PrivateRoute element={<PetAddStepper />} />} 
@@ -352,13 +345,9 @@ function App() {
             
             <Route path="/pets" element={<PetsListPage />} />
             <Route path="/pets/:id" element={<PetDetailsPage />} />
-         
             <Route path="/pets/:id/poster" element={<Poster />} />
-           
-            
             <Route path="/adopt-a-pet" element={<WorkInProgress />} />
             <Route path="/partners-and-sponsors" element={<PartnersAndSponsors />} />
-            
             <Route path="/user-profile" element={<Profile />} />
             <Route path="/user-profile/settings" element={<UserSettings />} />
             <Route path="/user-profile/bookmarks/pets" element={<UserPetBookmarks />} />

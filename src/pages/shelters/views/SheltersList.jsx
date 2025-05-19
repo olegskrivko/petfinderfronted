@@ -87,6 +87,8 @@ const SheltersList = () => {
               sx={{
                 borderRadius: 3,
                 overflow: 'hidden',
+                // background: "linear-gradient(135deg, #0f4c81, #00b3a4)",
+
                 transition: 'transform 0.2s ease',
                 '&:hover': {
                   transform: 'scale(1.015)',
@@ -112,13 +114,12 @@ const SheltersList = () => {
                     // gutterBottom
                     variant="h6"
                     component="div"
+                    textAlign="center"
                     sx={{ fontWeight: 600,  letterSpacing: "1px" }}
                   >
                     {shelter.name}
                   </Typography>
-                  {/* <Typography variant="body2" color="text.secondary" sx={{ fontWeight: 600, fontSize: '0.8rem' }}>
-                    {shelter.full_address || 'Adrese nav norādīta'}
-                  </Typography> */}
+
                 </CardContent>
               </Link>
             </Card>

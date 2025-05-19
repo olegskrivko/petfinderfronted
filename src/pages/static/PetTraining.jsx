@@ -120,9 +120,9 @@ const PetTraining = () => {
 </Helmet>
 
       <Container component="main" maxWidth="lg" > 
-      <Typography variant="h3" align="center" sx={{ mb: 5, fontWeight: 500 }}>
-        Virtuālās mājdzīvnieku apmācības nodarbības
-      </Typography>
+      <Typography variant="h3" align="center" sx={{ mb: 5, fontWeight: 500, background: "linear-gradient(60deg, #16477c 0%, #00b5ad 100%)", WebkitBackgroundClip: "text",
+          WebkitTextFillColor: "transparent"
+         }}>Virtuālās mājdzīvnieku apmācības nodarbības</Typography>
       {/* Intro Text */}
       <Grid container spacing={3}>
         <Grid item xs={12}>

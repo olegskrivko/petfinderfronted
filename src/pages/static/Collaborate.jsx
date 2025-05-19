@@ -26,7 +26,7 @@ const collaborationPoints = [
 
 const Collaborate = () => {
   return (
-<>
+<React.Fragment>
      {/* SEO Meta Tags */}
      <Helmet>
      <title>Sadarbības iespējas - Mājdzīvnieku platforma</title>
@@ -117,7 +117,7 @@ const Collaborate = () => {
         </Grid>
       </Grid>
     </Container>
-    </>
+    </React.Fragment>
   );
 };
 

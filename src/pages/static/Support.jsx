@@ -40,7 +40,7 @@ const Support = () => {
   };
 
   return (
-    <>
+    <React.Fragment>
 
       {/* Helmet for SEO metadata */}
       <Helmet>
@@ -162,7 +162,7 @@ const Support = () => {
           </Grid>
         </Grid>
       </Container>
-    </>
+    </React.Fragment>
   );
 };
 

@@ -33,7 +33,6 @@ const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
  
 const Contact = () => {
   const { user } = useAuth(); // Accessing the user context (if logged in)
-
   const [subject] = useState("Ziņa");
   const [sender, setSender] = useState("");
   const [email, setEmail] = useState("");
@@ -109,29 +108,9 @@ const Contact = () => {
     window.open(googleMapsUrl, "_blank");
   };
 
-  const contactDetails = [
-    {
-      icon: <MailIcon fontSize="large" sx={{ color: "#F0F4F9" }} />,
-      label: `${EMAIL}`,
-      href: `mailto:${EMAIL}`,
-      description: "Jautājumi, atsauksmes vai sadarbība? Rakstiet mums!",
-    },
-    {
-      icon: <PhoneIcon fontSize="large" sx={{ color: "#F0F4F9" }} />,
-      label: `${PHONE_CODE} ${PHONE_NUMBER}`,
-      href: `tel:${PHONE_CODE}${PHONE_NUMBER}`,
-      description: "Zvaniet mums darba laikā – mēs vienmēr esam gatavi palīdzēt.",
-    },
-    {
-      icon: <LocationOnIcon fontSize="large" sx={{ color: "#F0F4F9" }} />,
-      label: `${COUNTRY}, ${CITY}`,
-      onClick: handleLocationClick,
-      description: "Mēs atrodamies šajā reģionā, bet vienmēr esam gatavi palīdzēt attālināti!",
-    },
-  ];
 
   return (
-    <>
+    <React.Fragment>
       <Helmet>
         <title>Sazinieties ar mums | PawClix</title>
         <meta name="description" content="Sazinieties ar PawClix komandu, lai uzdotu jautājumus, saņemtu atsauksmes vai piedāvātu sadarbību." />
@@ -143,13 +122,7 @@ const Contact = () => {
       <ToastContainer position="top-right" autoClose={3000} />
       <Container component="main" maxWidth="lg" >
 
-<Typography variant="h3" align="center" sx={{ mb: 5, fontWeight: 500,
-      
-              
-              background: "linear-gradient(60deg, #16477c 0%, #00b5ad 100%)",
-              WebkitBackgroundClip: "text",
-    WebkitTextFillColor: "transparent"
-   }}>Sazinieties ar mums</Typography>
+<Typography variant="h3" align="center" sx={{ mb: 5, fontWeight: 500, background: "linear-gradient(60deg, #16477c 0%, #00b5ad 100%)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent" }}>Sazinieties ar mums</Typography>
         <Grid container spacing={6} alignItems="center">
           {/* Image */}
           <Grid item xs={12} md={6}>
@@ -238,7 +211,7 @@ const Contact = () => {
         </Grid>
 
         {/* Contact Info */}
-        <Typography variant="h4" align="center" sx={{color: "#16477c", mt: 8, mb: 4 }}>
+        <Typography variant="h4" align="center" sx={{ fontWeight: 500, color: "#16477c", mt: 8, mb: 4 }}>
           Kontaktinformācija
         </Typography>
 <Grid container spacing={3} style={{ marginTop: '1rem', marginBottom: '3rem' }}>
@@ -324,7 +297,7 @@ Zvaniet mums darba laikā – mēs vienmēr esam gatavi palīdzēt.
         {/* Social Media */}
         <Grid container spacing={3} justifyContent="center">
           <Grid item xs={12}>
-            <Typography variant="h4" align="center" sx={{color: "#16477c", mt: 8, mb: 4 }}>
+            <Typography variant="h4" align="center" sx={{fontWeight: 500, color: "#16477c", mt: 8, mb: 4 }}>
               Sekojiet mums sociālajos tīklos
             </Typography>
 
@@ -338,10 +311,10 @@ Zvaniet mums darba laikā – mēs vienmēr esam gatavi palīdzēt.
             </Typography>
           </Grid>
 
-          {[{ href: FACEBOOK, icon: <FacebookIcon fontSize="large" />, color: "#3b5998" }, 
-          { href: INSTAGRAM, icon: <InstagramIcon fontSize="large" />, color: "#E1306C" },
-          { href: YOUTUBE, icon: <YouTubeIcon fontSize="large" />, color: "#FF0000" }, 
-          { href: X, icon: <XIcon fontSize="large" />, color: "#00040d" }].map(({ href, icon, color }, index) => (
+          {[{ href: FACEBOOK, icon: <FacebookIcon fontSize="large" />, color: "#16477c" }, 
+          { href: INSTAGRAM, icon: <InstagramIcon fontSize="large" />, color: "#16477c" },
+          { href: YOUTUBE, icon: <YouTubeIcon fontSize="large" />, color: "#16477c" }, 
+          { href: X, icon: <XIcon fontSize="large" />, color: "#16477c" }].map(({ href, icon, color }, index) => (
             <Grid item key={index}>
               <MuiLink href={href} target="_blank" rel="noopener" underline="none">
                 <Box
@@ -352,7 +325,7 @@ Zvaniet mums darba laikā – mēs vienmēr esam gatavi palīdzēt.
                     color: color,
                     transition: "color 0.3s ease",
                     "&:hover": {
-                      color: "#000",
+                      color: "#3498db",
                     },
                   }}
                 >
@@ -363,7 +336,7 @@ Zvaniet mums darba laikā – mēs vienmēr esam gatavi palīdzēt.
           ))}
         </Grid>
       </Container>
-    </>
+    </React.Fragment>
   );
 };
 

@@ -14,7 +14,7 @@ const LanguageSelector = () => {
       value={selectedLanguage}
       onChange={handleChangeLanguage}
       size="small"
-      disableUnderline
+      
       sx={{
         color: '#fff',
         fontWeight: 500,

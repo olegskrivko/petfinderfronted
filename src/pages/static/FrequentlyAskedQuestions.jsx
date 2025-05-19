@@ -89,13 +89,22 @@ const FrequentlyAskedQuestions = () => {
                 id={`panel-${index}-header`}
               >
                 <Box display="flex" alignItems="center">
-                  <IconButton
-                    color="primary"
-                    size="small"
-                    sx={{ mr: 2, backgroundColor: '#f7f9fd' }}
-                  >
-                    <TipsAndUpdatesIcon />
-                  </IconButton>
+          <Box
+  sx={{
+    mr: 2,
+    backgroundColor: '#f7f9fd',
+    width: 32,
+    height: 32,
+    borderRadius: '50%',
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+    color: 'primary.main',
+  }}
+>
+  <TipsAndUpdatesIcon fontSize="small" />
+</Box>
+
                   <Typography variant="h6">{step.question}</Typography>
                 </Box>
               </AccordionSummary>

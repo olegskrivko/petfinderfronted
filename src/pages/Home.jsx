@@ -21,7 +21,7 @@ import SimCardDownloadIcon from '@mui/icons-material/SimCardDownload';
 
 import MapIcon from '@mui/icons-material/Map';
 // Components
-import PetCounter from '../components/PetCounter'
+
 import { motion } from "framer-motion";
 // Images
 import petlisting from './images/features/petlisting.png';
@@ -36,7 +36,7 @@ import ComputerIcon from '@mui/icons-material/Computer';
 import mainIMG from './images/home_banner/404_Error_with_a_cute_animal_pana_blue.svg';
 import secondaryIMG from './images/home_banner/dog_walking_bro_blue.svg';
 import ChatBot from '../components/ChatBot';
-import TestimonialSlider from '../components/TestimonialSlider';
+import TestimonialSlider from '../shared/components/TestimonialSlider';
 import AutoFixHighIcon from '@mui/icons-material/AutoFixHigh';
 import SmartphoneIcon from '@mui/icons-material/Smartphone';
 import QrCodeIcon from '@mui/icons-material/QrCode';
@@ -50,171 +50,7 @@ import MapBannerBottom from '../components/MapBannerBottom';
 import MapBannerDeepBottom from '../components/MapBannerDeepBottom';
 import GroupsIcon from '@mui/icons-material/Groups';
 import PetPathVertical from "../components/PetPathVertical"
-const ZigzagDashedLine = () => {
-  return (
-<svg
-  viewBox="0 0 1000 300"
-  preserveAspectRatio="none"
-  style={{
-    width: '100%',
-    height: '300px',
-    position: 'absolute',
-    top: 0,
-    left: 0,
-    zIndex: 1,
-  }}
->
-  <path
-    d="
-      M 0 20
-      C 80 80, 120 120, 200 100
-      S 320 60, 400 140
-      S 520 240, 600 200
-      S 720 120, 800 180
-      S 920 280, 1000 260
-    "
-    fill="none"
-    stroke="#ccc"
-    strokeDasharray="10 10"
-    strokeWidth="2"
-  />
-</svg>
 
-  );
-};
-const LiquidBlob = () => (
-  <motion.div
-    style={{
-      width: 150,
-      height: 150,
-      backgroundColor: "#FF6B6B",
-      borderRadius: "50%",
-    }}
-    animate={{
-      borderRadius: ["50%", "40% 60% 60% 40%", "50%"],
-    }}
-    transition={{
-      duration: 3,
-      repeat: Infinity,
-      repeatType: "reverse",
-    }}
-  />
-);
-
-
-
-const BannerSection = ({
-  title,
-  imageSrc,
-  btnPrimaryText,
-  btnPrimaryLink,
-  btnSecondaryText,
-  btnSecondaryLink,
-  isSmallScreen,
-  isLargeScreen,
-}) => {
-  return (
-    <Grid container spacing={3}>
-      <Grid item xs={12}>
-      {/* <Box
-  sx={{
-    position: "absolute",
-    top: "20%",
-    left: "-50px", // Move it out of the viewport a little
-    width: 200,
-    height: 200,
-    backgroundColor: "#FF6B6B",
-    borderRadius: "50%",
-    // filter: "blur(50px)",
-    zIndex: -1, // Behind everything
-  }}
-/> */}
-{/* <Box
-  sx={{
-    position: "absolute",
-    top: "80%",
-    right: "-20%", // Move it out of the viewport a little
-    width: "40%",
-    height: "60%",
-    backgroundColor: "#6B6BFF",
-    overflow: "hidden",
-    borderRadius: "50%",
-    // filter: "blur(50px)",
-    zIndex: -1,
-  }}
-/> */}
-
-
-        {/* Banner Image with Title on Top */}
-        <Box position="relative" display="flex" justifyContent="center">
-          {/* Title */}
-          <Typography
-            variant="h3"
-            gutterBottom
-            sx={{
-              position: "absolute", // Position the title over the image
-              top: "5%", // Adjust the vertical position as needed
-              left: "50%",
-              width: "90%",
-              transform: "translateX(-50%)", // Center the title horizontally
-              fontSize: isSmallScreen ? "2.2rem" : "3.2rem",
-              color: "#5B5B5B",
-              fontWeight: "700",
-              textAlign: "center",
-              letterSpacing: "2px",
-              
-              zIndex: 1, // Ensure the title is in front of the image
-            }}
-          >
-            {title}
-          </Typography>
-
-          {/* Banner Image */}
-          <img
-            src={imageSrc}
-            alt="Banner"
-            style={{
-              width: isLargeScreen ? "50%" : "100%",
-              maxHeight: isLargeScreen ? "70vh" : "600px",
-              objectFit: "cover",
-            }}
-          />
-        </Box>
-      </Grid>
-
-      {/* Buttons */}
-      <Grid item xs={12} sx={{ paddingTop: "0 !important", marginBottom: "2rem" }}>
-        <Box display="flex" justifyContent="center" alignItems="center">
-          {btnPrimaryText && (
-            <Link to={btnPrimaryLink}>
-              <Button
-                variant="contained"
-                size={isSmallScreen ? "small" : "large"}
-                // color="primary"
-                sx={{ marginRight: "20px", backgroundColor: "#5B9BD5", marginTop: isSmallScreen ? "0" : "2rem" }}
-              >
-                {btnPrimaryText}
-              </Button>
-            </Link>
-          )}
-
-          {btnSecondaryText && (
-            <Link to={btnSecondaryLink}>
-              <Button
-                variant="outlined"
-                size={isSmallScreen ? "small" : "large"}
-                // color="primary"
-                sx={{ color: "#5B9BD5", marginTop: isSmallScreen ? "0" : "2rem" }}
-              >
-                {btnSecondaryText}
-              </Button>
-            </Link>
-          )}
-        </Box>
-      </Grid>
-    </Grid>
-  );
-};
 
 function Home() {
   const theme = useTheme();
@@ -605,8 +441,8 @@ function Home() {
               color: '#16477c',
               // marginTop: '1rem',
               background: "linear-gradient(60deg, #16477c 0%, #00b5ad 100%)",
-              "-webkit-background-clip": "text",
-    "-webkit-text-fill-color": "transparent"
+              WebkitBackgroundClip: "text",
+    WebkitTextFillColor: "transparent"
             }}
           >
             Tehnoloģijas, kas strādā Tavā labā

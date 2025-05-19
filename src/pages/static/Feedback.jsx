@@ -84,7 +84,7 @@ const Feedback = () => {
   };
 
   return (
-    <>
+    <React.Fragment>
      <Helmet>
         <title>Atsauksmes - Sazinieties ar mums</title>  {/* Set the title for this page */}
         <meta name="description" content="Atstājiet atsauksmi par mūsu pakalpojumiem. Mēs vēlamies dzirdēt jūsu viedokli un uzlabot mūsu piedāvājumu." />  {/* Set meta description */}
@@ -192,7 +192,7 @@ const Feedback = () => {
           </Grid>
         </Grid>
       </Container>
-    </>
+    </React.Fragment>
   );
 };
 

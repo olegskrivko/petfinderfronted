@@ -24,7 +24,7 @@ const Jumbotron = () => {
               to="/support"
               variant="contained"
                  style={{
-        padding: '12px 28px',
+        // padding: '12px 28px',
         fontSize: '1rem',
         fontWeight: 'bold',
         background: "linear-gradient(0deg, #0994ba 30%, #02b4c4 90%)",
@@ -57,7 +57,7 @@ const Jumbotron = () => {
               variant="outlined"
           
                  style={{
-        padding: '12px 28px',
+        // padding: '12px 28px',
         fontSize: '1rem',
         fontWeight: 'bold',
         backgroundColor: 'transparent',

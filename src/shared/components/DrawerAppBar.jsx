@@ -20,8 +20,8 @@ import Button from '@mui/material/Button';
 import Container from '@mui/material/Container';
 import PetsIcon from '@mui/icons-material/Pets';
 import { useTranslation } from 'react-i18next';
-import LanguageSelector from '../pages/LanguageSelector';
-import { LanguageContext } from '../contexts/LanguageContext';
+import LanguageSelector from '../../pages/LanguageSelector';
+import { LanguageContext } from '../../contexts/LanguageContext';
 // import Logout from './Logout'; 
 
 
@@ -38,7 +38,7 @@ import { LanguageContext } from '../contexts/LanguageContext';
 // }
 
 // Custom Components
-import { useAuth } from '../contexts/AuthContext';
+import { useAuth } from '../../contexts/AuthContext';
 
 const drawerWidth = 240;
 
@@ -76,13 +76,10 @@ const navItems = {
 function DrawerAppBar(props) {
   const { t } = useTranslation('navbar'); 
 
-  // const { openDrawer } = useDrawer();
+
   const [mobileOpen, setMobileOpen] = React.useState(false);
   const { user, logout } = useAuth(); // Get user and logout from AuthContext
   const { selectedLanguage, setSelectedLanguage } = useContext(LanguageContext);
-  console.log("selectedLanguage", selectedLanguage)
-  // const { isAuthenticated, logout } = useAuth();
-  // const { user, logout } = useAuth();
 
   const navigate = useNavigate();
   const handleDrawerToggle = () => {
@@ -103,8 +100,8 @@ function DrawerAppBar(props) {
         style={{
           width: '100%',
           height: '3.5rem',
-          backgroundColor: '#5B9BD5',
-       
+          // backgroundColor: '#5B9BD5',
+          background: 'linear-gradient(to right, rgba(0,150,136,0.7), rgba(63,81,181,0.7))',
           // backgroundColor: '#03a9f4',
           // backgroundColor: '#4B5AED', cool violet
           
@@ -118,7 +115,7 @@ function DrawerAppBar(props) {
           <Link 
             to="/"
             style={{
-              color: 'white',
+              color: '#16477c',
               textDecoration: 'none',
               display: 'flex',
               alignItems: 'center',
@@ -147,7 +144,7 @@ function DrawerAppBar(props) {
         {Object.entries(navItems).map(([path, key]) => (
            <ListItem  key={path} disablePadding>
             <ListItemButton sx={{ textAlign: 'left' }}>
-  <Link key={path} to={path} style={{textDecoration: 'none', color: "black"}}>
+  <Link key={path} to={path} style={{textDecoration: 'none', color: "#16477c"}}>
     <ListItemText primary={t(key)}  />
   </Link>
   </ListItemButton>
@@ -157,7 +154,7 @@ function DrawerAppBar(props) {
       
         <ListItem disablePadding>
           <ListItemButton sx={{ textAlign: 'left' }}>
-            <Link to={user ? "/user-profile" : "/login"} style={{ textDecoration: 'none',color: "black", width: '100%' }}>
+            <Link to={user ? "/user-profile" : "/login"} style={{ textDecoration: 'none',color: "#16477c", width: '100%' }}>
               <ListItemText primary={user ? t('profile') : t('login')} />
             </Link>
           </ListItemButton>
@@ -197,7 +194,7 @@ function DrawerAppBar(props) {
               <Link
                 to="/"
                 style={{
-                  color: 'white',
+                  color: '#16477c',
                   textDecoration: 'none',
                   display: 'flex',
                   alignItems: 'center',

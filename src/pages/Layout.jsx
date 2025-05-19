@@ -5,8 +5,8 @@ import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import CircularProgress from '@mui/material/CircularProgress';
 
-import Footer from '../components/Footer';
-import DrawerAppBar from '../components/DrawerAppBar';
+import Footer from '../shared/components/Footer';
+import DrawerAppBar from '../shared/components/DrawerAppBar';
 
 const Layout = () => {
   return (

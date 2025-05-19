@@ -451,7 +451,7 @@ import { Box, Typography, Container } from '@mui/material';
 import FormatQuoteIcon from '@mui/icons-material/FormatQuote';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Pagination, Autoplay } from 'swiper/modules';
-import dogimg from "../pages/images/banner_dog.jpg"
+import dogimg from "../../pages/images/banner_dog.jpg"
 import 'swiper/css';
 import 'swiper/css/pagination';
 

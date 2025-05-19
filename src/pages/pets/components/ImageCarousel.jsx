@@ -162,7 +162,8 @@ const ImageCarousel = ({ pet, images = [] }) => {
 <Box style={{position: 'absolute', top: 16, left: 16, zIndex: 999 }}>
           <Chip label={pet.status_display} variant="filled" 
            sx={{
-      backgroundColor: 'rgba(0, 0, 0, 0.6)',
+      // backgroundColor: 'rgba(0, 0, 0, 0.6)',
+       backgroundColor: 'rgba(0, 179, 164, 0.6)' ,
       color: 'white',
       letterSpacing: "1px",
       fontWeight: 400,

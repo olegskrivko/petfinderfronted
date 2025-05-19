@@ -4,10 +4,10 @@ import Box from '@mui/material/Box';
 import Grid from '@mui/material/Grid';
 import Container from '@mui/material/Container';
 import { Link } from 'react-router-dom';
-import InstallPWAButton from '../InstallPWAButton';
+import InstallPWAButton from '../../InstallPWAButton';
 import { useTranslation } from 'react-i18next';
-import { LanguageContext } from '../contexts/LanguageContext';
-import {APP_NAME } from "../constants/config"
+import { LanguageContext } from '../../contexts/LanguageContext';
+import {APP_NAME } from "../../constants/config"
  
 const Footer = () => {
   const year = new Date().getFullYear();

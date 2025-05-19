@@ -253,6 +253,7 @@ const PetQuiz = () => {
                         justifyContent: 'center',
                         '&:hover': { boxShadow: 6 },
                         backgroundColor: '#e3f2fd',
+               
 
                       }}
                     >

@@ -58,7 +58,7 @@ const ServiceSidebar = ({ filters, setFilters, onFilterChange, onReset }) => {
             {/* Category Filter */}
              <ListItem sx={{ padding: '0 !important' }}>
           <Box>
-            <InputLabel sx={{ fontWeight: '500', color: '#000' }}>Kategorija</InputLabel>
+            <InputLabel sx={{ fontWeight: '500', color: '#16477c' }}>Kategorija</InputLabel>
             {CATEGORY_CHOICES.map((category) => (
               <Chip
                 key={category.value}

@@ -514,24 +514,24 @@ if (markerPosition && markerPosition.length === 2) {
  <Box sx={{ display: 'flex', justifyContent: 'space-around', py: 1 }}>
     {/* Add to Favorites */}
     <Tooltip title={isFavorite ? "Remove from favorites" : "Add to favorites"}>
-      <IconButton onClick={handleFavorite}>
-        {isFavorite ? <BookmarkIcon sx={{color: "#5B9BD5"}} /> : <BookmarkBorderIcon />}
+      <IconButton onClick={handleFavorite} style={{ backgroundColor: '#f7f9fd' }}>
+        {isFavorite ? <BookmarkIcon color='primary' /> : <BookmarkBorderIcon color='primary' />}
       </IconButton>
     </Tooltip>
 
     {/* Download */}
     <Tooltip title="Download Poster">
       <Link to={`/pets/${id}/poster`}>
-        <IconButton>
-          <DownloadIcon />
+        <IconButton style={{ backgroundColor: '#f7f9fd' }}>
+          <DownloadIcon color='primary' />
         </IconButton>
       </Link>
     </Tooltip>
 
     {/* Share */}
     <Tooltip title="Share">
-      <IconButton onClick={handleShare}>
-        <ShareIcon />
+      <IconButton onClick={handleShare} style={{ backgroundColor: '#f7f9fd' }}>
+        <ShareIcon color='primary' />
       </IconButton>
     </Tooltip>
   </Box>

@@ -4,22 +4,22 @@ import React from 'react';
 // import tigerAvatar from '../pages/images/avatars/tiger.svg';
 // import dogAvatar from '../pages/images/avatars/dog.svg';
 // import catAvatar from '../pages/images/avatars/cat.svg';
-import foxAvatar from '../pages/images/avatars/flat/fox.svg';
-import dogAvatar from '../pages/images/avatars/flat/dog.svg';
-import catAvatar from '../pages/images/avatars/flat/cat.svg';
-import bearAvatar from '../pages/images/avatars/flat/bear.svg';
-import horseAvatar from '../pages/images/avatars/flat/horse.svg';
-import alligatorAvatar from '../pages/images/avatars/flat/alligator.svg';
-import penguinAvatar from '../pages/images/avatars/flat/penguin.svg';
-import pigAvatar from '../pages/images/avatars/flat/pig.svg';
-import lionAvatar from '../pages/images/avatars/flat/lion.svg';
-import owlAvatar from '../pages/images/avatars/flat/owl.svg';
-import defaultAvatar from '../pages/images/avatars/flat/default.svg';
+import foxAvatar from '../../../pages/images/avatars/flat/fox.svg';
+import dogAvatar from '../../../pages/images/avatars/flat/dog.svg';
+import catAvatar from '../../../pages/images/avatars/flat/cat.svg';
+import bearAvatar from '../../../pages/images/avatars/flat/bear.svg';
+import horseAvatar from '../../../pages/images/avatars/flat/horse.svg';
+import alligatorAvatar from '../../../pages/images/avatars/flat/alligator.svg';
+import penguinAvatar from '../../../pages/images/avatars/flat/penguin.svg';
+import pigAvatar from '../../../pages/images/avatars/flat/pig.svg';
+import lionAvatar from '../../../pages/images/avatars/flat/lion.svg';
+import owlAvatar from '../../../pages/images/avatars/flat/owl.svg';
+import defaultAvatar from '../../../pages/images/avatars/flat/default.svg';
 
 // You can import images directly or reference them from public directory
 const AvatarWithAnimal = ({ user }) => {
   // Assuming user.animal_name is a field that stores the random animal name
-  const avatarAnimal = user.avatar_animal || '../pages/images/avatars/flat/Owl.svg'; // Convert to lowercase for consistency
+  const avatarAnimal = user.avatar_animal || '../../../pages/images/avatars/flat/Owl.svg'; // Convert to lowercase for consistency
   ["Fox", "Dog", "Cat", "Bear", "Horse", "Alligator", "Penguin", "Pig", "Lion", "Owl"]
   // Map animal name to the appropriate image
   const animalAvatars = {

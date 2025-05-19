@@ -72,7 +72,9 @@ const PetCard = ({ pet, onPanToLocation }) => {
             // size="small"
             variant="contained"
             sx={{
-              backgroundColor: 'rgba(0, 0, 0, 0.6)',
+              // backgroundColor: 'rgba(0, 0, 0, 0.6)',
+               backgroundColor: 'rgba(0, 179, 164, 0.6)' ,
+
               color: 'white',
               position: 'absolute',
               top: '8px',
@@ -83,8 +85,8 @@ const PetCard = ({ pet, onPanToLocation }) => {
         </Box>
       </Link>
       <CardActions disableSpacing style={{ justifyContent: 'start',  }}>
-        <Box style={{ display: 'flex', alignItems: 'center', color: '#343a40' }}>
-           <IconButton onClick={handleLocationClick} color="primary">
+        <Box style={{ display: 'flex', alignItems: 'center', color: '#343a40',}}>
+           <IconButton onClick={handleLocationClick} color="primary" style={{ backgroundColor: '#f7f9fd' }}>
     <LocationOnIcon />
   </IconButton>
   <Typography variant="body1" style={{ marginLeft: '4px' }}>

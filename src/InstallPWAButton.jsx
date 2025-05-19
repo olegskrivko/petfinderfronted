@@ -197,7 +197,7 @@ const InstallPWAButton = () => {
         variant="contained"
         // color="primary"
         fullWidth
-        style={{ position: "fixed", bottom: 0, left: 0, right: 0, zIndex: 1000, backgroundColor: "#4682B4" }}
+        style={{ position: "fixed", bottom: 0, left: 0, right: 0, zIndex: 1000, backgroundColor: "#0f4c81" }}
         onClick={installApp}
         startIcon={<InstallMobileIcon />}
       >
