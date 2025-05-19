@@ -72,7 +72,7 @@ const SheltersList = () => {
   }
 
   return (
-    <Container component="main" maxWidth="lg" sx={{ paddingLeft: "0rem !important", paddingRight: "0rem !important" }}>
+    <Container component="main" maxWidth="lg">
       {/* <Typography variant="h3" align="center" sx={{ mb: 5, fontWeight: 500 }}>
         Dzīvnieku patversmes
       </Typography> */}

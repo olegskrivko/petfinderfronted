@@ -126,7 +126,7 @@ function DrawerAppBar(props) {
         
             }}
           >
-            <PetsIcon sx={{ marginRight: '0.4rem', color: '#ffcb56' }} /> PawClix
+            <PetsIcon sx={{ marginRight: '0.4rem', color: '#16477c' }} /> PawClix
           </Link>
         </Typography>
       
@@ -203,7 +203,7 @@ function DrawerAppBar(props) {
                   alignItems: 'center',
                 }}
               >
-                <PetsIcon sx={{ marginRight: '0.4rem', color: '#ffcb56' }} />
+                <PetsIcon sx={{ marginRight: '0.4rem', color: '#16477c' }} />
                 PawClix
               </Link>
             </Typography>
@@ -227,7 +227,7 @@ function DrawerAppBar(props) {
 
              {/* Show Profile or Login Button */}
              <Link to={user ? "/user-profile" : "/login"}>
-                <Button size='small' sx={{ color: '#fff', backgroundColor: "#00b5ad" }}>
+                <Button size='small' sx={{ color: '#fff', backgroundColor: "#16477c" }}>
                   {user ? t("profile") : t("login")}
                 </Button>
               </Link>

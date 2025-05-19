@@ -10,6 +10,7 @@ import {
   Link as MuiLink,
   Button,
   CardMedia,
+  CardContent,
   TextField,
   CircularProgress,
 } from "@mui/material";
@@ -140,13 +141,15 @@ const Contact = () => {
         <meta property="og:type" content="website" />
       </Helmet>
       <ToastContainer position="top-right" autoClose={3000} />
-      <Container component="main" maxWidth="lg" sx={{ paddingLeft: 0, paddingRight: 0 }}>
-        <Typography variant="h3" align="center" sx={{ mb: 5, fontWeight: 500,  }} style={{              background: "linear-gradient(60deg, #16477c 0%, #00b5ad 100%)",
-              WebkitBackgroundClip: "text",
-    WebkitTextFillColor: "transparent"}}>
-          Sazinieties ar mums
-        </Typography>
+      <Container component="main" maxWidth="lg" >
 
+<Typography variant="h3" align="center" sx={{ mb: 5, fontWeight: 500,
+      
+              
+              background: "linear-gradient(60deg, #16477c 0%, #00b5ad 100%)",
+              WebkitBackgroundClip: "text",
+    WebkitTextFillColor: "transparent"
+   }}>Sazinieties ar mums</Typography>
         <Grid container spacing={6} alignItems="center">
           {/* Image */}
           <Grid item xs={12} md={6}>
@@ -224,8 +227,7 @@ const Contact = () => {
   variant="contained"
   fullWidth
   disabled={loading}
-  
-  sx={{ background: "linear-gradient(0deg, #0994ba 30%, #02b4c4 90%)", mt: 1 }}
+       sx={{ background: "linear-gradient(0deg, #0994ba 30%, #02b4c4 90%)" }}
   startIcon={loading ? <CircularProgress size={20} color="inherit" /> : null}
 >
   {loading ? "Nosūtīšana..." : "Nosūtīt ziņu"}
@@ -236,54 +238,93 @@ const Contact = () => {
         </Grid>
 
         {/* Contact Info */}
-        <Typography variant="h4" align="center" sx={{ mt: 8, mb: 4 }}>
+        <Typography variant="h4" align="center" sx={{color: "#16477c", mt: 8, mb: 4 }}>
           Kontaktinformācija
         </Typography>
+<Grid container spacing={3} style={{ marginTop: '1rem', marginBottom: '3rem' }}>
+       
+  <Grid item xs={12} sm={12} md={6} lg={4} textAlign="center">
+   
+      <CardContent style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', flex: 1 }}>
 
-        <Grid container spacing={5} justifyContent="center" sx={{ textAlign: "center" }}>
-          {contactDetails.map(({ icon, label, href, onClick, description }, index) => (
-            <Grid item xs={12} sm={4} key={index}>
-              <Box display="flex" flexDirection="column" alignItems="center">
-                <Paper
-                  sx={{
-                    width: 80,
-                    height: 80,
-                    display: "flex",
-                    justifyContent: "center",
-                    alignItems: "center",
-                    borderRadius: "50%",
-                    backgroundColor: "#5B9BD5",
-                    cursor: onClick ? "pointer" : "default",
-                  }}
-                  onClick={onClick}
-                >
-                  {icon}
-                </Paper>
-                {href ? (
-                  <MuiLink
-                    variant="body1"
-                    href={href}
-                    sx={{ textDecoration: "none", color: "black", mt: 1, fontWeight: "bold" }}
+         <MailIcon sx={{ fontSize: 60, color: '#16477c', mb: 2 }} />
+    
+         
+        <div>
+          <Typography variant="h6" style={{ marginBottom: '0.5rem', textAlign:  "center", color: '#00b5ad', fontFamily: "Titillium Web, sans-serif" }}>
+            <MuiLink  variant="body1"
+                    href={`mailto:${EMAIL}`}
+                    sx={{ textDecoration: "none", color: "inherit"  }}
                   >
-                    {label}
+                  {EMAIL}
                   </MuiLink>
-                ) : (
-                  <Typography variant="body1" sx={{ mt: 1, fontWeight: "bold" }}>
-                    {label}
-                  </Typography>
-                )}
-                <Typography variant="body2" sx={{ mt: 1, maxWidth: "220px" }}>
-                  {description}
-                </Typography>
-              </Box>
-            </Grid>
-          ))}
-        </Grid>
 
+          </Typography>
+          <Typography variant="body2" style={{ textAlign:  "center", color: '#616f7d', fontFamily: "Titillium Web, sans-serif" }}>
+            Jautājumi, atsauksmes vai sadarbība? Rakstiet mums!
+          </Typography>
+        </div>
+      </CardContent>
+  
+  </Grid>
+
+  <Grid item xs={12} sm={12} md={6} lg={4} textAlign="center">
+   
+      <CardContent style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', flex: 1 }}>
+
+          <PhoneIcon sx={{ fontSize: 60, color: '#16477c', mb: 2 }} />
+          
+        <div>
+          <Typography variant="h6" style={{ marginBottom: '0.5rem', textAlign:  "center", color: '#00b5ad', fontFamily: "Titillium Web, sans-serif" }}>
+              <MuiLink  variant="body1"
+                    href={`tel:${PHONE_CODE}${PHONE_NUMBER}`}
+                    sx={{ textDecoration: "none", color: "inherit"  }}
+                  >
+                  {`${PHONE_CODE} ${PHONE_NUMBER}`}
+                  </MuiLink>
+      
+          </Typography>
+          <Typography variant="body2" style={{ textAlign:  "center", color: '#616f7d', fontFamily: "Titillium Web, sans-serif"  }}>
+            
+Zvaniet mums darba laikā – mēs vienmēr esam gatavi palīdzēt.
+          </Typography>
+        </div>
+      </CardContent>
+   
+  </Grid>
+  <Grid item xs={12} sm={12} md={6} lg={4} textAlign="center">
+   
+      <CardContent style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', flex: 1 }}>
+      <LocationOnIcon sx={{ fontSize: 60, color: '#16477c', mb: 2 }} />
+        <div>
+          <Typography variant="h6" style={{ marginBottom: '0.5rem',  textAlign:  "center", color: '#00b5ad', fontFamily: "Titillium Web, sans-serif" }}>
+               <MuiLink  variant="body1"
+                    href="#"
+                    onClick={handleLocationClick}
+                    sx={{ textDecoration: "none", color: "inherit"  }}
+                  >
+                  {`${COUNTRY}, ${CITY}`}
+                  </MuiLink>
+          </Typography>
+     
+          <Typography variant="body2" style={{ textAlign:  "center" , color: '#616f7d', fontFamily: "Titillium Web, sans-serif" }}>
+            Mēs atrodamies šajā reģionā, bet vienmēr esam gatavi palīdzēt attālināti!
+
+
+          </Typography>
+        </div>
+      </CardContent>
+   
+  </Grid>
+
+
+
+
+  </Grid>
         {/* Social Media */}
         <Grid container spacing={3} justifyContent="center">
           <Grid item xs={12}>
-            <Typography variant="h4" align="center" sx={{ mt: 8, mb: 4 }}>
+            <Typography variant="h4" align="center" sx={{color: "#16477c", mt: 8, mb: 4 }}>
               Sekojiet mums sociālajos tīklos
             </Typography>
 

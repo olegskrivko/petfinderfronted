@@ -245,7 +245,7 @@ function UserSettings() {
 
   return (
     <>
-  <Container component="main" maxWidth="lg" sx={{ paddingLeft: 0, paddingRight: 0 }}>
+  <Container component="main" maxWidth="lg" >
       <Grid item xs={12}>
         <Box sx={{ textAlign: "center" }}>
           <Typography variant="h3" sx={{ mb: 3, fontWeight: "500" }}>

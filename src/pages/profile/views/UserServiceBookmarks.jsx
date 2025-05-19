@@ -143,7 +143,7 @@ function UserServiceBookmarks() {
   }
  
   return (
- <Container component="main" maxWidth="lg" sx={{ paddingLeft: 0, paddingRight: 0 }}>
+ <Container component="main" maxWidth="lg" >
     <Typography
       variant="h3"
       textAlign="center"

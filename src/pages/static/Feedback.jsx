@@ -95,11 +95,15 @@ const Feedback = () => {
       </Helmet>
       <ToastContainer position="top-right" autoClose={3000} /> {/* Toast notifications for feedback */}
       
-      <Container component="main" maxWidth="lg" sx={{ paddingLeft: 0, paddingRight: 0 }}>
-        <Typography variant="h3" align="center" sx={{ mb: 5, fontWeight: 500 }}>
-          Atstājiet savu atsauksmi
-        </Typography>
-
+      <Container component="main" maxWidth="lg" >
+ 
+<Typography variant="h3" align="center" sx={{ mb: 5, fontWeight: 500,
+      
+              
+              background: "linear-gradient(60deg, #16477c 0%, #00b5ad 100%)",
+              WebkitBackgroundClip: "text",
+    WebkitTextFillColor: "transparent"
+   }}>Atstājiet savu atsauksmi</Typography>
         <Grid container spacing={6} alignItems="center">
           {/* Left Section: Feedback Illustration */}
           <Grid item xs={12} md={6}>
@@ -180,7 +184,7 @@ const Feedback = () => {
                 variant="contained"
                 fullWidth
                 disabled={loading}  // Disable button while loading
-                sx={{ backgroundColor: "#5B9BD5", mt: 1 }}
+                  sx={{ background: "linear-gradient(0deg, #0994ba 30%, #02b4c4 90%)" }}
               >
                 {loading ? "Nosūtīšana..." : "Iesniegt atsauksmi"}  {/* Dynamic button text */}
               </Button>

@@ -487,7 +487,7 @@ const Sidebar = ({ filters, setFilters, onFilterChange, onReset }) => {
         {/* Status Filter */}
         <ListItem sx={{ padding: '0 !important' }}>
           <Box>
-            <InputLabel sx={{ fontWeight: '500', color: '#000' }}>Status</InputLabel>
+            <InputLabel sx={{ fontWeight: '500', color: '#16477c' }}>Status</InputLabel>
             {STATUS_CHOICES.map((status) => (
               <Chip
                 key={status.value}
@@ -504,7 +504,7 @@ const Sidebar = ({ filters, setFilters, onFilterChange, onReset }) => {
         {/* Species Filter */}
         <ListItem sx={{ padding: '0 !important', paddingTop: '0.8rem !important' }}>
           <Box>
-            <InputLabel sx={{ fontWeight: '500', color: '#000' }}>Suga</InputLabel>
+            <InputLabel sx={{ fontWeight: '500', color: '#16477c' }}>Suga</InputLabel>
             {SPECIES_CHOICES.map((species) => (
               <Chip
                 key={species.value}
@@ -521,7 +521,7 @@ const Sidebar = ({ filters, setFilters, onFilterChange, onReset }) => {
         {/* Gender Filter */}
         <ListItem sx={{ padding: '0 !important', paddingTop: '0.8rem !important' }}>
           <Box>
-            <InputLabel sx={{ fontWeight: '500', color: '#000' }}>Dzimums</InputLabel>
+            <InputLabel sx={{ fontWeight: '500', color: '#16477c' }}>Dzimums</InputLabel>
             {GENDER_CHOICES.map((gender) => (
               <Chip
                 key={gender.value}
@@ -538,7 +538,7 @@ const Sidebar = ({ filters, setFilters, onFilterChange, onReset }) => {
         {/* Size Filter */}
         <ListItem sx={{ padding: '0 !important', paddingTop: '0.8rem !important' }}>
           <Box>
-            <InputLabel sx={{ fontWeight: '500', color: '#000' }}>Izmērs</InputLabel>
+            <InputLabel sx={{ fontWeight: '500', color: '#16477c' }}>Izmērs</InputLabel>
             {SIZE_CHOICES.map((size) => (
               <Chip
                 key={size.value}
@@ -555,7 +555,7 @@ const Sidebar = ({ filters, setFilters, onFilterChange, onReset }) => {
         {/* Pattern Filter */}
         <ListItem sx={{ padding: '0 !important', paddingTop: '0.8rem !important' }}>
           <Box>
-            <InputLabel sx={{ fontWeight: '500', color: '#000' }}>Kažoka raksts</InputLabel>
+            <InputLabel sx={{ fontWeight: '500', color: '#16477c' }}>Kažoka raksts</InputLabel>
             {PATTERN_CHOICES.map((pattern) => (
               <Chip
                 key={pattern.value}
@@ -572,7 +572,7 @@ const Sidebar = ({ filters, setFilters, onFilterChange, onReset }) => {
           {/* Color Filter */}
           <ListItem sx={{ padding: '0 !important', paddingTop: '0.8rem !important' }}>
           <Box>
-            <InputLabel sx={{ fontWeight: '500', color: '#000' }}>Krāsa</InputLabel>
+            <InputLabel sx={{ fontWeight: '500', color: '#16477c' }}>Krāsa</InputLabel>
             {COLOR_CHOICES.map((color) => (
               <Chip
                 key={color.value}
@@ -589,7 +589,7 @@ const Sidebar = ({ filters, setFilters, onFilterChange, onReset }) => {
         {/* Date Filter */}
         <ListItem sx={{ padding: '0 !important', paddingTop: '0.8rem !important' }}>
           <Box sx={{ width: '100%' }}>
-            <InputLabel sx={{ fontWeight: '500', color: '#000' }}>Datums</InputLabel>
+            <InputLabel sx={{ fontWeight: '500', color: '#16477c' }}>Datums</InputLabel>
             {/* <TextField
               type="date"
               variant="outlined"
@@ -627,14 +627,39 @@ const Sidebar = ({ filters, setFilters, onFilterChange, onReset }) => {
 
         {/* Reset Filters */}
         <ListItem sx={{ padding: '0 !important', paddingTop: '2rem !important', paddingBottom: '0.8rem !important' }}>
-          <Button
+          {/* <Button
             variant="outlined"
             sx={{ width: '100%' }}
             color="primary"
             onClick={onReset}
           >
             Atiestatīt filtrus
-          </Button>
+          </Button> */}
+          
+           <Button
+      style={{
+        // padding: '12px 28px',
+        // fontSize: '1rem',
+        // fontWeight: 'bold',
+        backgroundColor: 'transparent',
+         width: '100%',
+        color: '#0994ba',
+        // border: '2px solid #0EB9F0',
+        border: "2px solid  #0994ba ",
+        // borderRadius: '8px',
+        cursor: 'pointer',
+        transition: 'all 0.3s ease',
+      }}
+         onClick={onReset}
+      onMouseOver={(e) => {
+        e.currentTarget.style.backgroundColor = '#e5faff';
+      }}
+      onMouseOut={(e) => {
+        e.currentTarget.style.backgroundColor = 'transparent';
+      }}
+    >
+      Atiestatīt filtrus
+    </Button>
         </ListItem>
       </List>
     </form>

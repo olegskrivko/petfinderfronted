@@ -71,15 +71,21 @@ const ArticleDetails = () => {
   };
 
   return (
-    <Container component="main" maxWidth="lg" sx={{ paddingLeft: "0rem !important", paddingRight: "0rem !important" }}>
+    <Container component="main" maxWidth="lg" >
       <Helmet>
         <title>{article.title} | My Blog</title>
         <meta name="description" content={article.summary} />
       </Helmet>
 
-              <Typography variant="h3" align="center" sx={{ mb: 5, fontWeight: 500 }}>
-              {article.title}
-              </Typography>
+          
+
+              <Typography variant="h3" align="center" sx={{ mb: 5, fontWeight: 500,
+                    
+                            
+                            background: "linear-gradient(60deg, #16477c 0%, #00b5ad 100%)",
+                            WebkitBackgroundClip: "text",
+                  WebkitTextFillColor: "transparent"
+                 }}>{article.title}</Typography>
       <Typography
   variant="body1"
   color="textSecondary"
@@ -132,7 +138,7 @@ const ArticleDetails = () => {
               </Typography>
             </Grid>
             <Grid item xs={12} md={6} order={{ xs: 1, md: index % 2 === 0 ? 2 : 1 }}>
-              <Typography variant="h3" sx={{ mb: 2 }}>
+              <Typography variant="h3" sx={{ mb: 2, color: "#16477c" }}>
                 {paragraph.title}
               </Typography>
               <Typography variant="body1" color="textSecondary"   sx={{

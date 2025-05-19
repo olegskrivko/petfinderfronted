@@ -36,6 +36,7 @@ const Layout = () => {
             pb: '2rem',
             width: '100%',
             overflowX: 'hidden',
+            paddingLeft: "0 !important", paddingRight: "0 !important"
           }}
         >
           {/* <Suspense fallback={<Box sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}><CircularProgress color="primary" /><Typography sx={{ ml: 2 }}>Loading...</Typography></Box>}> */}

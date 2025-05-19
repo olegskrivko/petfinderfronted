@@ -186,17 +186,19 @@ function About() {
   <meta property="og:type" content="website" />
 </Helmet>
 
-<Container component="main" maxWidth="lg" sx={{ py: 6, paddingLeft: "0", paddingRight: "0" }}>
-<Typography variant="h3" align="center" sx={{ mb: 5, fontWeight: 500 }}>
-Mūsu Vīzija
-      </Typography>
+<Container component="main" maxWidth="lg">
+  <Typography variant="h3" align="center" sx={{ mb: 5, fontWeight: 500,
+         color: '#16477c',
+              
+              background: "linear-gradient(60deg, #16477c 0%, #00b5ad 100%)",
+              WebkitBackgroundClip: "text",
+    WebkitTextFillColor: "transparent"
+   }}>Mūsu vīzija</Typography>
  
       <Grid container spacing={3}>
         <Grid item xs={12} sm={12} md={12} lg={12}>
           <Typography variant="body1" paragraph>
-
-          Lietotne ir radīta, lai apvienotu sabiedrību kopīgā mērķī – palīdzēt pazudušiem mājdzīvniekiem ātrāk atgriezties pie to īpašniekiem. Ar mūsdienu tehnoloģiju, tostarp mākslīgā intelekta un reāllaika paziņojumu izmantošanu, tā nodrošina efektīvu, vienkāršu un drošu platformu, kurā dzīvnieku īpašnieki var dalīties ar informāciju, kā arī sekot dzīvnieka meklēšanas gaitai. Turklāt, lietotne kļūs par galveno resursu, kas ietver arī citus dzīvnieku saistītus pakalpojumus, padomus un informāciju, palīdzot radīt vienotu un pārskatāmu vidi, kas veicina veiksmīgu dzīvnieku atgriešanos pie to īpašniekiem.
-
+          Lietotne izstrādāta ar mērķi apvienot sabiedrību kopīgā darbībā – palīdzēt pazudušiem mājdzīvniekiem ātrāk atgriezties pie saviem saimniekiem. Tā izmanto mūsdienu tehnoloģijas, tostarp mākslīgo intelektu un reāllaika paziņojumus, nodrošinot efektīvu, vienkāršu un drošu platformu informācijas apmaiņai un meklēšanas gaitas uzraudzībai. Papildus tam, lietotne kļūs par centrālo resursu, kur pieejami arī citi ar dzīvniekiem saistīti pakalpojumi, padomi un informācija.
           </Typography>
         
         </Grid>
@@ -220,6 +222,7 @@ Mūsu Vīzija
             variant="h5"
             textAlign="left"
             gutterBottom
+            sx={{color: "#00b5ad"}}
     
           >
            Problēma
@@ -316,6 +319,7 @@ Mūsu Vīzija
             variant="h5"
             textAlign="left"
             gutterBottom
+            sx={{color: "#00b5ad"}}
         
           >
             Ideja
@@ -332,6 +336,7 @@ Mūsu Vīzija
             variant="h5"
             textAlign="left"
             gutterBottom
+            sx={{color: "#00b5ad"}}
    
           >
         Izaicinājums
@@ -435,6 +440,7 @@ Mūsu Vīzija
             variant="h5"
             textAlign="left"
             gutterBottom
+            sx={{color: "#00b5ad"}}
 
           >
             Ceļš
@@ -450,6 +456,7 @@ Mūsu Vīzija
             variant="h5"
             textAlign="left"
             gutterBottom
+            sx={{color: "#00b5ad"}}
 
           >
             Rezultāts

@@ -150,7 +150,7 @@ const PetsList = () => {
   };
 
   return (
-    <Container maxWidth="lg" sx={{ paddingLeft: "0rem !important", paddingRight: "0rem !important" }}>
+    <Container maxWidth="lg">
       <Grid container spacing={3}>
         {!isMobile && (
           <Grid item xs={12} md={3}>

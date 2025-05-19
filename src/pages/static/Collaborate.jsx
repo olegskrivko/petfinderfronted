@@ -36,11 +36,15 @@ const Collaborate = () => {
       <meta property="og:description" content="Izpētiet dažādas sadarbības iespējas ar mūsu platformu, lai palīdzētu atrast mājas pazudušajiem mājdzīvniekiem un uzlabotu dzīvnieku aprūpi." />
       <meta property="og:type" content="website" />
    </Helmet>
-    <Container component="main" maxWidth="lg" sx={{ paddingLeft: "0", paddingRight: "0"}}> 
-      <Typography variant="h3" align="center" sx={{ mb: 5, fontWeight: 500 }}>
-        Sadarbības iespējas
-      </Typography>
+    <Container component="main" maxWidth="lg"> 
 
+  <Typography variant="h3" align="center" sx={{ mb: 5, fontWeight: 500,
+      
+              
+              background: "linear-gradient(60deg, #16477c 0%, #00b5ad 100%)",
+              WebkitBackgroundClip: "text",
+    WebkitTextFillColor: "transparent"
+   }}>Sadarbības iespējas</Typography>
       <Grid container spacing={6} alignItems="center">
         {/* Left Side - Illustration */}
         <Grid item xs={12} md={6}>
@@ -82,7 +86,7 @@ const Collaborate = () => {
             vai vienkārši kaislīgs dzīvnieku mīļotājs, mēs labprāt uzklausītu jūsu idejas.
           </Typography>
 
-          <Typography variant="body1" sx={{ mb: 2, fontWeight: 500 }}>
+          <Typography variant="h6" sx={{ mb: 2, fontWeight: 500, color: "#16477c" }}>
             Mēs esam atvērti dažāda veida partnerībām:
           </Typography>
 
@@ -90,7 +94,7 @@ const Collaborate = () => {
             {collaborationPoints.map((point, index) => (
               <ListItem key={index} sx={{ pl: 0 }}>
                 <ListItemIcon sx={{ minWidth: 32 }}>
-                  <Pets fontSize="small" sx={{ color: '#5B9BD5' }} />
+                  <Pets fontSize="small" sx={{ color: '#16477c' }} />
                 </ListItemIcon>
                 <ListItemText primary={point} />
               </ListItem>
@@ -104,7 +108,7 @@ const Collaborate = () => {
 
           <Button
             variant="contained"
-            sx={{ backgroundColor: '#5B9BD5', px: 4 }}
+            sx={{ background: "linear-gradient(0deg, #0994ba 30%, #02b4c4 90%)" }}
             href="/contact"
             fullWidth
           >

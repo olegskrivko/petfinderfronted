@@ -419,7 +419,7 @@ if (markerPosition && markerPosition.length === 2) {
   
 
   return (
-    <Container component="main" maxWidth="lg" sx={{ paddingLeft: "0rem !important", paddingRight: "0rem !important" }}>
+    <Container component="main" maxWidth="lg" >
     <Grid container spacing={3}>
   
           <Grid item xs={12} sm={12} md={6} lg={6}>
@@ -561,7 +561,7 @@ if (markerPosition && markerPosition.length === 2) {
 
         fullWidth
         size="large"
-        sx={{ mb: 3, backgroundColor: "#5B9BD5" }}
+        sx={{ mb: 3, background: "linear-gradient(0deg, #0994ba 30%, #02b4c4 90%)" }}
         onClick={handleToggle}
       >
         Pievienot ziņojumu par mājdzīvnieku

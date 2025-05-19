@@ -119,7 +119,7 @@ const PetTraining = () => {
       <meta property="og:type" content="website" />
 </Helmet>
 
-      <Container component="main" maxWidth="lg" sx={{ paddingLeft: "0", paddingRight: "0"}}> 
+      <Container component="main" maxWidth="lg" > 
       <Typography variant="h3" align="center" sx={{ mb: 5, fontWeight: 500 }}>
         Virtuālās mājdzīvnieku apmācības nodarbības
       </Typography>

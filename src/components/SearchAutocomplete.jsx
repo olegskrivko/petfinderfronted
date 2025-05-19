@@ -227,7 +227,7 @@ console.log("filtersfilters", filters)
   return (
       <ListItem sx={{ padding: '0 !important', paddingTop: '0.8rem !important' }}>
               <Box sx={{ width: '100%' }}>
-                <InputLabel sx={{ fontWeight: '500', color: '#000' }}>Meklēt</InputLabel>
+                <InputLabel sx={{ fontWeight: '500', color: '#16477c' }}>Meklēt</InputLabel>
     <Autocomplete
       freeSolo
       options={options}

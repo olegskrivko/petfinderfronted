@@ -162,7 +162,7 @@ const ServiceDetail = () => {
   }
 
   return (
-    <Container component="main" maxWidth="lg" sx={{ paddingLeft: "0 !important", paddingRight: "0 !important" }}>
+    <Container component="main" maxWidth="lg" >
       {/* Service Image */}
       <Box mb={5}>
         <Card elevation={4} sx={{ borderRadius: 4, overflow: 'hidden', position: 'relative' }}>

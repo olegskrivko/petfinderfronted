@@ -186,7 +186,11 @@ const MapBanner = () => {
             fontSize: '2.5rem',
             fontWeight: 600,
             marginBottom: '1rem',
-            fontFamily: "'Inter', sans-serif",
+            // fontFamily: "'Inter', sans-serif",
+                    fontFamily: "Inter', sans-serif",
+                          background: "linear-gradient(60deg, #16477c 0%, #00b5ad 100%)",
+              WebkitBackgroundClip: "text",
+    WebkitTextFillColor: "transparent"
           }}
         >
           Praktiski padomi mājdzīvnieku aprūpei

@@ -55,11 +55,14 @@ const Support = () => {
       <ToastContainer />
 
       {/* Main Container with padding */}
-      <Container component="main" maxWidth="lg" sx={{ paddingLeft: 0, paddingRight: 0 }}>
-        <Typography variant="h3" align="center" sx={{ mb: 5, fontWeight: 500 }}>
-          Atbalstīt projektu
-        </Typography>
-
+      <Container component="main" maxWidth="lg">
+<Typography variant="h3" align="center" sx={{ mb: 5, fontWeight: 500,
+         color: '#16477c',
+              
+              background: "linear-gradient(60deg, #16477c 0%, #00b5ad 100%)",
+              WebkitBackgroundClip: "text",
+    WebkitTextFillColor: "transparent"
+   }}>Atbalstīt projektu</Typography>
         <Grid container spacing={6} alignItems="center">
           {/* Left Side - Illustration Section */}
           <Grid item xs={12} md={6}>
@@ -102,7 +105,7 @@ const Support = () => {
               mūsu redzējumā un vēlētos ieguldīt premium līmeņu un pakalpojumu izmantošanas izmaksās, lūdzu, sazinieties ar mums.
             </Typography>
 
-            <Typography variant="body1" sx={{ mb: 2, fontWeight: 500 }}>
+            <Typography variant="body1" sx={{ mb: 2, fontWeight: 500, color: "#16477c" }}>
               Veidi, kā jūs varat palīdzēt:
             </Typography>
 
@@ -111,7 +114,7 @@ const Support = () => {
               {supportPoints.map((point, index) => (
                 <ListItem key={index} sx={{ pl: 0 }}>
                   <ListItemIcon sx={{ minWidth: 32 }}>
-                    <Pets fontSize="small" sx={{ color: '#5B9BD5' }} /> {/* Icon for each support point */}
+                    <Pets fontSize="small" sx={{ color: '#16477c' }} /> {/* Icon for each support point */}
                   </ListItemIcon>
                   <ListItemText primary={point} />
                 </ListItem>
@@ -128,10 +131,11 @@ const Support = () => {
                 fullWidth
                 value="https://pawclix.com"
                 variant="outlined"
+           
                 InputProps={{
                   readOnly: true,  // Make the text field readonly to prevent changes
                   endAdornment: (
-                    <IconButton onClick={handleCopyUrl} color="primary">
+                    <IconButton onClick={handleCopyUrl} sx={{color: "#16477c"}}>
                       <CopyAll /> {/* Icon to trigger URL copy */}
                     </IconButton>
                   ),
@@ -148,8 +152,8 @@ const Support = () => {
               <Button
                 variant="contained"
                 fullWidth
-                sx={{ px: 4 }}
-                color="primary"
+       
+                 sx={{ background: "linear-gradient(0deg, #0994ba 30%, #02b4c4 90%)" }}
                 onClick={() => window.open(`https://www.paypal.com/donate/?hosted_button_id=${PAYPAL_BUTTON_ID}`, "_blank")}
               >
                 Ziedot tagad

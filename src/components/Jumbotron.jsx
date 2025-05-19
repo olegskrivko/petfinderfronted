@@ -23,7 +23,17 @@ const Jumbotron = () => {
               component={Link}
               to="/support"
               variant="contained"
-               sx={{backgroundColor: "#5B9BD5", color: "#fff"}}
+                 style={{
+        padding: '12px 28px',
+        fontSize: '1rem',
+        fontWeight: 'bold',
+        background: "linear-gradient(0deg, #0994ba 30%, #02b4c4 90%)",
+        color: '#fff',
+        borderRadius: '8px',
+        border: 'none',
+        cursor: 'pointer',
+        transition: 'all 0.3s ease',
+      }}
             >
               Atbalstīt
             </Button>
@@ -45,7 +55,20 @@ const Jumbotron = () => {
               component={Link}
               to="/feedback"
               variant="outlined"
-              sx={{ color: "#5B9BD5" }}
+          
+                 style={{
+        padding: '12px 28px',
+        fontSize: '1rem',
+        fontWeight: 'bold',
+        backgroundColor: 'transparent',
+        
+        color: '#0994ba',
+ 
+        border: "2px solid  #0994ba ",
+        borderRadius: '8px',
+        cursor: 'pointer',
+        transition: 'all 0.3s ease',
+      }}
             >
               Atstāt atsauksmi
             </Button>
